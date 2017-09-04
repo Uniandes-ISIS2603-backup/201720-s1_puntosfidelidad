@@ -9,8 +9,8 @@
     <name>puntosfidelidad</name>
  
     <modules>
-        <module>puntosfidelidad-web</module>
         <module>puntosfidelidad-back</module>
+        <module>puntosfidelidad-web</module>
     </modules>
 	
     <properties>
