@@ -51,8 +51,7 @@ public class RecargaPersistence {
         return em.find(RecargaEntity.class, id);
     } 
    /**
-     * Devuelve todos las recargas de la base de datos.
-     *
+     * Devuelve todos las recargas de la base de datos. 
      * @return una lista con todas las recargas
      */
     public List<RecargaEntity> findAll() {
