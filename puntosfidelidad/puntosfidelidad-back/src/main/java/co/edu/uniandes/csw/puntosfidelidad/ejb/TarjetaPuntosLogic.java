@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
+import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -21,6 +22,11 @@ public class TarjetaPuntosLogic {
     
     @Inject
     private TarjetaPuntosLogic persistence;
-    
+       
+    public TarjetaPuntosEntity getTarjetas()
+    {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar todos las tarjetas de puntos");
+        return null;
+    }
     
 }
