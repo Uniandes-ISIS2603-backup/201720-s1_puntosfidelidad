@@ -28,6 +28,10 @@ public class RestaurantePersistence {
     Otro commit
     */
     
+    /*
+    Otro add
+    */
+    
     public RestauranteEntity find(String usuario) {
         
         return em.find(RestauranteEntity.class, usuario);
@@ -59,9 +63,9 @@ public class RestaurantePersistence {
         return em.merge(entity);
     }
 
-    public void delete(Long id) {
+    public void delete(String nit) {
        
-        RestauranteEntity entity = em.find(RestauranteEntity.class, id);
+        RestauranteEntity entity = em.find(RestauranteEntity.class, nit);
         em.remove(entity);
     }
     

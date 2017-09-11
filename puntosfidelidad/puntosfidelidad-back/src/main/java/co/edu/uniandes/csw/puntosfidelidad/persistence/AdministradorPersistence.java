@@ -56,9 +56,9 @@ public class AdministradorPersistence {
         return em.merge(entity);
     }
 
-    public void delete(Long id) {
+    public void delete(String user) {
        
-        AdministradorEntity entity = em.find(AdministradorEntity.class, id);
+        AdministradorEntity entity = em.find(AdministradorEntity.class, user);
         em.remove(entity);
     }
     
