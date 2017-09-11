@@ -135,6 +135,11 @@ public class RestaurantePersistenceTest {
      */
     @Test
     public void testFind() throws Exception {
+        
+    RestauranteEntity entity = data.get(0);
+    RestauranteEntity newEntity = persistence.find(entity.getNit());
+    Assert.assertNotNull(newEntity);
+    Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
     }
 
     /**
@@ -142,6 +147,11 @@ public class RestaurantePersistenceTest {
      */
     @Test
     public void testFindByName() throws Exception {
+        
+    RestauranteEntity entity = data.get(0);
+    RestauranteEntity newEntity = persistence.findByName(entity.getNombre());
+    Assert.assertNotNull(newEntity);
+    Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
     }
 
     /**
@@ -150,7 +160,7 @@ public class RestaurantePersistenceTest {
     @Test
     public void testFindAll() throws Exception {
         
-          List<RestauranteEntity> list = persistence.findAll();
+    List<RestauranteEntity> list = persistence.findAll();
     Assert.assertEquals(data.size(), list.size());
     for (RestauranteEntity ent : list) {
         boolean found = false;
@@ -203,6 +213,11 @@ public class RestaurantePersistenceTest {
      */
     @Test
     public void testDelete() throws Exception {
+        
+    RestauranteEntity entity = data.get(0);
+    persistence.delete(entity.getNit());
+    RestauranteEntity deleted = em.find(RestauranteEntity.class, entity.getNit());
+    Assert.assertNull(deleted);
     }
 
    
