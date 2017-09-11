@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
@@ -29,7 +24,7 @@ public class RecargaPersistence {
     public RecargaEntity create(RecargaEntity entity) {
         LOGGER.info("Creando una recarga nueva");
         em.persist(entity);
-        LOGGER.info("recarga creada");
+        LOGGER.info("Recarga creada");
         return entity;
     }
 
@@ -56,17 +51,13 @@ public class RecargaPersistence {
         return em.find(RecargaEntity.class, id);
     } 
    /**
-     * Devuelve todos los clientes de la base de datos.
+     * Devuelve todos las recargas de la base de datos.
      *
-     * @return una lista con todas las authores que encuentre en la base de
-     * datos, "select u from AuthorEntity u" es como un "select * from
-     * AuthorEntity;" - "SELECT * FROM table_name" en SQL.
+     * @return una lista con todas las recargas
      */
     public List<RecargaEntity> findAll() {
-        LOGGER.info("Consultando todas las recargas");
-        // Se crea un query para buscar todas las authores en la base de datos.
+        LOGGER.info("Consultando todas las recargas");        
         TypedQuery query = em.createQuery("select u from RecargaEntity u", RecargaEntity.class);
-        // Note que en el query se hace uso del método getResultList() que obtiene una lista de authores.
         return query.getResultList();
     }
 }
