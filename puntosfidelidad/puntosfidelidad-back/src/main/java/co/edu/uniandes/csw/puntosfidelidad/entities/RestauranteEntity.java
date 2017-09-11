@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.entities;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,9 +17,8 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class RestauranteEntity {
+public class RestauranteEntity implements Serializable{
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private String nit;
     private String nombre;
     private String tipoComida;

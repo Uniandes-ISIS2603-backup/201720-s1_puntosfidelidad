@@ -37,11 +37,11 @@ public class RestaurantePersistence {
         return em.find(RestauranteEntity.class, usuario);
     }
     
-    public RestauranteEntity findByName(String usuario) {
+    public RestauranteEntity findByName(String nombre) {
         
         TypedQuery<RestauranteEntity> q
-                = em.createQuery("select u from RestauranteEntity u where u.usuario = :usuario", RestauranteEntity.class);
-        q = q.setParameter("usuario", usuario);
+                = em.createQuery("select u from RestauranteEntity u where u.nombre = :nombre", RestauranteEntity.class);
+        q = q.setParameter("nombre", nombre);
         return q.getSingleResult();
     }
     
