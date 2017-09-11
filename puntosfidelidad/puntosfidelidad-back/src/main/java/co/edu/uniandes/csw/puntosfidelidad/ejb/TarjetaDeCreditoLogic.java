@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaDeCreditoEntity;
@@ -26,7 +21,6 @@ public class TarjetaDeCreditoLogic {
 
     /**
      * Obtiene los datos de una instancia de TarjetaDeCredito a partir de su ID.
-     *
      * @param id Identificador de la instancia a consultar
      * @return Instancia de TarjetaDeCreditoEntity con los datos del TarjetaDeCredito consultado.
      * @generated
@@ -38,10 +32,8 @@ public class TarjetaDeCreditoLogic {
 
     /**
      * Se encarga de crear un TarjetaDeCredito en la base de datos.
-     *
      * @param entity Objeto de TarjetaDeCreditoEntity con los datos nuevos
      * @return Objeto de TarjetaDeCreditoEntity con los datos nuevos y su ID.
-     * @generated
      */
     public TarjetaDeCreditoEntity createTarjetaDeCredito(TarjetaDeCreditoEntity entity) {
         LOGGER.log(Level.INFO, "Inicia proceso de crear un autor ");        
@@ -50,10 +42,8 @@ public class TarjetaDeCreditoLogic {
 
     /**
      * Actualiza la información de una instancia de TarjetaDeCredito.
-     *
      * @param entity Instancia de TarjetaDeCreditoEntity con los nuevos datos.
      * @return Instancia de TarjetaDeCreditoEntity con los datos actualizados.
-     * @generated
      */
     public TarjetaDeCreditoEntity updateTarjetaDeCredito(TarjetaDeCreditoEntity entity) {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar un autor ");
@@ -62,9 +52,7 @@ public class TarjetaDeCreditoLogic {
 
     /**
      * Elimina una instancia de TarjetaDeCredito de la base de datos.
-     *
      * @param id Identificador de la instancia a eliminar.
-     * @generated
      */
     public void deleteTarjetaDeCredito(Long id) {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar un autor ");
