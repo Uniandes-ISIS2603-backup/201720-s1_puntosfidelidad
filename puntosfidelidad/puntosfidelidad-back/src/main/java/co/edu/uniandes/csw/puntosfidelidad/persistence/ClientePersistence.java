@@ -28,7 +28,7 @@ public class ClientePersistence {
     public ClienteEntity create(ClienteEntity entity) {
         LOGGER.info("Creando un cliente nuevo");
         em.persist(entity);
-        LOGGER.info("cliente creada");
+        LOGGER.info("Cliente creado");
         return entity;
     }
 
@@ -38,13 +38,13 @@ public class ClientePersistence {
     }
 
     public void delete(String usuario) {
-        LOGGER.log(Level.INFO, "Borrando cliente con id={0}", usuario);
+        LOGGER.log(Level.INFO, "Borrando cliente con usuario={0}", usuario);
         ClienteEntity entity = em.find(ClienteEntity.class, usuario);
         em.remove(entity);
     }
 
      public ClienteEntity find(String usuario) {
-        LOGGER.log(Level.INFO, "Consultando cliente con id={0}", usuario);
+        LOGGER.log(Level.INFO, "Consultando cliente con usuario={0}", usuario);
         return em.find(ClienteEntity.class, usuario);
     }  
      
@@ -56,7 +56,7 @@ public class ClientePersistence {
      * AuthorEntity;" - "SELECT * FROM table_name" en SQL.
      */
     public List<ClienteEntity> findAll() {
-        LOGGER.info("Consultando todas los clientes");
+        LOGGER.info("Consultando todos los clientes");
         // Se crea un query para buscar todas las authores en la base de datos.
         TypedQuery query = em.createQuery("select u from ClienteEntity u", ClienteEntity.class);
         // Note que en el query se hace uso del método getResultList() que obtiene una lista de authores.
@@ -66,7 +66,7 @@ public class ClientePersistence {
      /**
      * Busca si hay algun cliente con el nombre que se envía de argumento
      *
-     * @param name: Nombre de la editorial que se está buscando
+     * @param name: Nombre del cliente que se está buscando
      * @return null si no existe ninguna editorial con el nombre del argumento.
      * Si existe alguna devuelve la primera.
      */
