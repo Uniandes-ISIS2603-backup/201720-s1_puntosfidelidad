@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaDeCreditoEntity;
@@ -33,7 +28,7 @@ public class TarjetaDeCreditoPersistence {
     }
 
     public TarjetaDeCreditoEntity update(TarjetaDeCreditoEntity entity) {
-        LOGGER.log(Level.INFO, "Actualizando tarjeta de crádito con id={0}", entity.getId());
+        LOGGER.log(Level.INFO, "Actualizando tarjeta de crédito con id={0}", entity.getId());
         return em.merge(entity);
     }
 
@@ -49,20 +44,17 @@ public class TarjetaDeCreditoPersistence {
     }
      
      /**
-     * Busca si hay alguna tarjeta con el nombre que se envía de argumento
+     * Busca si hay alguna tarjeta con el número que se envía de argumento
      *
-     * @param numero: Nombre de la editorial que se está buscando
-     * @return null si no existe ninguna editorial con el nombre del argumento.
+     * @param numero: Nombre de la tarjeta de crédito que se está buscando
+     * @return null si no existe ninguna tarjeta de crédito con el nombre del argumento.
      * Si existe alguna devuelve la primera.
      */
     public TarjetaDeCreditoEntity findByNumber(Long numero) {
         LOGGER.log(Level.INFO, "Consultando tarjeta de crédito por numero ", numero);
 
-        // Se crea un query para buscar editoriales con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
         TypedQuery query = em.createQuery("Select e From TarjetaDeCreditoEntity e where e.numero = :numero", TarjetaDeCreditoEntity.class);
-        // Se remplaza el placeholder ":name" con el valor del argumento 
         query = query.setParameter("numero", numero);
-        // Se invoca el query se obtiene la lista resultado
         List<TarjetaDeCreditoEntity> sameName = query.getResultList();
         if (sameName.isEmpty()) {
             return null;
