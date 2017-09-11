@@ -52,7 +52,7 @@ public class RestaurantePersistenceTest {
     }
     
     /**
-     * Inyección de la dependencia a la clase XYZPersistence cuyos métodos
+     * Inyección de la dependencia a la clase RestaurantePersistence cuyos métodos
      * se van a probar.
      */
     @Inject
@@ -195,7 +195,7 @@ public class RestaurantePersistenceTest {
     @Test
     public void testUpdate() throws Exception {
         
-    RestauranteEntity entity = data.get(0);
+    RestauranteEntity entity = data.get(2);
     PodamFactory factory = new PodamFactoryImpl();
     RestauranteEntity newEntity = factory.manufacturePojo(RestauranteEntity.class);
 
