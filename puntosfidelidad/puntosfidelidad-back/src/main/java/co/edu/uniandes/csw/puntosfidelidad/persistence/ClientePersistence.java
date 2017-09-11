@@ -67,13 +67,13 @@ public class ClientePersistence {
      * Busca si hay algun cliente con el nombre que se envía de argumento
      *
      * @param name: Nombre del cliente que se está buscando
-     * @return null si no existe ninguna editorial con el nombre del argumento.
-     * Si existe alguna devuelve la primera.
+     * @return null si no existe ningun cliente con el nombre del argumento.
+     * Si existe alguno devuelve la primera.
      */
     public ClienteEntity findByName(String name) {
         LOGGER.log(Level.INFO, "Consultando cliente por nombre ", name);
 
-        // Se crea un query para buscar editoriales con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
+        // Se crea un query para buscar clientes con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
         TypedQuery query = em.createQuery("Select e From ClienteEntity e where e.name = :name", ClienteEntity.class);
         // Se remplaza el placeholder ":name" con el valor del argumento 
         query = query.setParameter("name", name);
