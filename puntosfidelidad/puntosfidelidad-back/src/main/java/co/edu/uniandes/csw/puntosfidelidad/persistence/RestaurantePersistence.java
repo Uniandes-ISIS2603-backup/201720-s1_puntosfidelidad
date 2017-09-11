@@ -24,6 +24,9 @@ public class RestaurantePersistence {
     @PersistenceContext(unitName = "puntosfidelidadPU")
     protected EntityManager em;
     
+    /*
+    Otro commit
+    */
     
     public RestauranteEntity find(String usuario) {
         
