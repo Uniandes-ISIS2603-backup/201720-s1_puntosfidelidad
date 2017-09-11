@@ -83,7 +83,7 @@ public class RecargaLogic {
     }
 
     /**
-     * Asocia un Book existente a un Recarga    
+     * Asocia un Cliente existente a un Recarga    
      * @param recargaId Id de la recarga sobre la cual se quiere obtener el cliente
      * @param clienteId Id del cliente sobre el cual se quiere obtener la recarga
      * @return Instancia de ClienteEntity que fue asociada a Recarga
@@ -96,7 +96,7 @@ public class RecargaLogic {
     }
 
     /**
-     * Remplaza las instancias de Book asociadas a una instancia de Recarga   
+     * Remplaza la instancia de Cliente asociada a una instancia de Recarga   
      * @param recargaId Id de la recarga sobre la cual se quiere obtener el cliente
      * @param clienteEntity entidad con la cual se quiere reeemplazar el cliente
      * @return Nueva colección de ClienteEntity asociada a la instancia de Recarga
