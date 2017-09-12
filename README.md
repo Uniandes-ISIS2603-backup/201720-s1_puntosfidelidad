@@ -23,7 +23,7 @@ Laura Valeria Vanegas García|lv.vanegas10|Líder de Planeación
     - [GET administradores/{administradoresid}/restaurante/{restauranteid}](#GET-administradores/{administradoresid}/restaurante/{restauranteid})
     - [POST administradores/{administradoresid}/restaurante/{restauranteid}](#POST-administradores/{administradoresid}/restaurante/{restauranteid})   
     - [PUT administradores/{administradoresid}/restaurante](#POST-/POSTadministradores/{administradoresid}/restaurante)
-    - [DELETE administradores/{administradoresid}/restaurante/{restauranteid}](#DELETE-/administradores/{administradoresid}/restaurante /{restauranteid})    
+    - [DELETE administradores/{administradoresid}/restaurante/{restauranteid}](#DELETE-/administradores/{administradoresid}/restaurante/{restauranteid})  
     
   - [Recurso Restaurante](#recurso-restaurante)
     - [GET /restaurantes](#GET-/restaurantes)
@@ -35,7 +35,7 @@ Laura Valeria Vanegas García|lv.vanegas10|Líder de Planeación
     - [GET restaurantes/{restaurantesid}/sucursales/{sucursalesid}](#GET-restaurantes/{restaurantesid}/sucursales/{sucursalesid})
     - [POST restaurantes/{restaurantesid}/sucursales/{sucursalesid}](#POST-restaurantes/{restaurantesid}/sucursales/{sucursalesid})   
     - [PUT restaurantes/{restaurantesid}/sucursales](#POST-/POST restaurantes/{restaurantesid}/sucursales)
-    - [DELETE restaurantes/{restaurantesid}/sucursales /{sucursalesid}](#DELETE-/restaurantes/{restaurantesid}/sucursales /{sucursalesid})
+    - [DELETE restaurantes/{restaurantesid}/sucursales /{sucursalesid}](#DELETE-/restaurantes/{restaurantesid}/sucursales/{sucursalesid})
     - [GET restaurantes/{restaurantesid}/productosCanjeables](#GET-restaurantes/{restaurantesid}/productosCanjeables)
     - [GET restaurantes/{restaurantesid}/productosCanjeables/{productosCanjeablesid}](#GET-restaurantes/{restaurantesid}/productosCanjeables/{productosCanjeablesid})
     - [POST restaurantes/{restaurantesid}/productosCanjeables/{productosCanjeablesid}](#POST-restaurantes/{restaurantesid}/productosCanjeables/{productosCanjeablesid})   
@@ -46,6 +46,7 @@ Laura Valeria Vanegas García|lv.vanegas10|Líder de Planeación
     - [POST restaurantes/{restaurantesid}/eventos/{eventosid}](#POST-restaurantes/{restaurantesid}/eventos/{eventosid})   
     - [PUT restaurantes/{restaurantesid}/eventos](#POST-/POSTrestaurantes/{restaurantesid}/eventos)
     - [DELETE restaurantes/{restaurantesid}/eventos/{eventosid}](#DELETE-/restaurantes/{restaurantesid}/eventos/{eventosid})
+    
 - [Recurso Sucursal](#recurso-sucursal)
     - [GET /sucursales](#GET-/sucursales)
     - [GET /sucursales/{id}](#GET-/sucursales/{nombre})
@@ -62,12 +63,14 @@ Laura Valeria Vanegas García|lv.vanegas10|Líder de Planeación
     - [POST /sucursales/{id}/compras](#POST-/sucursales/{id}/compras)
     - [PUT /sucursales/{id}/compras/{idCompra}](#PUT-/sucursales/{id}/compras/{idCompra})
     - [DELETE /sucursales/{id}/compras/{idCompra}](#PUT-/sucursales/{id}/compras/{idCompra})
+    
 - [Recurso Producto](#recurso-producto)
     - [GET /producto](#GET-/producto)
     - [GET /producto/{id}](#GET-/producto/{id})
     - [POST /producto](#POST-/producto)
     - [PUT /producto/{id}](#PUT-/producto/{id})
     - [DELETE /producto/{id}](#DELETE-/producto/{id})
+    
 - [Recurso Cliente](#recurso-cliente)
     - [GET /clientes](#GET-/clientes)
     - [GET /clientes/{id}](#GET-/clientes/{id})
@@ -76,37 +79,68 @@ Laura Valeria Vanegas García|lv.vanegas10|Líder de Planeación
     - [DELETE /clientes/{id}](#DELETE-/clientes/{id})
     - [GET clientes/{clientesid}/tarjetasDeCredito](#GET-clientes/{clientesid}/tarjetasDeCredito)
     - [GET clientes/{clientesid}/tarjetasDeCredito/{tarjetasDeCreditoid}](#GET-clientes/{clientesid}/tarjetasDeCredito/{tarjetasDeCreditoid})
-    - [POST clientes/{clientesid}/tarjetasDeCredito/{tarjetasDeCreditoid}](#POST-clientes/{clientesid}/tarjetasDeCredito/{tarjetasDeCreditoid})   
-    - [PUT clientes/{clientesid}/tarjetasDeCredito](#POST-/POST clientes/{clientesid}/tarjetasDeCredito)
-    - [DELETE clientes/{clientesid}/tarjetasDeCredito /{tarjetasDeCreditoid }](#DELETE-/clientes/{clientesid}/tarjetasDeCredito /{tarjetasDeCreditoid })
+    - [POST clientes/{clientesid}/tarjetasDeCredito/{tarjetasDeCreditoid}](#POST-/clientes/{clientesid}/tarjetasDeCredito/{tarjetasDeCreditoid})   
+    - [PUT clientes/{clientesid}/tarjetasDeCredito](#PUT-/clientes/{clientesid}/tarjetasDeCredito)
+    - [DELETE clientes/{clientesid}/tarjetasDeCredito/{tarjetasDeCreditoid}](#DELETE-/clientes/{clientesid}/tarjetasDeCredito/{tarjetasDeCreditoid})
     - [GET clientes/{clientesid}/tarjetasDePuntos](#GET-clientes/{clientesid}/tarjetasDePuntos)
     - [GET clientes/{clientesid}/tarjetasDePuntos/{tarjetasDePuntosid}](#GET-clientes/{clientesid}/tarjetasDeCredito/{tarjetasDePuntosid})
     - [POST clientes/{clientesid}/tarjetasDePuntos/{tarjetasDePuntosid}](#POST-clientes/{clientesid}/tarjetasDePuntos/{tarjetasDePuntosid})   
-    - [PUT clientes/{clientesid}/tarjetasDePuntos](#POST-/POST clientes/{clientesid}/tarjetasDePuntos)
-    - [DELETE clientes/{clientesid}/tarjetasDePuntos/{tarjetasDePuntosid}](#DELETE-/clientes/{clientesid}/tarjetasDeCredito /{tarjetasDePuntosid})
+    - [PUT clientes/{clientesid}/tarjetasDePuntos](#PUT-/clientes/{clientesid}/tarjetasDePuntos)
+    - [DELETE clientes/{clientesid}/tarjetasDePuntos/{tarjetasDePuntosid}](#DELETE-/clientes/{clientesid}/tarjetasDeCredito/{tarjetasDePuntosid})
     - [GET clientes/{clientesid}/recargas](#GET-clientes/{clientesid}/recargas)
     - [GET clientes/{clientesid}/recargas/{recargasid}](#GET-clientes/{clientesid}/recargas/{recargasid})
     - [POST clientes/{clientesid}/recargas/{recargasid}](#POST-clientes/{clientesid}/recargas/{recargasid})   
-    - [PUT clientes/{clientesid}/recargas](#POST-/POST clientes/{clientesid}/recargas)
+    - [PUT clientes/{clientesid}/recargas](#PUT-/clientes/{clientesid}/recargas)
     - [DELETE clientes/{clientesid}/recargas/{recargasid}](#DELETE-/clientes/{clientesid}/recargas/{recargasid})
     - [GET clientes/{clientesid}/compras](#GET-clientes/{clientesid}/compras)
     - [GET clientes/{clientesid}/compras/{comprasid}](#GET-clientes/{clientesid}/compras/{comprasid})
     - [POST clientes/{clientesid}/compras/{comprasid}](#POST-clientes/{clientesid}/compras/{comprasid})   
-    - [PUT clientes/{clientesid}/compras](#POST-/POST clientes/{clientesid}/compras)
+    - [PUT clientes/{clientesid}/compras](#PUT-/clientes/{clientesid}/compras)
     - [DELETE clientes/{clientesid}/compras/{comprasid}](#DELETE-/clientes/{clientesid}/compras/{comprasid})
     - [GET clientes/{clientesid}/comentarios](#GET-clientes/{clientesid}/comentarios)
     - [GET clientes/{clientesid}/comentarios/{comentariosid}](#GET-clientes/{clientesid}/comentarios/{comentariosid})
     - [POST clientes/{clientesid}/comentarios/{comentariosid}](#POST-clientes/{clientesid}/comentarios/{comentariosid})   
-    - [PUT clientes/{clientesid}/comentarios](#POST-/POST clientes/{clientesid}/comentarios)
-    - [DELETE clientes/{clientesid}/comentarios/{comentariosid}](#DELETE-/clientes/{clientesid}/comentarios/{comentariosid})    
-  
+    - [PUT clientes/{clientesid}/comentarios](#PUT-/clientes/{clientesid}/comentarios)
+    - [DELETE clientes/{clientesid}/comentarios/{comentariosid}](#DELETE-/clientes/{clientesid}/comentarios/{comentariosid})
+    
+ - [Recurso Recarga](#recurso-recarga)
+    - [GET /recargas](#GET-/recargas)
+    - [GET /recargas/{id}](#GET-/recargas/{id})
+    - [POST /recargas](#POST-/recargas)
+    - [PUT /recargas/{id}](#PUT-/recargas/{id})
+    - [DELETE /recargas/{id}](#DELETE-/recargas/{id})
+    
+ - [Recurso TarjetaDeCredito](#recurso-tarjetadecredito)
+    - [GET /tarjetasDeCredito](#GET-/tarjetasDeCredito)
+    - [GET /tarjetasDeCredito/{id}](#GET-/tarjetasDeCredito/{tarjetasDeCreditoid})
+    - [POST /tarjetasDeCredito](#POST-/tarjetasDeCredito)
+    - [PUT /tarjetasDeCredito/{id}](#PUT-/tarjetasDeCredito/{tarjetasDeCreditoid})
+    - [DELETE /tarjetasDeCredito/{id}](#DELETE-/tarjetasDeCredito/{tarjetasDeCreditoid})
+
+- [Recurso Evento](#recurso-evento)
+    - [GET /eventos](#GET-/eventos)
+    - [GET /eventos/{id}](#GET-/eventos/{nombre})
+    - [POST /eventos](#POST-/eventos)
+    - [PUT /eventos/{id}](#PUT-/eventos/{nombre})
+    - [DELETE /eventos/{id}](#DELETE-/eventos/{nombre})
+    - [GET eventos/{eventoNombre}/ubicaciones](#GET-eventos/{eventoNombre}/ubicaciones)
+    - [GET eventos/{eventoNombre}/ubicaciones/{ubicacionDireccion}](#GET-eventos/{eventoNombre}/ubicaciones/{ubicacionDireccion})
+    - [POST eventos/{eventoNombre}/ubicaciones/{ubicacionDireccion}](#POST-eventos/{eventoNombre}/ubicaciones/{ubicacionDireccion})
+    - [PUT eventos/{eventoNombre}/ubicaciones](#PUT-eventos/{eventoNombre}/ubicaciones)
+    - [DELETE eventos/{eventoNombre}/ubicaciones/{ubicacionDireccion}](#DELETE-eventos/{eventoNombre}/ubicaciones/{ubicacionDireccion}])
+    - [GET eventos/{eventoNombre}/restaurantes](#GET-eventos/{eventoNombre}/ubicaciones)
+    - [GET eventos/{eventoNombre}/restaurantes/{idRestaurante}](#GET-eventos/{eventoNombre}/restaurantes/{idRestaurante})
+    - [POST eventos/{eventoNombre}/restaurantes/{idRestaurante}](#POST-eventos/{eventoNombre}/restaurantes/{idRestaurante}})
+    - [PUT eventos/{eventoNombre}/restaurante](#PUT-eventos/{eventoNombre}/restaurantes)
+    - [DELETE eventos/{eventoNombre}/restaurante/{idRestaurante}](#DELETE-eventos/{eventoNombre}/restaurantes/{idRestaurante}])
+
 ### Recurso Administrador
 El objeto Administrador tiene 2 representaciones JSON:	
 
 #### Representación Minimum
 ```javascript
 {
-    usurario: '' /*Tipo String*/,
+    usuario: '' /*Tipo String*/,
     contrasena: '' /*Tipo String*/,
     
 }
@@ -122,7 +156,6 @@ El objeto Administrador tiene 2 representaciones JSON:
     
 }
 ```
-
 
 
 #### GET /administradores
@@ -1811,5 +1844,538 @@ Código|Descripción|Cuerpo
 204|Objeto removido|N/A
 500|Error interno|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+
+### Recurso Recarga
+El objeto Recarga tiene 2 representaciones JSON:	
+
+#### Representación Minimum
+```javascript
+{
+    id: '' /*Tipo Long*/,
+    valor: '' /*Tipo Double*/,
+    fecha: '' /*Tipo Date*/   
+}
+```
+
+#### Representación Detail
+```javascript
+{
+    // todo lo de la representación Minimum más los objetos Minimum con relación simple.
+    cliente:   {  /*Cliente en su representación Minimum*/}        
+}
+```
+
+
+
+#### GET /recargas
+
+Retorna una colección de objetos Recarga en representación Detail.
+Cada Recarga en la colección tiene embebidos los siguientes objetos: Editorial.
+
+#### Parámetros
+
+#### N/A
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de [representaciones Detail](#recurso-Recarga)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### GET /recargas/{recargasid}
+
+Retorna una colección de objetos Recarga en representación Detail.
+Cada Recarga en la colección tiene los siguientes objetos: recargas, tarjetasDeCredito, clientes, compras, comentarios.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Recarga a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Recarga en [representaciones Detail](#recurso-Recarga)
+404|No existe un objeto Recarga con el ID solicitado|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### POST /recargas
+
+Es el encargado de crear objetos Recarga.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+body|body|Objeto Recarga que será creado|Sí|[Representación Detail](#recurso-Recarga)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Recarga ha sido creado|[Representación Detail](#recurso-Recarga)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo crear el objeto Recarga |Mensaje de error
+
+#### PUT /recargas/{recargasid}
+
+Es el encargado de actualizar objetos Recarga.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Recarga a actualizar|Sí|Integer
+body|body|Objeto Recarga nuevo|Sí|[Representación Minimum](#recurso-Recarga)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Recarga actualizado|[Representación Minimum](#recurso-Recarga)
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo actualizar el objeto Recarga|Mensaje de error
+
+#### DELETE /recargas/{recargasid}
+
+Elimina un objeto Recarga.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Recarga a eliminar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto eliminado|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+### Recurso TarjetaDeCredito
+El objeto TarjetaDeCredito tiene 2 representaciones JSON:	
+
+#### Representación Minimum
+```javascript
+{
+    id: '' /*Tipo Long*/,
+    numero: '' /*Tipo Long*/,
+    banco: '' /*Tipo String*/
+}
+```
+
+#### Representación Detail
+```javascript
+{
+    // todo lo de la representación Minimum más los objetos Minimum con relación simple.   
+}
+```
+
+
+
+#### GET /tarjetasDeCredito
+
+Retorna una colección de objetos TarjetaDeCredito en representación Detail.
+Cada TarjetaDeCredito en la colección tiene embebidos los siguientes objetos: Editorial.
+
+#### Parámetros
+
+#### N/A
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de [representaciones Detail](#recurso-TarjetaDeCredito)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### GET /tarjetasDeCredito/{tarjetasDeCreditoid}
+
+Retorna una colección de objetos TarjetaDeCredito en representación Detail.
+Cada TarjetaDeCredito en la colección tiene los siguientes objetos: recargas, tarjetasDeCredito, tarjetasDePuntos, compras, comentarios.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto TarjetaDeCredito a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto TarjetaDeCredito en [representaciones Detail](#recurso-TarjetaDeCredito)
+404|No existe un objeto TarjetaDeCredito con el ID solicitado|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### POST /tarjetasDeCredito
+
+Es el encargado de crear objetos TarjetaDeCredito.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+body|body|Objeto TarjetaDeCredito que será creado|Sí|[Representación Detail](#recurso-TarjetaDeCredito)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto TarjetaDeCredito ha sido creado|[Representación Detail](#recurso-TarjetaDeCredito)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo crear el objeto TarjetaDeCredito |Mensaje de error
+
+#### PUT /tarjetasDeCredito/{tarjetasDeCreditoid}
+
+Es el encargado de actualizar objetos TarjetaDeCredito.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto TarjetaDeCredito a actualizar|Sí|Integer
+body|body|Objeto TarjetaDeCredito nuevo|Sí|[Representación Minimum](#recurso-TarjetaDeCredito)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto TarjetaDeCredito actualizado|[Representación Minimum](#recurso-TarjetaDeCredito)
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo actualizar el objeto TarjetaDeCredito|Mensaje de error
+
+#### DELETE /tarjetasDeCredito/{tarjetasDeCreditoid}
+
+Elimina un objeto TarjetaDeCredito.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto TarjetaDeCredito a eliminar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto eliminado|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+### Recurso Evento
+El objeto Evento tiene 2 representaciones JSON:	
+
+#### Representación Minimum
+```javascript
+{
+    nombre: '' /*Tipo String*/,
+    fechaInicio: "/*Tipo Calendar*/,
+    fechaFin: "/*Tipo Calendar*/,
+    descripcion: '' /*Tipo String*/,
+}
+```
+
+#### Representación Detail
+```javascript
+{
+    // todo lo de la representación Minimum más los objetos Minimum con relación simple.
+    nombre: '' /*Tipo String*/,
+    fechaInicio: "/*Tipo Calendar*/,
+    fechaFin: "/*Tipo Calendar*/,
+    descripcion: '' /*Tipo String*/,
+   
+}
+```
+
+
+
+#### GET /eventos
+
+Retorna una colección de objetos Evento en representación Detail.
+Cada Evento en la colección tiene embebidos los siguientes objetos: Editorial.
+
+#### Parámetros
+
+#### N/A
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de [representaciones Detail](#recurso-Evento)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### GET /eventos/{nombre}
+
+Retorna una colección de objetos Evento en representación Detail.
+Cada Evento en la colección tiene los siguientes objetos: Editorial.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+nombre|Path|Nombre del Evento a consultar|Sí|String
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Evento en [representaciones Detail](#recurso-Evento)
+404|No existe un objeto Evento con el ID solicitado|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### POST /eventos
+
+Es el encargado de crear objetos Evento.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+body|body|Objeto Evento que será creado|Sí|[Representación Detail](#recurso-Evento)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Evento ha sido creado|[Representación Detail](#recurso-Evento)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+500|No se pudo crear el objeto Evento|Mensaje de error
+
+#### PUT /eventos/{nombre}
+
+Es el encargado de actualizar objetos Evento.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+nombre|Path|nombre del Evento a actualizar|Sí|String
+body|body|Objeto Evento nuevo|Sí|[Representación Detail](#recurso-Evento)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Evento actualizado|[Representación Detail](#recurso-Evento)
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
+500|No se pudo actualizar el objeto Evento|Mensaje de error
+
+#### DELETE /eventos/{nombre}
+
+Elimina un objeto Evento.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+Nobre|Path|Nombre del Evento a eliminar|Sí|String
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto eliminado|N/A
+500|Error interno|Mensaje de error
+
+#### GET eventos/{nombre}/ubicaciones
+
+Retorna una colección de objetos Ubicacion asociados a un objeto Evento en representación Detail.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+nombre|Path|Nombre del Evento a consultar|Sí|String
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de objetos Category en [representación Detail](#recurso-category)
+500|Error consultando categories |Mensaje de error
+
+#### GET eventos/{nombre}/ubicaciones/{direccion}
+
+Retorna un objeto Ubicacion asociados a un objeto Evento en representación Detail.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+nombre|Path|Nombre del Evento a consultar|Sí|String
+direccion|Path|Direccion del objeto Ubicacion a consultar|Sí|String
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Category en [representación Detail](#recurso-category)
+404|No existe un objeto Category con el ID solicitado asociado al objeto Evento indicado |Mensaje de error
+500|Error interno|Mensaje de error
+
+#### POST eventos/{nombre}/ubicaciones/{direccion}
+
+Asocia un objeto Ubicacion a un objeto Evento.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+nombre|Path|Nombre del Evento a consultar|Sí|String
+direccion|Path|Direccion del objeto Ubicacion a consultar|Sí|String
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|Objeto Ubicacion asociado|[Representación Detail de Ubicacion](#recurso-ubicacion)
+500|No se pudo asociar el objeto Ubicacion|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### PUT eventos/{nombre}/ubicaciones
+
+Es el encargado de remplazar la colección de objetos Ubicacion asociada a un objeto Evento.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+nombre|Path|Nombre del objeto Evento cuya colección será remplazada|Sí|String
+body|body|Colección de objetos Ubicacion|Sí|[Representación Detail](#recurso-Ubicacion)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|Se remplazó la colección|Colección de objeto Ubicacion en [Representación Detail](#recurso-ubicacion)
+500|No se pudo remplazar la colección|Mensaje de error
+
+#### DELETE eventos/{nombre}/ubicaciones/{direccion}
+
+Remueve un objeto Ubicacion de la colección en un objeto Evento.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+nombre|Path|Nombre del Evento a consultar|Sí|String
+direccion|Path|Direccion del objeto Ubicacion a consultar|Sí|String
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto removido|N/A
+500|Error interno|Mensaje de error
+
+#### GET eventos/{nombre}/restaurantes
+
+Retorna una colección de objetos Restaurante asociados a un objeto Evento en representación Detail.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+nombre|Path|Nombre del Evento a consultar|Sí|String
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de objetos Category en [representación Detail](#recurso-restaurante)
+500|Error consultando categories |Mensaje de error
+
+#### GET eventos/{nombre}/restaurantes/{id}
+
+Retorna un objeto Restaurante asociados a un objeto Evento en representación Detail.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+nombre|Path|Nombre del Evento a consultar|Sí|String
+direccion|Path|Direccion del objeto Ubicacion a consultar|Sí|String
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|ObjetoRestaurante en [representación Detail](#recurso-restaurante)
+404|No existe un objeto Restaurante con el ID solicitado asociado al objeto Evento indicado |Mensaje de error
+500|Error interno|Mensaje de error
+
+#### POST eventos/{nombre}/restaurantes/{id}
+
+Asocia un objeto Restaurante a un objeto Evento.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+nombre|Path|Nombre del Evento a consultar|Sí|String
+id|Path|Id del objeto Restaurante a consultar|Sí|String
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|Objeto Restaurante asociado|[Representación Detail de Restaurante](#recurso-restaurante)
+500|No se pudo asociar el objeto Restaurante|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### PUT eventos/{nombre}/restaurantes
+
+Es el encargado de remplazar la colección de objetos Ubicacion asociada a un objeto Evento.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+nombre|Path|Nombre del objeto Evento cuya colección será remplazada|Sí|String
+body|body|Colección de objetos Ubicacion|Sí|[Representación Detail](#recurso-Ubicacion)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|Se remplazó la colección|Colección de objetos restaurante en [Representación Detail](#recurso-category)
+500|No se pudo remplazar la colección|Mensaje de error
+
+#### DELETE eventos/{nombre}/restaurante/{id}
+
+Remueve un objeto Restaurante de la colección en un objeto Evento.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+nombre|Path|Nombre del Evento a consultar|Sí|String
+id|Path|Id del objeto Restaurante a consultar|Sí|String
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto removido|N/A
+500|Error interno|Mensaje de error
 
 
