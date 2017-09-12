@@ -19,8 +19,8 @@ import javax.persistence.Id;
 public class AdministradorEntity implements Serializable {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private String usuario; // nombre de usuario del administrador
+    
     private String contrasena; // contraseña del administrador
 
     public String getUsuario() {

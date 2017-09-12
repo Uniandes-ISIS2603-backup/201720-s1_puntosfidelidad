@@ -179,7 +179,7 @@ public class RestaurantePersistenceTest {
     @Test
     public void testCreate() throws Exception {
         
-        PodamFactory factory = new PodamFactoryImpl();
+    PodamFactory factory = new PodamFactoryImpl();
     RestauranteEntity newEntity = factory.manufacturePojo(RestauranteEntity.class);
     RestauranteEntity result = persistence.create(newEntity);
 

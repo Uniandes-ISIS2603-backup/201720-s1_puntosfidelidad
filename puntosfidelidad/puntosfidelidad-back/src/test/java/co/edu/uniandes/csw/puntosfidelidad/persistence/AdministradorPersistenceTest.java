@@ -14,14 +14,17 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -29,6 +32,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  *
  * @author s.cespedes10
  */
+@RunWith(Arquillian.class)
 public class AdministradorPersistenceTest {
     
     @Deployment
@@ -124,7 +128,10 @@ public class AdministradorPersistenceTest {
      */
     @Test
     public void testFind() throws Exception {
-        fail("testFind");
+         AdministradorEntity entity = data.get(0);
+    AdministradorEntity newEntity = persistence.find(entity.getUsuario());
+    Assert.assertNotNull(newEntity);
+    Assert.assertEquals(entity.getUsuario(), newEntity.getUsuario());
     }
 
     /**
@@ -132,8 +139,10 @@ public class AdministradorPersistenceTest {
      */
     @Test
     public void testFindByName() throws Exception {
-        
-        fail("testFindByName");
+    AdministradorEntity entity = data.get(0);
+    AdministradorEntity newEntity = persistence.findByName(entity.getUsuario());
+    Assert.assertNotNull(newEntity);
+    Assert.assertEquals(entity.getUsuario(), newEntity.getUsuario());
     }
 
     /**
@@ -141,7 +150,17 @@ public class AdministradorPersistenceTest {
      */
     @Test
     public void testFindAll() throws Exception {
-        fail("testFindAll");
+        List<AdministradorEntity> list = persistence.findAll();
+    Assert.assertEquals(data.size(), list.size());
+    for (AdministradorEntity ent : list) {
+        boolean found = false;
+        for (AdministradorEntity entity : data) {
+            if (ent.getUsuario().equals(entity.getUsuario())) {
+                found = true;
+            }
+        }
+        Assert.assertTrue(found);
+    }
     }
 
     /**
@@ -149,7 +168,14 @@ public class AdministradorPersistenceTest {
      */
     @Test
     public void testCreate() throws Exception {
-        fail("testCreate");
+    PodamFactory factory = new PodamFactoryImpl();
+    AdministradorEntity newEntity = factory.manufacturePojo(AdministradorEntity.class);
+    AdministradorEntity result = persistence.create(newEntity);
+
+    Assert.assertNotNull(result);
+    AdministradorEntity entity = em.find(AdministradorEntity.class, result.getUsuario());
+    Assert.assertNotNull(entity);
+    Assert.assertEquals(newEntity.getUsuario(), entity.getUsuario());
         
     }
 
@@ -159,7 +185,17 @@ public class AdministradorPersistenceTest {
     @Test
     public void testUpdate() throws Exception {
         
-        fail("testUpdate");
+    AdministradorEntity entity = data.get(0);
+    PodamFactory factory = new PodamFactoryImpl();
+    AdministradorEntity newEntity = factory.manufacturePojo(AdministradorEntity.class);
+
+    newEntity.setUsuario(entity.getUsuario());
+
+    persistence.update(newEntity);
+
+    AdministradorEntity resp = em.find(AdministradorEntity.class, entity.getUsuario());
+
+    Assert.assertEquals(newEntity.getUsuario(), resp.getUsuario());
     }
 
     /**
@@ -167,7 +203,10 @@ public class AdministradorPersistenceTest {
      */
     @Test
     public void testDelete() throws Exception {
-        fail("testDelete");
+    AdministradorEntity entity = data.get(0);
+    persistence.delete(entity.getUsuario());
+    AdministradorEntity deleted = em.find(AdministradorEntity.class, entity.getUsuario());
+    Assert.assertNull(deleted);
     }
 
     
