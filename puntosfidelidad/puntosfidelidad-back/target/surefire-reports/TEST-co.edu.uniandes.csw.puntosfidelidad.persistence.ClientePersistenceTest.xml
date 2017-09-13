@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" time="47.215" errors="0" skipped="0">
+<testsuite tests="5" failures="0" name="co.edu.uniandes.csw.puntosfidelidad.persistence.ClientePersistenceTest" time="34.335" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_144\jre\bin"/>
@@ -61,10 +61,9 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" name="testFindAll" time="2.067"/>
-  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" name="testFind" time="0.178"/>
-  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" name="testFindByName" time="0.185"/>
-  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" name="testCreate" time="0.254"/>
-  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" name="testDelete" time="0.181"/>
-  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" name="testUpdate" time="0.241"/>
+  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.ClientePersistenceTest" name="testFindAll" time="0.163"/>
+  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.ClientePersistenceTest" name="testFind" time="0.152"/>
+  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.ClientePersistenceTest" name="testCreate" time="0.196"/>
+  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.ClientePersistenceTest" name="testDelete" time="0.083"/>
+  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.ClientePersistenceTest" name="testUpdate" time="0.169"/>
 </testsuite>
