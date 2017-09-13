@@ -44,9 +44,9 @@ public class SucursalPersistence {
         em.remove(entity);
     }
 
-     public SucursalEntity find(String nombre) {
-        LOGGER.log(Level.INFO, "Consultando sucursal con nombre={0}", nombre);
-        return em.find(SucursalEntity.class, nombre);
+     public SucursalEntity find(Long id) {
+        LOGGER.log(Level.INFO, "Consultando sucursal con nombre={0}", id);
+        return em.find(SucursalEntity.class, id);
     }  
      
      /**

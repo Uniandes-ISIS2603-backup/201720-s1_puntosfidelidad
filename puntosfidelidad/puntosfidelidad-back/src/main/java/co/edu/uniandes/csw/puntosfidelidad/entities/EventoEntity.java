@@ -28,12 +28,9 @@ public class EventoEntity {
     
     private String descripcion;
     
-    @OneToMany
-    private List<RestauranteEntity> restaurante = new List<RestauranteEntity>(); 
+//    private List<RestauranteEntity> restaurante = new List<RestauranteEntity>(); 
     
-    @OneToMany
-    private List<UbicacionEntity> ubicaciones = new List<UbicacionEntity>();
-    
+    private List<UbicacionEntity> ubicaciones = new ArrayList<UbicacionEntity>();
     
     
     /**
@@ -92,31 +89,31 @@ public class EventoEntity {
         this.descripcion = descripcion;
     }
 
-    /**
-     * @return the restaurante
-     */
-    public ArrayList<RestauranteEntity> getRestaurante() {
-        return restaurante;
-    }
-
-    /**
-     * @param restaurante the restaurante to set
-     */
-    public void setRestaurante(ArrayList<RestauranteEntity> restaurante) {
-        this.restaurante = restaurante;
-    }
+//    /**
+//     * @return the restaurante
+//     */
+//    public List<RestauranteEntity> getRestaurantes() {
+//        return restaurante;
+//    }
+//
+//    /**
+//     * @param restaurante the restaurante to set
+//     */
+//    public void setRestaurantes(List<RestauranteEntity> restaurante) {
+//        this.restaurante = restaurante;
+//    }
 
     /**
      * @return the ubicaciones
      */
-    public ArrayList<UbicacionEntity> getUbicaciones() {
+    public List<UbicacionEntity> getUbicaciones() {
         return ubicaciones;
     }
 
     /**
      * @param ubicaciones the ubicaciones to set
      */
-    public void setUbicaciones(ArrayList<UbicacionEntity> ubicaciones) {
+    public void setUbicaciones(List<UbicacionEntity> ubicaciones) {
         this.ubicaciones = ubicaciones;
     }
 }

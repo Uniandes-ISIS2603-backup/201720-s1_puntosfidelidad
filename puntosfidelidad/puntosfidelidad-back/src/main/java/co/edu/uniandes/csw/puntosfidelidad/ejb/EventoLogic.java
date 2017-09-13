@@ -5,9 +5,11 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
-import co.edu.uniandes.csw.puntosfidelidad.entities.EventoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.UbicacionEntity;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.EventoPersistence;
+import co.edu.uniandes.csw.puntosfidelidad.entities.EventoEntity;
+import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -113,7 +115,7 @@ public class EventoLogic {
      * @param ubicacionDir Identificador de la instancia de Ubicacion      
      * @return Instancia de UbicacionEntity que fue asociada a evento
      */
-    public UbicacionEntity addTarjetaDeCredito (String nombre, String ubicacionDir) {
+    public UbicacionEntity addUbicacion (String nombre, String ubicacionDir) {
         LOGGER.log(Level.INFO, "Inicia proceso de asociar una Ubicacion al evento con nombre = {0}", nombre);
         EventoEntity eventoEntity = getEvento(nombre);
         UbicacionEntity ubicacionEntity = new UbicacionEntity();
@@ -131,7 +133,7 @@ public class EventoLogic {
      * @return Nueva colección de TarjetaDeCreditoEntity asociada a la instancia de evento
      * 
      */
-    public List<TarjetaDeCreditoEntity> replaceTarjetasDeCredito (String nombre, List<UbicacionEntity> list) {
+    public List<UbicacionEntity> replaceUbciaciones (String nombre, List<UbicacionEntity> list) {
         LOGGER.log(Level.INFO, "Inicia proceso de reemplazar una ubicacion del evento con nombre = {0}", nombre);
         EventoEntity eventoEntity = getEvento(nombre);
         eventoEntity.setUbicaciones(list);
@@ -139,96 +141,93 @@ public class EventoLogic {
     }
 
     /**
-     * Desasocia un TarjetaDeCredito existente de un cliente existente
+     * Desasocia un TarjetaDeCredito existente de un Evento existente
      *
-     * @param usuario Identificador de la instancia de cliente
-     * @param tarjetaId Identificador de la instancia de TarjetaDeCredito      * 
+     * @param usuario Identificador de la instancia de Evento
+     * @param ubicacionDir Identificador de la instancia de TarjetaDeCredito      * 
      */
-    public void removeTarjetaDeCredito (String usuario, Long tarjetaId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar un autor del cliente con id = {0}", usuario);
-        ClienteEntity entity = getCliente(usuario);
-        TarjetaDeCreditoEntity tarjetaEntity = new TarjetaDeCreditoEntity();
-        tarjetaEntity.setId(tarjetaId);
-        entity.getTarjetasDeCredito().remove(tarjetaEntity);
+    public void removeUbicacion (String nombre, String ubicacionDir) {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar una ubicacion del evento con id = {0}", nombre);
+        EventoEntity entity = getEvento(nombre);
+        UbicacionEntity ubicacionEntity = new UbicacionEntity();
+        ubicacionEntity.setDireccion(ubicacionDir);
+        entity.getUbicaciones().remove(ubicacionEntity);
     }
     
-     /**
-     * Obtiene una colección de instancias de Recarga asociadas a una
-     * instancia de cliente
-     *
-     * @param usuario Identificador de la instancia de cliente
-     * @return Colección de instancias de RecargaEntity asociadas a la instancia
-     * de cliente
-     * 
-     */
-    public List<RecargaEntity> listRecargas(String usuario) {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los recargas de Credito del usuario con id = {0}", usuario);
-        return getCliente(usuario).getRecargas();
-    }
-
-    /**
-     * Obtiene una instancia de RecargaEntity asociada a una instancia de cliente
-     *
-     * @param usuario Identificador de la instancia de cliente
-     * @param recargaId Identificador de la instancia de Recarga
-     * @return Instancia de RecargaEntity buscada 
-     * 
-     */
-    public RecargaEntity getRecarga(String usuario, Long recargaId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar un recargas de Credito del cliente con usuario = {0}", usuario);
-        List<RecargaEntity> list = getCliente(usuario).getRecargas();
-        RecargaEntity entity = new RecargaEntity();
-        entity.setId(recargaId);
-        int index = list.indexOf(entity);
-        if (index >= 0) {
-            return list.get(index);
-        }
-        return null;
-    }
-
-    /**
-     * Asocia una recarga de Credito existente a un cliente
-     *
-     * @param usuario Identificador de la instancia de cliente
-     * @param recargaId Identificador de la instancia de Recarga      * @return Instancia de RecargaEntity que fue asociada a cliente
-     * @return Instancia de RecargaEntity buscada 
-     */
-    public RecargaEntity addRecarga (String usuario, Long recargaId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de asociar un autor al cliente con id = {0}", usuario);
-        ClienteEntity clienteEntity = getCliente(usuario);
-        RecargaEntity recargaEntity = new RecargaEntity();
-        recargaEntity.setId(recargaId);
-        clienteEntity.getRecargas().add(recargaEntity);
-        return getRecarga(usuario, recargaId);
-    }
-
-    /**
-     * Remplaza las instancias de Recarga asociadas a una instancia de cliente
-     *
-     * @param usuario Identificador de la instancia de cliente
-     * @param list Colección de instancias de RecargaEntity a asociar a instancia
-     * de cliente
-     * @return Nueva colección de RecargaEntity asociada a la instancia de cliente
-     * 
-     */
-    public List<RecargaEntity> replaceRecargas (String usuario, List<RecargaEntity> list) {
-        LOGGER.log(Level.INFO, "Inicia proceso de reemplazar un autor del cliente con id = {0}", usuario);
-        ClienteEntity clienteEntity = getCliente(usuario);
-        clienteEntity.setRecargas(list);
-        return clienteEntity.getRecargas();
-    }
-
-    /**
-     * Desasocia un Recarga existente de un cliente existente
-     *
-     * @param usuario Identificador de la instancia de cliente
-     * @param recargaId Identificador de la instancia de Recarga      * 
-     */
-    public void removeRecarga (String usuario, Long recargaId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar un autor del cliente con id = {0}", usuario);
-        ClienteEntity entity = getCliente(usuario);
-        RecargaEntity recargaEntity = new RecargaEntity();
-        recargaEntity.setId(recargaId);
-        entity.getRecargas().remove(recargaEntity);
-    }
+//     /**
+//     * Obtiene una colección de instancias d Restaurante asociadas a una
+//     * instancia de Evento
+//     *
+//     * @param usuario Identificador de la instancia de Evento
+//     * @return Colección de instancias d RestauranteEntity asociadas a la instancia
+//     * de Evento
+//     * 
+//     */
+//    public List<RestauranteEntity> listRestaurantes(String nombre) {
+//        LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los restaurantes del evento con nombre = {0}", nombre);
+//        return getEvento(nombre).getRestaurante();
+//    }
+//
+//    /**
+//     * Obtiene una instancia d RestauranteEntity asociada a una instancia de Evento
+//     *
+//     * @param usuario Identificador de la instancia de Evento
+//     * @para nit Identificador de la instancia d Restaurante
+//     * @return Instancia d RestauranteEntity buscada 
+//     * 
+//     */
+//    public RestauranteEntity getRestaurante(String nombre, Long nit) {
+//        LOGGER.log(Level.INFO, "Inicia proceso de consultar un restaurante del evento con nombre = {0}", nombre);
+//        List<RestauranteEntity> list = getEvento(nombre).getRestaurante();
+//        RestauranteEntity entity = new Restaurante();
+//        entity.setNit(nit);
+//        int index = list.indexOf(entity);
+//        if (index >= 0) {
+//            return list.get(index);
+//        }
+//        return null;
+//    }
+//
+//    /**
+//     * Asocia un Restaurante de Credito existente a un Evento
+//     * @param usuario Identificador de la instancia de Evento
+//     * @para nit Identificador de la instancia de Restaurante      
+//     * @return Instancia d RestauranteEntity que fue asociada a Evento
+//     * @return Instancia de RestauranteEntity buscadao
+//     */
+//    public RestauranteEntity addRestaurante (String nombre, Long nit) {
+//        LOGGER.log(Level.INFO, "Inicia proceso de asociar un autor al evento con nombre = {0}", nombre);
+//        EventoEntity eventoEntity = getEvento(nombre);
+//        RestauranteEntity restauranteEntity = new RestauranteEntity();
+//        restauranteEntity.setNit(nit);
+//        eventoEntity.getRestaurante().add(restauranteEntity);
+//        return getRestaurante(nombre, nit);
+//    }
+//
+//    /**
+//     * Remplaza las instancias de Restaurante asociadas a una instancia de Evento
+//     * @param nombre Identificador de la instancia de Evento
+//     * @param list Colección de instancias d RestauranteEntity a asociar a instancia
+//     * de Evento
+//     * @return Nueva colección d RestauranteEntity asociada a la instancia de evento 
+//     */
+//    public List<RestauranteEntity> replaceRestaurantes (String nombre, List<RestauranteEntity> list) {
+//        LOGGER.log(Level.INFO, "Inicia proceso de reemplazar un autor del evento con nombre = {0}", nombre);
+//        EventoEntity eventoEntity = getEvento(nombre);
+//        eventoEntity.setRestaurante(list);
+//        return eventoEntity.getRestaurantes();
+//    }
+//
+//    /**
+//     * Desasocia un Restaurante existente de un Evento existente
+//     * @param usuario Identificador de la instancia de Evento
+//     * @para nit Identificador de la instancia d Restaurante      * 
+//     */
+//    public void removeRestaurante (String nombre, Long nit) {
+//        LOGGER.log(Level.INFO, "Inicia proceso de borrar un restaurante del evento con nombre = {0}", nombre);
+//        EventoEntity entity = getEvento(nombre);
+//        RestauranteEntity restauranteEntity = new RestauranteEntity();
+//        restauranteEntity.setNit(nit);
+//        entity.getRestaurantes().remove(restauranteEntity);
+//    }
 }

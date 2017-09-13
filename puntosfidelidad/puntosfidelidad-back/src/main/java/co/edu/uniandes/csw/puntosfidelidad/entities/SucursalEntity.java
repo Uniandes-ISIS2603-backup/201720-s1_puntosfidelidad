@@ -28,14 +28,13 @@ public class SucursalEntity {
     
     private String descripcion;
     
-    @OneToOne
     private UbicacionEntity ubicacion;
     
-    @OneToMany
-    private ArrayList<ComentarioENtity> comentarios = new ArrayList<ComentarioEntity>();
-    
-    @OneToMany
-    private ArrayList<CompraEntity> compras = new ArrayList<CompraEntity>();
+//    @OneToMany
+//    private List<ComentarioENtity> comentarios = new List<ComentarioEntity>();
+//    
+//    @OneToMany
+//    private List<CompraEntity> compras = new List<CompraEntity>();
             
 
     /**
@@ -122,31 +121,31 @@ public class SucursalEntity {
         this.ubicacion = ubicacion;
     }
 
-    /**
-     * @return the comentarios
-     */
-    public ArrayList<ComentarioENtity> getComentarios() {
-        return comentarios;
-    }
-
-    /**
-     * @param comentarios the comentarios to set
-     */
-    public void setComentarios(ArrayList<ComentarioENtity> comentarios) {
-        this.comentarios = comentarios;
-    }
-
-    /**
-     * @return the compras
-     */
-    public ArrayList<CompraEntity> getCompras() {
-        return compras;
-    }
-
-    /**
-     * @param compras the compras to set
-     */
-    public void setCompras(ArrayList<CompraEntity> compras) {
-        this.compras = compras;
-    }
+//    /**
+//     * @return the comentarios
+//     */
+//    public ArrayList<ComentarioENtity> getComentarios() {
+//        return comentarios;
+//    }
+//
+//    /**
+//     * @param comentarios the comentarios to set
+//     */
+//    public void setComentarios(ArrayList<ComentarioENtity> comentarios) {
+//        this.comentarios = comentarios;
+//    }
+//
+//    /**
+//     * @return the compras
+//     */
+//    public ArrayList<CompraEntity> getCompras() {
+//        return compras;
+//    }
+//
+//    /**
+//     * @param compras the compras to set
+//     */
+//    public void setCompras(ArrayList<CompraEntity> compras) {
+//        this.compras = compras;
+//    }
 }
