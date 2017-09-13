@@ -5,8 +5,11 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.entities;
 
-import java.time.LocalTime;
+import java.io.Serializable;
 import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -15,28 +18,21 @@ import javax.persistence.OneToOne;
  *
  * @author cass_
  */
-public class SucursalEntity {
+@Entity
+public class SucursalEntity implements Serializable{
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private String nombre;
     
-    private LocalTime horaApertura;
+    private Long horaApertura;
     
-    private LocalTime horaCierre;
+    private Long horaCierre;
     
     private String descripcion;
     
-    private UbicacionEntity ubicacion;
-    
-//    @OneToMany
-//    private List<ComentarioENtity> comentarios = new List<ComentarioEntity>();
-//    
-//    @OneToMany
-//    private List<CompraEntity> compras = new List<CompraEntity>();
-            
-
     /**
      * @return the id
      */
@@ -68,28 +64,28 @@ public class SucursalEntity {
     /**
      * @return the horaApertura
      */
-    public LocalTime getHoraApertura() {
+    public Long getHoraApertura() {
         return horaApertura;
     }
 
     /**
      * @param horaApertura the horaApertura to set
      */
-    public void setHoraApertura(LocalTime horaApertura) {
+    public void setHoraApertura(Long horaApertura) {
         this.horaApertura = horaApertura;
     }
 
     /**
      * @return the horaCierre
      */
-    public LocalTime getHoraCierre() {
+    public Long getHoraCierre() {
         return horaCierre;
     }
 
     /**
      * @param horaCierre the horaCierre to set
      */
-    public void setHoraCierre(LocalTime horaCierre) {
+    public void setHoraCierre(Long horaCierre) {
         this.horaCierre = horaCierre;
     }
 
@@ -107,19 +103,19 @@ public class SucursalEntity {
         this.descripcion = descripcion;
     }
 
-    /**
-     * @return the ubicacion
-     */
-    public UbicacionEntity getUbicacion() {
-        return ubicacion;
-    }
-
-    /**
-     * @param ubicacion the ubicacion to set
-     */
-    public void setUbicacion(UbicacionEntity ubicacion) {
-        this.ubicacion = ubicacion;
-    }
+//    /**
+//     * @return the ubicacion
+//     */
+//    public UbicacionEntity getUbicacion() {
+//        return ubicacion;
+//    }
+//
+//    /**
+//     * @param ubicacion the ubicacion to set
+//     */
+//    public void setUbicacion(UbicacionEntity ubicacion) {
+//        this.ubicacion = ubicacion;
+//    }
 
 //    /**
 //     * @return the comentarios

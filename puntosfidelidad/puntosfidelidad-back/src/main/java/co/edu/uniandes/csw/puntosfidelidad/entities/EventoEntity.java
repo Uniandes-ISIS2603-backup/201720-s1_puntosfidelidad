@@ -30,7 +30,7 @@ public class EventoEntity {
     
 //    private List<RestauranteEntity> restaurante = new List<RestauranteEntity>(); 
     
-    private List<UbicacionEntity> ubicaciones = new ArrayList<UbicacionEntity>();
+//    private List<UbicacionEntity> ubicaciones = new ArrayList<UbicacionEntity>();
     
     
     /**
@@ -103,17 +103,17 @@ public class EventoEntity {
 //        this.restaurante = restaurante;
 //    }
 
-    /**
-     * @return the ubicaciones
-     */
-    public List<UbicacionEntity> getUbicaciones() {
-        return ubicaciones;
-    }
-
-    /**
-     * @param ubicaciones the ubicaciones to set
-     */
-    public void setUbicaciones(List<UbicacionEntity> ubicaciones) {
-        this.ubicaciones = ubicaciones;
-    }
+//    /**
+//     * @return the ubicaciones
+//     */
+//    public List<UbicacionEntity> getUbicaciones() {
+//        return ubicaciones;
+//    }
+//
+//    /**
+//     * @param ubicaciones the ubicaciones to set
+//     */
+//    public void setUbicaciones(List<UbicacionEntity> ubicaciones) {
+//        this.ubicaciones = ubicaciones;
+//    }
 }

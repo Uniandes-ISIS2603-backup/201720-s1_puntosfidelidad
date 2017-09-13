@@ -5,12 +5,20 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.entities;
 
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author cass_
  */
-public class UbicacionEntity {
+@Entity
+public class UbicacionEntity implements Serializable {
     
+    
+    @Id
     private String direccion;
     
     private Long latitud;

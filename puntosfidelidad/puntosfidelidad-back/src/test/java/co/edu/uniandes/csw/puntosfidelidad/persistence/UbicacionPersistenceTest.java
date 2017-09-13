@@ -37,7 +37,7 @@ public class UbicacionPersistenceTest {
     
     @Inject
     private UbicacionPersistence persistence;
-    @PersistenceContext(unitName = "puntosfidelidadPU")
+    @PersistenceContext
     private EntityManager em;
     @Inject
     UserTransaction utx;
