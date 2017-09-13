@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" time="23.561" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" time="39.804" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_144\jre\bin"/>
@@ -16,12 +16,12 @@
     <property name="sun.os.patch.level" value="Service Pack 1"/>
     <property name="test" value="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\s.cespedes10\Documents\NetBeansProjects\s1_puntosfidelidad\puntosfidelidad\puntosfidelidad-back"/>
+    <property name="user.dir" value="C:\Users\aa.yepes\Documents\NetBeansProjects\s1_puntosfidelidad\puntosfidelidad\puntosfidelidad-back"/>
     <property name="java.runtime.version" value="1.8.0_144-b01"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_144\jre\lib\endorsed"/>
     <property name="os.arch" value="amd64"/>
-    <property name="java.io.tmpdir" value="C:\Users\S30CE~1.CES\AppData\Local\Temp\"/>
+    <property name="java.io.tmpdir" value="C:\Users\AAF7CE~1.YEP\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
@@ -35,12 +35,12 @@
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="os.version" value="6.1"/>
-    <property name="user.home" value="C:\Users\s.cespedes10"/>
+    <property name="user.home" value="C:\Users\aa.yepes"/>
     <property name="user.timezone" value="America/Bogota"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="java.specification.version" value="1.8"/>
     <property name="file.encoding" value="UTF-8"/>
-    <property name="user.name" value="s.cespedes10"/>
+    <property name="user.name" value="aa.yepes"/>
     <property name="java.class.path" value="C:\Program Files\NetBeans 8.2\java\maven\boot\plexus-classworlds-2.4.jar"/>
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
@@ -62,10 +62,10 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" name="testFindAll" time="1.466"/>
-  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" name="testFind" time="0.171"/>
-  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" name="testFindByName" time="0.187"/>
-  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" name="testCreate" time="0.284"/>
-  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" name="testDelete" time="0.125"/>
-  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" name="testUpdate" time="0.187"/>
+  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" name="testFindAll" time="2.959"/>
+  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" name="testFind" time="0.524"/>
+  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" name="testFindByName" time="0.404"/>
+  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" name="testCreate" time="0.442"/>
+  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" name="testDelete" time="0.176"/>
+  <testcase classname="co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest" name="testUpdate" time="0.685"/>
 </testsuite>
