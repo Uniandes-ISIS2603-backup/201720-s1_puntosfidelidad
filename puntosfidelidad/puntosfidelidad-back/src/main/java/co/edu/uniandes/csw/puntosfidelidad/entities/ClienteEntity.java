@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -22,13 +23,7 @@ public class ClienteEntity implements Serializable{
     private String contrasena;
     
     private String imagen;
-    
-    @OneToMany
-    private List<RecargaEntity> recargas = new ArrayList<RecargaEntity>();
-    
-    @OneToMany
-    private List<TarjetaDeCreditoEntity> tarjetasDeCredito = new ArrayList<TarjetaDeCreditoEntity>();
-
+       
     /**
      * @return the usuario
      */
@@ -84,33 +79,33 @@ public class ClienteEntity implements Serializable{
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-
-    /**
-     * @return the recargas
-     */
-    public List<RecargaEntity> getRecargas() {
-        return recargas;
-    }
-
-    /**
-     * @param recargas the recargas to set
-     */
-    public void setRecargas(List<RecargaEntity> recargas) {
-        this.recargas = recargas;
-    }
-
-    /**
-     * @return the tarjetasDeCredito
-     */
-    public List<TarjetaDeCreditoEntity> getTarjetasDeCredito() {
-        return tarjetasDeCredito;
-    }
-
-    /**
-     * @param tarjetasDeCredito the tarjetasDeCredito to set
-     */
-    public void setTarjetasDeCredito(List<TarjetaDeCreditoEntity> tarjetasDeCredito) {
-        this.tarjetasDeCredito = tarjetasDeCredito;
-    }     
+//
+//    /**
+//     * @return the recargas
+//     */
+//    public List<RecargaEntity> getRecargas() {
+//        return recargas;
+//    }
+//
+//    /**
+//     * @param recargas the recargas to set
+//     */
+//    public void setRecargas(List<RecargaEntity> recargas) {
+//        this.recargas = recargas;
+//    }
+//
+//    /**
+//     * @return the tarjetasDeCredito
+//     */
+//    public List<TarjetaDeCreditoEntity> getTarjetasDeCredito() {
+//        return tarjetasDeCredito;
+//    }
+//
+//    /**
+//     * @param tarjetasDeCredito the tarjetasDeCredito to set
+//     */
+//    public void setTarjetasDeCredito(List<TarjetaDeCreditoEntity> tarjetasDeCredito) {
+//        this.tarjetasDeCredito = tarjetasDeCredito;
+//    }     
           
 }

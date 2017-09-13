@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -33,14 +34,17 @@ public class RecargaEntity implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fecha;
 
-    @ManyToOne
-    private TarjetaDeCreditoEntity tarjetaDeCredito;
-    
-    //@ManyToOne
-    //private TarjetaDePuntos tarjetaDePuntos;
-        
-    @ManyToOne
-    private ClienteEntity cliente;
+//    @PodamExclude
+//    @ManyToOne
+//    private TarjetaDeCreditoEntity tarjetaDeCredito;
+//    
+//    @PodamExclude
+//    @ManyToOne
+//    private TarjetaPuntosEntity tarjetaPuntos;
+//   
+//    @PodamExclude 
+//    @ManyToOne
+//    private ClienteEntity cliente;
     /**
      * @return the id
      */
@@ -83,32 +87,46 @@ public class RecargaEntity implements Serializable {
         this.fecha = fecha;
     }
 
-    /**
-     * @return the tarjetaDeCredito
-     */
-    public TarjetaDeCreditoEntity getTarjetaDeCredito() {
-        return tarjetaDeCredito;
-    }
-
-    /**
-     * @param tarjetaDeCredito the tarjetaDeCredito to set
-     */
-    public void setTarjetaDeCredito(TarjetaDeCreditoEntity tarjetaDeCredito) {
-        this.tarjetaDeCredito = tarjetaDeCredito;
-    }
-
-    /**
-     * @return the cliente
-     */
-    public ClienteEntity getCliente() {
-        return cliente;
-    }
-
-    /**
-     * @param cliente the cliente to set
-     */
-    public void setCliente(ClienteEntity cliente) {
-        this.cliente = cliente;
-    }  
+//    /**
+//     * @return the tarjetaDeCredito
+//     */
+//    public TarjetaDeCreditoEntity getTarjetaDeCredito() {
+//        return tarjetaDeCredito;
+//    }
+//
+//    /**
+//     * @param tarjetaDeCredito the tarjetaDeCredito to set
+//     */
+//    public void setTarjetaDeCredito(TarjetaDeCreditoEntity tarjetaDeCredito) {
+//        this.tarjetaDeCredito = tarjetaDeCredito;
+//    }
+//
+//    /**
+//     * @return the cliente
+//     */
+//    public ClienteEntity getCliente() {
+//        return cliente;
+//    }
+//
+//    /**
+//     * @param cliente the cliente to set
+//     */
+//    public void setCliente(ClienteEntity cliente) {
+//        this.cliente = cliente;
+//    }  
+//
+//    /**
+//     * @return the tarjetaDePuntos
+//     */
+//    public TarjetaPuntosEntity getTarjetaPuntos() {
+//        return tarjetaPuntos;
+//    }
+//
+//    /**
+//     * @param tarjetaDePuntos the tarjetaDePuntos to set
+//     */
+//    public void setTarjetaPuntos(TarjetaPuntosEntity tarjetaDePuntos) {
+//        this.tarjetaPuntos = tarjetaDePuntos;
+//    }
     
 }
