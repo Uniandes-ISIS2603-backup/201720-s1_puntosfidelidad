@@ -1,7 +1,11 @@
 /*
 MIT License
 
+<<<<<<< HEAD
 Copyright (c) 2017 Universidad de los Andes - ISIS2603
+=======
+Copyright (c) 2017 ISIS2603
+>>>>>>> d0de1c1ee9df7b85018f04e4600c3a03a0d231b5
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
