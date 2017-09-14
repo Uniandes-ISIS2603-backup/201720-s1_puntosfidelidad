@@ -53,7 +53,7 @@ public class TarjetaPuntosPersistence {
      * @return una lista con todas las tarjetas de puntos
      */
     public List<TarjetaPuntosEntity> findAll() {
-        LOGGER.info("Consultando todas las recargas");        
+        LOGGER.info("Consultando todas las recargas");
         TypedQuery<TarjetaPuntosEntity> query = em.createQuery("select u from TarjetaPuntosEntity u", TarjetaPuntosEntity.class);
         return query.getResultList();
     }

@@ -52,7 +52,5 @@ public class TarjetaPuntosEntity implements Serializable{
 
     public void setNumPuntos(Integer numPuntos) {
         this.numPuntos = numPuntos;
-    }
-    
-    
+    }    
 }
