@@ -5,10 +5,26 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.Serializable;
+
 /**
  *
  * @author ja.manrique
  */
-public class FotoEntity {
+@Entity
+public class FotoEntity implements Serializable{
+ 
+    @Id
+    private String URL;
+
+    public String getURL() {
+        return URL;
+    }
+
+    public void setURL(String URL) {
+        this.URL = URL;
+    }
     
 }

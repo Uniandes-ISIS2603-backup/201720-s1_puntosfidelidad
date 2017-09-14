@@ -13,6 +13,7 @@ import java.io.Serializable;
  *
  * @author ja.manrique
  */
+@Entity
 public class TarjetaPuntosEntity implements Serializable{
     
     @Id

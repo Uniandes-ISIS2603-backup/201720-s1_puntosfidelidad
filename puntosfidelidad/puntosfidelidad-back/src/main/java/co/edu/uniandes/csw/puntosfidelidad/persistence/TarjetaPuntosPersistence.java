@@ -43,7 +43,7 @@ public class TarjetaPuntosPersistence {
     }
     
     public TarjetaPuntosEntity findWithId(Long id) {
-        TypedQuery<TarjetaPuntosEntity> q = em.createQuery("select p from TarjetaPuntosEntity p where (p.id = :clienteusuario) and (p.id = :reviewid)", TarjetaPuntosEntity.class);
+        TypedQuery<TarjetaPuntosEntity> q = em.createQuery("select p from TarjetaPuntosEntity p where (p.id = :queryId)", TarjetaPuntosEntity.class);
         q.setParameter("queryId", id);
         return q.getSingleResult();
     }
@@ -54,7 +54,7 @@ public class TarjetaPuntosPersistence {
      */
     public List<TarjetaPuntosEntity> findAll() {
         LOGGER.info("Consultando todas las recargas");        
-        TypedQuery query = em.createQuery("select u from TarejetaPuntosEntity u", TarjetaPuntosEntity.class);
+        TypedQuery<TarjetaPuntosEntity> query = em.createQuery("select u from TarjetaPuntosEntity u", TarjetaPuntosEntity.class);
         return query.getResultList();
     }
 }
