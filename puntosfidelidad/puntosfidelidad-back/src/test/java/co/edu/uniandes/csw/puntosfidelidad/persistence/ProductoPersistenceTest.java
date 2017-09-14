@@ -176,7 +176,7 @@ public class ProductoPersistenceTest {
     @Test
     public void testFind() throws Exception {
         ProductoEntity entity = data.get(0);
-    ProductoEntity newEntity = persistence.find(entity.getId());
+    ProductoEntity newEntity = persistence.find( entity.getId());
     Assert.assertNotNull(newEntity);
     Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
     }

@@ -22,7 +22,7 @@ public class CompraPersistence {
     
     private static final Logger LOGGER = Logger.getLogger(CompraPersistence.class.getName());
 
-    @PersistenceContext(unitName = "bodegaPU")
+    @PersistenceContext(unitName = "puntosfidelidadPU")
     protected EntityManager em;
     
     /**
@@ -80,11 +80,8 @@ public class CompraPersistence {
      * @return un bodega.
      */
     public CompraEntity find(Long id) {
-        LOGGER.log(Level.INFO, "Consultando bodega con id={0}", id);
-        /* Note que se hace uso del metodo "find" propio del EntityManager, el cual recibe como argumento 
-        el tipo de la clase y el objeto que nos hara el filtro en la base de datos en este caso el "id"
-        Suponga que es algo similar a "select * from bodegaEntity where id=id;" - "SELECT * FROM table_codigo WHERE condition;" en SQL.
-         */
+       
+        
         return em.find(CompraEntity.class, id);
     }
 
@@ -98,7 +95,7 @@ public class CompraPersistence {
     public List<CompraEntity> findAll() {
         LOGGER.info("Consultando todas las bodegas");
         // Se crea un query para buscar todas las bodegas en la base de datos.
-        TypedQuery query = em.createQuery("select u from BodegaEntity u", CompraEntity.class);
+        TypedQuery query = em.createQuery("select u from CompraEntity u", CompraEntity.class);
         // Note que en el query se hace uso del método getResultList() que obtiene una lista de bodegaes.
         return query.getResultList();
     }

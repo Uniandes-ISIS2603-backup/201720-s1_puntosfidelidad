@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 15.575 sec <<< FAILURE!
+Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 5.846 sec <<< FAILURE!
 testFindAll(co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest)  Time elapsed: 0.031 sec  <<< ERROR!
 java.lang.IllegalArgumentException: ArquillianServletRunner not found. Could not determine ContextRoot from ProtocolMetadata, please contact DeployableContainer developer.
 	at org.jboss.arquillian.protocol.servlet.ServletUtil.determineBaseURI(ServletUtil.java:69)
@@ -176,7 +176,7 @@ java.lang.IllegalArgumentException: ArquillianServletRunner not found. Could not
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-testFindByName(co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest)  Time elapsed: 0 sec  <<< ERROR!
+testFindByName(co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistenceTest)  Time elapsed: 0.016 sec  <<< ERROR!
 java.lang.IllegalArgumentException: ArquillianServletRunner not found. Could not determine ContextRoot from ProtocolMetadata, please contact DeployableContainer developer.
 	at org.jboss.arquillian.protocol.servlet.ServletUtil.determineBaseURI(ServletUtil.java:69)
 	at org.jboss.arquillian.protocol.servlet.ServletURIHandler.locateTestServlet(ServletURIHandler.java:60)
