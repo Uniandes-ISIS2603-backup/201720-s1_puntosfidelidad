@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.csw.puntosfidelidad.resources;
+package co.edu.uniandes.csw.puntosfidelidad.dtos;
 
 /**
  *
- * @author wr.ravelo
+ * @author ja.manrique
  */
-public class PuntosResource {
+public class RestauranteDetailDTO extends RestauranteDTO{
     
 }

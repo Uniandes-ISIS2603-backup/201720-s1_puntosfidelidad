@@ -7,8 +7,9 @@ package co.edu.uniandes.csw.puntosfidelidad.dtos;
 
 /**
  *
- * @author wr.ravelo
+ * @author ja.manrique
  */
-public class PuntosDTO {
+public class RestauranteDTO {
     
+    //TODO Completar con base en Administrador
 }

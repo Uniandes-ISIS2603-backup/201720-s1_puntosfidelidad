@@ -11,6 +11,8 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -22,8 +24,10 @@ public class EventoEntity {
     @Id
     private String nombre;
     
+    @Temporal(TemporalType.DATE)
     private Calendar fechaInicio;
     
+    @Temporal(TemporalType.DATE)
     private Calendar fechaFin;
     
     private String descripcion;
