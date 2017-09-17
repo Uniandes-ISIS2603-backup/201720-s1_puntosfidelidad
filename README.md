@@ -13,6 +13,18 @@ Laura Valeria Vanegas García|lv.vanegas10|Líder de Planeación
 
 # Tabla de contenidos
 
+ - [Recurso Compra](#recurso-compra)
+    - [GET /compra](#GET-/compra)
+    - [GET /compra/{id}](#GET-/compra/{id})
+    - [POST /compra](#POST-/compra)
+    - [PUT /compra/{id}](#PUT-/compra/{id})
+    - [DELETE /compra/{id}](#DELETE-/compra/{id})
+    - [GET compra/{compraid}/producto](#GET-books/{compraid}/producto)
+    - [GET compra/{compraid}/producto/{productoid}](#GET-compra/{compraid}/producto/{productoid})
+    - [POST compra/{compraid}/producto/{productoid}](#POST-compra/{compraid}/producto/{productoid})
+    - [PUT compra/{compraid}/producto](#PUT-compra/{compraid}/producto)
+    - [DELETE compra/{compraid}/producto/{productoid}](#DELETE-compra/{compraid}/producto/{productoid}])
+    
   - [Recurso Administrador](#recurso-administrador)
     - [GET /administradores](#GET-/administradores)
     - [GET /administradores/{id}](#GET-/administradores/{id})
@@ -133,6 +145,231 @@ Laura Valeria Vanegas García|lv.vanegas10|Líder de Planeación
     - [POST eventos/{eventoNombre}/restaurantes/{idRestaurante}](#POST-eventos/{eventoNombre}/restaurantes/{idRestaurante}})
     - [PUT eventos/{eventoNombre}/restaurante](#PUT-eventos/{eventoNombre}/restaurantes)
     - [DELETE eventos/{eventoNombre}/restaurante/{idRestaurante}](#DELETE-eventos/{eventoNombre}/restaurantes/{idRestaurante}])
+
+
+### Recurso Compra
+El objeto Compra tiene 2 representaciones JSON:	
+
+#### Representación Minimum
+```javascript
+{
+    id: '' /*Tipo Long*/,
+    pagoConPuntos: '' /*Tipo Boolean*/
+}
+```
+
+#### Representación Detail
+```javascript
+{
+    // todo lo de la representación Minimum más los objetos Minimum con relación simple.
+    [
+    producto: {
+    id: '' /*Tipo Long*/,
+    name: '' /*Tipo String*/,
+    valorDinero: '' /*Tipo Integer*/, 
+    valorPuntos: '' /*Tipo Integer*/}
+    ],
+    
+    tarjetaPuntos: {
+    id: '' /*Tipo Long*/,
+    montoBasico: '' /*Tipo Integer*/,
+    montoActual: '' /*Tipo Integer*/,
+    numPuntos: '' /*Tipo Integer*/}
+    
+}
+```
+
+
+
+#### GET /compra
+
+Retorna una colección de objetos Compra en representación Detail.
+Cada Compra en la colección tiene embebidos los siguientes objetos: Producto, TarjetaPuntos.
+
+#### Parámetros
+
+#### N/A
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de [representaciones Detail](#recurso-compra)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### GET /compra/{id}
+
+Retorna una colección de objetos Compra en representación Detail.
+Cada Book en la colección tiene los siguientes objetos: Producto, TarjetaPuntos.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Compra a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Compra en [representaciones Detail](#recurso-book)
+404|No existe un objeto Compra con el ID solicitado|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### POST /compras
+
+Es el encargado de crear objetos Compra.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+body|body|Objeto Compra que será creado|Sí|[Representación Detail](#recurso-compra)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Compra ha sido creado|[Representación Detail](#recurso-book)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo crear el objeto Book|Mensaje de error
+
+#### PUT /compra/{id}
+
+Es el encargado de actualizar objetos Compra.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Compra a actualizar|Sí|Integer
+body|body|Objeto Compra nuevo|Sí|[Representación Detail](#recurso-compra)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Compra actualizado|[Representación Detail](#recurso-compra)
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo actualizar el objeto Compra|Mensaje de error
+
+#### DELETE /compra/{id}
+
+Elimina un objeto Compra.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Compra a eliminar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto eliminado|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### GET compra/{comprasid}/productos
+
+Retorna una colección de objetos Producto asociados a un objeto Compra en representación Detail.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Compra a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de objetos Producto en [representación Detail](#recurso-producto)
+500|Error consultando authors |Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### GET compra/{compraid}/producto/{productoid}
+
+Retorna un objeto Producto asociados a un objeto Compra en representación Detail.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+booksid|Path|ID del objeto Compra a consultar|Sí|Integer
+authorsid|Path|ID del objeto Producto a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Producto en [representación Detail](#recurso-producto)
+404|No existe un objeto Producto con el ID solicitado asociado al objeto Book indicado |Mensaje de error
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### POST compra/{compraid}/producto/{productoid}
+
+Asocia un objeto Producto a un objeto Compra.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+booksid|PathParam|ID del objeto Compra al cual se asociará el objeto Author|Sí|Integer
+authorsid|PathParam|ID del objeto Producto a asociar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|Objeto Producto asociado|[Representación Detail de Producto](#recurso-producto)
+500|No se pudo asociar el objeto Producto|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### PUT compra/{compraid}/producto
+
+Es el encargado de remplazar la colección de objetos Producto asociada a un objeto Compra.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+booksid|Path|ID del objeto Compra cuya colección será remplazada|Sí|Integer
+body|body|Colección de objetos Producto|Sí|[Representación Detail](#recurso-producto)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|Se remplazó la colección|Colección de objetos Author en [Representación Detail](#recurso-producto)
+500|No se pudo remplazar la colección|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+#### DELETE compra/{compraid}/producto/{productoid}
+
+Remueve un objeto Producto de la colección en un objeto Compra.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+booksid|Path|ID del objeto Compra asociado al objeto Producto|Sí|Integer
+authorsid|Path|ID del objeto Producto a remover|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto removido|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
 ### Recurso Administrador
 El objeto Administrador tiene 2 representaciones JSON:	
