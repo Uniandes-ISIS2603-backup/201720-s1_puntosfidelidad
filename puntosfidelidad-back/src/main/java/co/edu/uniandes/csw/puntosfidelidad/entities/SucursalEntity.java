@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.puntosfidelidad.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,9 +31,9 @@ public class SucursalEntity implements Serializable{
     
     private String nombre;
     
-    private Long horaApertura;
+    private Date horaApertura;
     
-    private Long horaCierre;
+    private Date horaCierre;
     
     private String descripcion;
     
@@ -122,28 +123,28 @@ public class SucursalEntity implements Serializable{
     /**
      * @return the horaApertura
      */
-    public Long getHoraApertura() {
+    public Date getHoraApertura() {
         return horaApertura;
     }
 
     /**
      * @param horaApertura the horaApertura to set
      */
-    public void setHoraApertura(Long horaApertura) {
+    public void setHoraApertura(Date horaApertura) {
         this.horaApertura = horaApertura;
     }
 
     /**
      * @return the horaCierre
      */
-    public Long getHoraCierre() {
+    public Date getHoraCierre() {
         return horaCierre;
     }
 
     /**
      * @param horaCierre the horaCierre to set
      */
-    public void setHoraCierre(Long horaCierre) {
+    public void setHoraCierre(Date horaCierre) {
         this.horaCierre = horaCierre;
     }
 
