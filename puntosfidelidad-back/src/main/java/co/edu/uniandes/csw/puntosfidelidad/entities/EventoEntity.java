@@ -10,9 +10,10 @@ import java.util.Calendar;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -24,17 +25,41 @@ public class EventoEntity {
     @Id
     private String nombre;
     
-    @Temporal(TemporalType.DATE)
     private Calendar fechaInicio;
     
-    @Temporal(TemporalType.DATE)
     private Calendar fechaFin;
     
     private String descripcion;
     
+    @PodamExclude
+    @ManyToOne
+    private RestauranteEntity restaurante;
+    
+    @PodamExclude
+    @OneToOne
+    private UbicacionEntity ubicacion ;
+    
 //    private List<RestauranteEntity> restaurante = new List<RestauranteEntity>(); 
     
 //    private List<UbicacionEntity> ubicaciones = new ArrayList<UbicacionEntity>();
+
+    public RestauranteEntity getRestaurante() {
+        return restaurante;
+    }
+
+    public void setRestaurante(RestauranteEntity restaurante) {
+        this.restaurante = restaurante;
+    }
+
+    public UbicacionEntity getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(UbicacionEntity ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+
     
     
     /**

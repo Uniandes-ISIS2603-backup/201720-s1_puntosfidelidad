@@ -7,12 +7,15 @@ package co.edu.uniandes.csw.puntosfidelidad.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -32,6 +35,61 @@ public class SucursalEntity implements Serializable{
     private Long horaCierre;
     
     private String descripcion;
+    
+    
+    @PodamExclude
+    @ManyToOne
+    private RestauranteEntity restaurante;
+    
+    @PodamExclude
+    @OneToOne
+    private UbicacionEntity ubicacion;
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "sucursal")
+    private List<ComentarioEntity> comentarios = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "sucursal")
+    private List<CompraEntity> compras = new ArrayList<>();
+
+    public RestauranteEntity getRestaurante() {
+        return restaurante;
+    }
+
+    public void setRestaurante(RestauranteEntity restaurante) {
+        this.restaurante = restaurante;
+    }
+
+    public UbicacionEntity getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(UbicacionEntity ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    public List<ComentarioEntity> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<ComentarioEntity> comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    public List<CompraEntity> getCompras() {
+        return compras;
+    }
+
+    public void setCompras(List<CompraEntity> compras) {
+        this.compras = compras;
+    }
+
+
+
+
+    
+    
     
     /**
      * @return the id

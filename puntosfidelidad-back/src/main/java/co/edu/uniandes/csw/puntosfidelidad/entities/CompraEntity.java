@@ -6,8 +6,13 @@
 package co.edu.uniandes.csw.puntosfidelidad.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -20,12 +25,60 @@ public class CompraEntity implements Serializable {
     private Long id;
     private boolean pagoConpuntos;
 
+    @PodamExclude
+    @OneToMany(mappedBy = "compra")
+    private List<ProductoEntity> employees = new ArrayList<>();
+    
+    @PodamExclude
+    @ManyToOne
+    private SucursalEntity sucursal;
+    
+    @PodamExclude
+    @ManyToOne
+    private TarjetaPuntosEntity tarjetaPuntos;
+    
+    @PodamExclude
+    @ManyToOne
+    private ClienteEntity cliente;
+
+    public SucursalEntity getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(SucursalEntity sucursal) {
+        this.sucursal = sucursal;
+    }
+
+    public TarjetaPuntosEntity getTarjetaPuntos() {
+        return tarjetaPuntos;
+    }
+
+    public void setTarjetaPuntos(TarjetaPuntosEntity tarjetaPuntos) {
+        this.tarjetaPuntos = tarjetaPuntos;
+    }
+
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+    
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<ProductoEntity> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<ProductoEntity> employees) {
+        this.employees = employees;
     }
 
     public boolean isPagoConpuntos() {

@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -18,6 +20,10 @@ import javax.persistence.Id;
 @Entity
 public class AdministradorEntity implements Serializable {
     
+    
+    @PodamExclude
+    @ManyToOne
+    private RestauranteEntity restaurante;
     @Id
     private String usuario; // nombre de usuario del administrador
     
@@ -25,6 +31,14 @@ public class AdministradorEntity implements Serializable {
 
     public String getUsuario() {
         return usuario;
+    }
+
+    public RestauranteEntity getRestaurante() {
+        return restaurante;
+    }
+
+    public void setRestaurante(RestauranteEntity restaurante) {
+        this.restaurante = restaurante;
     }
 
     public void setUsuario(String usuario) {

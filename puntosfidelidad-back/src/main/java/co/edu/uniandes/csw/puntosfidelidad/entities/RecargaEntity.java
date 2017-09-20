@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -34,6 +35,13 @@ public class RecargaEntity implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fecha;
 
+    @PodamExclude
+    @ManyToOne
+    private ClienteEntity cliente;
+    
+    @PodamExclude
+    @OneToOne
+    private TarjetaDeCreditoEntity tarjetaCredito;
 //    @PodamExclude
 //    @ManyToOne
 //    private TarjetaDeCreditoEntity tarjetaDeCredito;

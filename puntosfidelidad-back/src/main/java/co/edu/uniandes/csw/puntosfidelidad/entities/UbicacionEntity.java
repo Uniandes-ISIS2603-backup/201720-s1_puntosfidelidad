@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -25,6 +27,13 @@ public class UbicacionEntity implements Serializable {
     
     private Long longitud;
 
+    @PodamExclude
+    @ManyToOne
+    private SucursalEntity sucursal;
+    
+    @PodamExclude
+    @ManyToOne
+    private EventoEntity evento;
     /**
      * @return the direccion
      */

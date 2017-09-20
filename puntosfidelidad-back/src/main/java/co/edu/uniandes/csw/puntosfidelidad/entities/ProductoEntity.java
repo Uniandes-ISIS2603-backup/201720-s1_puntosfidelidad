@@ -8,6 +8,9 @@ package co.edu.uniandes.csw.puntosfidelidad.entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -22,6 +25,31 @@ public class ProductoEntity implements Serializable {
     private int valorDinero;
     private int valorPuntos;
 
+    @PodamExclude
+    @ManyToOne
+    private CompraEntity compra;
+    
+    @PodamExclude
+    @ManyToOne
+    private RestauranteEntity restaurante;
+
+    public CompraEntity getCompra() {
+        return compra;
+    }
+
+    public void setCompra(CompraEntity compra) {
+        this.compra = compra;
+    }
+
+    public RestauranteEntity getRestaurante() {
+        return restaurante;
+    }
+
+    public void setRestaurante(RestauranteEntity restaurante) {
+        this.restaurante = restaurante;
+    }
+    
+    
     public Long getId() {
         return id;
     }

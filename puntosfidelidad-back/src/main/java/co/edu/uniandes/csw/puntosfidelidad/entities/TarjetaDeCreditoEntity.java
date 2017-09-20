@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -21,6 +23,10 @@ public class TarjetaDeCreditoEntity implements Serializable{
     
     private String banco;
 
+    
+    @PodamExclude
+    @ManyToOne
+    private ClienteEntity cliente;
     /**
      * @return the id
      */

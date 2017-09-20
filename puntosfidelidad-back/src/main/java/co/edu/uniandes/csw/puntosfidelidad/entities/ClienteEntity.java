@@ -3,6 +3,7 @@ package co.edu.uniandes.csw.puntosfidelidad.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -15,6 +16,8 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class ClienteEntity implements Serializable{
     
+    
+    
     @Id
     private String usuario;
     
@@ -24,6 +27,69 @@ public class ClienteEntity implements Serializable{
     
     private String imagen;
        
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "cliente")
+    private List<CompraEntity> compras = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TarjetaPuntosEntity> tarjetasPuntos = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TarjetaDeCreditoEntity> tarjetasPago = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "cliente")
+    private List<ComentarioEntity> comentario = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "cliente")
+    private List<RecargaEntity> recargas = new ArrayList<>();
+
+    public List<CompraEntity> getCompras() {
+        return compras;
+    }
+
+    public void setCompras(List<CompraEntity> compras) {
+        this.compras = compras;
+    }
+
+    public List<TarjetaPuntosEntity> getTarjetasPuntos() {
+        return tarjetasPuntos;
+    }
+
+    public void setTarjetasPuntos(List<TarjetaPuntosEntity> tarjetasPuntos) {
+        this.tarjetasPuntos = tarjetasPuntos;
+    }
+
+    public List<TarjetaDeCreditoEntity> getTarjetasPago() {
+        return tarjetasPago;
+    }
+
+    public void setTarjetasPago(List<TarjetaDeCreditoEntity> tarjetasPago) {
+        this.tarjetasPago = tarjetasPago;
+    }
+
+    public List<ComentarioEntity> getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(List<ComentarioEntity> comentario) {
+        this.comentario = comentario;
+    }
+
+    public List<RecargaEntity> getRecargas() {
+        return recargas;
+    }
+
+    public void setRecargas(List<RecargaEntity> recargas) {
+        this.recargas = recargas;
+    }
+    
+
+    
     /**
      * @return the usuario
      */
