@@ -16,8 +16,6 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class ClienteEntity implements Serializable{
     
-    
-    
     @Id
     private String usuario;
     
@@ -33,7 +31,7 @@ public class ClienteEntity implements Serializable{
     private List<CompraEntity> compras = new ArrayList<>();
     
     @PodamExclude
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "cliente")
     private List<TarjetaPuntosEntity> tarjetasPuntos = new ArrayList<>();
     
     @PodamExclude
@@ -45,7 +43,7 @@ public class ClienteEntity implements Serializable{
     private List<ComentarioEntity> comentario = new ArrayList<>();
     
     @PodamExclude
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RecargaEntity> recargas = new ArrayList<>();
 
     public List<CompraEntity> getCompras() {
@@ -64,11 +62,11 @@ public class ClienteEntity implements Serializable{
         this.tarjetasPuntos = tarjetasPuntos;
     }
 
-    public List<TarjetaDeCreditoEntity> getTarjetasPago() {
+    public List<TarjetaDeCreditoEntity> getTarjetasDeCredito() {
         return tarjetasPago;
     }
 
-    public void setTarjetasPago(List<TarjetaDeCreditoEntity> tarjetasPago) {
+    public void setTarjetasDeCredito(List<TarjetaDeCreditoEntity> tarjetasPago) {
         this.tarjetasPago = tarjetasPago;
     }
 
@@ -87,8 +85,6 @@ public class ClienteEntity implements Serializable{
     public void setRecargas(List<RecargaEntity> recargas) {
         this.recargas = recargas;
     }
-    
-
     
     /**
      * @return the usuario
@@ -144,34 +140,5 @@ public class ClienteEntity implements Serializable{
      */
     public void setImagen(String imagen) {
         this.imagen = imagen;
-    }
-//
-//    /**
-//     * @return the recargas
-//     */
-//    public List<RecargaEntity> getRecargas() {
-//        return recargas;
-//    }
-//
-//    /**
-//     * @param recargas the recargas to set
-//     */
-//    public void setRecargas(List<RecargaEntity> recargas) {
-//        this.recargas = recargas;
-//    }
-//
-//    /**
-//     * @return the tarjetasDeCredito
-//     */
-//    public List<TarjetaDeCreditoEntity> getTarjetasDeCredito() {
-//        return tarjetasDeCredito;
-//    }
-//
-//    /**
-//     * @param tarjetasDeCredito the tarjetasDeCredito to set
-//     */
-//    public void setTarjetasDeCredito(List<TarjetaDeCreditoEntity> tarjetasDeCredito) {
-//        this.tarjetasDeCredito = tarjetasDeCredito;
-//    }     
-          
+    }         
 }
