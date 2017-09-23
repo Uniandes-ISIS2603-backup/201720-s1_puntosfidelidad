@@ -3,6 +3,7 @@ package co.edu.uniandes.csw.puntosfidelidad.ejb;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaDeCreditoEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.ClientePersistence;
 import java.util.List;
@@ -233,5 +234,85 @@ public class ClienteLogic {
         RecargaEntity recargaEntity = new RecargaEntity();
         recargaEntity.setId(recargaId);
         entity.getRecargas().remove(recargaEntity);
+    }
+    
+    /**
+     * Obtiene una colección de instancias de TarjetaPuntos asociadas a una
+     * instancia de cliente
+     *
+     * @param usuario Identificador de la instancia de cliente
+     * @return Colección de instancias de TarjetaPuntosEntity asociadas a la instancia
+     * de cliente
+     * 
+     */
+    public List<TarjetaPuntosEntity> listTarjetasPuntos(String usuario) {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los Tarjetas de Credito del usuario con id = {0}", usuario);
+        return getCliente(usuario).getTarjetasPuntos();
+    }
+
+    /**
+     * Obtiene una instancia de TarjetaPuntosEntity asociada a una instancia de cliente
+     *
+     * @param usuario Identificador de la instancia de cliente
+     * @param tarjetaId Identificador de la instancia de TarjetaPuntos
+     * @return Instancia de TarjetaPuntosEntity buscada 
+     * 
+     */
+    public TarjetaPuntosEntity getTarjetaPuntos(String usuario, Long tarjetaId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar un Tarjetas de Credito del cliente con usuario = {0}", usuario);
+        List<TarjetaPuntosEntity> list = getCliente(usuario).getTarjetasPuntos();
+        TarjetaPuntosEntity entity = new TarjetaPuntosEntity();
+        entity.setId(tarjetaId);
+        int index = list.indexOf(entity);
+        if (index >= 0) {
+            return list.get(index);
+        }
+        return null;
+    }
+
+    /**
+     * Asocia una Tarjeta de Credito existente a un cliente
+     *
+     * @param usuario Identificador de la instancia de cliente
+     * @param tarjetaId Identificador de la instancia de TarjetaPuntos      * @return Instancia de TarjetaPuntosEntity que fue asociada a cliente
+     * @return Instancia de TarjetaPuntosEntity buscada 
+     */
+    public TarjetaPuntosEntity addTarjetaPuntos (String usuario, Long tarjetaId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de asociar un autor al cliente con id = {0}", usuario);
+        ClienteEntity clienteEntity = getCliente(usuario);
+        TarjetaPuntosEntity tarjetaEntity = new TarjetaPuntosEntity();
+        tarjetaEntity.setId(tarjetaId);
+        clienteEntity.getTarjetasPuntos().add(tarjetaEntity);
+        return getTarjetaPuntos(usuario, tarjetaId);
+    }
+
+    /**
+     * Remplaza las instancias de TarjetaPuntos asociadas a una instancia de cliente
+     *
+     * @param usuario Identificador de la instancia de cliente
+     * @param list Colección de instancias de TarjetaPuntosEntity a asociar a instancia
+     * de cliente
+     * @return Nueva colección de TarjetaPuntosEntity asociada a la instancia de cliente
+     * 
+     */
+    public List<TarjetaPuntosEntity> replaceTarjetasPuntos (String usuario, List<TarjetaPuntosEntity> list) {
+        LOGGER.log(Level.INFO, "Inicia proceso de reemplazar un autor del cliente con id = {0}", usuario);
+        ClienteEntity clienteEntity = getCliente(usuario);
+        clienteEntity.setTarjetasPuntos(list);
+        return clienteEntity.getTarjetasPuntos();
+    }
+
+    /**
+     * Desasocia un TarjetaPuntos existente de un cliente existente
+     *
+     * @param usuario Identificador de la instancia de cliente
+     * @param tarjetaId Identificador de la instancia de TarjetaPuntos      * 
+     */
+    public void removeTarjetaPuntos (String usuario, Long tarjetaId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar un autor del cliente con id = {0}", usuario);
+        ClienteEntity entity = getCliente(usuario);
+        TarjetaPuntosEntity tarjetaEntity = new TarjetaPuntosEntity();
+        tarjetaEntity.setId(tarjetaId);
+        entity.getTarjetasPuntos().remove(tarjetaEntity);
     }
 }

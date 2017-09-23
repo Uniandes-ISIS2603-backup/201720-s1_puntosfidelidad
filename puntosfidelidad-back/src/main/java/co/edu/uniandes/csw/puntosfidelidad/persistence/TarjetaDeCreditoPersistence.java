@@ -61,6 +61,5 @@ public class TarjetaDeCreditoPersistence {
         } else {
             return sameName.get(0);
         }
-    }  
-    
+    }     
 }
