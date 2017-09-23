@@ -8,6 +8,11 @@ package co.edu.uniandes.csw.puntosfidelidad.entities;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 /**
  *
  * @author ja.manrique
@@ -20,6 +25,44 @@ public class ComentarioEntity implements Serializable{
     private String comentario;
     private Integer calificacion;
 
+    
+    @PodamExclude
+    @ManyToOne
+    private SucursalEntity sucursal;
+    
+    @PodamExclude
+    @ManyToOne
+    private ClienteEntity cliente;
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "comentario")
+    private List<FotoEntity> fotos = new ArrayList<>();
+
+    public List<FotoEntity> getFotos() {
+        return fotos;
+    }
+
+    public void setFotos(List<FotoEntity> fotos) {
+        this.fotos = fotos;
+    }
+
+    public SucursalEntity getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(SucursalEntity sucursal) {
+        this.sucursal = sucursal;
+    }
+
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+    
+    
     public Long getId() {
         return id;
     }

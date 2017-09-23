@@ -9,6 +9,11 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+<<<<<<< HEAD:puntosfidelidad-back/src/main/java/co/edu/uniandes/csw/puntosfidelidad/entities/UbicacionEntity.java
+=======
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
+>>>>>>> BaseRest:puntosfidelidad-back/src/main/java/co/edu/uniandes/csw/puntosfidelidad/entities/UbicacionEntity.java
 
 /**
  *
@@ -25,6 +30,16 @@ public class UbicacionEntity implements Serializable {
     
     private Long longitud;
 
+<<<<<<< HEAD:puntosfidelidad-back/src/main/java/co/edu/uniandes/csw/puntosfidelidad/entities/UbicacionEntity.java
+=======
+    @PodamExclude
+    @ManyToOne
+    private SucursalEntity sucursal;
+    
+    @PodamExclude
+    @ManyToOne
+    private EventoEntity evento;
+>>>>>>> BaseRest:puntosfidelidad-back/src/main/java/co/edu/uniandes/csw/puntosfidelidad/entities/UbicacionEntity.java
     /**
      * @return the direccion
      */

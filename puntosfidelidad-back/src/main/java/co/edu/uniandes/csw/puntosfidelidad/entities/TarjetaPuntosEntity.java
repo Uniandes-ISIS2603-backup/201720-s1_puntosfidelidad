@@ -8,6 +8,11 @@ package co.edu.uniandes.csw.puntosfidelidad.entities;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -22,6 +27,14 @@ public class TarjetaPuntosEntity implements Serializable{
     private Integer montoActual;
     private Integer numPuntos;
 
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "tarjetaPuntos")
+    private List<CompraEntity> compras = new ArrayList<>();
+    
+    @PodamExclude
+    @ManyToOne
+    private ClienteEntity cliente;
     public Long getId() {
         return id;
     }
