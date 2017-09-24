@@ -31,7 +31,7 @@ public class ClienteEntity implements Serializable{
         
     @PodamExclude
     @OneToMany(mappedBy = "cliente")
-    private List<ComentarioEntity> comentario = new ArrayList<>();
+    private List<ComentarioEntity> comentarios = new ArrayList<>();
     
     @PodamExclude
     @OneToMany(mappedBy = "cliente")
@@ -42,7 +42,7 @@ public class ClienteEntity implements Serializable{
     private List<RecargaEntity> recargas = new ArrayList<>();
 
     @PodamExclude
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)   
     private List<TarjetaDeCreditoEntity> tarjetasDeCredito = new ArrayList<>();
     
     /**
@@ -118,15 +118,15 @@ public class ClienteEntity implements Serializable{
     /**
      * @return the comentario
      */
-    public List<ComentarioEntity> getComentario() {
-        return comentario;
+    public List<ComentarioEntity> getComentarios() {
+        return comentarios;
     }
 
     /**
      * @param comentario the comentario to set
      */
-    public void setComentario(List<ComentarioEntity> comentario) {
-        this.comentario = comentario;
+    public void setComentarios(List<ComentarioEntity> comentario) {
+        this.comentarios = comentario;
     }
 
     /**

@@ -112,7 +112,7 @@ public class CompraPersistenceTest {
     }
 
 
- private void insertData() {
+    private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             CompraEntity entity = factory.manufacturePojo(CompraEntity.class);
@@ -128,76 +128,79 @@ public class CompraPersistenceTest {
 
     /**
      * Test of create method, of class ProductoPersistence.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
-    CompraEntity newEntity = factory.manufacturePojo(CompraEntity.class);
-    CompraEntity result = persistence.create(newEntity);
+        CompraEntity newEntity = factory.manufacturePojo(CompraEntity.class);
+        CompraEntity result = persistence.create(newEntity);
 
-    Assert.assertNotNull(result);
-    CompraEntity entity = em.find(CompraEntity.class, result.getId());
-    Assert.assertNotNull(entity);
-    Assert.assertEquals(newEntity.getId(), entity.getId());
+        Assert.assertNotNull(result);
+        CompraEntity entity = em.find(CompraEntity.class, result.getId());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(newEntity.getId(), entity.getId());
     }
 
     /**
      * Test of update method, of class ProductoPersistence.
+     * @throws java.lang.Exception
      */
     @Test
     public void testUpdate() throws Exception {
         CompraEntity entity = data.get(0);
-    PodamFactory factory = new PodamFactoryImpl();
-    CompraEntity newEntity = factory.manufacturePojo(CompraEntity.class);
+        PodamFactory factory = new PodamFactoryImpl();
+        CompraEntity newEntity = factory.manufacturePojo(CompraEntity.class);
 
-    newEntity.setId(entity.getId());
+        newEntity.setId(entity.getId());
 
-    persistence.update(newEntity);
+        persistence.update(newEntity);
 
-    CompraEntity resp = em.find(CompraEntity.class, entity.getId());
+        CompraEntity resp = em.find(CompraEntity.class, entity.getId());
 
-    Assert.assertEquals(newEntity.getId(), resp.getId());
-        
+        Assert.assertEquals(newEntity.getId(), resp.getId());        
     }
 
     /**
      * Test of delete method, of class ProductoPersistence.
+     * @throws java.lang.Exception
      */
     @Test
     public void testDelete() throws Exception {
          CompraEntity entity = data.get(0);
-    persistence.delete(entity.getId());
-    CompraEntity deleted = em.find(CompraEntity.class, entity.getId());
-    Assert.assertNull(deleted);
+        persistence.delete(entity.getId());
+        CompraEntity deleted = em.find(CompraEntity.class, entity.getId());
+        Assert.assertNull(deleted);
     }
 
     /**
      * Test of find method, of class ProductoPersistence.
+     * @throws java.lang.Exception
      */
     @Test
     public void testFind() throws Exception {
         CompraEntity entity = data.get(0);
-    CompraEntity newEntity = persistence.find(entity.getId());
-    Assert.assertNotNull(newEntity);
-    Assert.assertEquals(entity.getId(), newEntity.getId());
+        CompraEntity newEntity = persistence.find(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getId(), newEntity.getId());
     }
 
     /**
      * Test of findAll method, of class ProductoPersistence.
+     * @throws java.lang.Exception
      */
     @Test
     public void testFindAll() throws Exception {
         List<CompraEntity> list = persistence.findAll();
-    Assert.assertEquals(data.size(), list.size());
-    for (CompraEntity ent : list) {
-        boolean found = false;
-        for (CompraEntity entity : data) {
-            if (ent.getId().equals(entity.getId())) {
-                found = true;
+        Assert.assertEquals(data.size(), list.size());
+        for (CompraEntity ent : list) {
+            boolean found = false;
+            for (CompraEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
             }
+            Assert.assertTrue(found);
         }
-        Assert.assertTrue(found);
     }
-    }
-    
 }

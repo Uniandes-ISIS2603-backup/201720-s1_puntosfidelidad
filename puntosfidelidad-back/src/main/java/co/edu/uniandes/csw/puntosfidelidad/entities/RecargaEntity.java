@@ -44,8 +44,7 @@ public class RecargaEntity implements Serializable {
     @PodamExclude 
     @ManyToOne
     private ClienteEntity cliente;
-    
-    
+        
     /**
      * @return the id
      */

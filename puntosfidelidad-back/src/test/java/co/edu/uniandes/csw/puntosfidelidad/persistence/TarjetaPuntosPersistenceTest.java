@@ -48,7 +48,7 @@ public class TarjetaPuntosPersistenceTest {
     @Inject
     private UserTransaction utx;
     
-    private List<TarjetaPuntosEntity> data = new ArrayList<TarjetaPuntosEntity>();
+    private List<TarjetaPuntosEntity> data = new ArrayList<>();
     
     /**
      *
@@ -226,11 +226,6 @@ public class TarjetaPuntosPersistenceTest {
             //Agregar un cliente cualquiera
             ClienteEntity cliente = factory.manufacturePojo(ClienteEntity.class);
             entity.setCliente(cliente);
-            
-            for(CompraEntity compra : compras)
-            {
-                compraPersistence.update(compra);
-            }
             
             em.persist(cliente);            
             em.merge(entity);

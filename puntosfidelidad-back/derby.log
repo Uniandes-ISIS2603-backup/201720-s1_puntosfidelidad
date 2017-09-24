@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Sun Sep 24 00:09:06 COT 2017:
- Iniciando instancia a816c00e-015e-b249-fb46-00000dda7560 de Derby, versión The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
-en el directorio de base de datos C:\Users\ja.manrique\AppData\Local\Temp\gfembed6950465255193416008tmp\lib\databases\embedded_default con el cargador de clases sun.misc.Launcher$AppClassLoader@6bc7c054
-Cargado desde file:/C:/Users/ja.manrique/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.1/glassfish-embedded-all-4.1.jar
+Sun Sep 24 16:44:47 COT 2017:
+ Iniciando instancia a816c00e-015e-b5d9-8e64-0000069dc258 de Derby, versión The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
+en el directorio de base de datos C:\Users\LauraValeria\AppData\Local\Temp\gfembed5131893457314269133tmp\lib\databases\embedded_default con el cargador de clases sun.misc.Launcher$AppClassLoader@4aa298b7
+Cargado desde file:/C:/Users/LauraValeria/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.1/glassfish-embedded-all-4.1.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_144-b01
-user.dir=C:\Users\ja.manrique\Documents\NetBeansProjects\s1_puntosfidelidad\puntosfidelidad-back
-os.name=Windows 7
+java.runtime.version=1.8.0_121-b13
+user.dir=C:\Users\LauraValeria\Documents\DESARROLLO\PuntosDeFidelidad\s1_puntosfidelidad\puntosfidelidad-back
+os.name=Windows 8.1
 os.arch=amd64
-os.version=6.1
+os.version=6.3
 derby.system.home=null
 Cargador de clases de base de datos iniciado - derby.database.classpath=''

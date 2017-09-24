@@ -6,7 +6,9 @@
 package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaDeCreditoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import java.util.ArrayList;
@@ -47,7 +49,12 @@ public class ClientePersistenceTest {
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(ClienteEntity.class.getPackage())
-                .addPackage(ClientePersistence.class.getPackage())                
+                .addPackage(ClientePersistence.class.getPackage())   
+                .addPackage(TarjetaDeCreditoEntity.class.getPackage()) 
+                .addPackage(TarjetaPuntosEntity.class.getPackage()) 
+                .addPackage(CompraEntity.class.getPackage()) 
+                .addPackage(ComentarioEntity.class.getPackage())
+                .addPackage(RecargaEntity.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -58,6 +65,21 @@ public class ClientePersistenceTest {
      */
     @Inject
     private ClientePersistence persistence;
+    
+    @Inject
+    private TarjetaPuntosPersistence puntosPersistence;
+    
+    @Inject
+    private TarjetaDeCreditoPersistence tarjetaCreditoPersistence;
+    
+    @Inject
+    private CompraPersistence compraPersistence;
+    
+    @Inject
+    private ComentarioPersistence comentarioPersistence;
+    
+    @Inject
+    private RecargaPersistence recargaPersistence;
     
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
@@ -72,13 +94,13 @@ public class ClientePersistenceTest {
      */
     @Inject
     UserTransaction utx;
-    
+        
      /**
      *
      */
-    private List<ClienteEntity> data = new ArrayList<ClienteEntity>();
+    private List<ClienteEntity> data = new ArrayList<>();
     
-     @Before
+    @Before
     public void setUp() {
         try {
             utx.begin();
@@ -96,20 +118,65 @@ public class ClientePersistenceTest {
         }
     }
     
-    private void clearData() {
-        em.createQuery("delete from ClienteEntity").executeUpdate();       
+    private void clearData() {          
+       // em.createQuery("delete from TarjetaDeCreditoEntity").executeUpdate(); 
+      //  em.createQuery("delete from RecargaEntity").executeUpdate(); 
+       // em.createQuery("delete from CompraEntity").executeUpdate(); 
+      //  em.createQuery("delete from TarjetaPuntosEntity").executeUpdate();         
+      //  em.createQuery("delete from ComentarioEntity").executeUpdate();         
+        em.createQuery("delete from ClienteEntity").executeUpdate();
     }
 
 
     private void insertData() {
-        PodamFactory factory = new PodamFactoryImpl();      
-       
-        for (int i = 0; i < 3; i++) {
-            ClienteEntity entity = factory.manufacturePojo(ClienteEntity.class);        
-            em.persist(entity);            
+        
+        //Inicializar objetos
+        PodamFactory factory = new PodamFactoryImpl();
+        for (int i = 0; i < 8; i++) {
+            ClienteEntity entity = factory.manufacturePojo(ClienteEntity.class);
+
+            List<TarjetaDeCreditoEntity> tarjetasDeCredito = new ArrayList<>();
+            List<TarjetaPuntosEntity> tarjetasPuntos = new ArrayList<>();
+            List<RecargaEntity> recargas = new ArrayList<>();
+            List<CompraEntity> compras = new ArrayList<>();
+            List<ComentarioEntity> comentarios = new ArrayList<>();
+
+            //Agrego 3 compras
+            for(int j = 0; j < 3; j++)
+            {
+                CompraEntity compra = factory.manufacturePojo(CompraEntity.class);
+                compraPersistence.create(compra);
+                compras.add(compra);
+                
+                TarjetaDeCreditoEntity tc = factory.manufacturePojo(TarjetaDeCreditoEntity.class);
+                tarjetaCreditoPersistence.create(tc);
+                tarjetasDeCredito.add(tc);
+                
+                TarjetaPuntosEntity puntos = factory.manufacturePojo(TarjetaPuntosEntity.class);
+                puntosPersistence.create(puntos);
+                tarjetasPuntos.add(puntos);
+                
+                RecargaEntity recarga = factory.manufacturePojo(RecargaEntity.class);
+                recargaPersistence.create(recarga);
+                recargas.add(recarga);
+                
+                ComentarioEntity comentario = factory.manufacturePojo(ComentarioEntity.class);
+                comentarioPersistence.create(comentario);
+                comentarios.add(comentario);
+            }
+            
+            //Agregar elementos
+            entity.setCompras(compras);
+            entity.setTarjetasDeCredito(tarjetasDeCredito);
+            entity.setTarjetasPuntos(tarjetasPuntos);
+            entity.setRecargas(recargas);
+            entity.setComentarios(comentarios);  
+                        
+            em.merge(entity);
             data.add(entity);
-        }
+        } 
     }
+    
     public ClientePersistenceTest() {
     }
     
@@ -134,13 +201,13 @@ public class ClientePersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         ClienteEntity newEntity = factory.manufacturePojo(ClienteEntity.class);
         
-              
+               
         ClienteEntity result = persistence.create(newEntity);
 
         Assert.assertNotNull(result);
         ClienteEntity entity = em.find(ClienteEntity.class, result.getUsuario());
         Assert.assertNotNull(entity);
-        Assert.assertEquals(newEntity.getUsuario(), entity.getUsuario());
+        Assert.assertEquals(newEntity.getUsuario(), entity.getUsuario());     
     }
 
     /**
@@ -193,6 +260,7 @@ public class ClientePersistenceTest {
     public void testFindAll() throws Exception {
         List<ClienteEntity> list = persistence.findAll();
         Assert.assertEquals(data.size(), list.size());
+        
         for (ClienteEntity ent : list) {
              boolean found = false;
             for (ClienteEntity entity : data) {

@@ -47,7 +47,10 @@ public class RecargaPersistenceTest {
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(RecargaEntity.class.getPackage())
-                .addPackage(RecargaPersistence.class.getPackage())                
+                .addPackage(RecargaPersistence.class.getPackage())  
+                .addPackage(TarjetaDeCreditoEntity.class.getPackage()) 
+                .addPackage(TarjetaPuntosEntity.class.getPackage()) 
+                .addPackage(ClienteEntity.class.getPackage()) 
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -73,6 +76,10 @@ public class RecargaPersistenceTest {
     @Inject
     UserTransaction utx;
     
+    
+    TarjetaDeCreditoEntity tarjetaDeCredito;
+    TarjetaPuntosEntity tarjetaPuntos;
+    ClienteEntity cliente;
      /**
      *
      */
@@ -97,15 +104,31 @@ public class RecargaPersistenceTest {
     }
     
     private void clearData() {
-        em.createQuery("delete from RecargaEntity").executeUpdate();       
+        em.createQuery("delete from RecargaEntity").executeUpdate();  
+        em.createQuery("delete from TarjetaDeCreditoEntity").executeUpdate();
+        em.createQuery("delete from TarjetaPuntosEntity").executeUpdate();
+        em.createQuery("delete from ClienteEntity").executeUpdate();
     }
 
 
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();      
        
+        tarjetaDeCredito = factory.manufacturePojo(TarjetaDeCreditoEntity.class);
+        tarjetaPuntos = factory.manufacturePojo(TarjetaPuntosEntity.class);
+        cliente = factory.manufacturePojo(ClienteEntity.class);
+        
+        em.persist(tarjetaDeCredito);
+        em.persist(tarjetaPuntos);
+        em.persist(cliente);
+        
         for (int i = 0; i < 3; i++) {
-            RecargaEntity entity = factory.manufacturePojo(RecargaEntity.class);        
+            RecargaEntity entity = factory.manufacturePojo(RecargaEntity.class);  
+            
+            entity.setTarjetaDeCredito(tarjetaDeCredito);
+            entity.setTarjetaPuntos(tarjetaPuntos);
+            entity.setCliente(cliente);
+            
             em.persist(entity);            
             data.add(entity);
         }
@@ -134,13 +157,19 @@ public class RecargaPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         RecargaEntity newEntity = factory.manufacturePojo(RecargaEntity.class);
         
-              
+        newEntity.setTarjetaDeCredito(tarjetaDeCredito);
+        newEntity.setTarjetaPuntos(tarjetaPuntos);
+        newEntity.setCliente(cliente);
+        
         RecargaEntity result = persistence.create(newEntity);
 
         Assert.assertNotNull(result);
         RecargaEntity entity = em.find(RecargaEntity.class, result.getId());
         Assert.assertNotNull(entity);
         Assert.assertEquals(newEntity.getId(), entity.getId());
+        Assert.assertEquals(newEntity.getCliente().getUsuario(), entity.getCliente().getUsuario());
+        Assert.assertEquals(newEntity.getTarjetaDeCredito().getId(), entity.getTarjetaDeCredito().getId()); 
+        Assert.assertEquals(newEntity.getTarjetaPuntos().getId(), entity.getTarjetaPuntos().getId());
     }
 
     /**
@@ -161,7 +190,6 @@ public class RecargaPersistenceTest {
 
         Assert.assertEquals(newEntity.getId(), resp.getId());
     }
-
     /**
      * Test of delete method, of class RecargaPersistance.
      * @throws java.lang.Exception
@@ -203,5 +231,15 @@ public class RecargaPersistenceTest {
             Assert.assertTrue(found);
         }
     }
-    
+    /**
+     * Test of findWithUser method, of class RecargaPersistence.
+     * @throws java.lang.Exception
+     */
+    @Test
+    public void testFindWithUser() throws Exception {
+        RecargaEntity entity = data.get(0);
+        RecargaEntity fount= persistence.findWithUser(cliente.getUsuario(), entity.getId());
+        
+        Assert.assertEquals(entity.getId(), fount.getId());
+    }
 }
