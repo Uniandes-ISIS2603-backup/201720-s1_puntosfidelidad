@@ -102,9 +102,4 @@ public class RestauranteEntity implements Serializable{
     public void setTipoComida(String tipoComida) {
         this.tipoComida = tipoComida;
     }
-
-    
-    
-    
-    
 }

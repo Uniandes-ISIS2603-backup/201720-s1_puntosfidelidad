@@ -94,6 +94,8 @@ public class RecargaEntity implements Serializable {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+    
+    
 
 //    /**
 //     * @return the tarjetaDeCredito
@@ -136,5 +138,21 @@ public class RecargaEntity implements Serializable {
 //    public void setTarjetaPuntos(TarjetaPuntosEntity tarjetaDePuntos) {
 //        this.tarjetaPuntos = tarjetaDePuntos;
 //    }
+
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+
+    public TarjetaDeCreditoEntity getTarjetaCredito() {
+        return tarjetaCredito;
+    }
+
+    public void setTarjetaCredito(TarjetaDeCreditoEntity tarjetaCredito) {
+        this.tarjetaCredito = tarjetaCredito;
+    }
     
 }

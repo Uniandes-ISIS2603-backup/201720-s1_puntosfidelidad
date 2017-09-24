@@ -35,6 +35,7 @@ public class TarjetaPuntosEntity implements Serializable{
     @PodamExclude
     @ManyToOne
     private ClienteEntity cliente;
+    
     public Long getId() {
         return id;
     }
@@ -65,5 +66,21 @@ public class TarjetaPuntosEntity implements Serializable{
 
     public void setNumPuntos(Integer numPuntos) {
         this.numPuntos = numPuntos;
+    }    
+
+    public List<CompraEntity> getCompras() {
+        return compras;
+    }
+
+    public void setCompras(List<CompraEntity> compras) {
+        this.compras = compras;
+    }
+
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
     }    
 }

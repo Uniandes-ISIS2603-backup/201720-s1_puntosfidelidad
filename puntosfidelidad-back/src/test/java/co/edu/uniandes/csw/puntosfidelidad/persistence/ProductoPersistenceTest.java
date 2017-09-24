@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -58,6 +59,9 @@ public class ProductoPersistenceTest {
      */
     @Inject
     private ProductoPersistence persistence;
+    
+    @Inject
+    private RestaurantePersistence restPersist;
 
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
@@ -115,7 +119,9 @@ public class ProductoPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             ProductoEntity entity = factory.manufacturePojo(ProductoEntity.class);
-
+            RestauranteEntity restaurante = factory.manufacturePojo(RestauranteEntity.class);
+            restPersist.create(restaurante);
+            entity.setRestaurante(restaurante);
             em.persist(entity);
             data.add(entity);
         }
@@ -199,4 +205,15 @@ public class ProductoPersistenceTest {
     }
     }
     
-}
+    @Test 
+    public void testGetRestaurante(Long id)
+    {
+       ProductoEntity entity = data.get(0);  
+       RestauranteEntity restaurante = data.get(0).getRestaurante();
+       RestauranteEntity rest = persistence.getRestaurante(entity.getId());
+       Assert.assertEquals(restaurante.getNombre(), rest.getNombre());
+    }
+
+    }
+    
+    

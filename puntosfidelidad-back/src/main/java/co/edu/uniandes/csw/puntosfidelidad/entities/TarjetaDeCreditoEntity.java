@@ -68,5 +68,15 @@ public class TarjetaDeCreditoEntity implements Serializable{
     public void setBanco(String banco) {
         this.banco = banco;
     } 
+
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+    
+    
     
 }
