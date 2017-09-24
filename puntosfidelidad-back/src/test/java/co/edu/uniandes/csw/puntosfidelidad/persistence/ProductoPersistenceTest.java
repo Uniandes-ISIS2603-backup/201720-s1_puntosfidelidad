@@ -5,9 +5,11 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
+import co.edu.uniandes.csw.puntosfidelidad.ejb.RestauranteLogic;
 import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
+import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -69,6 +71,9 @@ public class ProductoPersistenceTest {
      */
     @PersistenceContext
     private EntityManager em;
+    
+    @Inject
+    private RestaurantePersistence logicRest;
 
     /**
      * Variable para martcar las transacciones del em anterior cuando se
@@ -115,12 +120,13 @@ public class ProductoPersistenceTest {
     }
 
 
- private void insertData() {
+ private void insertData() throws BusinessLogicException {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             ProductoEntity entity = factory.manufacturePojo(ProductoEntity.class);
             RestauranteEntity restaurante = factory.manufacturePojo(RestauranteEntity.class);
-            restPersist.create(restaurante);
+
+            logicRest.create(restaurante);
             entity.setRestaurante(restaurante);
             em.persist(entity);
             data.add(entity);
@@ -182,9 +188,12 @@ public class ProductoPersistenceTest {
     @Test
     public void testFind() throws Exception {
         ProductoEntity entity = data.get(0);
-    ProductoEntity newEntity = persistence.find( entity.getId());
-    Assert.assertNotNull(newEntity);
-    Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
+    
+        ProductoEntity newEntity = persistence.find( entity.getId());
+    
+        Assert.assertNotNull(newEntity);
+    
+        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
     }
 
     /**
@@ -203,6 +212,16 @@ public class ProductoPersistenceTest {
         }
         Assert.assertTrue(found);
     }
+    
+    }
+    
+    @Test
+    public void testGetRestaurante() throws Exception 
+    {
+       ProductoEntity entity = data.get(0);  
+       RestauranteEntity restaurante = data.get(0).getRestaurante();
+       RestauranteEntity rest = persistence.getRestaurante(entity.getId());
+       Assert.assertEquals(restaurante.getNombre(), rest.getNombre());   
     }
     
     @Test 

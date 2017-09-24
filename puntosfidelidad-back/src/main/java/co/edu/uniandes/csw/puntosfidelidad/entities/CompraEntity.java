@@ -41,71 +41,89 @@ public class CompraEntity implements Serializable {
     @ManyToOne
     private ClienteEntity cliente;
 
-    public SucursalEntity getSucursal() {
-        return sucursal;
-    }
-
-    public void setSucursal(SucursalEntity sucursal) {
-        this.sucursal = sucursal;
-    }
-
-    public TarjetaPuntosEntity getTarjetaPuntos() {
-        return tarjetaPuntos;
-    }
-
-    public void setTarjetaPuntos(TarjetaPuntosEntity tarjetaPuntos) {
-        this.tarjetaPuntos = tarjetaPuntos;
-    }
-
-    public ClienteEntity getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(ClienteEntity cliente) {
-        this.cliente = cliente;
-    }
-    
+    /**
+     * @return the id
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * @param id the id to set
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
-    public List<ProductoEntity> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(List<ProductoEntity> employees) {
-        this.employees = employees;
-    }
-
+    /**
+     * @return the pagoConpuntos
+     */
     public boolean isPagoConpuntos() {
         return pagoConpuntos;
     }
 
+    /**
+     * @param pagoConpuntos the pagoConpuntos to set
+     */
     public void setPagoConpuntos(boolean pagoConpuntos) {
         this.pagoConpuntos = pagoConpuntos;
     }
-    
-    
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (this.getId() != null && ((CompraEntity) obj).getId() != null) {
-            return this.getId().equals(((CompraEntity) obj).getId());
-        }
-        return super.equals(obj);
+
+    /**
+     * @return the employees
+     */
+    public List<ProductoEntity> getEmployees() {
+        return employees;
     }
 
-    @Override
-    public int hashCode() {
-        if (this.getId() != null) {
-            return this.getId().hashCode();
-        }
-        return super.hashCode();
+    /**
+     * @param employees the employees to set
+     */
+    public void setEmployees(List<ProductoEntity> employees) {
+        this.employees = employees;
     }
-    
+
+    /**
+     * @return the sucursal
+     */
+    public SucursalEntity getSucursal() {
+        return sucursal;
+    }
+
+    /**
+     * @param sucursal the sucursal to set
+     */
+    public void setSucursal(SucursalEntity sucursal) {
+        this.sucursal = sucursal;
+    }
+
+    /**
+     * @return the tarjetaPuntos
+     */
+    public TarjetaPuntosEntity getTarjetaPuntos() {
+        return tarjetaPuntos;
+    }
+
+    /**
+     * @param tarjetaPuntos the tarjetaPuntos to set
+     */
+    public void setTarjetaPuntos(TarjetaPuntosEntity tarjetaPuntos) {
+        this.tarjetaPuntos = tarjetaPuntos;
+    }
+
+    /**
+     * @return the cliente
+     */
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+  
 }
     

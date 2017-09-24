@@ -22,11 +22,11 @@ public class TarjetaDeCreditoEntity implements Serializable{
     private Long numero;
     
     private String banco;
-
     
     @PodamExclude
     @ManyToOne
     private ClienteEntity cliente;
+
     /**
      * @return the id
      */
@@ -69,14 +69,21 @@ public class TarjetaDeCreditoEntity implements Serializable{
         this.banco = banco;
     } 
 
+    
+
+    /**
+     * @return the cliente
+     */
     public ClienteEntity getCliente() {
         return cliente;
     }
 
+    /**
+     * @param cliente the cliente to set
+     */
     public void setCliente(ClienteEntity cliente) {
         this.cliente = cliente;
     }
     
-    
-    
+   
 }

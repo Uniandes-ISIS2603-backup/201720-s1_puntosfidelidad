@@ -102,10 +102,15 @@ public class ProductoPersistence {
         return query.getResultList();
     }
     
-    public RestauranteEntity getRestaurante(Long id)
-    {
+    /**
+     * 
+     * @param id
+     * @return 
+     */
+    public RestauranteEntity getRestaurante(Long id){
         ProductoEntity prod = em.find(ProductoEntity.class, id);
-        
+                
         return prod.getRestaurante();
     }
+
 }
