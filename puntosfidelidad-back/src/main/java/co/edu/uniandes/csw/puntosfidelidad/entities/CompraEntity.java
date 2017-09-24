@@ -10,9 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -30,7 +27,7 @@ public class CompraEntity implements Serializable {
 
     @PodamExclude
     @OneToMany
-    private List<ProductoEntity> compra = new ArrayList<>();
+    private List<ProductoEntity> productos = new ArrayList<>();
     
     @PodamExclude
     @ManyToOne
@@ -75,15 +72,15 @@ public class CompraEntity implements Serializable {
     /**
      * @return the employees
      */
-    public List<ProductoEntity> getEmployees() {
-        return compra;
+    public List<ProductoEntity> getProductos() {
+        return productos;
     }
 
     /**
      * @param employees the employees to set
      */
-    public void setEmployees(List<ProductoEntity> employees) {
-        this.compra = employees;
+    public void setProductos(List<ProductoEntity> employees) {
+        this.productos = employees;
     }
 
     /**

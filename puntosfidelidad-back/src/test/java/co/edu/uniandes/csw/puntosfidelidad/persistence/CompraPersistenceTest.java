@@ -6,7 +6,12 @@
 package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
 
+import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +64,18 @@ public class CompraPersistenceTest {
      */
     @Inject
     private CompraPersistence persistence;
+    
+    @Inject
+    private ProductoPersistence persistenceProd;
+    
+    @Inject
+    private SucursalPersistence persistenceSucur;
+    
+    @Inject
+    private ClientePersistence persistenceCliente;
+    
+    @Inject
+    private TarjetaPuntosPersistence persistenceTarjetaPuntos;
 
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
@@ -116,7 +133,31 @@ public class CompraPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             CompraEntity entity = factory.manufacturePojo(CompraEntity.class);
-
+            SucursalEntity sucur = factory.manufacturePojo(SucursalEntity.class);
+            ClienteEntity client = factory.manufacturePojo(ClienteEntity.class);
+            
+            TarjetaPuntosEntity tarjeta = factory.manufacturePojo(TarjetaPuntosEntity.class);
+            
+            persistenceCliente.create(client);
+            entity.setCliente(client);
+            
+            persistenceSucur.create(sucur);
+            entity.setSucursal(sucur);
+            
+            persistenceTarjetaPuntos.create(tarjeta);
+            entity.setTarjetaPuntos(tarjeta);
+            
+            
+            List<ProductoEntity> prods = new ArrayList<>();
+            for(int j = 0; j < 3; j++)
+            {
+                ProductoEntity prod = factory.manufacturePojo(ProductoEntity.class);
+                persistenceProd.create(prod);
+                prods.add(prod);
+            }
+            entity.setProductos(prods);
+            
+            
             em.persist(entity);
             data.add(entity);
         }
@@ -198,6 +239,42 @@ public class CompraPersistenceTest {
         }
         Assert.assertTrue(found);
     }
+    }
+    
+    @Test
+    public void testGetSucursal() throws Exception
+    {
+       CompraEntity entity = data.get(0);  
+       SucursalEntity sucursal = data.get(0).getSucursal();
+       SucursalEntity sucur = persistence.getSucursal(entity.getId());
+       Assert.assertEquals(sucursal.getNombre(), sucur.getNombre());  
+    }
+    
+    @Test
+    public void testGetCliente() throws Exception
+    {
+       CompraEntity entity = data.get(0);  
+       ClienteEntity cliente = data.get(0).getCliente();
+       ClienteEntity clien = persistence.getCliente(entity.getId());
+       Assert.assertEquals(cliente.getNombre(), clien.getNombre());
+    }
+    
+    @Test
+    public void testGetTarjetaPuntos() throws Exception
+    {
+        CompraEntity entity = data.get(0);  
+       TarjetaPuntosEntity tarjeta = data.get(0).getTarjetaPuntos();
+       TarjetaPuntosEntity tar = persistence.getTarjetaPuntos(entity.getId());
+       Assert.assertEquals(tarjeta.getId(), tar.getId());
+    }
+    
+    @Test
+    public void testGetProductos() throws Exception
+    {
+       CompraEntity entity = data.get(0);
+       
+       Assert.assertEquals(persistence.gerProductos(entity.getId()).size(), entity.getProductos().size());
+       Assert.assertEquals(persistence.gerProductos(entity.getId()).get(0).getId(), entity.getProductos().get(0).getId());
     }
     
 }
