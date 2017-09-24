@@ -213,7 +213,7 @@ public class TarjetaPuntosPersistenceTest {
             List<CompraEntity> compras = new ArrayList<>();
             
             //Agrego 3 compras
-            for(int j = 0; j < 4; j++)
+            for(int j = 0; j < 3; j++)
             {
                 CompraEntity compra = factory.manufacturePojo(CompraEntity.class);
                 compraPersistence.create(compra);
@@ -232,8 +232,7 @@ public class TarjetaPuntosPersistenceTest {
                 compraPersistence.update(compra);
             }
             
-            em.persist(cliente);
-            
+            em.persist(cliente);            
             em.merge(entity);
             data.add(entity);
         }        

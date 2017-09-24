@@ -31,12 +31,12 @@ public class CompraPersistence {
      * @return devuelve la entidad creada con un id dado por la base de datos.
      */
     public CompraEntity create(CompraEntity entity) {
-        LOGGER.info("Creando un bodega nuevo");
-        /* Note que hacemos uso de un método propio de EntityManager para persistir la bodega en la base de datos.
+        LOGGER.info("Creando un compra nuevo");
+        /* Note que hacemos uso de un método propio de EntityManager para persistir la compra en la base de datos.
         Es similar a "INSERT INTO table_codigo (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);" en SQL.
          */
         em.persist(entity);
-        LOGGER.info("Creando un bodega nuevo");
+        LOGGER.info("Creando un compra nuevo");
         return entity;
     }
     
@@ -45,12 +45,12 @@ public class CompraPersistence {
      *
      * @param entity: la compra que viene con los nuevos cambios. Por ejemplo
      * el codigo pudo cambiar. En ese caso, se haria uso del método update.
-     * @return un bodega con los cambios aplicados.
+     * @return un compra con los cambios aplicados.
      */
     public CompraEntity update(CompraEntity entity) {
-        LOGGER.log(Level.INFO, "Actualizando bodega con id={0}", entity.getId());
+        LOGGER.log(Level.INFO, "Actualizando compra con id={0}", entity.getId());
         /* Note que hacemos uso de un método propio del EntityManager llamado merge() que recibe como argumento
-        la bodega con los cambios, esto es similar a 
+        la compra con los cambios, esto es similar a 
         "UPDATE table_codigo SET column1 = value1, column2 = value2, ... WHERE condition;" en SQL.
          */
         return em.merge(entity);
@@ -59,25 +59,25 @@ public class CompraPersistence {
     /**
      *
      * Borra una compra de la base de datos recibiendo como argumento el id
-     * de la bodega
+     * de la compra
      *
      * @param id: id correspondiente a la compra a borrar.
      */
     public void delete(Long id) {
-        LOGGER.log(Level.INFO, "Borrando bodega con id={0}", id);
-        // Se hace uso de mismo método que esta explicado en public bodegaEntity find(Long id) para obtener la bodega a borrar.
+        LOGGER.log(Level.INFO, "Borrando compra con id={0}", id);
+        // Se hace uso de mismo método que esta explicado en public compraEntity find(Long id) para obtener la compra a borrar.
         CompraEntity entity = em.find(CompraEntity.class, id);
         /* Note que una vez obtenido el objeto desde la base de datos llamado "entity", volvemos hacer uso de un método propio del
          EntityManager para eliminar de la base de datos el objeto que encontramos y queremos borrar.
-         Es similar a "delete from bodegaEntity where id=id;" - "DELETE FROM table_codigo WHERE condition;" en SQL.*/
+         Es similar a "delete from compraEntity where id=id;" - "DELETE FROM table_codigo WHERE condition;" en SQL.*/
         em.remove(entity);
     }
 
     /**
-     * Busca si hay algun bodega con el id que se envía de argumento
+     * Busca si hay algun compra con el id que se envía de argumento
      *
-     * @param id: id correspondiente a la bodega buscada.
-     * @return un bodega.
+     * @param id: id correspondiente a la compra buscada.
+     * @return un compra.
      */
     public CompraEntity find(Long id) {
        
@@ -86,17 +86,17 @@ public class CompraPersistence {
     }
 
     /**
-     * Devuelve todas las bodegaes de la base de datos.
+     * Devuelve todas las compraes de la base de datos.
      *
-     * @return una lista con todas las bodegas que encuentre en la base de
-     * datos, "select u from bodegaEntity u" es como un "select * from
-     * bodegaEntity;" - "SELECT * FROM table_codigo" en SQL.
+     * @return una lista con todas las compras que encuentre en la base de
+     * datos, "select u from compraEntity u" es como un "select * from
+     * compraEntity;" - "SELECT * FROM table_codigo" en SQL.
      */
     public List<CompraEntity> findAll() {
-        LOGGER.info("Consultando todas las bodegas");
-        // Se crea un query para buscar todas las bodegas en la base de datos.
+        LOGGER.info("Consultando todas las compras");
+        // Se crea un query para buscar todas las compras en la base de datos.
         TypedQuery query = em.createQuery("select u from CompraEntity u", CompraEntity.class);
-        // Note que en el query se hace uso del método getResultList() que obtiene una lista de bodegaes.
+        // Note que en el query se hace uso del método getResultList() que obtiene una lista de compraes.
         return query.getResultList();
     }
 }
