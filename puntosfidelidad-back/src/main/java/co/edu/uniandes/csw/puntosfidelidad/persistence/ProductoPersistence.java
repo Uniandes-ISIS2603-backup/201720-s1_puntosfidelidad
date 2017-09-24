@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
 import java.util.List;
 import java.util.logging.Level;
 import javax.ejb.Stateless;
@@ -100,4 +101,16 @@ public class ProductoPersistence {
         // Note que en el query se hace uso del método getResultList() que obtiene una lista de bodegaes.
         return query.getResultList();
     }
+    /**
+     * 
+     * @param id
+     * @return 
+     */
+    public RestauranteEntity getRestaurante(Long id){
+        ProductoEntity prod = em.find(ProductoEntity.class, id);
+                
+        return prod.getRestaurante();
+    }
+
+            
 }
