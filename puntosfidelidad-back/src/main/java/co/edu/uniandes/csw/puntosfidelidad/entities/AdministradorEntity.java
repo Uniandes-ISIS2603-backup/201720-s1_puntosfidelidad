@@ -20,37 +20,53 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class AdministradorEntity implements Serializable {
     
-    
     @PodamExclude
     @ManyToOne
     private RestauranteEntity restaurante;
     @Id
-    private String usuario; // nombre de usuario del administrador
+    private String usuario; 
     
-    private String contrasena; // contraseña del administrador
+    private String contrasena; 
 
-    public String getUsuario() {
-        return usuario;
-    }
-
+    /**
+     * @return the restaurante
+     */
     public RestauranteEntity getRestaurante() {
         return restaurante;
     }
 
+    /**
+     * @param restaurante the restaurante to set
+     */
     public void setRestaurante(RestauranteEntity restaurante) {
         this.restaurante = restaurante;
     }
 
+    /**
+     * @return the usuario
+     */
+    public String getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
 
+    /**
+     * @return the contrasena
+     */
     public String getContrasena() {
         return contrasena;
     }
 
+    /**
+     * @param contrasena the contrasena to set
+     */
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
-    }
-   
+    }   
 }

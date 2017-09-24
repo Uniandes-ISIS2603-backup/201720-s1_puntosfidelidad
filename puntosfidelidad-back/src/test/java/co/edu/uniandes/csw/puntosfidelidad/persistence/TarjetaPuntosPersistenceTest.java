@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
+import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +38,9 @@ public class TarjetaPuntosPersistenceTest {
 
     @Inject
     private TarjetaPuntosPersistence persistence;
+    
+    @Inject
+    private CompraPersistence compraPersistence;
     
     @PersistenceContext
     private EntityManager em;
@@ -167,9 +172,31 @@ public class TarjetaPuntosPersistenceTest {
             if (ent.getId().equals(entity.getId())) {
                 found = true;
             }
+            assertTrue(ent.getCliente() != null);
         }
         Assert.assertTrue(found);
     }
+    }
+    
+    @Test
+    public void testGetCompras() throws Exception
+    {
+        for (TarjetaPuntosEntity entity: data)
+        {
+            List<CompraEntity> compras = persistence.getCompras(entity.getId());
+            Assert.assertEquals(3, compras.size());
+        }
+    }
+    
+    @Test
+    public void testGetCliente() throws Exception
+    {
+        for (TarjetaPuntosEntity entity: data)
+        {
+           TarjetaPuntosEntity tarjeta = persistence.findWithId(entity.getId());
+            
+            Assert.assertNotEquals(null, tarjeta.getCliente());
+        }
     }
     
     private void clearData() {
@@ -177,12 +204,38 @@ public class TarjetaPuntosPersistenceTest {
     }
     
     private void insertData() {
+        
+        //Inicializar objetos
         PodamFactory factory = new PodamFactoryImpl();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 8; i++) {
             TarjetaPuntosEntity entity = factory.manufacturePojo(TarjetaPuntosEntity.class);
 
-            em.persist(entity);
+            List<CompraEntity> compras = new ArrayList<>();
+            
+            //Agrego 3 compras
+            for(int j = 0; j < 4; j++)
+            {
+                CompraEntity compra = factory.manufacturePojo(CompraEntity.class);
+                compraPersistence.create(compra);
+                compras.add(compra);
+            }
+            
+            //Agregar compra
+            entity.setCompras(compras);
+            
+            //Agregar un cliente cualquiera
+            ClienteEntity cliente = factory.manufacturePojo(ClienteEntity.class);
+            entity.setCliente(cliente);
+            
+            for(CompraEntity compra : compras)
+            {
+                compraPersistence.update(compra);
+            }
+            
+            em.persist(cliente);
+            
+            em.merge(entity);
             data.add(entity);
-        }
+        }        
     }
 }

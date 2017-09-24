@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
+import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -56,5 +52,11 @@ public class TarjetaPuntosPersistence {
         LOGGER.info("Consultando todas las recargas");
         TypedQuery<TarjetaPuntosEntity> query = em.createQuery("select u from TarjetaPuntosEntity u", TarjetaPuntosEntity.class);
         return query.getResultList();
+    }
+    
+    public List<CompraEntity> getCompras(Long id)
+    {
+        TarjetaPuntosEntity entity = findWithId(id);
+        return entity.getCompras();
     }
 }

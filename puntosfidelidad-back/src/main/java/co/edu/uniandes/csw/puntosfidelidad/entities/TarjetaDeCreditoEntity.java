@@ -5,11 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-<<<<<<< HEAD:puntosfidelidad-back/src/main/java/co/edu/uniandes/csw/puntosfidelidad/entities/TarjetaDeCreditoEntity.java
-=======
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
->>>>>>> BaseRest:puntosfidelidad-back/src/main/java/co/edu/uniandes/csw/puntosfidelidad/entities/TarjetaDeCreditoEntity.java
 
 /**
  *
@@ -25,14 +22,11 @@ public class TarjetaDeCreditoEntity implements Serializable{
     private Long numero;
     
     private String banco;
-
-<<<<<<< HEAD:puntosfidelidad-back/src/main/java/co/edu/uniandes/csw/puntosfidelidad/entities/TarjetaDeCreditoEntity.java
-=======
     
     @PodamExclude
     @ManyToOne
     private ClienteEntity cliente;
->>>>>>> BaseRest:puntosfidelidad-back/src/main/java/co/edu/uniandes/csw/puntosfidelidad/entities/TarjetaDeCreditoEntity.java
+    
     /**
      * @return the id
      */
@@ -74,5 +68,22 @@ public class TarjetaDeCreditoEntity implements Serializable{
     public void setBanco(String banco) {
         this.banco = banco;
     } 
+
     
+
+    /**
+     * @return the cliente
+     */
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+    
+   
 }

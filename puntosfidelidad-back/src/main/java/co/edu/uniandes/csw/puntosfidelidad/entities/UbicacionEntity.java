@@ -81,4 +81,23 @@ public class UbicacionEntity implements Serializable {
     public void setLongitud(Long longitud) {
         this.longitud = longitud;
     }
+
+    public SucursalEntity getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(SucursalEntity sucursal) {
+        this.sucursal = sucursal;
+    }
+
+    public EventoEntity getEvento() {
+        return evento;
+    }
+
+    public void setEvento(EventoEntity evento) {
+        this.evento = evento;
+    }
+    
+    
+    
 }

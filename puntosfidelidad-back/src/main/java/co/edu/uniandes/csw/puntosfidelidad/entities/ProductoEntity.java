@@ -24,22 +24,12 @@ public class ProductoEntity implements Serializable {
     private String nombre;
     private int valorDinero;
     private int valorPuntos;
-
-    @PodamExclude
-    @ManyToOne
-    private CompraEntity compra;
     
     @PodamExclude
     @ManyToOne
     private RestauranteEntity restaurante;
 
-    public CompraEntity getCompra() {
-        return compra;
-    }
 
-    public void setCompra(CompraEntity compra) {
-        this.compra = compra;
-    }
 
     public RestauranteEntity getRestaurante() {
         return restaurante;

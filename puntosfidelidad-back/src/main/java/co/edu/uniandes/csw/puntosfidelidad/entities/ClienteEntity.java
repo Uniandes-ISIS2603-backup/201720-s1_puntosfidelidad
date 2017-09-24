@@ -24,6 +24,26 @@ public class ClienteEntity implements Serializable{
     
     private String imagen;
        
+    @PodamExclude
+    @OneToMany(mappedBy = "cliente")
+    private List<CompraEntity> compras = new ArrayList<>();
+        
+    @PodamExclude
+    @OneToMany(mappedBy = "cliente")
+    private List<ComentarioEntity> comentario = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "cliente")
+    private List<TarjetaPuntosEntity> tarjetasPuntos = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RecargaEntity> recargas = new ArrayList<>();
+
+    @PodamExclude
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TarjetaDeCreditoEntity> tarjetasDeCredito = new ArrayList<>();
+    
     /**
      * @return the usuario
      */
@@ -79,33 +99,74 @@ public class ClienteEntity implements Serializable{
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-//
-//    /**
-//     * @return the recargas
-//     */
-//    public List<RecargaEntity> getRecargas() {
-//        return recargas;
-//    }
-//
-//    /**
-//     * @param recargas the recargas to set
-//     */
-//    public void setRecargas(List<RecargaEntity> recargas) {
-//        this.recargas = recargas;
-//    }
-//
-//    /**
-//     * @return the tarjetasDeCredito
-//     */
-//    public List<TarjetaDeCreditoEntity> getTarjetasDeCredito() {
-//        return tarjetasDeCredito;
-//    }
-//
-//    /**
-//     * @param tarjetasDeCredito the tarjetasDeCredito to set
-//     */
-//    public void setTarjetasDeCredito(List<TarjetaDeCreditoEntity> tarjetasDeCredito) {
-//        this.tarjetasDeCredito = tarjetasDeCredito;
-//    }     
-          
+
+    /**
+     * @return the compras
+     */
+    public List<CompraEntity> getCompras() {
+        return compras;
+    }
+
+    /**
+     * @param compras the compras to set
+     */
+    public void setCompras(List<CompraEntity> compras) {
+        this.compras = compras;
+    }
+
+    /**
+     * @return the comentario
+     */
+    public List<ComentarioEntity> getComentario() {
+        return comentario;
+    }
+
+    /**
+     * @param comentario the comentario to set
+     */
+    public void setComentario(List<ComentarioEntity> comentario) {
+        this.comentario = comentario;
+    }
+
+    /**
+     * @return the tarjetasPuntos
+     */
+    public List<TarjetaPuntosEntity> getTarjetasPuntos() {
+        return tarjetasPuntos;
+    }
+
+    /**
+     * @param tarjetasPuntos the tarjetasPuntos to set
+     */
+    public void setTarjetasPuntos(List<TarjetaPuntosEntity> tarjetasPuntos) {
+        this.tarjetasPuntos = tarjetasPuntos;
+    }
+
+    /**
+     * @return the recargas
+     */
+    public List<RecargaEntity> getRecargas() {
+        return recargas;
+    }
+
+    /**
+     * @param recargas the recargas to set
+     */
+    public void setRecargas(List<RecargaEntity> recargas) {
+        this.recargas = recargas;
+    }
+
+    /**
+     * @return the tarjetasDeCredito
+     */
+    public List<TarjetaDeCreditoEntity> getTarjetasDeCredito() {
+        return tarjetasDeCredito;
+    }
+
+    /**
+     * @param tarjetasDeCredito the tarjetasDeCredito to set
+     */
+    public void setTarjetasDeCredito(List<TarjetaDeCreditoEntity> tarjetasDeCredito) {
+        this.tarjetasDeCredito = tarjetasDeCredito;
+    }  
 }
