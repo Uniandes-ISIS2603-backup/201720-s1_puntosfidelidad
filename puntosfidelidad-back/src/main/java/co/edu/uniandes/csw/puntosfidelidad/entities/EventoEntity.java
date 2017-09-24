@@ -10,14 +10,10 @@ import java.util.Calendar;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-<<<<<<< HEAD:puntosfidelidad-back/src/main/java/co/edu/uniandes/csw/puntosfidelidad/entities/EventoEntity.java
-import javax.persistence.OneToMany;
-=======
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
->>>>>>> BaseRest:puntosfidelidad-back/src/main/java/co/edu/uniandes/csw/puntosfidelidad/entities/EventoEntity.java
 
 /**
  *
@@ -35,11 +31,6 @@ public class EventoEntity {
     
     private String descripcion;
     
-<<<<<<< HEAD:puntosfidelidad-back/src/main/java/co/edu/uniandes/csw/puntosfidelidad/entities/EventoEntity.java
-//    private List<RestauranteEntity> restaurante = new List<RestauranteEntity>(); 
-    
-//    private List<UbicacionEntity> ubicaciones = new ArrayList<UbicacionEntity>();
-=======
     @PodamExclude
     @ManyToOne
     private RestauranteEntity restaurante;
@@ -69,7 +60,6 @@ public class EventoEntity {
     }
 
 
->>>>>>> BaseRest:puntosfidelidad-back/src/main/java/co/edu/uniandes/csw/puntosfidelidad/entities/EventoEntity.java
     
     
     /**
