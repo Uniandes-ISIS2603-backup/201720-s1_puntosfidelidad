@@ -26,8 +26,8 @@ public class CompraEntity implements Serializable {
     private boolean pagoConpuntos;
 
     @PodamExclude
-    @OneToMany(mappedBy = "compra")
-    private List<ProductoEntity> employees = new ArrayList<>();
+    @OneToMany
+    private List<ProductoEntity> compra = new ArrayList<>();
     
     @PodamExclude
     @ManyToOne
@@ -73,14 +73,14 @@ public class CompraEntity implements Serializable {
      * @return the employees
      */
     public List<ProductoEntity> getEmployees() {
-        return employees;
+        return compra;
     }
 
     /**
      * @param employees the employees to set
      */
     public void setEmployees(List<ProductoEntity> employees) {
-        this.employees = employees;
+        this.compra = employees;
     }
 
     /**
