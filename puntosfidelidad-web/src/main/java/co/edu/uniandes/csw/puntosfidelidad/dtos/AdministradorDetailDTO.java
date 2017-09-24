@@ -16,6 +16,17 @@ import java.util.List;
  */
 public class AdministradorDetailDTO extends AdministradorDTO{
     
+    /*
+    
+    ---------PLANTILLA ADMINISTRADOR---------
+    ANTECIÓN: LO QUE HAY EN ESTA CLASE ES TRBAJO EN PROGRESO DE ADMINISTRADOR.
+    SE COMENTÓ PARA CONSERVARLO PERO QUE IGUAL LA APLICACIÓN MANTUVIERA SU INTEGRIDAD (NO COMPILABA PORQUE FALTAN COSAS DE LOGIC Y DTO'S)
+    NO ELIMINARLO Y *SOLO* DESCOMENTARLO PARA TERMINAR EL TRABAJO INICIADO
+    
+    SOLO SE COMENTARON LAS PARTES QUE NO COMPILABAN PARA NO COMPROMETER LOS OTROS COMENTARIOS
+    
+    */
+    
     private List<RestauranteDTO> restaurantes;
     
     /**
@@ -24,6 +35,7 @@ public class AdministradorDetailDTO extends AdministradorDTO{
      */
     public AdministradorDetailDTO(AdministradorEntity entity)
     {
+        /*
         super(entity);
         if (entity != null)
         {
@@ -33,11 +45,13 @@ public class AdministradorDetailDTO extends AdministradorDTO{
                 restaurantes.add(new RestauranteDTO(entity));
             }
         }
+        */
     }
     
     @Override
     public AdministradorEntity toEntity()
     {
+        /*
         AdministradorEntity entity = super.toEntity();
         
         if(restaurantes != null)
@@ -49,6 +63,8 @@ public class AdministradorDetailDTO extends AdministradorDTO{
             }
             entity.setRestaurantes(restaurantesEntity);
         }
+        */
+        return new AdministradorEntity();
     }
 
     public List<RestauranteDTO> getRestaurantes() {

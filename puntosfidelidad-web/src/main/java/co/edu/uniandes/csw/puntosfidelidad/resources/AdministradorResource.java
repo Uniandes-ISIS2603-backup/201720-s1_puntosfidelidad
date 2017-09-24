@@ -36,6 +36,13 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 public class AdministradorResource {
     
+    /*   ---------PLANTILLA ADMINISTRADOR---------
+    ANTECIÓN: LO QUE HAY EN ESTE BLOQUESOTE DE COMENTARIO ES TRBAJO EN PROGRESO DE ADMINISTRADOR.
+    SE COMENTÓ PARA CONSERVARLO PERO QUE IGUAL LA APLICACIÓN MANTUVIERA SU INTEGRIDAD (NO COMPILABA PORQUE FALTAN COSAS DE LOGIC Y DTO'S)
+    NO ELIMINARLO Y *SOLO* DESCOMENTARLO PARA TERMINAR EL TRABAJO INICIADO
+    
+    AL COMPLETAR LA CLASE SE PEUDE BORRAR ESTE MENSAJE
+    
     //Para acceder a la lógica de la aplicación. Es una inyección de dependencias.
     @Inject
     AdministradorLogic logic;
@@ -106,11 +113,11 @@ public class AdministradorResource {
         }
         //Si si existe hago que conserve sus sub-recursos (relaciones)
         
-        /**
-         * Acá van asignaciones de todas las relaciones que tengael objeto a actualizar
-         * Por ejemplo:
-         * entity.setSucursales(oldEntity.getSucursales());
-         */
+        
+         //Acá van asignaciones de todas las relaciones que tengael objeto a actualizar
+         //Por ejemplo:
+         //entity.setSucursales(oldEntity.getSucursales());
+        
         
         return new RestauranteDetailDTO(logic.actualizarRestaurante(dto.toEntity()));
     }
@@ -149,5 +156,7 @@ public class AdministradorResource {
         }      
         return DTOList;
     }
-    
+  
+    ---------FIN PLANTILLA ADMINISTRADOR---------
+*/
 }

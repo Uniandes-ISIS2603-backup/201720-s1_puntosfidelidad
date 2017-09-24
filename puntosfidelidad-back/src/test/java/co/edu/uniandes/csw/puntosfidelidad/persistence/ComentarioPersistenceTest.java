@@ -5,7 +5,9 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
+import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -169,8 +171,36 @@ public class ComentarioPersistenceTest {
             }
         }
         Assert.assertTrue(found);
+        }
     }
+    
+    /**
+     * Test of getCliente method, of class ComentarioPersistence.
+     */
+    @Test
+    public void testGetCliente()
+    {
+        for (ComentarioEntity entity: data)
+        {
+            //Cada comentario DEBE tener un cliente
+            Assert.assertNotNull(entity.getCliente());
+        }
     }
+    
+    
+    /**
+     * Test of getSucursal method, of class ComentarioPersistence.
+     */
+    @Test
+    public void testGetSucursal()
+    {
+        for (ComentarioEntity entity: data)
+        {
+            //Cada comentario DEBE tener una sucursal
+            Assert.assertNotNull(entity.getSucursal());
+        }
+    }
+    
     
     private void clearData() {
         em.createQuery("delete from ComentarioEntity").executeUpdate();
@@ -180,9 +210,27 @@ public class ComentarioPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             ComentarioEntity entity = factory.manufacturePojo(ComentarioEntity.class);
-
+            
+            insertDataToEntity(entity, factory);
+            
             em.persist(entity);
             data.add(entity);
         }
+    }
+    
+    private void insertDataToEntity(ComentarioEntity entity, PodamFactory factory)
+    {
+        //Crea y se persisten de una vez, luego se linkean al comentario y se actualiza
+        
+        SucursalEntity sucursal = factory.manufacturePojo(SucursalEntity.class);
+        em.persist(sucursal);
+        
+        ClienteEntity cliente = factory.manufacturePojo(ClienteEntity.class);
+        em.persist(cliente);
+        
+        entity.setCliente(cliente);
+        entity.setSucursal(sucursal);
+        
+        em.merge(entity);
     }
 }

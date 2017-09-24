@@ -5,7 +5,9 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
+import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,13 +48,14 @@ public class ComentarioPersistence {
     }
     
     public ComentarioEntity findWithId(Long id) {
+        LOGGER.log(Level.INFO, "Consultando comentario con id={0}", id);
         TypedQuery<ComentarioEntity> q = em.createQuery("select p from ComentarioEntity p where (p.id = :comentarioId)", ComentarioEntity.class);
         q.setParameter("comentarioId", id);
         return q.getSingleResult();
     }
     
     /**
-     * Devuelve todos las recargas de la base de datos. 
+     * Devuelve todos los comnetarios de la base de datos. 
      * @return una lista con todas las tarjetas de puntos
      */
     public List<ComentarioEntity> findAll() {
@@ -61,4 +64,15 @@ public class ComentarioPersistence {
         return query.getResultList();
     }
     
+    public ClienteEntity getCliente(Long id)
+    {
+        LOGGER.log(Level.INFO, "Consultando cliente del comentario con id={0}", id);
+        return findWithId(id).getCliente();
+    }
+            
+    public SucursalEntity getSucursal(Long id)
+    {
+        LOGGER.log(Level.INFO, "Consultando sucursal del comentario con id={0}", id);
+        return findWithId(id).getSucursal();
+    }
 }
