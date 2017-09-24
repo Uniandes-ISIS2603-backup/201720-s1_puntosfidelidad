@@ -13,7 +13,7 @@ import co.edu.uniandes.csw.puntosfidelidad.entities.AdministradorEntity;
  * 
  * Por esta razón solamente contienen atributos, getters, setters
  * y métodos para convertirlos en Entities/Crearlos a partir de Entities
- * (Seguir el UML y la documentación para la creación de los DTO's)
+ * (Seguir el UML/Entity y la documentación para la creación de los DTO's)
  * @author ja.manrique
  */
 public class AdministradorDTO {

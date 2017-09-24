@@ -75,4 +75,9 @@ public class ComentarioPersistence {
         LOGGER.log(Level.INFO, "Consultando sucursal del comentario con id={0}", id);
         return findWithId(id).getSucursal();
     }
+    
+    /**
+     * Estos úlitmos 2 métodos son redundantes porque podemos 
+     * hacer findWithId y llamar los getSucursal() o getCliente()
+     */
 }

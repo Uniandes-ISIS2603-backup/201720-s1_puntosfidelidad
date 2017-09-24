@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
+import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.TarjetaPuntosPersistence;
 import java.util.List;
@@ -45,5 +46,10 @@ public class TarjetaPuntosLogic {
     public TarjetaPuntosEntity createTarjetaPuntos(TarjetaPuntosEntity nuevoEntity)
     {
         return persistence.create(nuevoEntity);
+    }
+    
+    public List<CompraEntity> getCompras(Long id)
+    {
+        return persistence.getCompras(id);
     }
 }
