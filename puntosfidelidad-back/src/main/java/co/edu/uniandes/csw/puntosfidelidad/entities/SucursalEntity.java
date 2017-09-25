@@ -16,6 +16,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -31,8 +33,10 @@ public class SucursalEntity implements Serializable{
     
     private String nombre;
     
+    @Temporal(TemporalType.DATE)
     private Date horaApertura;
     
+    @Temporal(TemporalType.DATE)
     private Date horaCierre;
     
     private String descripcion;
