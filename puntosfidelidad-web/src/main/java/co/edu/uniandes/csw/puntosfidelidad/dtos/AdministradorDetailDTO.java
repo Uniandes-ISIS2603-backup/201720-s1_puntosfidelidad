@@ -6,73 +6,67 @@
 package co.edu.uniandes.csw.puntosfidelidad.dtos;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.AdministradorEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author ja.manrique
  */
-public class AdministradorDetailDTO extends AdministradorDTO{
+public class AdministradorDetailDTO extends AdministradorDTO{    
     
-    /*
+    private RestauranteDTO restaurante;   
     
-    ---------PLANTILLA ADMINISTRADOR---------
-    ANTECIÓN: LO QUE HAY EN ESTA CLASE ES TRBAJO EN PROGRESO DE ADMINISTRADOR.
-    SE COMENTÓ PARA CONSERVARLO PERO QUE IGUAL LA APLICACIÓN MANTUVIERA SU INTEGRIDAD (NO COMPILABA PORQUE FALTAN COSAS DE LOGIC Y DTO'S)
-    NO ELIMINARLO Y *SOLO* DESCOMENTARLO PARA TERMINAR EL TRABAJO INICIADO
-    
-    SOLO SE COMENTARON LAS PARTES QUE NO COMPILABAN PARA NO COMPROMETER LOS OTROS COMENTARIOS
-    
-    */
-    
-    private List<RestauranteDTO> restaurantes;
-    
-    /**
-     * Conviertir Entity a DetailDTO
-     * Crea un nuevo DetailDTO con los valores que recibe en la entidad que viene de argumento.
-     */
-    public AdministradorDetailDTO(AdministradorEntity entity)
-    {
-        /*
-        super(entity);
-        if (entity != null)
-        {
-            restaurantes = new ArrayList<>();
-            for(RestauranteEntity entity: entity.getRestaurantes())
-            {
-                restaurantes.add(new RestauranteDTO(entity));
-            }
-        }
-        */
+    public AdministradorDetailDTO(){     
+        super();
     }
     
+        /**
+     * Crea un objeto AdministradorDetailDTO a partir de un objeto AdministradorEntity
+     * incluyendo los atributos de AdministradorDTO.
+     *
+     * @param entity Entidad AdministradorEntity desde la cual se va a crear el nuevo
+     * objeto.
+     *
+     */
+    public AdministradorDetailDTO(AdministradorEntity entity) {
+        
+        super(entity);
+        
+        if (entity != null) {            
+            restaurante = new RestauranteDTO(entity.getRestaurante());
+        }
+    }
+    
+     /**
+     * Convierte un objeto AdministradorDetailDTO a AdministradorEntity incluyendo los
+     * atributos de AdministradorDTO.
+     *
+     * @return Nueva objeto AdministradorEntity.
+     *
+     */
     @Override
-    public AdministradorEntity toEntity()
-    {
-        /*
+    public AdministradorEntity toEntity() {
         AdministradorEntity entity = super.toEntity();
         
-        if(restaurantes != null)
-        {
-            List<RestauranteEntity> restaurantesEntity = new ArrayList<>();
-            for(RestauranteDTO dtoRestaurante: restaurantes)
-            {
-                restaurantesEntity.add(dtoRestaurante.toEntity());
-            }
-            entity.setRestaurantes(restaurantesEntity);
+        if (getRestaurante() != null) {
+            entity.setRestaurante(getRestaurante().toEntity());
         }
-        */
-        return new AdministradorEntity();
+        return entity;
     }
 
-    public List<RestauranteDTO> getRestaurantes() {
-        return restaurantes;
+    /**
+     * @return the restaurante
+     */
+    public RestauranteDTO getRestaurante() {
+        return restaurante;
     }
 
-    public void setRestaurantes(List<RestauranteDTO> restaurantes) {
-        this.restaurantes = restaurantes;
+    /**
+     * @param restaurantes the restaurantes to set
+     */
+    public void setRestaurante(List<RestauranteDTO> restaurantes) {
+        this.restaurante = restaurante;
     }
+
     
 }

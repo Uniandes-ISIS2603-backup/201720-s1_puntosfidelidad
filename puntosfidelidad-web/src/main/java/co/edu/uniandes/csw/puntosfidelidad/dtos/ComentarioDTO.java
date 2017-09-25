@@ -19,6 +19,10 @@ public class ComentarioDTO {
     
     private Integer calificacion;
     
+    public ComentarioDTO(){
+        
+    }
+    
     public ComentarioDTO(ComentarioEntity entity){
         this.id = entity.getId();
         this.comentario = entity.getComentario();

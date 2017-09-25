@@ -35,7 +35,6 @@ public class AdministradorDTO {
         
         this.usuario = administrador.getUsuario();
         this.contrasena = administrador.getContrasena();
-        
     }
     
     /**
