@@ -28,31 +28,9 @@ public class TarjetaDeCreditoDetailDTO extends TarjetaDeCreditoDTO{
      *
      */
     public TarjetaDeCreditoDetailDTO(TarjetaDeCreditoEntity entity) {
-        
         super(entity);
-        
-        if (entity != null) {            
-            cliente = new ClienteDTO(entity.getCliente());
-        }
     }
     
-     /**
-     * Convierte un objeto TarjetaDeCreditoDetailDTO a TarjetaDeCreditoEntity incluyendo los
-     * atributos de TarjetaDeCreditoDTO.
-     *
-     * @return Nueva objeto TarjetaDeCreditoEntity.
-     *
-     */
-    @Override
-    public TarjetaDeCreditoEntity toEntity() {
-        TarjetaDeCreditoEntity entity = super.toEntity();
-        
-        if (getCliente() != null) {
-            entity.setCliente(getCliente().toEntity());
-        }       
-
-        return entity;
-    }
 
     /**
      * @return the cliente

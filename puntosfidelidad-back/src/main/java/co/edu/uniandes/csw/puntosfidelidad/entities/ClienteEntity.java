@@ -1,3 +1,4 @@
+
 package co.edu.uniandes.csw.puntosfidelidad.entities;
 
 import java.io.Serializable;
