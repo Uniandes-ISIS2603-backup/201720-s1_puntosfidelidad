@@ -6,12 +6,13 @@
 package co.edu.uniandes.csw.puntosfidelidad.dtos;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity;
+import java.io.Serializable;
 
 /**
  *
  * @author cass_
  */
-public class ComentarioDTO {
+public class ComentarioDTO implements Serializable{
     
     private Long id;
     

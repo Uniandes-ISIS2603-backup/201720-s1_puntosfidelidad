@@ -6,13 +6,13 @@
 package co.edu.uniandes.csw.puntosfidelidad.dtos;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.UbicacionEntity;
-import java.util.Date;
+import java.io.Serializable;
 
 /**
  *
  * @author cass_
  */
-public class UbicacionDTO {
+public class UbicacionDTO implements Serializable{
     
     private String direccion;
     

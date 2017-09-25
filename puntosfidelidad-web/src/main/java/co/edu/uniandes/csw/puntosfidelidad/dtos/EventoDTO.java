@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.puntosfidelidad.dtos;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.EventoEntity;
+import java.io.Serializable;
 import java.util.Calendar;
 
 
@@ -13,7 +14,7 @@ import java.util.Calendar;
  *
  * @author cass_
  */
-public class EventoDTO {
+public class EventoDTO implements Serializable{
     
     private String nombre;
     

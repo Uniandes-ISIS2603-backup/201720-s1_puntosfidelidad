@@ -6,13 +6,13 @@
 package co.edu.uniandes.csw.puntosfidelidad.dtos;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.FotoEntity;
-import java.util.Calendar;
+import java.io.Serializable;
 
 /**
  *
  * @author cass_
  */
-public class FotoDTO {
+public class FotoDTO implements Serializable{
     
     private String url;
     

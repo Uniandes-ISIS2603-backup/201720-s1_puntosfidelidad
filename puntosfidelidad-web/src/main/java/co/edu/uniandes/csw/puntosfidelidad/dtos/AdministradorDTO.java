@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.puntosfidelidad.dtos;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.AdministradorEntity;
+import java.io.Serializable;
 
 /**
  * DTO = Objeto de transferencia de datos. 
@@ -16,7 +17,7 @@ import co.edu.uniandes.csw.puntosfidelidad.entities.AdministradorEntity;
  * (Seguir el UML/Entity y la documentación para la creación de los DTO's)
  * @author ja.manrique
  */
-public class AdministradorDTO {
+public class AdministradorDTO implements Serializable{
     
     private String usuario;
     private String contrasena;

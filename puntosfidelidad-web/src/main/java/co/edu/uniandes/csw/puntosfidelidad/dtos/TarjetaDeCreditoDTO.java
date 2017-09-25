@@ -6,13 +6,13 @@
 package co.edu.uniandes.csw.puntosfidelidad.dtos;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaDeCreditoEntity;
-import java.util.Date;
+import java.io.Serializable;
 
 /**
  *
  * @author cass_
  */
-public class TarjetaDeCreditoDTO {
+public class TarjetaDeCreditoDTO implements Serializable{
     
     private Long id;
     
