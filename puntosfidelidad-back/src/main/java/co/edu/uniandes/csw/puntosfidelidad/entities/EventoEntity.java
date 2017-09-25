@@ -5,11 +5,13 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -20,7 +22,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author cass_
  */
 @Entity
-public class EventoEntity {
+public class EventoEntity implements Serializable{
     
     @Id
     private String nombre;
@@ -32,35 +34,14 @@ public class EventoEntity {
     private String descripcion;
     
     @PodamExclude
-    @ManyToOne
-    private RestauranteEntity restaurante;
+    @ManyToMany //[Ja.manrique] Cambio de ManyToOne a ManyToMany para dejar acorde al UML
+                //Tristemente los test's se putean por esto, hay que corregirlos
+    private List<RestauranteEntity> restaurante;
     
     @PodamExclude
-    @OneToOne
-    private UbicacionEntity ubicacion ;
-    
-//    private List<RestauranteEntity> restaurante = new List<RestauranteEntity>(); 
-    
-//    private List<UbicacionEntity> ubicaciones = new ArrayList<UbicacionEntity>();
-
-    public RestauranteEntity getRestaurante() {
-        return restaurante;
-    }
-
-    public void setRestaurante(RestauranteEntity restaurante) {
-        this.restaurante = restaurante;
-    }
-
-    public UbicacionEntity getUbicacion() {
-        return ubicacion;
-    }
-
-    public void setUbicacion(UbicacionEntity ubicacion) {
-        this.ubicacion = ubicacion;
-    }
-
-
-    
+    @ManyToMany //[Ja.manrique] Cambio de ManyToOne a ManyToMany para dejar acorde al UML
+                //Tristemente los test's se putean por esto, hay que corregirlos
+    private List<UbicacionEntity> ubicaciones;    
     
     /**
      * @return the nombre
@@ -118,31 +99,31 @@ public class EventoEntity {
         this.descripcion = descripcion;
     }
 
-//    /**
-//     * @return the restaurante
-//     */
-//    public List<RestauranteEntity> getRestaurantes() {
-//        return restaurante;
-//    }
-//
-//    /**
-//     * @param restaurante the restaurante to set
-//     */
-//    public void setRestaurantes(List<RestauranteEntity> restaurante) {
-//        this.restaurante = restaurante;
-//    }
+    /**
+     * @return the restaurante
+     */
+    public List<RestauranteEntity> getRestaurantes() {
+        return restaurante;
+    }
 
-//    /**
-//     * @return the ubicaciones
-//     */
-//    public List<UbicacionEntity> getUbicaciones() {
-//        return ubicaciones;
-//    }
-//
-//    /**
-//     * @param ubicaciones the ubicaciones to set
-//     */
-//    public void setUbicaciones(List<UbicacionEntity> ubicaciones) {
-//        this.ubicaciones = ubicaciones;
-//    }
+    /**
+     * @param restaurante the restaurante to set
+     */
+    public void setRestaurantes(List<RestauranteEntity> restaurante) {
+        this.restaurante = restaurante;
+    }
+
+    /**
+     * @return the ubicaciones
+     */
+    public List<UbicacionEntity> getUbicaciones() {
+        return ubicaciones;
+    }
+
+    /**
+     * @param ubicaciones the ubicaciones to set
+     */
+    public void setUbicaciones(List<UbicacionEntity> ubicaciones) {
+        this.ubicaciones = ubicaciones;
+    }
 }

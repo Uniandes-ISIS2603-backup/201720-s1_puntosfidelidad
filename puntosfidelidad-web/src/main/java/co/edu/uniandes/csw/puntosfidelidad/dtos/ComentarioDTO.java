@@ -25,6 +25,11 @@ public class ComentarioDTO {
         this.calificacion = entity.getCalificacion();
     }
     
+    public ComentarioDTO()
+    {
+        
+    }
+    
     public ComentarioEntity toEntity(){
         ComentarioEntity entity = new ComentarioEntity();
         entity.setComentario(this.getComentario());
