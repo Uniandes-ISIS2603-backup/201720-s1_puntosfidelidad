@@ -1,6 +1,5 @@
 package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
-import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
 import java.util.List;
 import java.util.logging.Level;
@@ -39,9 +38,9 @@ public class RecargaPersistence {
         em.remove(entity);
     }
 
-   public RecargaEntity findWithUser(String clienteusuario, Long reviewid) {
+   public RecargaEntity findWithUser(String usuarioCliente, Long reviewid) {
         TypedQuery<RecargaEntity> q = em.createQuery("select p from RecargaEntity p where (p.cliente.usuario = :clienteusuario) and (p.id = :reviewid)", RecargaEntity.class);
-        q.setParameter("clienteusuario", clienteusuario);
+        q.setParameter("clienteusuario", usuarioCliente);
         q.setParameter("reviewid", reviewid);
         return q.getSingleResult();
     }

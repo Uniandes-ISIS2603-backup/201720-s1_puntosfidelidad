@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Sun Sep 24 04:31:31 COT 2017:
- Iniciando instancia a816c00e-015e-b33a-3b31-00000c4f6c30 de Derby, versión The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
-en el directorio de base de datos C:\Users\ja.manrique\AppData\Local\Temp\gfembed802087535817532408tmp\lib\databases\embedded_default con el cargador de clases sun.misc.Launcher$AppClassLoader@6bc7c054
-Cargado desde file:/C:/Users/ja.manrique/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.1/glassfish-embedded-all-4.1.jar
+Sun Sep 24 21:15:16 COT 2017:
+ Iniciando instancia a816c00e-015e-b6d1-3026-00000af0e5f0 de Derby, versión The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
+en el directorio de base de datos C:\Users\lv.vanegas10\AppData\Local\Temp\gfembed7672397496402964309tmp\lib\databases\embedded_default con el cargador de clases sun.misc.Launcher$AppClassLoader@6bc7c054
+Cargado desde file:/C:/Users/lv.vanegas10/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.1/glassfish-embedded-all-4.1.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_144-b01
-user.dir=C:\Users\ja.manrique\Documents\NetBeansProjects\s1_puntosfidelidad\puntosfidelidad-back
+user.dir=C:\Users\lv.vanegas10\Documents\Talleres Desarrollo\HPTAAAS\s1_puntosfidelidad\puntosfidelidad-back
 os.name=Windows 7
 os.arch=amd64
 os.version=6.1
