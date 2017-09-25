@@ -1,4 +1,3 @@
-
 package co.edu.uniandes.csw.puntosfidelidad.entities;
 
 import java.io.Serializable;
@@ -43,7 +42,7 @@ public class ClienteEntity implements Serializable{
     private List<RecargaEntity> recargas = new ArrayList<>();
 
     @PodamExclude
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)   
     private List<TarjetaDeCreditoEntity> tarjetasDeCredito = new ArrayList<>();
     
     /**

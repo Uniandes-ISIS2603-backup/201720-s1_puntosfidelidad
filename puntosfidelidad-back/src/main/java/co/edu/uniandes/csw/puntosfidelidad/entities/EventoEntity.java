@@ -32,12 +32,35 @@ public class EventoEntity {
     private String descripcion;
     
     @PodamExclude
-    @OneToMany
-    private List<RestauranteEntity> restaurantes;
+    @ManyToOne
+    private RestauranteEntity restaurante;
     
     @PodamExclude
-    @OneToMany
-    private List <UbicacionEntity> ubicaciones ;
+    @OneToOne
+    private UbicacionEntity ubicacion ;
+    
+//    private List<RestauranteEntity> restaurante = new List<RestauranteEntity>(); 
+    
+//    private List<UbicacionEntity> ubicaciones = new ArrayList<UbicacionEntity>();
+
+    public RestauranteEntity getRestaurante() {
+        return restaurante;
+    }
+
+    public void setRestaurante(RestauranteEntity restaurante) {
+        this.restaurante = restaurante;
+    }
+
+    public UbicacionEntity getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(UbicacionEntity ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+
+    
     
     /**
      * @return the nombre
@@ -95,31 +118,31 @@ public class EventoEntity {
         this.descripcion = descripcion;
     }
 
-    /**
-     * @return the restaurantes
-     */
-    public List<RestauranteEntity> getRestaurantes() {
-        return restaurantes;
-    }
+//    /**
+//     * @return the restaurante
+//     */
+//    public List<RestauranteEntity> getRestaurantes() {
+//        return restaurante;
+//    }
+//
+//    /**
+//     * @param restaurante the restaurante to set
+//     */
+//    public void setRestaurantes(List<RestauranteEntity> restaurante) {
+//        this.restaurante = restaurante;
+//    }
 
-    /**
-     * @param restaurantes the restaurantes to set
-     */
-    public void setRestaurantes(List<RestauranteEntity> restaurantes) {
-        this.restaurantes = restaurantes;
-    }
-
-    /**
-     * @return the ubicaciones
-     */
-    public List <UbicacionEntity> getUbicaciones() {
-        return ubicaciones;
-    }
-
-    /**
-     * @param ubicaciones the ubicaciones to set
-     */
-    public void setUbicaciones(List <UbicacionEntity> ubicaciones) {
-        this.ubicaciones = ubicaciones;
-    }
+//    /**
+//     * @return the ubicaciones
+//     */
+//    public List<UbicacionEntity> getUbicaciones() {
+//        return ubicaciones;
+//    }
+//
+//    /**
+//     * @param ubicaciones the ubicaciones to set
+//     */
+//    public void setUbicaciones(List<UbicacionEntity> ubicaciones) {
+//        this.ubicaciones = ubicaciones;
+//    }
 }
