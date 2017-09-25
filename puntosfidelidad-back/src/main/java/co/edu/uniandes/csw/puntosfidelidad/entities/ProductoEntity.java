@@ -71,22 +71,4 @@ public class ProductoEntity implements Serializable {
     public void setValorPuntos(int valorPuntos) {
         this.valorPuntos = valorPuntos;
     }
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (this.getId() != null && ((ProductoEntity) obj).getId() != null) {
-            return this.getId().equals(((ProductoEntity) obj).getId());
-        }
-        return super.equals(obj);
-    }
-
-    @Override
-    public int hashCode() {
-        if (this.getId() != null) {
-            return this.getId().hashCode();
-        }
-        return super.hashCode();
-    }
-    
-    
 }

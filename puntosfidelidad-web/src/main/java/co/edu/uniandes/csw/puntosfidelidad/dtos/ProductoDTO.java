@@ -6,13 +6,13 @@
 package co.edu.uniandes.csw.puntosfidelidad.dtos;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
-import java.util.Calendar;
+import java.io.Serializable;
 
 /**
  *
  * @author cass_
  */
-public class ProductoDTO {
+public class ProductoDTO implements Serializable{
     
        
     private String nombre;

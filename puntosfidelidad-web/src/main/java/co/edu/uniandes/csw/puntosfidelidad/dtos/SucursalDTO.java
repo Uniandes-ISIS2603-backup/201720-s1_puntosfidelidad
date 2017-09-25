@@ -6,13 +6,14 @@
 package co.edu.uniandes.csw.puntosfidelidad.dtos;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author cass_
  */
-public class SucursalDTO {
+public class SucursalDTO implements Serializable{
 
     private Long id;
     
