@@ -28,11 +28,21 @@ public class ComentarioResource {
     @Inject
     ComentarioLogic logic;
     
+    /**
+     *  Obtiene una lista de todos los comentarios
+     *  en representación detailed
+     */
     @GET
     public List<ComentarioDetailDTO> getComentarios()
     {
         return ListEntityToDetailDTO(logic.getComentarios());
     }
+    
+    /**
+     * Retorna el comentario con el id especificado 
+     * Si el comentario con el id especificado no existe,
+     * se le notifica al usuario
+     */
     
     @GET
     @Path("{id: \\d+}")
@@ -49,6 +59,10 @@ public class ComentarioResource {
         }       
     }
     
+    /**
+     * Actualiza un comentario a partir del DTO dado
+     * por parámetro, retorna el nuevo estado del comentario
+     */
     @PUT
     @Path("{id: \\d+}")
     public ComentarioDetailDTO putComentario(@PathParam("id") Long id, ComentarioDTO nuevo)
@@ -57,6 +71,10 @@ public class ComentarioResource {
     }
     
     
+    /**
+     * A partir de una lista de entidades, retorna una lista de DTO's
+     * con la información de las entidades que entraron por parámetro
+     */
     
     private List<ComentarioDetailDTO> ListEntityToDetailDTO(List<ComentarioEntity> entities)
     {

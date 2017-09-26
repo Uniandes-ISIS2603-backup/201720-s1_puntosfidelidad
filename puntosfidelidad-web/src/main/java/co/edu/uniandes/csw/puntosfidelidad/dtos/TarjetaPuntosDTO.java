@@ -19,10 +19,10 @@ public class TarjetaPuntosDTO implements Serializable{
     private Integer montoActual;
     private Integer numPuntos;
     
-    //Constructor vacío (¡¡¡OLBIGATORIO!!!)
+    
     public TarjetaPuntosDTO()
     {
-        
+        //Método vacio obligatorio.        
     }
     
     /**

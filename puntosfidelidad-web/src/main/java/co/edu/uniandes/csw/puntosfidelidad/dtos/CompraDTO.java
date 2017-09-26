@@ -17,10 +17,10 @@ public class CompraDTO implements Serializable{
     private Long id;
     private boolean pagoConpuntos;
     
-    //Constructor vacío (¡¡¡OLBIGATORIO!!!)
+   
     public CompraDTO()
     {
-        
+        //Método vacio obligatorio.
     }
     
     /**

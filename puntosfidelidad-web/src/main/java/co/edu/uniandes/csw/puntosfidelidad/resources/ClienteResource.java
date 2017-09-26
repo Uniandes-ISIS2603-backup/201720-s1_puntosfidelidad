@@ -137,6 +137,47 @@ public class ClienteResource {
     }
     
     /**
+     * Consulta de Compras
+     * @param usuario
+     * @return ComprasResource
+     */
+    @Path("{usuario: [a-zA-Z][a-zA-Z]*}/compras")
+    public Class<ClienteCompraResource> getClienteCompraResource(@PathParam("usuario") String usuario) {
+        ClienteEntity entity = clienteLogic.getCliente(usuario);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /cleinte/" + usuario + "/compras no existe.", 404);
+        }
+        return ClienteCompraResource.class;
+    }
+    
+    /**
+     * Consulta de Comentarios
+     * @param usuario
+     * @return ComentariosResource
+     */
+    @Path("{usuario: [a-zA-Z][a-zA-Z]*}/comentarios")
+    public Class<ClienteComentarioResource> getClienteComentarioResource(@PathParam("usuario") String usuario) {
+        ClienteEntity entity = clienteLogic.getCliente(usuario);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /cliente/" + usuario + "/coemntarios no existe.", 404);
+        }
+        return ClienteComentarioResource.class;
+    }
+    
+    /**
+     * Consulta de TarjetaPuntos
+     * @param usuario
+     * @return TarjetaPuntosResource
+     */
+    @Path("{usuario: [a-zA-Z][a-zA-Z]*}/tarjetasPuntos")
+    public Class<ClienteTarjetaPuntosResource> getClienteTarjetaPuntosResource(@PathParam("usuario") String usuario) {
+        ClienteEntity entity = clienteLogic.getCliente(usuario);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /cliente/" + usuario + "/coemntarios no existe.", 404);
+        }
+        return ClienteTarjetaPuntosResource.class;
+    }
+    /**
      * Lista de entidades a lista de DTOS
      * @param entityList
      * @return lista de DTOS

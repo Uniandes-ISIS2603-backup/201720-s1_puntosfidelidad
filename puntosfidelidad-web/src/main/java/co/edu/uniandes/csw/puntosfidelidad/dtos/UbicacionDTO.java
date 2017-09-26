@@ -21,7 +21,7 @@ public class UbicacionDTO implements Serializable{
     private Long longitud;
     
     public UbicacionDTO(){
-    
+        //Método vacio obligatorio.   
     }
     
     public UbicacionDTO(UbicacionEntity entity){

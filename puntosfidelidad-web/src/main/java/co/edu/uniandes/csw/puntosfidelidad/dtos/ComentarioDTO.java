@@ -20,17 +20,26 @@ public class ComentarioDTO implements Serializable{
     
     private Integer calificacion;
     
+    /**
+     * Constructir de comentarioDTO a partir de un Entity 
+     */
     public ComentarioDTO(ComentarioEntity entity){
         this.id = entity.getId();
         this.comentario = entity.getComentario();
         this.calificacion = entity.getCalificacion();
     }
     
+    /**
+     * Constructor vacío para inicialización de JaxRS
+     */
     public ComentarioDTO()
     {
-        
+        //Método vacio obligatorio.
     }
     
+    /**
+     * Método que convierte un ComentarioDTO en un entityDTO 
+     */
     public ComentarioEntity toEntity(){
         ComentarioEntity entity = new ComentarioEntity();
         entity.setComentario(this.getComentario());

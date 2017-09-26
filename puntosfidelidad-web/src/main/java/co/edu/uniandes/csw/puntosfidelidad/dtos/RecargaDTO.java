@@ -22,7 +22,7 @@ public class RecargaDTO implements Serializable{
     private Double valor;
     
     public RecargaDTO(){
-    
+        //Método vacio obligatorio.    
     }
     
     public RecargaDTO(RecargaEntity entity){
