@@ -12,6 +12,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -43,7 +44,17 @@ public class RestauranteEntity implements Serializable{
     @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductoEntity> productos = new ArrayList<>();
 
-    
+    @PodamExclude
+    @ManyToOne
+    private AdministradorEntity administrador;
+
+    public AdministradorEntity getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(AdministradorEntity administrador) {
+        this.administrador = administrador;
+    }
     
 
     public String getNit() {
