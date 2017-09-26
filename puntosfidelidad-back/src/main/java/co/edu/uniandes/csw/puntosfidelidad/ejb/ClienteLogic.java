@@ -1,6 +1,8 @@
 package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaDeCreditoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
@@ -255,11 +257,14 @@ public class ClienteLogic {
      * @param usuario Identificador de la instancia de cliente
      * @return Colección de instancias de TarjetaPuntosEntity asociadas a la instancia
      * de cliente
+     * @throws co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException
      * 
      */
-    public List<TarjetaPuntosEntity> listTarjetasPuntos(String usuario) {
+    public List<TarjetaPuntosEntity> listTarjetasPuntos(String usuario) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los Tarjetas de Credito del usuario con id = {0}", usuario);
-        return getCliente(usuario).getTarjetasPuntos();
+        List<TarjetaPuntosEntity> lista= getCliente(usuario).getTarjetasPuntos();
+        if(lista.isEmpty()) throw new BusinessLogicException("El cliente que consulta aún no tiene tarjetas de puntos");
+        return lista;
     }
 
     /**
@@ -326,5 +331,169 @@ public class ClienteLogic {
         TarjetaPuntosEntity tarjetaEntity = new TarjetaPuntosEntity();
         tarjetaEntity.setId(tarjetaId);
         entity.getTarjetasPuntos().remove(tarjetaEntity);
+    }
+    
+     /**
+     * Obtiene una colección de instancias de CompraEntity asociadas a una
+     * instancia de Cliente
+     *
+     * @param usuario Identificador de la instancia de Cliente
+     * @return Colección de instancias de CompraEntity asociadas a la instancia
+     * de Cliente
+     * @throws co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException
+     * 
+     */
+    public List<CompraEntity> listCompras(String usuario) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los autores del libro con id = {0}", usuario);
+        List<CompraEntity> lista= getCliente(usuario).getCompras();
+        if(lista.isEmpty()) throw new BusinessLogicException("El cliente que consulta aún no tiene compras");
+        return lista;
+    }
+
+    /**
+     * Obtiene una instancia de CompraEntity asociada a una instancia de Cliente
+     *
+     * @param usuario Identificador de la instancia de Cliente
+     * @param compraId Identificador de la instancia de Compra
+     * @return      * 
+     */
+    public CompraEntity getCompra(String usuario, Long compraId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar un autor del libro con id = {0}", usuario);
+        List<CompraEntity> list = getCliente(usuario).getCompras();
+        CompraEntity compraEntity = new CompraEntity();
+        compraEntity.setId(compraId);
+        int index = list.indexOf(compraEntity);
+        if (index >= 0) {
+            return list.get(index);
+        }
+        return null;
+    }
+
+    /**
+     * Asocia un Compra existente a un Cliente
+     *
+     * @param usuario Identificador de la instancia de Cliente
+     * @param compraId Identificador de la instancia de Compra
+     * @return Instancia de CompraEntity que fue asociada a Cliente
+     * 
+     */
+    public CompraEntity addCompra(String usuario, Long compraId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de asociar un autor al libro con id = {0}", usuario);
+        ClienteEntity bookEntity = getCliente(usuario);
+        CompraEntity compraEntity = new CompraEntity();
+        compraEntity.setId(compraId);
+        bookEntity.getCompras().add(compraEntity);
+        return getCompra(usuario, compraId);
+    }
+
+    /**
+     * Remplaza las instancias de Compra asociadas a una instancia de Cliente
+     *
+     * @param usuario Identificador de la instancia de Cliente
+     * @param list Colección de instancias de CompraEntity a asociar a instancia
+     * de Cliente
+     * @return Nueva colección de CompraEntity asociada a la instancia de Cliente
+     * 
+     */
+    public List<CompraEntity> replaceCompras(String usuario, List<CompraEntity> list) {
+        LOGGER.log(Level.INFO, "Inicia proceso de reemplazar un autor del libro con id = {0}", usuario);
+        ClienteEntity bookEntity = getCliente(usuario);
+        bookEntity.setCompras(list);
+        return bookEntity.getCompras();
+    }
+
+    /**
+     * Desasocia un Compra existente de un Cliente existente
+     *
+     * @param usuario Identificador de la instancia de Cliente
+     * @param compraId Identificador de la instancia de Compra
+     * 
+     */
+    public void removeCompra(String usuario, Long compraId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar un autor del libro con id = {0}", usuario);
+        ClienteEntity entity = getCliente(usuario);
+        CompraEntity compraEntity = new CompraEntity();
+        compraEntity.setId(compraId);
+        entity.getCompras().remove(compraEntity);
+    }
+    
+    /**
+     * Obtiene una colección de instancias de ComentarioEntity asociadas a una
+     * instancia de Cliente
+     * @param usuario Identificador de la instancia de Cliente
+     * @return Colección de instancias de ComentarioEntity asociadas a la instancia
+     * de Cliente
+     * @throws co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException
+    */
+    public List<ComentarioEntity> listComentarios(String usuario) throws BusinessLogicException {
+        List<ComentarioEntity> lista= getCliente(usuario).getComentarios();
+        if(lista.isEmpty()) throw new BusinessLogicException("El cliente que consulta aún no tiene comentarios");
+        return lista;
+    }
+
+    /**
+     * Obtiene una instancia de ComentarioEntity asociada a una instancia de Cliente
+     * @param usuario Identificador de la instancia de Cliente
+     * @param comentarioId Identificador de la instancia de Comentario
+     * @return entity 
+     */
+    public ComentarioEntity getComentario(String usuario, Long comentarioId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar un autor del libro con id = {0}", usuario);
+        List<ComentarioEntity> list = getCliente(usuario).getComentarios();
+        ComentarioEntity comentariosEntity = new ComentarioEntity();
+        comentariosEntity.setId(comentarioId);
+        int index = list.indexOf(comentariosEntity);
+        if (index >= 0) {
+            return list.get(index);
+        }
+        return null;
+    }
+
+    /**
+     * Asocia un Comentario existente a un Cliente
+     *
+     * @param usuario Identificador de la instancia de Cliente
+     * @param comentarioId Identificador de la instancia de Comentario
+     * @return Instancia de ComentarioEntity que fue asociada a Cliente
+     * 
+     */
+    public ComentarioEntity addComentario(String usuario, Long comentarioId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de asociar un autor al libro con id = {0}", usuario);
+        ClienteEntity bookEntity = getCliente(usuario);
+        ComentarioEntity comentariosEntity = new ComentarioEntity();
+        comentariosEntity.setId(comentarioId);
+        bookEntity.getComentarios().add(comentariosEntity);
+        return getComentario(usuario, comentarioId);
+    }
+
+    /**
+     * Remplaza las instancias de Comentario asociadas a una instancia de Cliente
+     *
+     * @param usuario Identificador de la instancia de Cliente
+     * @param list Colección de instancias de ComentarioEntity a asociar a instancia
+     * de Cliente
+     * @return Nueva colección de ComentarioEntity asociada a la instancia de Cliente
+     * 
+     */
+    public List<ComentarioEntity> replaceComentarios(String usuario, List<ComentarioEntity> list) {
+        LOGGER.log(Level.INFO, "Inicia proceso de reemplazar un autor del libro con id = {0}", usuario);
+        ClienteEntity bookEntity = getCliente(usuario);
+        bookEntity.setComentarios(list);
+        return bookEntity.getComentarios();
+    }
+
+    /**
+     * Desasocia un Comentario existente de un Cliente existente
+     *
+     * @param usuario Identificador de la instancia de Cliente
+     * @param comentarioId Identificador de la instancia de Comentario
+     * 
+     */
+    public void removeComentario(String usuario, Long comentarioId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar un autor del libro con id = {0}", usuario);
+        ClienteEntity entity = getCliente(usuario);
+        ComentarioEntity comentariosEntity = new ComentarioEntity();
+        comentariosEntity.setId(comentarioId);
+        entity.getComentarios().remove(comentariosEntity);
     }
 }

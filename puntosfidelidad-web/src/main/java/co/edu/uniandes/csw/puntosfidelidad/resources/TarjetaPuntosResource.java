@@ -39,8 +39,7 @@ public class TarjetaPuntosResource {
     @GET
     @Path("{id: \\d+}")
     public TarjetaPuntosDetailDTO getTarjeta(@PathParam("id") Long id)
-    {
-        
+    {        
         return new TarjetaPuntosDetailDTO(logic.getTarjetaPuntos(id));
     }
     

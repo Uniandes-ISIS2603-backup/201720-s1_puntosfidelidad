@@ -22,11 +22,15 @@ public class ComentarioDetailDTO extends ComentarioDTO{
     
     private List<FotoDTO> fotos;
     
+    /**
+     * Constructor vacío, heredado para inicialización de JaxRS
+     */
+    
     public ComentarioDetailDTO(){     
         super();
     }
-    
-        /**
+       
+    /**
      * Crea un objeto ComentarioDetailDTO a partir de un objeto ComentarioEntity
      * incluyendo los atributos de ComentarioDTO.
      *
