@@ -89,7 +89,13 @@ public class ClienteDTO implements Serializable{
      */
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }    
+
+    /**
+     * @param contrasena the contrasena to set
+     */
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
-    
     
 }

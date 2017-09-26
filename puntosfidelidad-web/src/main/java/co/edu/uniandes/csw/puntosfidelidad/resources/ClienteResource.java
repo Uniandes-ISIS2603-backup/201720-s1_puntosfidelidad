@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.puntosfidelidad.resources;
 
 
+import co.edu.uniandes.csw.puntosfidelidad.dtos.ClienteDTO;
 import co.edu.uniandes.csw.puntosfidelidad.dtos.ClienteDetailDTO;
 import co.edu.uniandes.csw.puntosfidelidad.ejb.ClienteLogic;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
@@ -54,8 +55,8 @@ public class ClienteResource {
      * @throws BusinessLogicException 
      */
     @GET
-    @Path("{usuario: [a-zA-Z][a-zA-Z]*}}")   
-    public ClienteDetailDTO getBook(@PathParam("usuario") String usuario) throws BusinessLogicException {
+    @Path("{usuario: [a-zA-Z][a-zA-Z]*}")   
+    public ClienteDetailDTO getCliente(@PathParam("usuario") String usuario) throws BusinessLogicException {
         ClienteEntity entity = clienteLogic.getCliente(usuario);
         if (entity == null) {
             throw new WebApplicationException("El recurso /cliente/" + usuario + " no existe.", 404);
@@ -70,8 +71,8 @@ public class ClienteResource {
      * @throws BusinessLogicException
      */
     @POST
-    public ClienteDetailDTO createBook(ClienteDetailDTO cliente) throws BusinessLogicException {        
-         return new ClienteDetailDTO(clienteLogic.createcliente(cliente.toEntity()));
+    public ClienteDTO createCliente(ClienteDTO cliente) throws BusinessLogicException {        
+         return new ClienteDTO(clienteLogic.createcliente(cliente.toEntity()));
     }
 
     /**
@@ -82,8 +83,8 @@ public class ClienteResource {
      * @throws BusinessLogicException
      */
     @PUT
-    @Path("{usuario: [a-zA-Z][a-zA-Z]*}}") 
-    public ClienteDetailDTO updateBook(@PathParam("usuario") String usuario, ClienteDetailDTO cliente) throws BusinessLogicException {
+    @Path("{usuario: [a-zA-Z][a-zA-Z]*}") 
+    public ClienteDetailDTO updateCliente(@PathParam("usuario") String usuario, ClienteDetailDTO cliente) throws BusinessLogicException {
         cliente.setUsuario(usuario);
         ClienteEntity entity = clienteLogic.getCliente(usuario);
         if (entity == null) {
@@ -92,9 +93,14 @@ public class ClienteResource {
         return new ClienteDetailDTO(clienteLogic.updateCliente(usuario, cliente.toEntity()));
     }
 
+    /**
+     * Borra un usuario
+     * @param usuario
+     * @throws BusinessLogicException
+     */
     @DELETE
-    @Path("{usuario: [a-zA-Z][a-zA-Z]*}}")
-    public void deleteBook(@PathParam("usuario") String usuario) throws BusinessLogicException {
+    @Path("{usuario: [a-zA-Z][a-zA-Z]*}")
+    public void deleteCliente(@PathParam("usuario") String usuario) throws BusinessLogicException {
         ClienteEntity entity = clienteLogic.getCliente(usuario);
         if (entity == null) {
             throw new WebApplicationException("El recurso /cliente/" + usuario + " no existe.", 404);
@@ -102,6 +108,39 @@ public class ClienteResource {
         clienteLogic.deleteCliente(usuario);
     }
     
+    /**
+     * Consulta de tarjetasDeCredito
+     * @param usuario
+     * @return TarjetaDeCreditoResource
+     */
+    @Path("{usuario: [a-zA-Z][a-zA-Z]*}/tarjetasDeCredito")
+    public Class<TarjetaDeCreditoResource> getTarjetaDeCreditoResource(@PathParam("usuario") String usuario) {
+        ClienteEntity entity = clienteLogic.getCliente(usuario);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /clientes/" + usuario + "/tarjetasDeCredito no existe.", 404);
+        }
+        return TarjetaDeCreditoResource.class;
+    }
+    
+    /**
+     * Consulta de Recargas
+     * @param usuario
+     * @return RecargaResource
+     */
+    @Path("{usuario: [a-zA-Z][a-zA-Z]*}/recargas")
+    public Class<RecargaResource> getRecargaResource(@PathParam("usuario") String usuario) {
+        ClienteEntity entity = clienteLogic.getCliente(usuario);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /clientes/" + usuario + "/tarjetasDeCredito no existe.", 404);
+        }
+        return RecargaResource.class;
+    }
+    
+    /**
+     * Lista de entidades a lista de DTOS
+     * @param entityList
+     * @return lista de DTOS
+     */
     private List<ClienteDetailDTO> listClienteEntity2DetailDTO(List<ClienteEntity> entityList) {
         List<ClienteDetailDTO> list = new ArrayList<>();
         for (ClienteEntity entity : entityList) {

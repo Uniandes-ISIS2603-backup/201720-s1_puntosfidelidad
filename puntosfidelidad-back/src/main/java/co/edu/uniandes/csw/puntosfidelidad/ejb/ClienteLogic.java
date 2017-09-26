@@ -43,8 +43,17 @@ public class ClienteLogic {
 
     public ClienteEntity createcliente(ClienteEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de cliente");
+        if(entity.getUsuario()==null){
+            throw new BusinessLogicException("El usuario no es valido: " + entity.getUsuario());
+        }
+        if(persistence.find(entity.getUsuario())!=null){
+            throw new BusinessLogicException("El usuario" + entity.getUsuario() + "ya existe");
+        } 
         if (!validateContrasena(entity.getContrasena())) {
-            throw new BusinessLogicException("La contraseña no es valida");
+            throw new BusinessLogicException("La contraseña no es valida: " + entity.getContrasena());
+        }
+        if(entity.getNombre()==null){
+            entity.setNombre(entity.getUsuario());
         }
         persistence.create(entity);
         LOGGER.info("Termina proceso de creación de cliente");
@@ -57,8 +66,11 @@ public class ClienteLogic {
             throw new BusinessLogicException("No es posible cambiar el usuario");
         }
         if (!validateContrasena(entity.getContrasena())) {
-            throw new BusinessLogicException("La contraseña no es valida");
-        }       
+            throw new BusinessLogicException("La contraseña no es valida: " + entity.getContrasena());
+        }  
+        if(entity.getNombre()==null){
+            entity.setNombre(entity.getUsuario());
+        }
         ClienteEntity newEntity = persistence.update(entity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar cliente con id={0}", entity.getUsuario());
         return newEntity;
