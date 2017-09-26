@@ -29,7 +29,7 @@ public class RestauranteEntity implements Serializable{
     private String tipoComida;
     
     
-     @PodamExclude
+    @PodamExclude
     @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SucursalEntity> sucursales = new ArrayList<>();
 
