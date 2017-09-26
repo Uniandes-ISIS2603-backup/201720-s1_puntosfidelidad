@@ -57,6 +57,7 @@ public class ComentarioResource {
     }
     
     
+    
     private List<ComentarioDetailDTO> ListEntityToDetailDTO(List<ComentarioEntity> entities)
     {
         List<ComentarioDetailDTO> DTOList = new ArrayList<>();
