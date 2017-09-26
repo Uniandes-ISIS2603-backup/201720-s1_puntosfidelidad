@@ -9,9 +9,7 @@ import co.edu.uniandes.csw.puntosfidelidad.dtos.ClienteDetailDTO;
 import co.edu.uniandes.csw.puntosfidelidad.dtos.CompraDetailDTO;
 import co.edu.uniandes.csw.puntosfidelidad.dtos.SucursalDetailDTO;
 import co.edu.uniandes.csw.puntosfidelidad.dtos.TarjetaPuntosDetailDTO;
-import co.edu.uniandes.csw.puntosfidelidad.ejb.ClienteLogic;
 import co.edu.uniandes.csw.puntosfidelidad.ejb.CompraLogic;
-import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import java.util.ArrayList;
@@ -48,7 +46,7 @@ public class CompraResource {
      * @throws BusinessLogicException 
      */
     @GET
-    public List<CompraDetailDTO> getCompra() throws BusinessLogicException {
+    public List<CompraDetailDTO> getCompras() throws BusinessLogicException {
         return listClienteEntity2DetailDTO(compraLogic.getCompras());
     }
     
@@ -88,8 +86,8 @@ public class CompraResource {
     
     /**
      * Actualiza un cliente
-     * @param usuario
-     * @param cliente
+     * @param id
+     * @param dto
      * @return cliente actualizado 
      * @throws BusinessLogicException
      */
@@ -135,7 +133,7 @@ public class CompraResource {
     }
     
     @GET
-    @Path("{id: \\d+}/sucursal")  
+    @Path("{id: \\d+}/sucursales")  
     public SucursalDetailDTO getSucursal(@PathParam("id") Long id) throws BusinessLogicException {
         CompraEntity entity = compraLogic.getCompra(id);
         if (entity == null) {
@@ -145,7 +143,7 @@ public class CompraResource {
     }
     
     @GET
-    @Path("{id: \\d+}/cliente")  
+    @Path("{id: \\d+}/clientes")  
     public ClienteDetailDTO getCliente(@PathParam("id") Long id) throws BusinessLogicException {
         CompraEntity entity = compraLogic.getCompra(id);
         if (entity == null) {
@@ -155,7 +153,7 @@ public class CompraResource {
     }
     
     @GET
-    @Path("{id: \\d+}/tarjetaPuntos")  
+    @Path("{id: \\d+}/tarjetasPuntos")  
     public TarjetaPuntosDetailDTO getTarjetaPuntos(@PathParam("id") Long id) throws BusinessLogicException {
         CompraEntity entity = compraLogic.getCompra(id);
         if (entity == null) {
