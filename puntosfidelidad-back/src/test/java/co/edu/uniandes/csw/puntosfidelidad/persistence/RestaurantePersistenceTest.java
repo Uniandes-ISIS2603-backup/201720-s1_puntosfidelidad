@@ -6,7 +6,10 @@
 package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.AdministradorEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.EventoEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -47,6 +50,12 @@ public class RestaurantePersistenceTest {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(RestauranteEntity.class.getPackage())
                 .addPackage(RestaurantePersistence.class.getPackage())
+                .addPackage(ProductoEntity.class.getPackage())
+                .addPackage(ProductoPersistence.class.getPackage()) 
+                .addPackage(SucursalEntity.class.getPackage())
+                .addPackage(SucursalPersistence.class.getPackage())   
+                .addPackage(EventoEntity.class.getPackage())
+                .addPackage(EventoPersistence.class.getPackage()) 
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -57,6 +66,20 @@ public class RestaurantePersistenceTest {
      */
     @Inject
     private RestaurantePersistence persistence;
+    
+    @Inject
+    private SucursalPersistence sucursalPersistence;
+    
+     @Inject
+    private ProductoPersistence productoPersistence;
+     
+     
+     @Inject
+    private EventoPersistence eventoPersistence;
+     
+     
+     
+    
 
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
@@ -107,12 +130,30 @@ public class RestaurantePersistenceTest {
         for (int i = 0; i < 3; i++) {
             RestauranteEntity entity = factory.manufacturePojo(RestauranteEntity.class);
 
+            List<SucursalEntity> sucursales = new ArrayList<>();
+            List<ProductoEntity> productos = new ArrayList<>();
+            List<EventoEntity> eventos = new ArrayList<>();
+            
+            for(int j = 0; j < 3; j++)
+            {
+                ProductoEntity producto = factory.manufacturePojo(ProductoEntity.class);
+                productoPersistence.create(producto);
+                productos.add(producto);
+            
+                SucursalEntity sucursal = factory.manufacturePojo(SucursalEntity.class);
+                sucursalPersistence.create(sucursal);
+                sucursales.add(sucursal);
+                
+                EventoEntity evento = factory.manufacturePojo(EventoEntity.class);
+                eventoPersistence.create(evento);
+                eventos.add(evento);
+                
             em.persist(entity);
             
             data.add(entity);
         }
     }
-    
+ }
     
     public RestaurantePersistenceTest() {
     }

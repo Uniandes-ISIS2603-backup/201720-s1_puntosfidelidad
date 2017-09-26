@@ -24,19 +24,27 @@ public class RestaurantePersistence {
     @PersistenceContext(unitName = "puntosfidelidadPU")
     protected EntityManager em;
     
-    /*
-    Otro commit
-    */
+   
     
-    /*
-    Otro add
-    */
-    
-    public RestauranteEntity find(String usuario) {
+      /**
+     * Busca si hay algun Restaurante con el usuario que se envía de argumento
+     *
+     * @param name: Nombre del restaurante que se está buscando
+     * @return null si no existe ningun cliente con el nombre del argumento.
+     * Si existe alguno devuelve la primera.
+     */
+    public RestauranteEntity find(String nit) {
         
-        return em.find(RestauranteEntity.class, usuario);
+        return em.find(RestauranteEntity.class, nit);
     }
     
+     /**
+     * Busca si hay algun Restaurante con el nombre que se envía de argumento
+     *
+     * @param name: Nombre del restaurante que se está buscando
+     * @return null si no existe ningun cliente con el nombre del argumento.
+     * Si existe alguno devuelve la primera.
+     */
     public RestauranteEntity findByName(String nombre) {
         
         TypedQuery<RestauranteEntity> q
@@ -45,6 +53,14 @@ public class RestaurantePersistence {
         return q.getSingleResult();
     }
     
+    
+    /**
+     * Devuelve todos los restaurantes de la base de datos.
+     *
+     * @return una lista con todas las authores que encuentre en la base de
+     * datos, "select u from AuthorEntity u" es como un "select * from
+     * AuthorEntity;" - "SELECT * FROM table_name" en SQL.
+     */
     
     public List<RestauranteEntity> findAll() {
         
@@ -68,7 +84,5 @@ public class RestaurantePersistence {
         RestauranteEntity entity = em.find(RestauranteEntity.class, nit);
         em.remove(entity);
     }
-    
-    
     
 }
