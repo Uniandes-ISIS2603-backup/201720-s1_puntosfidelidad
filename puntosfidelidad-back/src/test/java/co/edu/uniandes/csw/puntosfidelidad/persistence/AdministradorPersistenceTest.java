@@ -23,7 +23,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
@@ -40,16 +39,25 @@ public class AdministradorPersistenceTest {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(AdministradorEntity.class.getPackage())
                 .addPackage(AdministradorPersistence.class.getPackage())
+                .addPackage(RestaurantePersistence.class.getPackage())
+                .addPackage(RestauranteEntity.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
     /**
-     * Inyección de la dependencia a la clase XYZPersistence cuyos métodos
+     * Inyección de la dependencia a la clase AdministradorPersistence cuyos métodos
      * se van a probar.
      */
     @Inject
     private AdministradorPersistence persistence;
+    
+     /**
+     * Inyección de la dependencia a la clase RestaurantePersistence cuyos métodos
+     * se van a probar.
+     */
+    @Inject
+    private RestaurantePersistence persistenceRes;
 
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
@@ -99,12 +107,22 @@ public class AdministradorPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             AdministradorEntity entity = factory.manufacturePojo(AdministradorEntity.class);
-
-            em.persist(entity);
+                                  
+            List<RestauranteEntity> restaurantes = new ArrayList<>();
             
+            for(int j = 0; j < 3; j++)
+            {
+                RestauranteEntity restaurante = factory.manufacturePojo(RestauranteEntity.class);
+                persistenceRes.create(restaurante);
+                restaurantes.add(restaurante);
+            }   
+            entity.setRestaurantes(restaurantes);  
+                        
+            em.merge(entity);
             data.add(entity);
         }
-    }
+    
+}
     
     
     public AdministradorPersistenceTest() {
@@ -128,7 +146,7 @@ public class AdministradorPersistenceTest {
      */
     @Test
     public void testFind() throws Exception {
-         AdministradorEntity entity = data.get(0);
+    AdministradorEntity entity = data.get(0);
     AdministradorEntity newEntity = persistence.find(entity.getUsuario());
     Assert.assertNotNull(newEntity);
     Assert.assertEquals(entity.getUsuario(), newEntity.getUsuario());

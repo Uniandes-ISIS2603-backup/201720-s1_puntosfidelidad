@@ -6,11 +6,14 @@
 package co.edu.uniandes.csw.puntosfidelidad.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -20,28 +23,40 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class AdministradorEntity implements Serializable {
     
-    @PodamExclude
-    @ManyToOne
-    private RestauranteEntity restaurante;
     @Id
     private String usuario; 
     
     private String contrasena; 
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "administrador")
+    private List<RestauranteEntity> restaurantes = new ArrayList<>();
 
-    /**
-     * @return the restaurante
-     */
-    public RestauranteEntity getRestaurante() {
-        return restaurante;
+   
+
+    public List<RestauranteEntity> getRestaurantes() {
+        return restaurantes;
     }
 
-    /**
-     * @param restaurante the restaurante to set
-     */
-    public void setRestaurante(RestauranteEntity restaurante) {
-        this.restaurante = restaurante;
+     public RestauranteEntity getRestaurante(String nit) {
+         
+       for(int i=0;i<restaurantes.size();i++){
+           RestauranteEntity res=restaurantes.get(i);
+         if(res.getNit()==nit)
+           return res;
+       }
+        return null;
+    }
+    
+    
+    public void setRestaurantes(List<RestauranteEntity> restaurantes) {
+        this.restaurantes = restaurantes;
     }
 
+    
+
+    
+    
     /**
      * @return the usuario
      */
@@ -69,4 +84,6 @@ public class AdministradorEntity implements Serializable {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }   
+
+   
 }
