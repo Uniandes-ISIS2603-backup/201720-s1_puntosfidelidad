@@ -18,6 +18,11 @@ public class RestauranteDetailDTO extends RestauranteDTO{
         
     }
     
+    public RestauranteDetailDTO(RestauranteEntity entity)
+    {
+        super(entity);
+    }
+    
     public RestauranteEntity toEntity()
     {
         //Completar conr elaciones

@@ -38,7 +38,7 @@ public class RecargaLogic {
         LOGGER.info("Inicia proceso de consultar todos los recargas");
         ClienteEntity cliente = clienteLogic.getCliente(usuario);
         if (cliente.getTarjetasDeCredito() == null || cliente.getTarjetasDeCredito().isEmpty() ) {
-            throw new BusinessLogicException("El cliente que consulta aún no tiene tarjetas de credito");
+            throw new BusinessLogicException("El cliente que consulta aún no tiene recargas");
         }
         return cliente.getRecargas();
     }
