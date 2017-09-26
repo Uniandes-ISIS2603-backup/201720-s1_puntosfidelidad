@@ -5,9 +5,14 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
+import co.edu.uniandes.csw.puntosfidelidad.ejb.ClienteLogic;
+import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaDeCreditoEntity;
+import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -56,6 +61,8 @@ public class TarjetaDeCreditoPersistenceTest {
     @Inject
     private TarjetaDeCreditoPersistence persistence;
     
+    @Inject
+    private ClientePersistence clientePersistence;
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
      * datos por fuera de los métodos que se están probando.
@@ -70,6 +77,7 @@ public class TarjetaDeCreditoPersistenceTest {
     @Inject
     UserTransaction utx;
 
+    ClienteEntity cliente;
      /**
      *
      */
@@ -100,11 +108,12 @@ public class TarjetaDeCreditoPersistenceTest {
 
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
+        cliente = factory.manufacturePojo(ClienteEntity.class);
+        clientePersistence.create(cliente);
         for (int i = 0; i < 3; i++) {
             TarjetaDeCreditoEntity entity = factory.manufacturePojo(TarjetaDeCreditoEntity.class);
-
-            em.persist(entity);
-            
+            entity.setCliente(cliente);
+            em.persist(entity);            
             data.add(entity);
         }
     }
@@ -133,6 +142,7 @@ public class TarjetaDeCreditoPersistenceTest {
     public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
         TarjetaDeCreditoEntity newEntity = factory.manufacturePojo(TarjetaDeCreditoEntity.class);
+        newEntity.setCliente(cliente);
         TarjetaDeCreditoEntity result = persistence.create(newEntity);
 
         Assert.assertNotNull(result);
@@ -179,21 +189,8 @@ public class TarjetaDeCreditoPersistenceTest {
     @Test
     public void testFind() throws Exception {
         TarjetaDeCreditoEntity entity = data.get(0);
-        TarjetaDeCreditoEntity newEntity = persistence.find(entity.getId());
+        TarjetaDeCreditoEntity newEntity = persistence.find(entity.getCliente().getUsuario(),entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
     }
-
-    /**
-     * Test of findByNumber method, of class TarjetaDeCreditoPersistence.
-     * @throws java.lang.Exception
-     */
-    @Test
-    public void testFindByNumber() throws Exception {        
-        TarjetaDeCreditoEntity entity = data.get(0);
-        TarjetaDeCreditoEntity newEntity = persistence.findByNumber(entity.getNumero());
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getNumero(), newEntity.getNumero());
-    }
-    
 }

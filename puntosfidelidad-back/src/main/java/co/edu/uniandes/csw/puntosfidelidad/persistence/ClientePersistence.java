@@ -65,13 +65,13 @@ public class ClientePersistence {
      * @return null si no existe ningun cliente con el nombre del argumento.
      * Si existe alguno devuelve la primera.
      */
-    public ClienteEntity findByName(String name) {
-        LOGGER.log(Level.INFO, "Consultando cliente por nombre ", name);
+    public ClienteEntity findByName(String nombre) {
+        LOGGER.log(Level.INFO, "Consultando cliente por nombre ", nombre);
 
         // Se crea un query para buscar clientes con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
-        TypedQuery query = em.createQuery("Select e From ClienteEntity e where e.name = :name", ClienteEntity.class);
+        TypedQuery query = em.createQuery("Select e From ClienteEntity e where e.nombre = :nombre", ClienteEntity.class);
         // Se remplaza el placeholder ":name" con el valor del argumento 
-        query = query.setParameter("name", name);
+        query = query.setParameter("nombre", nombre);
         // Se invoca el query se obtiene la lista resultado
         List<ClienteEntity> sameName = query.getResultList();
         if (sameName.isEmpty()) {

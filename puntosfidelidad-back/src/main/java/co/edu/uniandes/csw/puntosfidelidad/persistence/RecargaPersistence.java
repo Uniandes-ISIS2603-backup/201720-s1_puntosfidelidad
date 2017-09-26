@@ -15,15 +15,16 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class RecargaPersistence {
+    
     private static final Logger LOGGER = Logger.getLogger(RecargaPersistence.class.getName());
 
     @PersistenceContext(unitName = "puntosfidelidadPU")
     protected EntityManager em;
 
     public RecargaEntity create(RecargaEntity entity) {
-        LOGGER.info("Creando una recarga nueva");
+        LOGGER.info("Creando un recarga nuevo");
         em.persist(entity);
-        LOGGER.info("Recarga creada");
+        LOGGER.info("Review creado");
         return entity;
     }
 
@@ -38,24 +39,19 @@ public class RecargaPersistence {
         em.remove(entity);
     }
 
-   public RecargaEntity findWithUser(String usuarioCliente, Long reviewid) {
-        TypedQuery<RecargaEntity> q = em.createQuery("select p from RecargaEntity p where (p.cliente.usuario = :clienteusuario) and (p.id = :reviewid)", RecargaEntity.class);
-        q.setParameter("clienteusuario", usuarioCliente);
-        q.setParameter("reviewid", reviewid);
-        return q.getSingleResult();
-    }
-   
-    public RecargaEntity find(Long id) {
-        LOGGER.log(Level.INFO, "Consultando recarga con id={0}", id);
-        return em.find(RecargaEntity.class, id);
-    } 
-   /**
-     * Devuelve todos las recargas de la base de datos. 
-     * @return una lista con todas las recargas
-     */
-    public List<RecargaEntity> findAll() {
-        LOGGER.info("Consultando todas las recargas");        
-        TypedQuery query = em.createQuery("select u from RecargaEntity u", RecargaEntity.class);
-        return query.getResultList();
+    public RecargaEntity find(String usuario, Long recargaid) {
+        TypedQuery<RecargaEntity> q = em.createQuery("select p from RecargaEntity p where (p.cliente.usuario = :usuario) and (p.id = :recargaid)", RecargaEntity.class);
+        q.setParameter("usuario", usuario);
+        q.setParameter("recargaid", recargaid);
+        List<RecargaEntity> results = q.getResultList();
+        RecargaEntity recarga = null;
+        if (results == null) {
+            recarga = null;
+        } else if (results.isEmpty()) {
+            recarga = null;
+        } else if (results.size() >= 1) {
+            recarga = results.get(0);
+        }
+        return recarga;
     }
 }
