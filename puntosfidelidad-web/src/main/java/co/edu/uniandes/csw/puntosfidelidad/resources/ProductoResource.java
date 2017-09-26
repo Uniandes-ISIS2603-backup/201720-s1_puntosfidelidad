@@ -119,7 +119,7 @@ public class ProductoResource {
         if (entity == null) {
             throw new WebApplicationException("El compra no existe", 404);
         }
-        productoLogic.deleteCompra(id);
+        productoLogic.deleteProducto(id);
     }
     
     @GET
