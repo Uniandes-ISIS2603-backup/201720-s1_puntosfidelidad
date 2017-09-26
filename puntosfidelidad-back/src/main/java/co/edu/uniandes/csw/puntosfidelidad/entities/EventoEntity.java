@@ -15,6 +15,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -27,8 +29,10 @@ public class EventoEntity implements Serializable{
     @Id
     private String nombre;
     
+    @Temporal(TemporalType.DATE)
     private Calendar fechaInicio;
     
+    @Temporal(TemporalType.DATE)
     private Calendar fechaFin;
     
     private String descripcion;
