@@ -12,4 +12,6 @@ delete from SucursalEntity;
 delete from TarjetaPuntosEntity;
 delete from UbicacionEntity;
 
+insert into ClienteEntity 
+
 
