@@ -16,14 +16,25 @@ public class FotoDTO {
     
     private String url;
     
+    /**
+     * Constructor vaacío obligatorio para la inicialuzacón con Jax RS 
+     */
     public FotoDTO(){
         //Método vacio obligatorio.    
     }
     
+    /**
+     * Constructor de un FotoDTO a paritir de un FotoEntity
+     * @param entity 
+     */
+       
     public FotoDTO(FotoEntity entity){
         this.url = entity.getURL();
     }
     
+    /**
+     * Método wue convierte un entity en un DTO 
+     */
     public FotoEntity toEntity(){
         FotoEntity entity = new FotoEntity();
         entity.setURL(this.url);;
