@@ -21,7 +21,7 @@ public class TarjetaDeCreditoDTO {
     private Long numero;
     
     public TarjetaDeCreditoDTO(){
-    
+        //Método vacio obligatorio.   
     }
     
     public TarjetaDeCreditoDTO(TarjetaDeCreditoEntity entity){

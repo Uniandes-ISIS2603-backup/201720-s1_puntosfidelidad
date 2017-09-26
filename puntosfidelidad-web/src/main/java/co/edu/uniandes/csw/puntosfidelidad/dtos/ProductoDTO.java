@@ -24,7 +24,7 @@ public class ProductoDTO implements Serializable{
     private Integer valorPuntos;
     
     public ProductoDTO(){
-    
+        //Método vacio obligatorio.   
     }
     
     public ProductoDTO(ProductoEntity entity){

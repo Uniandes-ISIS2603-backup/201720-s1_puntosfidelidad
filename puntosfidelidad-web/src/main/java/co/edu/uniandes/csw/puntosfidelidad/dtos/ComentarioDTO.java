@@ -27,7 +27,7 @@ public class ComentarioDTO {
     
     public ComentarioDTO()
     {
-        
+        //Método vacio obligatorio.
     }
     
     public ComentarioEntity toEntity(){

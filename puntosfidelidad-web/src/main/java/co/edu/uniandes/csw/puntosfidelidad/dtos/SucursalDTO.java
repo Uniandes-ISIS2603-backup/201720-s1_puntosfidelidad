@@ -26,7 +26,7 @@ public class SucursalDTO implements Serializable{
     private String descripcion;
     
     public SucursalDTO(){
-    
+        //Método vacio obligatorio.    
     }
     
     public SucursalDTO(SucursalEntity entity){

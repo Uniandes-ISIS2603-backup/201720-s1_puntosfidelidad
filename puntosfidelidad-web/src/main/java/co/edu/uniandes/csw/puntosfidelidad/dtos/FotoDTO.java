@@ -17,7 +17,7 @@ public class FotoDTO {
     private String url;
     
     public FotoDTO(){
-    
+        //Método vacio obligatorio.    
     }
     
     public FotoDTO(FotoEntity entity){

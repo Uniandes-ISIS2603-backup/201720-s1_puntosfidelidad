@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.csw.puntosfidelidad.dtos;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
@@ -10,7 +5,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author cass_
+ * @author lv.vanegas10
  */
 public class ClienteDTO implements Serializable{
     
@@ -23,7 +18,7 @@ public class ClienteDTO implements Serializable{
     private String imagen;
     
     public ClienteDTO(){
-    
+        //Método vacio obligatorio.
     }
     
     public ClienteDTO(ClienteEntity entity){

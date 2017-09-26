@@ -24,7 +24,7 @@ public class EventoDTO {
     private String descripcion;
     
     public EventoDTO(){
-    
+        //Método vacio obligatorio.
     }
     
     public EventoDTO(EventoEntity entity){

@@ -21,10 +21,10 @@ public class AdministradorDTO {
     private String usuario;
     private String contrasena;
 
-    //Constructor vacío (¡¡¡OLBIGATORIO!!!)
+    
     public AdministradorDTO()
     {
-        
+         //Método vacio obligatorio. 
     }
     
     /**

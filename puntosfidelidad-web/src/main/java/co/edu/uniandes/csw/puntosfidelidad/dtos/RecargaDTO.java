@@ -21,7 +21,7 @@ public class RecargaDTO {
     private Double valor;
     
     public RecargaDTO(){
-    
+        //Método vacio obligatorio.    
     }
     
     public RecargaDTO(RecargaEntity entity){
