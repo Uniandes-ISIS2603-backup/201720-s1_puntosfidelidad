@@ -7,7 +7,7 @@ package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaDeCreditoEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
  */
 @RunWith(Arquillian.class)
 public class RecargaPersistenceTest {
-    
+      
     /**
      *
      * @return Devuelve el jar que Arquillian va a desplegar en el Glassfish
@@ -47,10 +47,7 @@ public class RecargaPersistenceTest {
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(RecargaEntity.class.getPackage())
-                .addPackage(RecargaPersistence.class.getPackage())  
-                .addPackage(TarjetaDeCreditoEntity.class.getPackage()) 
-                .addPackage(TarjetaPuntosEntity.class.getPackage()) 
-                .addPackage(ClienteEntity.class.getPackage()) 
+                .addPackage(RecargaPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -62,6 +59,8 @@ public class RecargaPersistenceTest {
     @Inject
     private RecargaPersistence persistence;
     
+    @Inject
+    private ClientePersistence clientePersistence;
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
      * datos por fuera de los métodos que se están probando.
@@ -75,10 +74,7 @@ public class RecargaPersistenceTest {
      */
     @Inject
     UserTransaction utx;
-    
-    
-    TarjetaDeCreditoEntity tarjetaDeCredito;
-    TarjetaPuntosEntity tarjetaPuntos;
+
     ClienteEntity cliente;
      /**
      *
@@ -104,35 +100,22 @@ public class RecargaPersistenceTest {
     }
     
     private void clearData() {
-        em.createQuery("delete from RecargaEntity").executeUpdate();  
-        em.createQuery("delete from TarjetaDeCreditoEntity").executeUpdate();
-        em.createQuery("delete from TarjetaPuntosEntity").executeUpdate();
-        em.createQuery("delete from ClienteEntity").executeUpdate();
+        em.createQuery("delete from RecargaEntity").executeUpdate();
     }
 
 
     private void insertData() {
-        PodamFactory factory = new PodamFactoryImpl();      
-       
-        tarjetaDeCredito = factory.manufacturePojo(TarjetaDeCreditoEntity.class);
-        tarjetaPuntos = factory.manufacturePojo(TarjetaPuntosEntity.class);
+        PodamFactory factory = new PodamFactoryImpl();
         cliente = factory.manufacturePojo(ClienteEntity.class);
-        
-        em.persist(tarjetaDeCredito);
-        em.persist(tarjetaPuntos);
-        em.persist(cliente);
-        
+        clientePersistence.create(cliente);
         for (int i = 0; i < 3; i++) {
-            RecargaEntity entity = factory.manufacturePojo(RecargaEntity.class);  
-            
-            entity.setTarjetaDeCredito(tarjetaDeCredito);
-            entity.setTarjetaPuntos(tarjetaPuntos);
+            RecargaEntity entity = factory.manufacturePojo(RecargaEntity.class);
             entity.setCliente(cliente);
-            
             em.persist(entity);            
             data.add(entity);
         }
     }
+    
     public RecargaPersistenceTest() {
     }
     
@@ -143,42 +126,36 @@ public class RecargaPersistenceTest {
     @AfterClass
     public static void tearDownClass() {
     }
+    
        
     @After
     public void tearDown() {
     }
 
     /**
-     * Test of create method, of class RecargaPersistance.
+     * Test of create method, of class RecargaPersistence.
      * @throws java.lang.Exception
      */
     @Test
     public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
         RecargaEntity newEntity = factory.manufacturePojo(RecargaEntity.class);
-        
-        newEntity.setTarjetaDeCredito(tarjetaDeCredito);
-        newEntity.setTarjetaPuntos(tarjetaPuntos);
         newEntity.setCliente(cliente);
-        
         RecargaEntity result = persistence.create(newEntity);
 
         Assert.assertNotNull(result);
         RecargaEntity entity = em.find(RecargaEntity.class, result.getId());
         Assert.assertNotNull(entity);
         Assert.assertEquals(newEntity.getId(), entity.getId());
-        Assert.assertEquals(newEntity.getCliente().getUsuario(), entity.getCliente().getUsuario());
-        Assert.assertEquals(newEntity.getTarjetaDeCredito().getId(), entity.getTarjetaDeCredito().getId()); 
-        Assert.assertEquals(newEntity.getTarjetaPuntos().getId(), entity.getTarjetaPuntos().getId());
     }
 
     /**
-     * Test of update method, of class RecargaPersistance.
+     * Test of update method, of class RecargaPersistence.
      * @throws java.lang.Exception
      */
     @Test
     public void testUpdate() throws Exception {
-        RecargaEntity entity = data.get(0);
+        RecargaEntity entity = data.get(2);
         PodamFactory factory = new PodamFactoryImpl();
         RecargaEntity newEntity = factory.manufacturePojo(RecargaEntity.class);
 
@@ -190,8 +167,9 @@ public class RecargaPersistenceTest {
 
         Assert.assertEquals(newEntity.getId(), resp.getId());
     }
+
     /**
-     * Test of delete method, of class RecargaPersistance.
+     * Test of delete method, of class RecargaPersistence.
      * @throws java.lang.Exception
      */
     @Test
@@ -203,43 +181,14 @@ public class RecargaPersistenceTest {
     }
 
     /**
-     * Test of find method, of class RecargaPersistance.
+     * Test of find method, of class RecargaPersistence.
      * @throws java.lang.Exception
      */
     @Test
     public void testFind() throws Exception {
         RecargaEntity entity = data.get(0);
-        RecargaEntity newEntity = persistence.find(entity.getId());
+        RecargaEntity newEntity = persistence.find(entity.getCliente().getUsuario(),entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
-    }        
-    /**
-     * Test of findAll method, of class RecargaPersistence.
-     * @throws java.lang.Exception
-     */
-    @Test
-    public void testFindAll() throws Exception {
-        List<RecargaEntity> list = persistence.findAll();
-        Assert.assertEquals(data.size(), list.size());
-        for (RecargaEntity ent : list) {
-             boolean found = false;
-            for (RecargaEntity entity : data) {
-                 if (ent.getId().equals(entity.getId())) {
-                       found = true;
-                }
-            }
-            Assert.assertTrue(found);
-        }
-    }
-    /**
-     * Test of findWithUser method, of class RecargaPersistence.
-     * @throws java.lang.Exception
-     */
-    @Test
-    public void testFindWithUser() throws Exception {
-        RecargaEntity entity = data.get(0);
-        RecargaEntity fount= persistence.findWithUser(cliente.getUsuario(), entity.getId());
-        
-        Assert.assertEquals(entity.getId(), fount.getId());
     }
 }

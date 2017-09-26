@@ -42,7 +42,7 @@ public class ClienteEntity implements Serializable{
     private List<RecargaEntity> recargas = new ArrayList<>();
 
     @PodamExclude
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)   
+    @OneToMany(mappedBy = "cliente",cascade = CascadeType.ALL, orphanRemoval = true)   
     private List<TarjetaDeCreditoEntity> tarjetasDeCredito = new ArrayList<>();
     
     /**

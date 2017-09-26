@@ -21,45 +21,36 @@ public class TarjetaDeCreditoPersistence {
     protected EntityManager em;
 
     public TarjetaDeCreditoEntity create(TarjetaDeCreditoEntity entity) {
-        LOGGER.info("Creando una tarjeta de crédito nueva");
+        LOGGER.info("Creando un tarjeta nuevo");
         em.persist(entity);
-        LOGGER.info("Tarjeta de crédito creada");
+        LOGGER.info("Review creado");
         return entity;
     }
 
     public TarjetaDeCreditoEntity update(TarjetaDeCreditoEntity entity) {
-        LOGGER.log(Level.INFO, "Actualizando tarjeta de crédito con id={0}", entity.getId());
+        LOGGER.log(Level.INFO, "Actualizando tarjeta con id={0}", entity.getId());
         return em.merge(entity);
     }
 
     public void delete(Long id) {
-        LOGGER.log(Level.INFO, "Borrando tarjeta de crédito con id={0}", id);
+        LOGGER.log(Level.INFO, "Borrando tarjeta con id={0}", id);
         TarjetaDeCreditoEntity entity = em.find(TarjetaDeCreditoEntity.class, id);
         em.remove(entity);
     }
 
-     public TarjetaDeCreditoEntity find(Long id) {
-        LOGGER.log(Level.INFO, "Consultando tarjeta de crédito con id={0}", id);
-        return em.find(TarjetaDeCreditoEntity.class, id);
-    }
-     
-     /**
-     * Busca si hay alguna tarjeta con el número que se envía de argumento
-     *
-     * @param numero: Nombre de la tarjeta de crédito que se está buscando
-     * @return null si no existe ninguna tarjeta de crédito con el nombre del argumento.
-     * Si existe alguna devuelve la primera.
-     */
-    public TarjetaDeCreditoEntity findByNumber(Long numero) {
-        LOGGER.log(Level.INFO, "Consultando tarjeta de crédito por numero ", numero);
-
-        TypedQuery query = em.createQuery("Select e From TarjetaDeCreditoEntity e where e.numero = :numero", TarjetaDeCreditoEntity.class);
-        query = query.setParameter("numero", numero);
-        List<TarjetaDeCreditoEntity> sameName = query.getResultList();
-        if (sameName.isEmpty()) {
-            return null;
-        } else {
-            return sameName.get(0);
+    public TarjetaDeCreditoEntity find(String usuario, Long tarjetaid) {
+        TypedQuery<TarjetaDeCreditoEntity> q = em.createQuery("select p from TarjetaDeCreditoEntity p where (p.cliente.usuario = :usuario) and (p.id = :tarjetaid)", TarjetaDeCreditoEntity.class);
+        q.setParameter("usuario", usuario);
+        q.setParameter("tarjetaid", tarjetaid);
+        List<TarjetaDeCreditoEntity> results = q.getResultList();
+        TarjetaDeCreditoEntity tarjeta = null;
+        if (results == null) {
+            tarjeta = null;
+        } else if (results.isEmpty()) {
+            tarjeta = null;
+        } else if (results.size() >= 1) {
+            tarjeta = results.get(0);
         }
-    }     
+        return tarjeta;
+    }
 }

@@ -5,9 +5,11 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.resources;
 
+import co.edu.uniandes.csw.puntosfidelidad.dtos.ComentarioDTO;
 import co.edu.uniandes.csw.puntosfidelidad.dtos.ComentarioDetailDTO;
 import co.edu.uniandes.csw.puntosfidelidad.ejb.ComentarioLogic;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity;
+import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -30,6 +32,28 @@ public class ComentarioResource {
     public List<ComentarioDetailDTO> getComentarios()
     {
         return ListEntityToDetailDTO(logic.getComentarios());
+    }
+    
+    @GET
+    @Path("{id: \\d+}")
+    public ComentarioDetailDTO getComentario(@PathParam("id") Long id) throws BusinessLogicException
+    {
+        try
+        {
+            ComentarioDetailDTO busq = new ComentarioDetailDTO (logic.getComentario(id));
+            return busq;
+        }
+        catch (Exception e)
+        {
+            throw new BusinessLogicException("El comentario con el id " + id + " no existe");
+        }       
+    }
+    
+    @PUT
+    @Path("{id: \\d+}")
+    public ComentarioDetailDTO putComentario(@PathParam("id") Long id, ComentarioDTO nuevo)
+    {
+        return new ComentarioDetailDTO(logic.updateComentario(nuevo.toEntity()));
     }
     
     

@@ -5,8 +5,12 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
+import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.ComentarioPersistence;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.CompraPersistence;
 import java.util.List;
@@ -24,6 +28,9 @@ public class CompraLogic {
     
     @Inject
     private CompraPersistence persistence;
+    
+    @Inject
+    private ProductoLogic prodLogic;
     
     private static final Logger LOGGER = Logger.getLogger(CompraLogic.class.getName());
     
@@ -70,8 +77,114 @@ public class CompraLogic {
      * @param nuevoEntity
      * @return 
      */
-    public CompraEntity updateComentario(CompraEntity nuevoEntity)
+    public CompraEntity updateCompra(CompraEntity nuevoEntity)
     {
         return persistence.update(nuevoEntity);
+    }
+    
+      
+    /**
+     * Obtiene una colección de instancias de ProductoEntity asociadas a una
+     * instancia de Compra
+     *
+     * @param compraId
+     * @return Colección de instancias de ProductoEntity asociadas a la instancia de
+     * Compra
+     * @generated
+     */
+    public List<ProductoEntity> listProductos(Long compraId) {
+        
+        return getCompra(compraId).getProductos();
+    }
+    
+    /**
+     * Obtiene una instancia de ProductoEntity asociada a una instancia de Compra
+     *
+     * @param compraId Identificador de la instancia de Compra
+     * @param productoId Identificador de la instancia de Producto
+     * @return
+     * @generated
+     */
+    public ProductoEntity getProducto(Long compraId, Long productoId) {
+        List<ProductoEntity> list = getCompra(compraId).getProductos();
+        ProductoEntity productoEntity = new ProductoEntity();
+        productoEntity.setId(productoId);
+        int index = list.indexOf(productoEntity);
+        if (index >= 0) {
+            return list.get(index);
+        }
+        return null;
+    }
+    
+    /**
+     * Asocia un Producto existente a un Compra
+     *
+     * @param compraId Identificador de la instancia de Compra
+     * @param productoId Identificador de la instancia de Producto
+     * @return Instancia de ProductoEntity que fue asociada a COmpra
+     * @generated
+     */
+    public ProductoEntity addProducto(Long compraId, Long productoId) {
+        ProductoEntity prod = prodLogic.getProducto(productoId);
+        
+        if (prod != null)
+        {
+            getCompra(compraId).getProductos().add(prod);
+        }
+        
+        return prod;
+    }
+    
+    
+    /**
+     * Desasocia un Producto existente a un Compra existente
+     *
+     * @param compraId Identificador de la instancia de Compra
+     * @param productoId Identificador de la instancia de Producto
+     * @generated
+     */
+    public void removeProducto(Long compraId, Long productoId) {
+       
+        ProductoEntity prod = prodLogic.getProducto(productoId);
+        
+        if (prod != null)
+        {           
+            int index = getCompra(compraId).getProductos().indexOf(prod);    
+            if (index >= 0)
+            {
+                getCompra(compraId).getProductos().remove(index); 
+            }
+             
+        }
+    }
+    
+    /**
+     * retorna el restaurante asociado al producto con ese id
+     * @param compraid
+     * @return 
+     */
+    public SucursalEntity getSucursal(Long compraid)
+    {
+        return persistence.getSucursal(compraid);
+    }
+    
+    /**
+     * retorna el restaurante asociado al producto con ese id
+     * @param compraid
+     * @return 
+     */
+    public ClienteEntity getCliente(Long compraid)
+    {
+        return persistence.getCliente(compraid);
+    }
+    
+    /**
+     * retorna el restaurante asociado al producto con ese id
+     * @param compraid
+     * @return 
+     */
+    public TarjetaPuntosEntity getTarjetaPuntos(Long compraid)
+    {
+        return persistence.getTarjetaPuntos(compraid);
     }
 }

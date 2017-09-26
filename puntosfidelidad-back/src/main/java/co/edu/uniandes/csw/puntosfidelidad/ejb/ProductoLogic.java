@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.CompraPersistence;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.ProductoPersistence;
 import java.util.List;
@@ -57,10 +58,10 @@ public class ProductoLogic {
     }
     /**
      *  borra el objeto de la entidad 
-     * @param nuevoEntity
-     * @return 
+     * @param id
+     * @param nuevoEntity 
      */
-    public void deleteCompra(Long id)   
+    public void deleteProducto(Long id)   
     {
         persistence.delete(id);
     }
@@ -73,4 +74,16 @@ public class ProductoLogic {
     {
         return persistence.update(nuevoEntity);
     }
+    
+    /**
+     * retorna el restaurante asociado al producto con ese id
+     * @param productoid
+     * @return 
+     */
+    public RestauranteEntity getRestaurante(Long productoid)
+    {
+        return persistence.getRestaurante(productoid);
+    }
+    
+    
 }
