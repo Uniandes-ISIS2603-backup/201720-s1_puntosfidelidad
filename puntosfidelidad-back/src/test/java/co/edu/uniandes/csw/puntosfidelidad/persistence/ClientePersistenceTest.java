@@ -61,20 +61,6 @@ public class ClientePersistenceTest {
     @Inject
     private ClientePersistence persistence;
     
-    @Inject
-    private TarjetaPuntosPersistence puntosPersistence;
-    
-    @Inject
-    private TarjetaDeCreditoPersistence tarjetaCreditoPersistence;
-    
-    @Inject
-    private CompraPersistence compraPersistence;
-    
-    @Inject
-    private ComentarioPersistence comentarioPersistence;
-    
-    @Inject
-    private RecargaPersistence recargaPersistence;
     
     List<TarjetaDeCreditoEntity> tarjetasDeCredito = new ArrayList<>();
     List<TarjetaPuntosEntity> tarjetasPuntos = new ArrayList<>();

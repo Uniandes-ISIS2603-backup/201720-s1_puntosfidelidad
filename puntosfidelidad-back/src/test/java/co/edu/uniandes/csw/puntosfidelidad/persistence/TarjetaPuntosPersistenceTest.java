@@ -225,15 +225,10 @@ public class TarjetaPuntosPersistenceTest {
             
             //Agregar un cliente cualquiera
             ClienteEntity cliente = factory.manufacturePojo(ClienteEntity.class);
-            entity.setCliente(cliente);
+            entity.setCliente(cliente); 
+            em.persist(cliente);  
             
-            for(CompraEntity compra : compras)
-            {
-                compraPersistence.update(compra);
-            }
-            
-            em.persist(cliente);            
-            em.merge(entity);
+            em.persist(entity);
             data.add(entity);
         }        
     }

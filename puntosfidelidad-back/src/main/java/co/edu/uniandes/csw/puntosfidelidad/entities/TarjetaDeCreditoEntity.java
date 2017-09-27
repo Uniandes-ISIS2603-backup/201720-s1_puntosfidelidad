@@ -23,6 +23,7 @@ public class TarjetaDeCreditoEntity implements Serializable{
     
     private String banco;
     
+    @PodamExclude
     @ManyToOne
     private ClienteEntity cliente;
      

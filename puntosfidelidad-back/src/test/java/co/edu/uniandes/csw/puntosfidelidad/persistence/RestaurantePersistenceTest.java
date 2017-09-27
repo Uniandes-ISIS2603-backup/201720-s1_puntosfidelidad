@@ -126,33 +126,34 @@ public class RestaurantePersistenceTest {
 
 
  private void insertData() {
-        PodamFactory factory = new PodamFactoryImpl();
-        for (int i = 0; i < 3; i++) {
-            RestauranteEntity entity = factory.manufacturePojo(RestauranteEntity.class);
+    PodamFactory factory = new PodamFactoryImpl();
+    for (int i = 0; i < 3; i++) {
+        RestauranteEntity entity = factory.manufacturePojo(RestauranteEntity.class);
 
-            List<SucursalEntity> sucursales = new ArrayList<>();
-            List<ProductoEntity> productos = new ArrayList<>();
-            List<EventoEntity> eventos = new ArrayList<>();
-            
-            for(int j = 0; j < 3; j++)
-            {
-                ProductoEntity producto = factory.manufacturePojo(ProductoEntity.class);
-                productoPersistence.create(producto);
-                productos.add(producto);
-            
-                SucursalEntity sucursal = factory.manufacturePojo(SucursalEntity.class);
-                sucursalPersistence.create(sucursal);
-                sucursales.add(sucursal);
-                
-                EventoEntity evento = factory.manufacturePojo(EventoEntity.class);
-                eventoPersistence.create(evento);
-                eventos.add(evento);
-                
-            em.persist(entity);
-            
-            data.add(entity);
+        List<SucursalEntity> sucursales = new ArrayList<>();
+        List<ProductoEntity> productos = new ArrayList<>();
+        List<EventoEntity> eventos = new ArrayList<>();
+
+        for(int j = 0; j < 3; j++)
+        {
+            ProductoEntity producto = factory.manufacturePojo(ProductoEntity.class);
+            productoPersistence.create(producto);
+            productos.add(producto);
+
+            SucursalEntity sucursal = factory.manufacturePojo(SucursalEntity.class);
+            sucursalPersistence.create(sucursal);
+            sucursales.add(sucursal);
+
+            EventoEntity evento = factory.manufacturePojo(EventoEntity.class);
+            eventoPersistence.create(evento);
+            eventos.add(evento);           
         }
-    }
+        entity.setSucursales(sucursales);
+        entity.setProductos(productos);
+        entity.setEventos(eventos);
+        em.persist(entity);
+        data.add(entity);
+    } 
  }
     
     public RestaurantePersistenceTest() {
