@@ -221,9 +221,6 @@ public class RestauranteLogic {
         RestauranteEntity entity = getRestaurante(nit);
         ProductoEntity ProductoEntity = new ProductoEntity();
         ProductoEntity.setId(Id);
-        entity.getSucursales().remove(ProductoEntity);
+        entity.getProductos().remove(ProductoEntity);
     }
-     
-
-    
 }
