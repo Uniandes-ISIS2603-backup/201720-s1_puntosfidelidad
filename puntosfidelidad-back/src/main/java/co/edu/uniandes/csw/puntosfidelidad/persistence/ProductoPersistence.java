@@ -29,7 +29,7 @@ public class ProductoPersistence {
     
     /**
      *
-     * @param entity objeto compra que se creará en la base de datos
+     * @param entity objeto producto que se creará en la base de datos
      * @return devuelve la entidad creada con un id dado por la base de datos.
      */
     public ProductoEntity create(ProductoEntity entity) {
@@ -43,9 +43,9 @@ public class ProductoPersistence {
     }
     
      /**
-     * Actualiza una compra.
+     * Actualiza una producto.
      *
-     * @param entity: la compra que viene con los nuevos cambios. Por ejemplo
+     * @param entity: la producto que viene con los nuevos cambios. Por ejemplo
      * el codigo pudo cambiar. En ese caso, se haria uso del método update.
      * @return un bodega con los cambios aplicados.
      */
@@ -60,8 +60,8 @@ public class ProductoPersistence {
 
     /**
      *
-     * Borra una compra de la base de datos recibiendo como argumento el id
-     * de la bodega
+     * Borra una producto de la base de datos recibiendo como argumento el id
+     * 
      *
      * @param id: id correspondiente a la compra a borrar.
      */
@@ -76,10 +76,10 @@ public class ProductoPersistence {
     }
 
     /**
-     * Busca si hay algun bodega con el id que se envía de argumento
+     * Busca si hay algun producto con el id que se envía de argumento
      *
-     * @param id: id correspondiente a la bodega buscada.
-     * @return un bodega.
+     * @param id: id correspondiente a la producto buscada.
+     * @return un producto.
      */
     public ProductoEntity find(Long id) {
         
@@ -88,24 +88,24 @@ public class ProductoPersistence {
     }
 
     /**
-     * Devuelve todas las bodegaes de la base de datos.
+     * Devuelve todas las producto de la base de datos.
      *
-     * @return una lista con todas las bodegas que encuentre en la base de
+     * @return una lista con todas las producto que encuentre en la base de
      * datos, "select u from bodegaEntity u" es como un "select * from
      * bodegaEntity;" - "SELECT * FROM table_codigo" en SQL.
      */
     public List<ProductoEntity> findAll() {
        
-        // Se crea un query para buscar todas las bodegas en la base de datos.
+        // Se crea un query para buscar todas las producto en la base de datos.
         TypedQuery query = em.createQuery("select u from ProductoEntity u", ProductoEntity.class);
-        // Note que en el query se hace uso del método getResultList() que obtiene una lista de bodegaes.
+        // Note que en el query se hace uso del método getResultList() que obtiene una lista de producto.
         return query.getResultList();
     }
     
     /**
      * 
      * @param id
-     * @return 
+     * @return restautrante asociado
      */
     public RestauranteEntity getRestaurante(Long id){
         ProductoEntity prod = em.find(ProductoEntity.class, id);

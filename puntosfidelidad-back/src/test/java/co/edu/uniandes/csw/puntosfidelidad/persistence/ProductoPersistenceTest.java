@@ -214,7 +214,9 @@ public class ProductoPersistenceTest {
     }
     
     }
-    
+    /**
+     * Test of findAll method, of class ProductoPersistence.
+     */
     @Test
     public void testGetRestaurante() throws Exception 
     {
@@ -224,14 +226,6 @@ public class ProductoPersistenceTest {
        Assert.assertEquals(restaurante.getNombre(), rest.getNombre());   
     }
     
-    @Test 
-    public void testGetRestaurante(Long id)
-    {
-       ProductoEntity entity = data.get(0);  
-       RestauranteEntity restaurante = data.get(0).getRestaurante();
-       RestauranteEntity rest = persistence.getRestaurante(entity.getId());
-       Assert.assertEquals(restaurante.getNombre(), rest.getNombre());
-    }
 
     }
     

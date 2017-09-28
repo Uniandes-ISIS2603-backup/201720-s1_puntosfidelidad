@@ -33,7 +33,7 @@ public class CompraProductosResource {
     
 
     /**
-     * Convierte una lista de BookEntity a una lista de BookDetailDTO.
+     * Convierte una lista de Producto a una lista de ProductoDetailDTO.
      *
      * @param entityList Lista de BookEntity a convertir.
      * @return Lista de BookDetailDTO convertida.
@@ -71,7 +71,7 @@ public class CompraProductosResource {
      * 
      */
     @GET
-    public List<ProductoDetailDTO> listBooks(@PathParam("compraId") Long compraId) {
+    public List<ProductoDetailDTO> listProductos(@PathParam("compraId") Long compraId) {
         return booksListEntity2DTO(compraLogic.listProductos(compraId));
     }
 
@@ -84,7 +84,7 @@ public class CompraProductosResource {
      */
     @GET
     @Path("{productoId: \\d+}")
-    public ProductoDetailDTO getProductos(@PathParam("compraId") Long compraId, @PathParam("productoId") Long productoId) {
+    public ProductoDetailDTO getProducto(@PathParam("compraId") Long compraId, @PathParam("productoId") Long productoId) {
         return new ProductoDetailDTO(compraLogic.getProducto(compraId, productoId));
     }
 

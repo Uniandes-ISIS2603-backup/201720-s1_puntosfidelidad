@@ -85,10 +85,10 @@ public class CompraResource {
     }
     
     /**
-     * Actualiza un cliente
+     * Actualiza un compra
      * @param id
      * @param dto
-     * @return cliente actualizado 
+     * @return compra actualizado 
      * @throws BusinessLogicException
      */
     @PUT

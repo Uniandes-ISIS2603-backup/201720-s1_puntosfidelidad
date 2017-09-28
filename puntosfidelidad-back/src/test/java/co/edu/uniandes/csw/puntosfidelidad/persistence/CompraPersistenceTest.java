@@ -241,6 +241,9 @@ public class CompraPersistenceTest {
     }
     }
     
+    /**
+     * Test of findAll method, of class ProductoPersistence.
+     */
     @Test
     public void testGetSucursal() throws Exception
     {
@@ -249,7 +252,9 @@ public class CompraPersistenceTest {
        SucursalEntity sucur = persistence.getSucursal(entity.getId());
        Assert.assertEquals(sucursal.getNombre(), sucur.getNombre());  
     }
-    
+    /**
+     * Test of findAll method, of class ProductoPersistence.
+     */
     @Test
     public void testGetCliente() throws Exception
     {
@@ -258,7 +263,9 @@ public class CompraPersistenceTest {
        ClienteEntity clien = persistence.getCliente(entity.getId());
        Assert.assertEquals(cliente.getNombre(), clien.getNombre());
     }
-    
+    /**
+     * Test of findAll method, of class ProductoPersistence.
+     */
     @Test
     public void testGetTarjetaPuntos() throws Exception
     {
@@ -267,7 +274,9 @@ public class CompraPersistenceTest {
        TarjetaPuntosEntity tar = persistence.getTarjetaPuntos(entity.getId());
        Assert.assertEquals(tarjeta.getId(), tar.getId());
     }
-    
+    /**
+     * Test of findAll method, of class ProductoPersistence.
+     */
     @Test
     public void testGetProductos() throws Exception
     {
