@@ -50,6 +50,12 @@ public class CompraResource {
         return listClienteEntity2DetailDTO(compraLogic.getCompras());
     }
     
+    /**
+     * Método privado que convierte una colección de entities a su representación
+     * DetailDTO
+     * @param entityList lista de entidades a convertir
+     * @return Lista de DetailDTOs generados
+     */
     private List<CompraDetailDTO> listClienteEntity2DetailDTO(List<CompraEntity> entityList) {
         List<CompraDetailDTO> list = new ArrayList<>();
         for (CompraEntity entity : entityList) {
@@ -123,6 +129,11 @@ public class CompraResource {
         compraLogic.deleteCompra(id);
     }
     
+    /**
+     * Método que dirige a los productos de una compra específica
+     * @param compraId id de la compra a consultar productos
+     * @return Subrecurso manejador de compras
+     */
     @Path("{compraId: \\d+}/productos")
     public Class<CompraProductosResource> getCompraProductosResource(@PathParam("compraId") Long compraId) {
         CompraEntity entity = compraLogic.getCompra(compraId);
@@ -132,6 +143,12 @@ public class CompraResource {
         return CompraProductosResource.class;
     }
     
+    /**
+     * Método que devuelve la sucursal donde se realizó una compra
+     * @param id Identificador de la sucursal
+     * @return representación DetailDTO de la sucursal de la compra
+     * @throws BusinessLogicException Si la compra no existe se lanza un mensaje de error con el código 404
+     */
     @GET
     @Path("{id: \\d+}/sucursales")  
     public SucursalDetailDTO getSucursal(@PathParam("id") Long id) throws BusinessLogicException {
@@ -151,6 +168,13 @@ public class CompraResource {
         }
         return new ClienteDetailDTO(entity.getCliente());
     }
+    
+    /**
+     * Método que retorna la tarjetaPuntos en representación Detail de una compra puntual
+     * @param id Identificador de la compra a consultar la tarjeta
+     * @return Tarjeta de puntos asociada a la compra
+     * @throws BusinessLogicException Si no existe se retorna un mensaje de error con el código de estado 404
+     */
     
     @GET
     @Path("{id: \\d+}/tarjetasPuntos")  

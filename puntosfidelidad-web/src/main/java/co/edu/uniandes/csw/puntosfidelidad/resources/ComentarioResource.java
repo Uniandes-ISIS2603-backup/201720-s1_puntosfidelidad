@@ -70,6 +70,8 @@ public class ComentarioResource {
         return new ComentarioDetailDTO(logic.updateComentario(nuevo.toEntity()));
     }
     
+    //Los demás métodos rest están desde clases que las contienen (toca crearlas desde allá)
+    //Como cliente y/o sucursal [ver api]
     
     /**
      * A partir de una lista de entidades, retorna una lista de DTO's

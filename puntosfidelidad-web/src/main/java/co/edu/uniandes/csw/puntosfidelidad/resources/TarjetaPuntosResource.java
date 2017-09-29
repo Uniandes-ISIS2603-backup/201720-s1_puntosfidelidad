@@ -27,15 +27,27 @@ import javax.ws.rs.Produces;
 @Produces("application/json")
 public class TarjetaPuntosResource {
     
+    /**
+     * Inyeccion de dependencias de la lógica
+     */
     @Inject
     TarjetaPuntosLogic logic;
     
+    /**
+     * Método que retorna todas las tarjetas depuntos del sistema
+     * @return coleacción de tarjetaPuntosDetailDTO 
+     */
     @GET
     public List<TarjetaPuntosDetailDTO> getTarjetas()
     {
         return ListEntityToDetailDTO(logic.getTarjetasPuntos());
     }
     
+    /**
+     * Endpoint encargado de retornar una tarjeta de puntos específica
+     * @param id identificador de la tarjeta de puntos a consultar
+     * @return error 404 si no exitse una tarjeta con el id, retorna la información de la tarjeta de lo contrario
+     */
     @GET
     @Path("{id: \\d+}")
     public TarjetaPuntosDetailDTO getTarjeta(@PathParam("id") Long id)
@@ -43,6 +55,11 @@ public class TarjetaPuntosResource {
         return new TarjetaPuntosDetailDTO(logic.getTarjetaPuntos(id));
     }
     
+    /**
+     * Método encargado de retornar las compras de una tarjetaPuntos especìfica
+     * @param id identificador de la tarjeta puntos a consultar
+     * @return colección de las compras hechas con una tarjeta puntos. Si la tarjeta no existe retorna un mensaje de error con el estado 404
+     */
     @GET
     @Path("{id: \\d+}/compras")
     public List<CompraDetailDTO> getCompras(@PathParam("id") Long id)
@@ -50,6 +67,15 @@ public class TarjetaPuntosResource {
         return compraListEntityToDetailDTO(logic.getCompras(id));
     }
     
+    //Los demás métodos rest están desde la clase que las contiene (toca crearlas desde allá)
+    //Cliente resource [ver API]
+    
+    
+    /**
+     * Método privado que convierte de una lista de entities de TarjetasPuntos a su representación DetailDTO
+     * @param entities colección de entities a convertir a DetailDTO
+     * @return colección de DetailDTOS generados
+     */
     private List<TarjetaPuntosDetailDTO> ListEntityToDetailDTO(List<TarjetaPuntosEntity> entities)
     {
         List<TarjetaPuntosDetailDTO> DTOList = new ArrayList<>();
@@ -63,6 +89,11 @@ public class TarjetaPuntosResource {
         return DTOList;
     }
     
+    /**
+     * Método privado que convierte de una lista de entities de Compra a su representación DetailDTO
+     * @param entities colección de entities a convertir a DetailDTO
+     * @return colección de DetailDTOS generados
+     */
     private List<CompraDetailDTO> compraListEntityToDetailDTO(List<CompraEntity> entities)
     {
         List<CompraDetailDTO> DTOList = new ArrayList<>();
