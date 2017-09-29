@@ -44,7 +44,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/CA",
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C1",
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -118,6 +118,41 @@
 			"response": []
 		},
 		{
+			"name": "Put Cliente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"",
+							"",
+							"tests[\"Body matches string\"] = responseBody.has(\"Laura Maria\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"usuario\":\"C1\",\n\t\"nombre\":\"Laura Maria\",\n\t\"imagen\":\"laura.jpg\",\n\t\"contrasena\":\"123456\",\n\t\"recargas\": [],\n\t\"comentarios\":[],\n\t\"compras\":[],\n\t\"tarjetasDeCredito\":[],\n\t\"tarjetasPunto\":[]\n}"
+				},
+				"description": "Editar un cliente"
+			},
+			"response": []
+		},
+		{
 			"name": "DELETE usuario no existe",
 			"event": [
 				{
@@ -175,7 +210,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/CA/recargas",
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C2/recargas",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -197,11 +232,33 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/CC/recargas",
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C4/recargas",
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"description": "El cliente no tiene recargas"
+			},
+			"response": []
+		},
+		{
+			"name": "Get recargas Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C2/recargas/3",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
 			},
 			"response": []
 		},
@@ -219,7 +276,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/CC/recargas",
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C2/recargas",
 				"method": "POST",
 				"header": [
 					{
@@ -230,7 +287,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"valor\":500,\n\t\"fecha\": \"09/09/2017\"\n}"
+					"raw": "{\n\t\"valor\":5000,\n\t\"fecha\": \"07/09/2017\"\n}"
 				},
 				"description": "El cliente no tiene recargas"
 			},
@@ -250,7 +307,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/CA/tarjetasDeCredito",
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C3/tarjetasDeCredito",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -272,7 +329,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/CF/tarjetasDeCredito",
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C4/tarjetasDeCredito",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -281,7 +338,7 @@
 			"response": []
 		},
 		{
-			"name": "Post tarjeta",
+			"name": "Get tarjetas Id",
 			"event": [
 				{
 					"listen": "test",
@@ -294,7 +351,29 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/CC/tarjetasDeCredito",
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C3/tarjetasDeCredito/5",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post tarjeta Credito",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C2/tarjetasDeCredito",
 				"method": "POST",
 				"header": [
 					{
@@ -305,7 +384,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"banco\":\"BancoX\",\n\t\"numero\": 200\n}"
+					"raw": "{\n\t\"numero\":55000,\n\t\"banco\": \"XX\"\n}"
 				},
 				"description": ""
 			},
@@ -325,7 +404,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/CA/tarjetasPuntos",
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C1/tarjetasPuntos",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -347,7 +426,29 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/CF/tarjetasPuntos",
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C5/tarjetasPuntos",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get compras ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C1/compras",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -363,13 +464,35 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
+							"tests[\"Body matches string\"] = responseBody.has(\"no tiene\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C4/compras",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get comentarios ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;"
 						]
 					}
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/CA/tarjetasPuntos",
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C1/comentarios",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -391,7 +514,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/CA/compras",
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C4/comentarios",
 				"method": "GET",
 				"header": [],
 				"body": {},

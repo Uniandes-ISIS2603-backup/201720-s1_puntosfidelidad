@@ -5,9 +5,7 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.resources;
 
-import co.edu.uniandes.csw.puntosfidelidad.dtos.CompraDTO;
 import co.edu.uniandes.csw.puntosfidelidad.dtos.CompraDetailDTO;
-import co.edu.uniandes.csw.puntosfidelidad.dtos.TarjetaPuntosDTO;
 import co.edu.uniandes.csw.puntosfidelidad.dtos.TarjetaPuntosDetailDTO;
 import co.edu.uniandes.csw.puntosfidelidad.ejb.TarjetaPuntosLogic;
 import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
