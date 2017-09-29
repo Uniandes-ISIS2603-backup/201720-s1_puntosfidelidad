@@ -148,11 +148,11 @@ public class RestauranteLogic {
         return getRestaurante(usuario).getEventos();
     }
     
-    public EventoEntity getEvento(String nit, Long id) {
+    public EventoEntity getEvento(String nit, String id) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar una sucursal del restaurante con el NIT = {0}", nit);
         List<EventoEntity> list = getRestaurante(nit).getEventos();
         SucursalEntity entity = new SucursalEntity();
-        entity.setId(id);
+        entity.setNombre(id);
         int index = list.indexOf(entity);
         if (index >= 0) {
           return list.get(index);
@@ -160,6 +160,23 @@ public class RestauranteLogic {
         return null;
     }
 
+    
+    /**
+     * Asocia un Producto existente a un Restaurante
+     *
+     * @param nit Identificador de la instancia de cliente
+     * @param Id Identificador de la instancia de TarjetaDeCredito      * @return Instancia de TarjetaDeCreditoEntity que fue asociada a cliente
+     * @return Instancia de TarjetaDeCreditoEntity buscada 
+     */
+    public EventoEntity addEvento (String nit, String Id) {
+        LOGGER.log(Level.INFO, "Inicia proceso de asociar un autor al cliente con id = {0}", nit);
+        RestauranteEntity RestauranteEntity = getRestaurante(nit);
+        EventoEntity EventoEntity = new EventoEntity();
+        EventoEntity.setNombre(Id);
+        RestauranteEntity.getEventos().add(EventoEntity);
+        return getEvento(nit, Id);
+    }
+    
     
      public List<ProductoEntity> listProductos(String usuario) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar todas las sucursales del restaurante con usuario  = {0}", usuario);
@@ -210,6 +227,38 @@ public class RestauranteLogic {
         return restauranteEntity.getProductos();
     }
 
+    /**
+     * Remplaza las instancias de Productos asociadas a una instancia de Restaurante
+     *
+     * @param nit Identificador de la instancia de cliente
+     * @param list Colección de instancias de TarjetaDeCreditoEntity a asociar a instancia
+     * de cliente
+     * @return Nueva colección de TarjetaDeCreditoEntity asociada a la instancia de cliente
+     * 
+     */
+    public List<EventoEntity> replaceEventos (String nit, List<EventoEntity> list) {
+        LOGGER.log(Level.INFO, "Inicia proceso de reemplazar una sucursal del restaurante con nit = {0}", nit);
+        RestauranteEntity restauranteEntity = getRestaurante(nit);
+        restauranteEntity.setEventos(list);
+        return restauranteEntity.getEventos();
+    }
+    
+    /**
+     * Desasocia una Sucursal existente de un Restaurante existente
+     *
+     * @param nit Identificador de la instancia del restaurante
+     * @param Id Identificador de la instancia de la sucursal
+     */
+    public void removeEventos (String nit, String Id) {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar un autor del cliente con id = {0}", nit);
+        RestauranteEntity entity = getRestaurante(nit);
+        EventoEntity EventoEntity = new EventoEntity();
+        EventoEntity.setNombre(Id);
+        entity.getProductos().remove(EventoEntity);
+    }
+    
+    
+    
     /**
      * Desasocia una Sucursal existente de un Restaurante existente
      *

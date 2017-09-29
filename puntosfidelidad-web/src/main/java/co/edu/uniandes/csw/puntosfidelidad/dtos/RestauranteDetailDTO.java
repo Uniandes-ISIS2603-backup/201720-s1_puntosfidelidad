@@ -5,7 +5,12 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.dtos;
 
+import co.edu.uniandes.csw.puntosfidelidad.entities.EventoEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -13,20 +18,97 @@ import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
  */
 public class RestauranteDetailDTO extends RestauranteDTO{
     
+    private List<SucursalDTO> sucursales; 
+    
+    private List<EventoDTO> eventos;
+    
+    private List<ProductoDTO> productos;
+
+    public List<SucursalDTO> getSucursales() {
+        return sucursales;
+    }
+
+    public void setSucursales(List<SucursalDTO> sucursales) {
+        this.sucursales = sucursales;
+    }
+
+    public List<EventoDTO> getEventos() {
+        return eventos;
+    }
+
+    public void setEventos(List<EventoDTO> eventos) {
+        this.eventos = eventos;
+    }
+
+    public List<ProductoDTO> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<ProductoDTO> productos) {
+        this.productos = productos;
+    }
+    
+    
     public RestauranteDetailDTO()
     {
-        
+        super();
     }
     
     public RestauranteDetailDTO(RestauranteEntity entity)
     {
         super(entity);
+        
+         if (entity != null) {
+            sucursales = new ArrayList<>();
+            for (SucursalEntity entitySucursal : entity.getSucursales()) {
+                sucursales.add(new SucursalDTO(entitySucursal));
+            }
+            
+            productos = new ArrayList<>();
+            for (ProductoEntity entityProductos : entity.getProductos()) {
+                productos.add(new ProductoDTO(entityProductos));
+            }
+            
+            eventos = new ArrayList<>();
+            for (EventoEntity entityEvento : entity.getEventos()) {
+                eventos.add(new EventoDTO(entityEvento));
+            }
+            
+         }    
+        
     }
+    
     
     public RestauranteEntity toEntity()
     {
-        //Completar conr elaciones
-        return new RestauranteEntity();                
+        RestauranteEntity entity= super.toEntity();
+        
+         if (getSucursales() != null) {
+            List<SucursalEntity> sucursalesEntity = new ArrayList<>();
+            for(SucursalDTO dtoSucursal : getSucursales()) {
+                sucursalesEntity.add(dtoSucursal.toEntity());
+            }
+            entity.setSucursales(sucursalesEntity);
+        }
+        
+        if (getProductos() != null) {
+            List<ProductoEntity> comentariosEntity = new ArrayList<>();
+            for (ProductoDTO dtoComentario : getProductos()) {
+                comentariosEntity.add(dtoComentario.toEntity());
+            }
+            entity.setProductos(comentariosEntity);
+        }
+        
+        if (getEventos() != null) {
+            List<EventoEntity> eventosEntity = new ArrayList<>();
+            for (EventoDTO dtoEvento : getEventos()) {
+                eventosEntity.add(dtoEvento.toEntity());
+            }
+            entity.setEventos(eventosEntity);
+        }
+        
+        
+        return entity;                
     }
     /*
     

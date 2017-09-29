@@ -21,7 +21,7 @@ public class RestauranteDTO implements Serializable{
     //Constructor vacío (¡¡¡OLBIGATORIO!!!)
     public RestauranteDTO()
     {
-        //Método vacio obligatorio.        
+        
     }
     
     /**

@@ -16,42 +16,39 @@ import java.util.List;
  */
 public class AdministradorDetailDTO extends AdministradorDTO{
     
-    /*
-    
-    ---------PLANTILLA ADMINISTRADOR---------
-    ANTECIÓN: LO QUE HAY EN ESTA CLASE ES TRBAJO EN PROGRESO DE ADMINISTRADOR.
-    SE COMENTÓ PARA CONSERVARLO PERO QUE IGUAL LA APLICACIÓN MANTUVIERA SU INTEGRIDAD (NO COMPILABA PORQUE FALTAN COSAS DE LOGIC Y DTO'S)
-    NO ELIMINARLO Y *SOLO* DESCOMENTARLO PARA TERMINAR EL TRABAJO INICIADO
-    
-    SOLO SE COMENTARON LAS PARTES QUE NO COMPILABAN PARA NO COMPROMETER LOS OTROS COMENTARIOS
-    
-    */
-    
+   
     private List<RestauranteDTO> restaurantes;
+   
     
+    public AdministradorDetailDTO() {
+    super();
+   
+    }
+            
     /**
      * Conviertir Entity a DetailDTO
      * Crea un nuevo DetailDTO con los valores que recibe en la entidad que viene de argumento.
      */
     public AdministradorDetailDTO(AdministradorEntity entity)
     {
-        /*
+       
         super(entity);
         if (entity != null)
         {
             restaurantes = new ArrayList<>();
-            for(RestauranteEntity entity: entity.getRestaurantes())
+            
+            for(RestauranteEntity entityRestaurante: entity.getRestaurantes())
             {
-                restaurantes.add(new RestauranteDTO(entity));
+                restaurantes.add(new RestauranteDTO(entityRestaurante));
             }
         }
-        */
+       
     }
     
     @Override
     public AdministradorEntity toEntity()
     {
-        /*
+        
         AdministradorEntity entity = super.toEntity();
         
         if(restaurantes != null)
@@ -63,8 +60,8 @@ public class AdministradorDetailDTO extends AdministradorDTO{
             }
             entity.setRestaurantes(restaurantesEntity);
         }
-        */
-        return new AdministradorEntity();
+        
+        return entity;
     }
 
     public List<RestauranteDTO> getRestaurantes() {
