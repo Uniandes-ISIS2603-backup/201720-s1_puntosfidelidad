@@ -1,16 +1,16 @@
 delete from RecargaEntity;
 delete from TarjetaDeCreditoEntity;
-delete from AdministradorEntity;
+delete from FotoEntity;
 delete from ComentarioEntity;
+delete from ProductoEntity;
 delete from CompraEntity;
 delete from EventoEntity;
-delete from FotoEntity;
-delete from ProductoEntity;
-delete from RestauranteEntity;
 delete from SucursalEntity;
 delete from TarjetaPuntosEntity;
 delete from UbicacionEntity;
 delete from ClienteEntity;
+delete from RestauranteEntity;
+delete from AdministradorEntity;
 
 insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C1','C1','C1.jpg','C1');
 insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C2','C2','C2.jpg','C2');
@@ -40,7 +40,11 @@ insert into AdministradorEntity (USUARIO, CONTRASENA) values ('Andres','1234');
 
 insert into RestauranteEntity (NIT, NOMBRE, TIPOCOMIDA,ADMINISTRADOR_USUARIO) values ('1','BBC','alemana','aa');
 insert into RestauranteEntity (NIT, NOMBRE, TIPOCOMIDA,ADMINISTRADOR_USUARIO) values ('111','BC','mex','aa');
+insert into RestauranteEntity (NIT, NOMBRE, TIPOCOMIDA,ADMINISTRADOR_USUARIO) values ('A','BC','mex','aa');
 
+insert into UbicacionEntity (DIRECCION, LATITUD, LONGITUD) values ('asd',1002,120);
+
+insert into SucursalEntity (ID, DESCRIPCION, HORAAPERTURA, HORACIERRE, NOMBRE, RESTAURANTE_NIT, UBICACION_DIRECCION) values (87, 'hola', '4/7/1965', '4/7/1965', 'Mc Donals','A', 'asd');
 
 insert into ProductoEntity (id, nombre, valorDinero, valorpuntos, RESTAURANTE_NIT) values (1,'pollo',5000,200, '1');
 insert into ProductoEntity (id, nombre, valorDinero, valorpuntos, RESTAURANTE_NIT) values (100,'res',8000,300, '1');
@@ -49,14 +53,11 @@ insert into ProductoEntity (id, nombre, valorDinero, valorpuntos, RESTAURANTE_NI
 insert into ComentarioEntity (id, comentario, calificacion, sucursal_id, cliente_usuario) values (1, 'Que buen servicio +10', 10, 87, 'C1');
 insert into ComentarioEntity (id, comentario, calificacion, sucursal_id, cliente_usuario) values (2, 'Mal momo', 1, 87, 'C2');
 
-insert into UbicacionEntity (DIRECCION, LATITUD, LONGITUD) values ('asd',1002,120);
 
-insert into SucursalEntity (ID, DESCRIPCION, HORAAPERTURA, HORACIERRE, NOMBRE, RESTAURANTE_NIT, UBICACION_DIRECCION) values (87, 'hola', '4/7/1965', '4/7/1965', 'Mc Donals','A', 'asd');
-
-insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Taquitos gratis','24/6/2010' , '26/6/2010' , 'Se regalaran tacos gratis.' )
-insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Super Hamburguesas','4/8/2010' , '25/8/2010' , 'Se bajaran de precio las mejores hamburguesas de cada restaurante.' )
-insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Taquitos gratis','24/6/2010' , '24/6/2010' , 'Se regalaran tacos gratis.' )
-insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Taquitos gratis','24/6/2010' , '24/6/2010' , 'Se regalaran tacos gratis.' )
+insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Taquitos gratis','4/7/1965' , '6/6/2010' , 'Se regalaran tacos gratis.' );
+insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Super Hamburguesas','4/7/1965' , '5/8/2010' , 'Se bajaran de precio las mejores hamburguesas de cada restaurante.' );
+insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Taquitos gratis 1','4/7/1965' , '2/6/2010' , 'Se regalaran tacos gratis.' );
+insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Taquitos gratis 2','4/7/1965' , '2/6/2010' , 'Se regalaran tacos gratis.' );
 
 insert into CompraEntity (ID, PAGOCONPUNTOS, CLIENTE_USUARIO, SUCURSAL_ID, TARJETAPUNTOS_ID) values (20, 1, 'C1', 87, (SELECT MAX(ID) FROM TarjetaPuntosEntity WHERE cliente_usuario='C1'));
 insert into CompraEntity (ID, PAGOCONPUNTOS, CLIENTE_USUARIO, SUCURSAL_ID, TARJETAPUNTOS_ID) values (60, 0, 'C1', 87, (SELECT MAX(ID) FROM TarjetaPuntosEntity WHERE cliente_usuario='C1'));

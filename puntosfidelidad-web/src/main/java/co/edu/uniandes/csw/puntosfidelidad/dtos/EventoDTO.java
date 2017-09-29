@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.puntosfidelidad.dtos;
 import co.edu.uniandes.csw.puntosfidelidad.entities.EventoEntity;
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Date;
 
 
 /**
@@ -18,9 +19,9 @@ public class EventoDTO implements Serializable{
     
     private String nombre;
     
-    private Calendar fechaInicio;
+    private Date fechaInicio;
     
-    private Calendar fechaFin;
+    private Date fechaFin;
     
     private String descripcion;
     
@@ -61,28 +62,28 @@ public class EventoDTO implements Serializable{
     /**
      * @return the fechaInicio
      */
-    public Calendar getFechaInicio() {
+    public Date getFechaInicio() {
         return fechaInicio;
     }
 
     /**
      * @param fechaInicio the fechaInicio to set
      */
-    public void setFechaInicio(Calendar fechaInicio) {
+    public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
     /**
      * @return the fechaFin
      */
-    public Calendar getFechaFin() {
+    public Date getFechaFin() {
         return fechaFin;
     }
 
     /**
      * @param fechaFin the fechaFin to set
      */
-    public void setFechaFin(Calendar fechaFin) {
+    public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
     }
 
@@ -98,7 +99,5 @@ public class EventoDTO implements Serializable{
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-    
-    
+    }    
 }
