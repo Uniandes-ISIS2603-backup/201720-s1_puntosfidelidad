@@ -55,7 +55,7 @@ public class ClienteResource {
      * @throws BusinessLogicException 
      */
     @GET
-    @Path("{usuario: [a-zA-Z][a-zA-Z0-9]*}")   
+    @Path("{usuario: [a-zA-Z0-9][a-zA-Z0-9]*}")   
     public ClienteDetailDTO getCliente(@PathParam("usuario") String usuario) throws BusinessLogicException {
         ClienteEntity entity = clienteLogic.getCliente(usuario);
         if (entity == null) {

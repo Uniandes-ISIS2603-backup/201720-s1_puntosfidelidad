@@ -18,22 +18,22 @@ insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C3','C3
 insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C4','C4','C4.jpg','C4');
 insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C5','C5','C5.jpg','C5');
 
-insert into TarjetaDeCreditoEntity (banco, numero, cliente_usuario) values ('Bancolombia', 4562182, 'C1' );
-insert into TarjetaDeCreditoEntity (banco, numero, cliente_usuario) values ('Bancopichincha', 4578236, 'C1' );
-insert into TarjetaDeCreditoEntity (banco, numero, cliente_usuario) values ('Piramide', 54126, 'C1' );
-insert into TarjetaDeCreditoEntity (banco, numero, cliente_usuario) values ('Bancolombia', 4562182, 'C2' );
-insert into TarjetaDeCreditoEntity (banco, numero, cliente_usuario) values ('BancoLadron', 897521, 'C3' );
+insert into TarjetaDeCreditoEntity (id,banco, numero, cliente_usuario) values (1,'Bancolombia', 4562182, 'C1' );
+insert into TarjetaDeCreditoEntity (id,banco, numero, cliente_usuario) values (2,'Bancopichincha', 4578236, 'C1' );
+insert into TarjetaDeCreditoEntity (id,banco, numero, cliente_usuario) values (3,'Piramide', 54126, 'C1' );
+insert into TarjetaDeCreditoEntity (id,banco, numero, cliente_usuario) values (4,'Bancolombia', 4562182, 'C2' );
+insert into TarjetaDeCreditoEntity (id,banco, numero, cliente_usuario) values (5,'BancoLadron', 897521, 'C3' );
 
-insert into TarjetaPuntosEntity ( montoactual, montobasico, numpuntos, cliente_usuario) values ( 5000,5000,10,'C1');
-insert into TarjetaPuntosEntity ( montoactual, montobasico, numpuntos, cliente_usuario) values ( 5000,5000,20,'C2');
-insert into TarjetaPuntosEntity ( montoactual, montobasico, numpuntos, cliente_usuario) values ( 1000,5000,20,'C3');
-insert into TarjetaPuntosEntity ( montoactual, montobasico, numpuntos, cliente_usuario) values ( 8000,5010,20,'C4');
-insert into TarjetaPuntosEntity ( montoactual, montobasico, numpuntos, cliente_usuario) values ( 5900,2000,20,'C4');
+insert into TarjetaPuntosEntity (id, montoactual, montobasico, numpuntos, cliente_usuario) values (1, 5000,5000,10,'C1');
+insert into TarjetaPuntosEntity (id, montoactual, montobasico, numpuntos, cliente_usuario) values (2, 5000,5000,20,'C2');
+insert into TarjetaPuntosEntity (id, montoactual, montobasico, numpuntos, cliente_usuario) values (3, 1000,5000,20,'C3');
+insert into TarjetaPuntosEntity (id, montoactual, montobasico, numpuntos, cliente_usuario) values (4, 8000,5010,20,'C4');
+insert into TarjetaPuntosEntity (id, montoactual, montobasico, numpuntos, cliente_usuario) values (5, 5900,2000,20,'C4');
 
-insert into RecargaEntity (fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values ('4/7/1965', 8000, 'C1' ,(SELECT MAX(ID) FROM TarjetaPuntosEntity WHERE cliente_usuario='C1'),(SELECT MAX(ID) FROM TarjetaDeCreditoEntity WHERE cliente_usuario='C1') );
-insert into RecargaEntity (fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values ('4/7/1965', 8000, 'C1' ,(SELECT MAX(ID) FROM TarjetaPuntosEntity WHERE cliente_usuario='C1'),(SELECT MIN(ID) FROM TarjetaDeCreditoEntity WHERE cliente_usuario='C1') );
-insert into RecargaEntity (fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values ('4/8/1967', 8000, 'C2' ,(SELECT MAX(ID) FROM TarjetaPuntosEntity WHERE cliente_usuario='C1'),(SELECT MAX(ID) FROM TarjetaDeCreditoEntity WHERE cliente_usuario='C2') );
-insert into RecargaEntity (fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values ('10/9/1968', 8000, 'C3',(SELECT MAX(ID) FROM TarjetaPuntosEntity WHERE cliente_usuario='C1'),(SELECT MAX(ID) FROM TarjetaDeCreditoEntity WHERE cliente_usuario='C3') );
+insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (1,'4/7/1965', 8000, 'C1' ,(SELECT MAX(ID) FROM TarjetaPuntosEntity WHERE cliente_usuario='C1'),(SELECT MAX(ID) FROM TarjetaDeCreditoEntity WHERE cliente_usuario='C1') );
+insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (2,'4/7/1965', 8000, 'C1' ,(SELECT MAX(ID) FROM TarjetaPuntosEntity WHERE cliente_usuario='C1'),(SELECT MIN(ID) FROM TarjetaDeCreditoEntity WHERE cliente_usuario='C1') );
+insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (3,'4/8/1967', 8000, 'C2' ,(SELECT MAX(ID) FROM TarjetaPuntosEntity WHERE cliente_usuario='C1'),(SELECT MAX(ID) FROM TarjetaDeCreditoEntity WHERE cliente_usuario='C2') );
+insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (4,'10/9/1968', 8000, 'C3',(SELECT MAX(ID) FROM TarjetaPuntosEntity WHERE cliente_usuario='C1'),(SELECT MAX(ID) FROM TarjetaDeCreditoEntity WHERE cliente_usuario='C3') );
 
 insert into AdministradorEntity (USUARIO, CONTRASENA) values ('aa','fofo');
 insert into AdministradorEntity (USUARIO, CONTRASENA) values ('Andres','1234');
