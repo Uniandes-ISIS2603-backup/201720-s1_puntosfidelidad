@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.AdministradorEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistence;
 import java.util.List;
@@ -30,14 +31,21 @@ public class AdministradorLogic {
     
     
     public AdministradorEntity createAdministrador(AdministradorEntity entity) throws BusinessLogicException {
-        LOGGER.info("Inicia proceso de creación de Administrador");
-        // Verifica la regla de negocio que dice que no puede haber dos bodegas con la misma dirección
-        if (!validateContrasena(entity.getContrasena())) {
-            throw new BusinessLogicException("Ya existe un Administrador con ese usuario o la contraseña no es valida \"" + entity.getUsuario()+ "\"");
+         LOGGER.info("Inicia proceso de creación de administrador");
+        if(entity.getUsuario()==null){
+            throw new BusinessLogicException("El usuario no es valido: " + entity.getUsuario());
         }
-        // Invoca la persistencia para crear la bodega
+        if(persistence.find(entity.getUsuario())!=null){
+            throw new BusinessLogicException("El usuario" + entity.getUsuario() + "ya existe");
+        } 
+        if (!validateContrasena(entity.getContrasena())) {
+            throw new BusinessLogicException("La contraseña no es valida: " + entity.getContrasena());
+        }
+        if(entity.getUsuario()==null){
+            entity.setUsuario(entity.getUsuario());
+        }
         persistence.create(entity);
-        LOGGER.info("Termina proceso de creación de Administrador");
+        LOGGER.info("Termina proceso de creación de cliente");
         return entity;
     }
     
@@ -95,5 +103,89 @@ public class AdministradorLogic {
             
     }
 
+    
+    /**
+     * Obtiene una colección de instancias de Restaurantes asociadas a una
+     * instancia de Administrador
+     *
+     * @param usuario Identificador de la instancia de administrador
+     * @return Colección de instancias de RestauranteEntity asociadas a la instancia
+     * de cliente
+     * @throws co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException
+     * 
+     */
+    public List<RestauranteEntity> listRestaurantes(String usuario) throws BusinessLogicException {
+        
+        List<RestauranteEntity> lista= getAdministrador(usuario).getRestaurantes();
+        if(lista.isEmpty()) throw new BusinessLogicException("El Administrador que consulta aún no tiene restaurantes");
+        return lista;
+    }
+    
+    /**
+     * Obtiene una instancia de TarjetaDeCreditoEntity asociada a una instancia de cliente
+     *
+     * @param usuario Identificador de la instancia de cliente
+     * @param nit Identificador de la instancia de TarjetaDeCredito
+     * @return Instancia de TarjetaDeCreditoEntity buscada 
+     * 
+     */
+    public RestauranteEntity getRestaurante(String usuario, String nit) {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar un Tarjetas de Credito del cliente con usuario = {0}", usuario);
+        List<RestauranteEntity> list = getAdministrador(usuario).getRestaurantes();
+        RestauranteEntity entity = new RestauranteEntity();
+        entity.setNit(nit);
+        int index = list.indexOf(entity);
+        if (index >= 0) {
+            return list.get(index);
+        }
+        return null;
+    }
+
+    /**
+     * Asocia un Restaurante existente a un cliente
+     *
+     * @param usuario Identificador de la instancia de cliente
+     * @param tarjetaId Identificador de la instancia de TarjetaDeCredito      * @return Instancia de RestauaranteEntity que fue asociada a admin
+     * @return Instancia de RestauranteEntity buscada 
+     */
+    public RestauranteEntity addRestaurantes (String usuario, String tarjetaId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de asociar un autor al cliente con id = {0}", usuario);
+        AdministradorEntity administradorEntity = getAdministrador(usuario);
+        RestauranteEntity tarjetaEntity = new RestauranteEntity();
+        tarjetaEntity.setNit(tarjetaId);
+        administradorEntity.getRestaurantes().add(tarjetaEntity);
+        return getRestaurante(usuario, tarjetaId);
+    }
+
+    /**
+     * Remplaza las instancias de Restaurantes asociadas a una instancia de administrador
+     *
+     * @param usuario Identificador de la instancia de cliente
+     * @param list Colección de instancias de TarjetaDeCreditoEntity a asociar a instancia
+     * de cliente
+     * @return Nueva colección de TarjetaDeCreditoEntity asociada a la instancia de cliente
+     * 
+     */
+    public List<RestauranteEntity> replaceRestaurantes (String usuario, List<RestauranteEntity> list) {
+        LOGGER.log(Level.INFO, "Inicia proceso de reemplazar un autor del cliente con id = {0}", usuario);
+        AdministradorEntity clienteEntity = getAdministrador(usuario);
+        clienteEntity.setRestaurantes(list);
+        return clienteEntity.getRestaurantes();
+    }
+
+    /**
+     * Desasocia un Restaurante existente de un administrador existente
+     *
+     * @param usuario Identificador de la instancia de cliente
+     * @param nit Identificador de la instancia de Restaurante      * 
+     */
+    public void removeRestaurantes (String usuario, String nit) {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar un autor del admin con id = {0}", usuario);
+        AdministradorEntity entity = getAdministrador(usuario);
+        RestauranteEntity restauranteEntity = new RestauranteEntity();
+        restauranteEntity.setNit(nit);
+        entity.getRestaurantes().remove(restauranteEntity);
+    }
+    
     
 }

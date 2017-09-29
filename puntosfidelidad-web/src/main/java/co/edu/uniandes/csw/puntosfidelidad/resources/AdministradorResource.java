@@ -7,12 +7,8 @@ package co.edu.uniandes.csw.puntosfidelidad.resources;
 
 import co.edu.uniandes.csw.puntosfidelidad.dtos.AdministradorDTO;
 import co.edu.uniandes.csw.puntosfidelidad.dtos.AdministradorDetailDTO;
-import co.edu.uniandes.csw.puntosfidelidad.dtos.RestauranteDTO;
-import co.edu.uniandes.csw.puntosfidelidad.dtos.RestauranteDetailDTO;
 import co.edu.uniandes.csw.puntosfidelidad.ejb.AdministradorLogic;
-import co.edu.uniandes.csw.puntosfidelidad.ejb.RestauranteLogic;
 import co.edu.uniandes.csw.puntosfidelidad.entities.AdministradorEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,9 +39,6 @@ public class AdministradorResource {
     @Inject
     AdministradorLogic logic;
     
-    // Inyecciòn de dependencia de la clase restaurante
-    @Inject
-    RestauranteLogic restaurantelogic;
     
     
     //Métodos REST de la clase (GET, POST, PUT, DELETE)
@@ -53,9 +46,10 @@ public class AdministradorResource {
     /**
      * Obtiene todos los restaurantes
      * @return lista de lcientes 
+     * @throws BusinessLogicException 
      */
     @GET
-    public List<AdministradorDetailDTO> getAdministradores()
+    public List<AdministradorDetailDTO> getAdministradores()throws BusinessLogicException
     {
         return ListEntityToDetailDTO(logic.getAdministradores());
     }
@@ -65,10 +59,11 @@ public class AdministradorResource {
      * Obtiene un administrador segùn el usuario dado 
      * @param usuario
      * @return administrador
+     * @throws co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException
      */
     @GET
-    @Path("{usuario}")
-    public AdministradorDetailDTO getAdministrador(@PathParam("usuario") String usuario)
+    @Path("{usuario: [a-zA-Z0-9][a-zA-Z0-9]*}")
+    public AdministradorDetailDTO getAdministrador(@PathParam("usuario") String usuario)throws BusinessLogicException
     {
         AdministradorEntity entity = logic.getAdministrador(usuario);
         if (entity == null) {
@@ -77,101 +72,71 @@ public class AdministradorResource {
         return new AdministradorDetailDTO(entity);
     }
     
+     /**
+     * Crea un cliente 
+     * @param admin
+     * @return Cliente creado
+     * @throws BusinessLogicException
+     */
+    @POST
+    public AdministradorDTO createAdministrador(AdministradorDTO admin) throws BusinessLogicException
+    {
+        return new AdministradorDetailDTO(logic.createAdministrador(admin.toEntity()));
+    }
+    
+    
     /**
-     * Obtiene los restuarantes de un administrador segùn el usuario dado 
+     * Actualiza un administrador
      * @param usuario
-     * @return administrador
-     */  
-    @GET
-    @Path("{usuario}/restaurantes")
-    public List<RestauranteDTO> getAdministradorRestaurantes(@PathParam("usuario") String usuario)
-    {
-        return restauranteListEntityToDTO(logic.getAdministrador(usuario).getRestaurantes());
-        
-        
-    }
-    
-        
-    @GET
-    @Path("{usuario}/restaurantes/{nit}")
-    public RestauranteDetailDTO getAdministradorRestaurante(@PathParam("usuario") String usuario, @PathParam("nit") String nit)
-    {
-        RestauranteEntity restaurante = logic.getAdministrador(usuario).getRestaurante(nit);
-       
-        return new RestauranteDetailDTO(restaurante);
-    }
-    
-    @POST
-    public AdministradorDTO createAdministrador(AdministradorDTO admDTO) throws BusinessLogicException
-    {
-        return new AdministradorDetailDTO(logic.createAdministrador(admDTO.toEntity()));
-    }
-    
-    @POST
-    @Path("{usuario}")
-    public RestauranteDTO createRestaurante(@PathParam("usuario") String usuario, RestauranteDTO resDTO) throws BusinessLogicException
-    {
-        return new RestauranteDetailDTO(restaurantelogic.createRestaurante(resDTO.toEntity()));
-    }
-    
-    @POST
-    @Path("{usuario}/restaurantes")
-    public RestauranteDTO createAdministradorRestaurante(RestauranteDTO dto)throws BusinessLogicException
-    {
-        return new RestauranteDetailDTO(restaurantelogic.createRestaurante(dto.toEntity()));
+     * @param admin
+     * @return cliente actualizado 
+     * @throws BusinessLogicException
+     */
+    @PUT
+    @Path("{usuario: [a-zA-Z0-9][a-zA-Z0-9]*}") 
+    public AdministradorDetailDTO updateCliente(@PathParam("usuario") String usuario, AdministradorDetailDTO admin) throws BusinessLogicException {
+        admin.setUsuario(usuario);
+        AdministradorEntity entity = logic.getAdministrador(usuario);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /administrador/" + usuario + " no existe.", 404);
+        }
+        return new AdministradorDetailDTO(logic.actualizarAdministrador(usuario, admin.toEntity()));
     }
     
     
+    /**
+     * Borra un administrador
+     * @param usuario
+     * @throws BusinessLogicException
+     */
     @DELETE
     @Path("{usuario}")
     public void deleteAdministrador(@PathParam("usuario") String usuario) throws BusinessLogicException
     {
+        AdministradorEntity entity = logic.getAdministrador(usuario);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /administrador/" + usuario + " no existe.", 404);
+        }
         logic.removeAdministrador(usuario);
     }
-    
-    
-    @DELETE
-    @Path("{usuario}/restaurantes/{nit}")
-    public void deleteRestauranteAdministrador(@PathParam("usuario") String usuario, @PathParam("nit") String nit)
-    {
-      RestauranteEntity resEliminar= logic.getAdministrador(usuario).getRestaurante(nit);
       
-      if(resEliminar==null)
-      throw new WebApplicationException("El restaurante no existe");
-          
-      
-        restaurantelogic.removeRestaurante(nit);
-    }
     
-    @PUT
-    @Path("{usuario}/restaurantes/{nit}")
-    public RestauranteDetailDTO updateAdministradorRestaurante(@PathParam("nit") String nit, @PathParam("usuario") String usuario, RestauranteDetailDTO dto)
-    {
-        //Se convierte a entity
-        RestauranteEntity entity = dto.toEntity();
-        entity.setNit(nit);
-        
-        //Busco el entity a actualizar
-        RestauranteEntity oldEntity = logic.getAdministrador(usuario).getRestaurante(nit);
-        if (oldEntity == null)
-        {
-            //Si no lo encuentro, mando una excepción porque no existe
-            throw new WebApplicationException("El restaurante no existe");
+    
+    /**
+     * Consulta de restaurante
+     * @param usuario
+     * @return RestauranteResource
+     */
+    @Path("{usuario: [a-zA-Z0-9][a-zA-Z0-9]*}/restaurantes")
+    public Class<AdminRestauranteResource> getAdminRestauranteResource(@PathParam("usuario") String usuario) {
+        AdministradorEntity entity = logic.getAdministrador(usuario);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /clientes/" + usuario + "/restaurante no existe.", 404);
         }
-        //Si si existe hago que conserve sus sub-recursos (relaciones)
-        
-        
-         //Acá van asignaciones de todas las relaciones que tengael objeto a actualizar
-         //Por ejemplo:
-         entity.setSucursales(oldEntity.getSucursales());
-         entity.setEventos(oldEntity.getEventos());
-         entity.setProductos(oldEntity.getProductos());
-        
-        
-        return new RestauranteDetailDTO(restaurantelogic.actualizarRestaurante(nit,dto.toEntity()));
+        return AdminRestauranteResource.class;
     }
     
-    
+
     //Métodos privados de la clase. La idea es que los métodos de arriba solo llamen a la lógica
     //Si es necesario convertir de Lista de DTOS a Lista de Entities (o al revés) se hace en un método privado
     //Cualquier otra cosa que se requiera, también se mete como método privado
@@ -189,15 +154,6 @@ public class AdministradorResource {
         return DTOList;
     }
     
-    private List<RestauranteDTO> restauranteListEntityToDTO(List<RestauranteEntity> entities)
-    {
-        List<RestauranteDTO> DTOList = new ArrayList<>();
-        
-        for(RestauranteEntity entity : entities)
-        {
-            DTOList.add(new RestauranteDTO(entity));
-        }      
-        return DTOList;
-    }
+ 
   
 }
