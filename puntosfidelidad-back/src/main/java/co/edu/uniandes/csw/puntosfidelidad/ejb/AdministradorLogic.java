@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -114,10 +115,10 @@ public class AdministradorLogic {
      * @throws co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException
      * 
      */
-    public List<RestauranteEntity> listRestaurantes(String usuario) throws BusinessLogicException {
+    public List<RestauranteEntity> listRestaurantes(String usuario) {
         
         List<RestauranteEntity> lista= getAdministrador(usuario).getRestaurantes();
-        if(lista.isEmpty()) throw new BusinessLogicException("El Administrador que consulta aún no tiene restaurantes");
+        if(lista.isEmpty()) throw new WebApplicationException("El Administrador que consulta aún no tiene restaurantes", 404);
         return lista;
     }
     
@@ -130,7 +131,7 @@ public class AdministradorLogic {
      * 
      */
     public RestauranteEntity getRestaurante(String usuario, String nit) {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar un Tarjetas de Credito del cliente con usuario = {0}", usuario);
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar un Restaurantes del cliente con usuario = {0}", usuario);
         List<RestauranteEntity> list = getAdministrador(usuario).getRestaurantes();
         RestauranteEntity entity = new RestauranteEntity();
         entity.setNit(nit);
