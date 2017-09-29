@@ -115,20 +115,6 @@ Laura Valeria Vanegas García|lv.vanegas10|Líder de Planeación
     - [PUT clientes/{clientesid}/comentarios](#PUT-/clientes/{clientesid}/comentarios)
     - [DELETE clientes/{clientesid}/comentarios/{comentariosid}](#DELETE-/clientes/{clientesid}/comentarios/{comentariosid})
     
- - [Recurso Recarga](#recurso-recarga)
-    - [GET /recargas](#GET-/recargas)
-    - [GET /recargas/{id}](#GET-/recargas/{id})
-    - [POST /recargas](#POST-/recargas)
-    - [PUT /recargas/{id}](#PUT-/recargas/{id})
-    - [DELETE /recargas/{id}](#DELETE-/recargas/{id})
-    
- - [Recurso TarjetaDeCredito](#recurso-tarjetadecredito)
-    - [GET /tarjetasDeCredito](#GET-/tarjetasDeCredito)
-    - [GET /tarjetasDeCredito/{id}](#GET-/tarjetasDeCredito/{tarjetasDeCreditoid})
-    - [POST /tarjetasDeCredito](#POST-/tarjetasDeCredito)
-    - [PUT /tarjetasDeCredito/{id}](#PUT-/tarjetasDeCredito/{tarjetasDeCreditoid})
-    - [DELETE /tarjetasDeCredito/{id}](#DELETE-/tarjetasDeCredito/{tarjetasDeCreditoid})
-
 - [Recurso Evento](#recurso-evento)
     - [GET /eventos](#GET-/eventos)
     - [GET /eventos/{id}](#GET-/eventos/{nombre})
@@ -146,6 +132,15 @@ Laura Valeria Vanegas García|lv.vanegas10|Líder de Planeación
     - [PUT eventos/{eventoNombre}/restaurante](#PUT-eventos/{eventoNombre}/restaurantes)
     - [DELETE eventos/{eventoNombre}/restaurante/{idRestaurante}](#DELETE-eventos/{eventoNombre}/restaurantes/{idRestaurante}])
 
+ - [Recurso Ubicacion](#recurso-ubicacion)
+    - [GET ubicaciones](#GET-/ubicaciones)
+    - [GET ubicaciones/{direccionSucursal}](#GET-/ubicaciones/{direccion})
+    - [POST ubicaciones](#POST-/ubicaciones)
+    - [PUT ubicaciones{direccionSucursal}](#PUT-/ubicaciones{direccion})
+    - [DELETE ubicaciones/{direccionSucursal}](#DELETE-/ubiacaciones/{direccion})
+    
+    
+    
 
 ### Recurso Compra
 El objeto Compra tiene 2 representaciones JSON:	
@@ -2082,240 +2077,6 @@ Código|Descripción|Cuerpo
 500|Error interno|Mensaje de error
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
-
-### Recurso Recarga
-El objeto Recarga tiene 2 representaciones JSON:	
-
-#### Representación Minimum
-```javascript
-{
-    id: '' /*Tipo Long*/,
-    valor: '' /*Tipo Double*/,
-    fecha: '' /*Tipo Date*/   
-}
-```
-
-#### Representación Detail
-```javascript
-{
-    // todo lo de la representación Minimum más los objetos Minimum con relación simple.
-    cliente:   {  /*Cliente en su representación Minimum*/}        
-}
-```
-
-
-
-#### GET /recargas
-
-Retorna una colección de objetos Recarga en representación Detail.
-Cada Recarga en la colección tiene embebidos los siguientes objetos: Editorial.
-
-#### Parámetros
-
-#### N/A
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|OK|Colección de [representaciones Detail](#recurso-Recarga)
-412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-500|Error interno|Mensaje de error
-
-#### GET /recargas/{recargasid}
-
-Retorna una colección de objetos Recarga en representación Detail.
-Cada Recarga en la colección tiene los siguientes objetos: recargas, tarjetasDeCredito, clientes, compras, comentarios.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-id|Path|ID del objeto Recarga a consultar|Sí|Integer
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|OK|Objeto Recarga en [representaciones Detail](#recurso-Recarga)
-404|No existe un objeto Recarga con el ID solicitado|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-500|Error interno|Mensaje de error
-
-#### POST /recargas
-
-Es el encargado de crear objetos Recarga.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-body|body|Objeto Recarga que será creado|Sí|[Representación Detail](#recurso-Recarga)
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-201|El objeto Recarga ha sido creado|[Representación Detail](#recurso-Recarga)
-412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-500|No se pudo crear el objeto Recarga |Mensaje de error
-
-#### PUT /recargas/{recargasid}
-
-Es el encargado de actualizar objetos Recarga.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-id|Path|ID del objeto Recarga a actualizar|Sí|Integer
-body|body|Objeto Recarga nuevo|Sí|[Representación Minimum](#recurso-Recarga)
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-201|El objeto Recarga actualizado|[Representación Minimum](#recurso-Recarga)
-412|business exception, no se cumple con las reglas de negocio|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-500|No se pudo actualizar el objeto Recarga|Mensaje de error
-
-#### DELETE /recargas/{recargasid}
-
-Elimina un objeto Recarga.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-id|Path|ID del objeto Recarga a eliminar|Sí|Integer
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-204|Objeto eliminado|N/A
-500|Error interno|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
-### Recurso TarjetaDeCredito
-El objeto TarjetaDeCredito tiene 2 representaciones JSON:	
-
-#### Representación Minimum
-```javascript
-{
-    id: '' /*Tipo Long*/,
-    numero: '' /*Tipo Long*/,
-    banco: '' /*Tipo String*/
-}
-```
-
-#### Representación Detail
-```javascript
-{
-    // todo lo de la representación Minimum más los objetos Minimum con relación simple.   
-}
-```
-
-
-
-#### GET /tarjetasDeCredito
-
-Retorna una colección de objetos TarjetaDeCredito en representación Detail.
-Cada TarjetaDeCredito en la colección tiene embebidos los siguientes objetos: Editorial.
-
-#### Parámetros
-
-#### N/A
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|OK|Colección de [representaciones Detail](#recurso-TarjetaDeCredito)
-412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-500|Error interno|Mensaje de error
-
-#### GET /tarjetasDeCredito/{tarjetasDeCreditoid}
-
-Retorna una colección de objetos TarjetaDeCredito en representación Detail.
-Cada TarjetaDeCredito en la colección tiene los siguientes objetos: recargas, tarjetasDeCredito, tarjetasDePuntos, compras, comentarios.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-id|Path|ID del objeto TarjetaDeCredito a consultar|Sí|Integer
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-200|OK|Objeto TarjetaDeCredito en [representaciones Detail](#recurso-TarjetaDeCredito)
-404|No existe un objeto TarjetaDeCredito con el ID solicitado|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-500|Error interno|Mensaje de error
-
-#### POST /tarjetasDeCredito
-
-Es el encargado de crear objetos TarjetaDeCredito.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-body|body|Objeto TarjetaDeCredito que será creado|Sí|[Representación Detail](#recurso-TarjetaDeCredito)
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-201|El objeto TarjetaDeCredito ha sido creado|[Representación Detail](#recurso-TarjetaDeCredito)
-412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-500|No se pudo crear el objeto TarjetaDeCredito |Mensaje de error
-
-#### PUT /tarjetasDeCredito/{tarjetasDeCreditoid}
-
-Es el encargado de actualizar objetos TarjetaDeCredito.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-id|Path|ID del objeto TarjetaDeCredito a actualizar|Sí|Integer
-body|body|Objeto TarjetaDeCredito nuevo|Sí|[Representación Minimum](#recurso-TarjetaDeCredito)
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-201|El objeto TarjetaDeCredito actualizado|[Representación Minimum](#recurso-TarjetaDeCredito)
-412|business exception, no se cumple con las reglas de negocio|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-500|No se pudo actualizar el objeto TarjetaDeCredito|Mensaje de error
-
-#### DELETE /tarjetasDeCredito/{tarjetasDeCreditoid}
-
-Elimina un objeto TarjetaDeCredito.
-
-#### Parámetros
-
-Nombre|Ubicación|Descripción|Requerido|Esquema
-:--|:--|:--|:--|:--
-id|Path|ID del objeto TarjetaDeCredito a eliminar|Sí|Integer
-
-#### Respuesta
-
-Código|Descripción|Cuerpo
-:--|:--|:--
-204|Objeto eliminado|N/A
-500|Error interno|Mensaje de error
-405|method not allowed, no existe permiso para el recurso|Mensaje de error
-
 ### Recurso Evento
 El objeto Evento tiene 2 representaciones JSON:	
 
@@ -2614,5 +2375,118 @@ Código|Descripción|Cuerpo
 :--|:--|:--
 204|Objeto removido|N/A
 500|Error interno|Mensaje de error
+
+### Recurso Ubicacion
+El objeto Ubicación tiene 2 representaciones JSON:	
+
+#### Representación Minimum
+```javascript
+{
+    direccion: '' /*Tipo String*/,
+    latitud: '' /*Tipo String*/,
+    longitud: '' /*Tipo String*/,
+}
+```
+
+#### Representación Detail
+```javascript
+{
+    // todo lo de la representación Minimum más los objetos Minimum con relación simple.
+    direccion: '' /*Tipo String*/,
+    latitud: '' /*Tipo String*/,
+    longitud: '' /*Tipo String*/,
+}
+```
+
+#### GET /ubicaciones
+
+Retorna una colección de objetos Ubicacion en representación Detail.
+
+#### Parámetros
+
+#### N/A
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de [representaciones Detail](#recurso-ubicacion)
+412|precondition failed, no existe ninguna ubicacion|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### GET /ubicacion/{direccion}
+
+Retorna una colección de objetos Ubicacion en representación Detail.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerdirecciono|Esquema
+:--|:--|:--|:--|:--
+direccion|Path|direccion del objeto ubicacion a consultar|Sí|String
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto ubicacion en [representaciones Detail](#recurso-ubicacion)
+404|No existe un objeto Ubicacion con el direccion solicitado|Mensaje de error
+500|Error interno|Mensaje de error
+
+#### POST /Ubicacion
+
+Es el encargado de crear objetos Ubicacion.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerdirecciono|Esquema
+:--|:--|:--|:--|:--
+body|body|Objeto Ubicacion que será creado|Sí|[Representación Detail](#recurso-Ubicacion)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Ubicacion ha sdirecciono creado|[Representación Detail](#recurso-Ubicacion)
+412|precondition failed, no se cumple la regla de negocio establecdirecciona|Mensaje de error
+500|No se pudo crear el objeto Ubicacion|Mensaje de error
+
+#### PUT /Ubicacion/{direccion}
+
+Es el encargado de actualizar objetos Ubicacion.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerdirecciono|Esquema
+:--|:--|:--|:--|:--
+direccion|Path|direccion del objeto Ubicacion a actualizar|Sí|String
+body|body|Objeto Ubicacion nuevo|Sí|[Representación Detail](#recurso-Ubicacion)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Ubicacion actualizado|[Representación Detail](#recurso-Ubicacion)
+412|business exception, no existe una Ubicacion con la direccion especificada|Mensaje de error
+500|No se pudo actualizar el objeto Ubicacion|Mensaje de error
+
+#### DELETE /Ubicacions/{direccion}
+
+Elimina un objeto Ubicacion.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerdirecciono|Esquema
+:--|:--|:--|:--|:--
+direccion|Path|direccion del objeto Ubicacion a eliminar|Sí|String
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto eliminado|N/A
+500|Error interno|Mensaje de error
+404|El objeto a eliminar no existe|Mensaje de error
+
+
 
 
