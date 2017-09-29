@@ -1,0 +1,217 @@
+{
+	"variables": [],
+	"info": {
+		"name": "EventoTest",
+		"_postman_id": "e0bcedb9-0f99-cfd0-a8cc-f0f80898ad98",
+		"description": "Pruebas del Recurso Evento",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ejecucion Get eventos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\":\"LOL\" ,\"horaApertura\": \"3/5/2001\", \"horaCierre\": \"3/5/2001\", \"descripcion\" : \"lkjhg\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Get {nombre} Evento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/Super Hamburguesas",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\":\"LOL\" ,\"horaApertura\": \"3/5/2001\", \"horaCierre\": \"3/5/2001\", \"descripcion\" : \"lkjhg\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Get {nombre} Restaurante de un Evento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/Super Hamburguesas",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\":\"LOL\" ,\"horaApertura\": \"3/5/2001\", \"horaCierre\": \"3/5/2001\", \"descripcion\" : \"lkjhg\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Get {nombre} Ubicaciones de un Evento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/Super Hamburguesas",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\":\"LOL\" ,\"horaApertura\": \"3/5/2001\", \"horaCierre\": \"3/5/2001\", \"descripcion\" : \"lkjhg\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Post Evento",
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\":\"Nombre Prueba\" ,\"fachaInicio\": \"3/5/2001\", \"fechaFin\": \"3/5/2001\", \"descripcion\" : \"Descripcion Prueba\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion PUT {nombre} Evento",
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/Nombre Prueba",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\":\"Nombre Prueba\" ,\"fachaInicio\": \"3/5/2001\", \"fechaFin\": \"3/5/2001\", \"descripcion\" : \"Descripcion Prueba Actualizado\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Get eventos Sobre El evento agregado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/Nombre Prueba",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\":\"LOL\" ,\"horaApertura\": \"3/5/2001\", \"horaCierre\": \"3/5/2001\", \"descripcion\" : \"lkjhg\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion DELETE {nombre} Evento",
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/Nombre Prueba",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

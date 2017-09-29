@@ -56,7 +56,7 @@ public class EventoResource {
      * @param dtos Lista de EventoDetailDTO a convertir.
      * @return Lista de EventoEntity convertida.    
      */
-    private List<EventoEntity> eventoesListDTO2Entity(List<EventoDetailDTO> dtos){
+    private List<EventoEntity> eventosListDTO2Entity(List<EventoDetailDTO> dtos){
         List<EventoEntity> list = new ArrayList<>();
         for (EventoDetailDTO dto : dtos) {
             list.add(dto.toEntity());
@@ -65,7 +65,7 @@ public class EventoResource {
     }
 
     @GET
-    public List<EventoDetailDTO> getEventoes(){
+    public List<EventoDetailDTO> getEventos(){
         return eventoListEntity2DTO(logic.getEventos());
     }
     
@@ -77,8 +77,13 @@ public class EventoResource {
     
     @PUT
     @Path("{nombre}")
-    public EventoDetailDTO putEvento(@PathParam("nombre") String nombre){
-        return new EventoDetailDTO(logic.getEvento(nombre));
+    public EventoDetailDTO putEvento(@PathParam("nombre") String nombre, EventoDetailDTO evento) throws BusinessLogicException{
+        evento.setNombre(nombre);
+        EventoEntity entity = logic.getEvento(nombre);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /evento/" + nombre + " no existe.", 404);
+        }
+        return new EventoDetailDTO(logic.updateEvento(nombre, evento.toEntity()));
     }
     
     @POST
@@ -97,4 +102,33 @@ public class EventoResource {
         
         logic.deleteEvento(nombre);            
     }
+    
+    /**
+     * Consulta de Restaurantes
+     * @param usuario
+     * @return RecargaResource
+     */
+    @Path("{nombre}/restaurantes")
+    public Class<EventoRestauranteResource> getComprasResource(@PathParam("nombre") String nombre) {
+        EventoEntity entity = logic.getEvento(nombre);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /evento/" + nombre + "/restaurantesno existe.", 404);
+        }
+        return EventoRestauranteResource.class;
+    }
+    
+    /**
+     * Consulta de Ubicaciones
+     * @param usuario
+     * @return RecargaResource
+     */
+    @Path("{nombre}/ubicaciones")
+    public Class<EventoUbicacionResource> getComentariosResource(@PathParam("nombre") String nombre) {
+        EventoEntity entity = logic.getEvento(nombre);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /evento/" + nombre + "/ubicacaciones no existe.", 404);
+        }
+        return EventoUbicacionResource.class;
+    }
+
 }
