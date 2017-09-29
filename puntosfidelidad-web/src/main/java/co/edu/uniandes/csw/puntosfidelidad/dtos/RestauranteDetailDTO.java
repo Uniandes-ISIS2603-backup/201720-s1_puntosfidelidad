@@ -12,18 +12,21 @@ import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author ja.manrique
- */
+
 public class RestauranteDetailDTO extends RestauranteDTO{
     
+    //Lista de sucursales
     private List<SucursalDTO> sucursales; 
-    
+    //Lista de eventos
     private List<EventoDTO> eventos;
-    
+    //Lista de productos
     private List<ProductoDTO> productos;
 
+     /**
+     *Obtiene la lista de sucursales
+     *
+     * @return 
+     */
     public List<SucursalDTO> getSucursales() {
         return sucursales;
     }
@@ -31,7 +34,11 @@ public class RestauranteDetailDTO extends RestauranteDTO{
     public void setSucursales(List<SucursalDTO> sucursales) {
         this.sucursales = sucursales;
     }
-
+     /**
+     *Obtiene la lista de eventos
+     *
+     * @return 
+     */
     public List<EventoDTO> getEventos() {
         return eventos;
     }
@@ -40,6 +47,11 @@ public class RestauranteDetailDTO extends RestauranteDTO{
         this.eventos = eventos;
     }
 
+    /**
+     *Obtiene la lista de productos
+     *
+     * @return 
+     */    
     public List<ProductoDTO> getProductos() {
         return productos;
     }
@@ -48,12 +60,20 @@ public class RestauranteDetailDTO extends RestauranteDTO{
         this.productos = productos;
     }
     
-    
+    // Contructor
     public RestauranteDetailDTO()
     {
         super();
     }
     
+      /**
+     * Crea un objeto RestaureanteDetailDTO a partir de un objetoRestauranteEntity
+     * incluyendo los atributos de ClienteDTO.
+     *
+     * @param entity Entidad RestauranteEntity desde la cual se va a crear el nuevo
+     * objeto.
+     *
+     */
     public RestauranteDetailDTO(RestauranteEntity entity)
     {
         super(entity);
@@ -78,7 +98,14 @@ public class RestauranteDetailDTO extends RestauranteDTO{
         
     }
     
-    
+    /**
+     * Convierte un objeto ClienteDetailDTO a ClienteEntity incluyendo los
+     * atributos de ClienteDTO.
+     *
+     * @return Nueva objeto RestauranteEntity.
+     *
+     */
+     @Override
     public RestauranteEntity toEntity()
     {
         RestauranteEntity entity= super.toEntity();
@@ -110,9 +137,5 @@ public class RestauranteDetailDTO extends RestauranteDTO{
         
         return entity;                
     }
-    /*
-    
-        Relaciones como atributos. Getters/setters
-    
-    */
+   
 }

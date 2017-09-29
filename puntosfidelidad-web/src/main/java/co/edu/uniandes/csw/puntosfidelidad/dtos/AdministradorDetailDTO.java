@@ -10,13 +10,10 @@ import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author ja.manrique
- */
+
 public class AdministradorDetailDTO extends AdministradorDTO{
     
-   
+   //Atributo que representa la lista de restaurantes asociadas al Administrador
     private List<RestauranteDTO> restaurantes;
    
     
@@ -45,6 +42,13 @@ public class AdministradorDetailDTO extends AdministradorDTO{
        
     }
     
+    /**
+     * Convierte un objeto ClienteDetailDTO a ClienteEntity incluyendo los
+     * atributos de ClienteDTO.
+     *
+     * @return Nueva objeto ClienteEntity.
+     *
+     */
     @Override
     public AdministradorEntity toEntity()
     {
@@ -64,10 +68,20 @@ public class AdministradorDetailDTO extends AdministradorDTO{
         return entity;
     }
 
+    /**
+     * Obtiene una lista de restaurantes
+     * @return Lista de restaurantes DTO
+     *
+     */
     public List<RestauranteDTO> getRestaurantes() {
         return restaurantes;
     }
 
+    /**
+     * Asigna una lista de restaurantes
+     * @param restaurantes
+     *
+     */
     public void setRestaurantes(List<RestauranteDTO> restaurantes) {
         this.restaurantes = restaurantes;
     }

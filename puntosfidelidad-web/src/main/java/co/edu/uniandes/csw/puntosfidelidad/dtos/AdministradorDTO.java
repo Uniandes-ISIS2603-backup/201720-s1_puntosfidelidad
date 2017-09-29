@@ -15,11 +15,13 @@ import java.io.Serializable;
  * Por esta razón solamente contienen atributos, getters, setters
  * y métodos para convertirlos en Entities/Crearlos a partir de Entities
  * (Seguir el UML/Entity y la documentación para la creación de los DTO's)
- * @author ja.manrique
  */
 public class AdministradorDTO implements Serializable{
     
+    //Atributo de usuario 
     private String usuario;
+    
+    //Atributo de la contrsaeña del administrador
     private String contrasena;
 
     //Constructor vacío (¡¡¡OLBIGATORIO!!!)
@@ -31,6 +33,7 @@ public class AdministradorDTO implements Serializable{
     /**
      * Conviertir Entity a DTO
      * Crea un nuevo DTO con los valores que recibe en  la entidad que viene de argumento.
+     * @param administrador
      */
     public AdministradorDTO(AdministradorEntity administrador) {
         
@@ -42,6 +45,7 @@ public class AdministradorDTO implements Serializable{
     /**
      * Conviertir DTO a Entity
      * Crea un nuevo Entity con los valores que contiene el DTO.
+     * @return 
      */
     public AdministradorEntity toEntity() {
         AdministradorEntity entity = new AdministradorEntity();
@@ -51,18 +55,35 @@ public class AdministradorDTO implements Serializable{
     }
     
     
+    /**
+     * Devuelve el atributo usuario
+     * @return 
+     */
     public String getUsuario() {
         return usuario;
     }
 
+    /**
+     * Modifica el atributo usuario
+     * @param usuario
+     */
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
 
+    /**
+     * Devuelve el atributo contrasena
+     * @return 
+     */
     public String getContrasena() {
         return contrasena;
     }
 
+    
+    /**
+     * Modifica el atributo contrasena
+     * @param contrasena
+     */
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }

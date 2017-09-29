@@ -30,7 +30,6 @@ import javax.ws.rs.WebApplicationException;
 /**
  * Clase que 'escucha'las URL's correspondientes a Administrador.
  * Se debe seguir lo estipulado en el API (métodos, parámetros y errores)
- * @author ja.manrique
  */
 //URL
 @Path("administradores")
@@ -39,38 +38,50 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 public class AdministradorResource {
     
-    /*   ---------PLANTILLA ADMINISTRADOR---------
-    ANTECIÓN: LO QUE HAY EN ESTE BLOQUESOTE DE COMENTARIO ES TRBAJO EN PROGRESO DE ADMINISTRADOR.
-    SE COMENTÓ PARA CONSERVARLO PERO QUE IGUAL LA APLICACIÓN MANTUVIERA SU INTEGRIDAD (NO COMPILABA PORQUE FALTAN COSAS DE LOGIC Y DTO'S)
-    NO ELIMINARLO Y *SOLO* DESCOMENTARLO PARA TERMINAR EL TRABAJO INICIADO
-    
-    AL COMPLETAR LA CLASE SE PEUDE BORRAR ESTE MENSAJE
-    
-*/
+   
     //Para acceder a la lógica de la aplicación. Es una inyección de dependencias.
     @Inject
     AdministradorLogic logic;
     
+    // Inyecciòn de dependencia de la clase restaurante
     @Inject
     RestauranteLogic restaurantelogic;
     
     
     //Métodos REST de la clase (GET, POST, PUT, DELETE)
     
+    /**
+     * Obtiene todos los restaurantes
+     * @return lista de lcientes 
+     */
     @GET
     public List<AdministradorDetailDTO> getAdministradores()
     {
         return ListEntityToDetailDTO(logic.getAdministradores());
     }
     
+    
+    /**
+     * Obtiene un administrador segùn el usuario dado 
+     * @param usuario
+     * @return administrador
+     */
     @GET
     @Path("{usuario}")
     public AdministradorDetailDTO getAdministrador(@PathParam("usuario") String usuario)
     {
-        return new AdministradorDetailDTO(logic.getAdministrador(usuario));
+        AdministradorEntity entity = logic.getAdministrador(usuario);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /administradores/" + usuario + " no existe.", 404);
+        }
+        return new AdministradorDetailDTO(entity);
     }
     
-      
+    /**
+     * Obtiene los restuarantes de un administrador segùn el usuario dado 
+     * @param usuario
+     * @return administrador
+     */  
     @GET
     @Path("{usuario}/restaurantes")
     public List<RestauranteDTO> getAdministradorRestaurantes(@PathParam("usuario") String usuario)
@@ -80,6 +91,7 @@ public class AdministradorResource {
         
     }
     
+        
     @GET
     @Path("{usuario}/restaurantes/{nit}")
     public RestauranteDetailDTO getAdministradorRestaurante(@PathParam("usuario") String usuario, @PathParam("nit") String nit)
