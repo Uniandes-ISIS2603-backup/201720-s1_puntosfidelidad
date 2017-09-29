@@ -66,7 +66,7 @@ public class UbicacionResource {
 
     @GET
     public List<UbicacionDetailDTO> getUbicaciones(){
-        return ubicacionListEntity2DTO(logic.getUbicacions());
+        return ubicacionListEntity2DTO(logic.getUbicacions());        
     }
     
     @GET
@@ -77,8 +77,13 @@ public class UbicacionResource {
     
     @PUT
     @Path("{direccionSucursal}")
-    public UbicacionDetailDTO putUbicacion(@PathParam("direccionSucursal") String direccion){
-        return new UbicacionDetailDTO(logic.getUbicacion(direccion));
+    public UbicacionDetailDTO putUbicacion(@PathParam("direccionSucursal") String direccion, UbicacionDetailDTO ubicacion) throws BusinessLogicException{
+        ubicacion.setDireccion(direccion);
+        UbicacionEntity entity = logic.getUbicacion(direccion);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /ubicacion/" + direccion + " no existe.", 404);
+        }
+        return new UbicacionDetailDTO(logic.updateUbicacion(direccion, ubicacion.toEntity()));
     }
     
     @POST
@@ -92,9 +97,8 @@ public class UbicacionResource {
         
         UbicacionEntity ubi = logic.getUbicacion(direccion);
         if(ubi == null){
-            throw new WebApplicationException("Eñ recurso /ubicaciones/" + direccion + " no existe.", 404);
-        }
-        
+            throw new WebApplicationException("El recurso /ubicaciones/" + direccion + " no existe.", 404);
+        }        
         logic.deleteUbicacion(direccion);            
     }
 }

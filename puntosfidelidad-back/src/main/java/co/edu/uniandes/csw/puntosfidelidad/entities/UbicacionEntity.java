@@ -27,13 +27,13 @@ public class UbicacionEntity implements Serializable {
     
     private Long longitud;
 
-    @PodamExclude
-    @ManyToOne
-    private SucursalEntity sucursal;
-    
-    @PodamExclude
-    @ManyToOne
-    private EventoEntity evento;
+//    @PodamExclude
+//    @ManyToOne
+//    private SucursalEntity sucursal;
+//    
+//    @PodamExclude
+//    @ManyToOne
+//    private EventoEntity evento;
     /**
      * @return the direccion
      */
@@ -76,21 +76,21 @@ public class UbicacionEntity implements Serializable {
         this.longitud = longitud;
     }
 
-    public SucursalEntity getSucursal() {
-        return sucursal;
-    }
-
-    public void setSucursal(SucursalEntity sucursal) {
-        this.sucursal = sucursal;
-    }
-
-    public EventoEntity getEvento() {
-        return evento;
-    }
-
-    public void setEvento(EventoEntity evento) {
-        this.evento = evento;
-    }
+//    public SucursalEntity getSucursal() {
+//        return sucursal;
+//    }
+//
+//    public void setSucursal(SucursalEntity sucursal) {
+//        this.sucursal = sucursal;
+//    }
+//
+//    public EventoEntity getEvento() {
+//        return evento;
+//    }
+//
+//    public void setEvento(EventoEntity evento) {
+//        this.evento = evento;
+//    }
     
     
     

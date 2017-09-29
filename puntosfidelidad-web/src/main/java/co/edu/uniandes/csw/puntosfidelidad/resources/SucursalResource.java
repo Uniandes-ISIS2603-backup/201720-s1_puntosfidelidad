@@ -11,8 +11,6 @@ import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.inject.Inject;
 
 import javax.ws.rs.DELETE;
@@ -77,8 +75,13 @@ public class SucursalResource {
     
     @PUT
     @Path("{id: //d+}")
-    public SucursalDetailDTO putSucursal(@PathParam("id") Long id){
-        return new SucursalDetailDTO(logic.getSucursal(id));
+    public SucursalDetailDTO putSucursal(@PathParam("id") Long id, SucursalDetailDTO sucursal) throws BusinessLogicException{
+        sucursal.setId(id);
+        SucursalEntity entity = logic.getSucursal(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /sucursal/" + id + " no existe.", 404);
+        }
+        return new SucursalDetailDTO(logic.updateSucursal(id, sucursal.toEntity()));
     }
     
     @POST
@@ -93,8 +96,35 @@ public class SucursalResource {
         SucursalEntity ubi = logic.getSucursal(id);
         if(ubi == null){
             throw new WebApplicationException("El recurso /sucursales/" + id + " no existe.", 404);
-        }
-        
+        }       
         logic.deleteSucursal(id);            
+    }
+    
+    /**
+     * Consulta de Compras
+     * @param usuario
+     * @return RecargaResource
+     */
+    @Path("{id: //d+}/compras")
+    public Class<SucursalCompraResource> getComprasResource(@PathParam("id") Long id) {
+        SucursalEntity entity = logic.getSucursal(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /sucursal/" + id + "/compras no existe.", 404);
+        }
+        return SucursalCompraResource.class;
+    }
+    
+    /**
+     * Consulta de Comentarios
+     * @param usuario
+     * @return RecargaResource
+     */
+    @Path("{id: //d+}/comentarios")
+    public Class<SucursalComentarioResource> getComentariosResource(@PathParam("id") Long id) {
+        SucursalEntity entity = logic.getSucursal(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /sucursal/" + id + "/comentarios no existe.", 404);
+        }
+        return SucursalComentarioResource.class;
     }
 }

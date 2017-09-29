@@ -38,12 +38,17 @@ public class UbicacionDetailDTO extends UbicacionDTO{
         
         super(entity);
         
-        if (entity != null) {
-            
-            evento = new EventoDTO(entity.getEvento());
-            
-            sucursal = new SucursalDTO(entity.getSucursal());            
-        }
+//        if (entity != null) {
+//            
+//            
+//            
+//            if(entity.getEvento()!=null){
+//            evento = new EventoDTO(entity.getEvento());
+//            }
+//            if(entity.getSucursal()!=null){
+//            sucursal = new SucursalDTO(entity.getSucursal());            
+//            }
+//        }
     }
     
      /**
@@ -57,13 +62,13 @@ public class UbicacionDetailDTO extends UbicacionDTO{
     public UbicacionEntity toEntity() {
         UbicacionEntity entity = super.toEntity();
         
-        if (getEvento() != null) {
-            entity.setEvento(getEvento().toEntity());
-        }
-        
-        if (getSucursal() != null) {
-            entity.setSucursal(getSucursal().toEntity());
-        }
+//        if (getEvento() != null) {
+//            entity.setEvento(getEvento().toEntity());
+//        }
+//        
+//        if (getSucursal() != null) {
+//            entity.setSucursal(getSucursal().toEntity());
+//        }
 
         return entity;
     }
