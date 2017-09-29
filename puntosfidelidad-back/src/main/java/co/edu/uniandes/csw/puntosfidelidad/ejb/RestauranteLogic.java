@@ -60,22 +60,39 @@ public class RestauranteLogic {
     }
 
     public RestauranteEntity getRestaurante(String nit) {
-       
-      return  persistence.find(nit);
-        
+       LOGGER.log(Level.INFO, "Inicia proceso de consultar cliente con id={0}", nit);
+        RestauranteEntity restaurante = persistence.find(nit);
+        if (restaurante == null) {
+            LOGGER.log(Level.SEVERE, "El cliente con el id {0} no existe", nit);
+        }
+        LOGGER.log(Level.INFO, "Termina proceso de consultar cliente con id={0}", nit);
+        return restaurante;
+
     }
     
-    public void removeRestaurante(String nit){
-        
-         persistence.delete(nit);
+    public void removeRestaurante(String nit) throws BusinessLogicException{
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar cliente con id={0}", nit);
+        if(persistence.find(nit)==null) {
+            throw new BusinessLogicException("El usuario no existe");
+        }  
+        persistence.delete(nit);
+        LOGGER.log(Level.INFO, "Termina proceso de borrar cliente con id={0}", nit);
     }
     
     
     
-    public RestauranteEntity actualizarRestaurante(String nit, RestauranteEntity entity  ){
-            
-            return persistence.update(entity);
-            
+    public RestauranteEntity actualizarRestaurante(String nit, RestauranteEntity entity  ) throws BusinessLogicException{
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar Restaurante con id={0}", nit);
+        if (!nit.equals(entity.getNit())) {
+            throw new BusinessLogicException("No es posible cambiar el Nit");
+        }
+        
+        if(entity.getNombre()==null){
+            entity.setNombre(entity.getNit());
+        }
+        RestauranteEntity newEntity = persistence.update(entity);
+        LOGGER.log(Level.INFO, "Termina proceso de actualizar cliente con id={0}", entity.getNit());
+        return newEntity;
     }
     
     
