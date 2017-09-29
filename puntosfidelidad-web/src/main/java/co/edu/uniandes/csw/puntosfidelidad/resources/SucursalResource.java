@@ -28,7 +28,7 @@ import javax.ws.rs.WebApplicationException;
  * @author cass_
  */
 @Path("sucursales")
-@Produces("aplication/json")
+@Produces("application/json")
 public class SucursalResource {
     
     @Inject
@@ -68,13 +68,13 @@ public class SucursalResource {
     }
     
     @GET
-    @Path("{id: //d+}")
+    @Path("{id: \\d+}")
     public SucursalDetailDTO getSucursal(@PathParam("id") Long id){
         return new SucursalDetailDTO(logic.getSucursal(id));
     }
     
     @PUT
-    @Path("{id: //d+}")
+    @Path("{id: \\d+}")
     public SucursalDetailDTO putSucursal(@PathParam("id") Long id, SucursalDetailDTO sucursal) throws BusinessLogicException{
         sucursal.setId(id);
         SucursalEntity entity = logic.getSucursal(id);
@@ -90,7 +90,7 @@ public class SucursalResource {
     }
     
     @DELETE
-    @Path("{id: //d+}")
+    @Path("{id: \\d+}")
     public void deleteSucursal(@PathParam("id") Long id) throws BusinessLogicException{
         
         SucursalEntity ubi = logic.getSucursal(id);
@@ -105,7 +105,7 @@ public class SucursalResource {
      * @param usuario
      * @return RecargaResource
      */
-    @Path("{id: //d+}/compras")
+    @Path("{id: \\d+}/compras")
     public Class<SucursalCompraResource> getComprasResource(@PathParam("id") Long id) {
         SucursalEntity entity = logic.getSucursal(id);
         if (entity == null) {
@@ -119,7 +119,7 @@ public class SucursalResource {
      * @param usuario
      * @return RecargaResource
      */
-    @Path("{id: //d+}/comentarios")
+    @Path("{id: \\d+}/comentarios")
     public Class<SucursalComentarioResource> getComentariosResource(@PathParam("id") Long id) {
         SucursalEntity entity = logic.getSucursal(id);
         if (entity == null) {
