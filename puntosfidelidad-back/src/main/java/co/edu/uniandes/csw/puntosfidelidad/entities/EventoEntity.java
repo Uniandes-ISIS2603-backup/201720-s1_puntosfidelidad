@@ -6,7 +6,7 @@
 package co.edu.uniandes.csw.puntosfidelidad.entities;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -26,10 +26,10 @@ public class EventoEntity implements Serializable{
     private String nombre;
     
     @Temporal(TemporalType.DATE)
-    private Calendar fechaInicio;
+    private Date fechaInicio;
     
     @Temporal(TemporalType.DATE)
-    private Calendar fechaFin;
+    private Date fechaFin;
     
     private String descripcion;
     
@@ -60,28 +60,28 @@ public class EventoEntity implements Serializable{
     /**
      * @return the fechaInicio
      */
-    public Calendar getFechaInicio() {
+    public Date getFechaInicio() {
         return fechaInicio;
     }
 
     /**
      * @param fechaInicio the fechaInicio to set
      */
-    public void setFechaInicio(Calendar fechaInicio) {
+    public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
     /**
      * @return the fechaFin
      */
-    public Calendar getFechaFin() {
+    public Date getFechaFin() {
         return fechaFin;
     }
 
     /**
      * @param fechaFin the fechaFin to set
      */
-    public void setFechaFin(Calendar fechaFin) {
+    public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
     }
 

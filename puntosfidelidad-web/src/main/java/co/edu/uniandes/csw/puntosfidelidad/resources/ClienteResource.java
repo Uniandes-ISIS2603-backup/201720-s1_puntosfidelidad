@@ -55,7 +55,7 @@ public class ClienteResource {
      * @throws BusinessLogicException 
      */
     @GET
-    @Path("{usuario: [a-zA-Z][a-zA-Z]*}")   
+    @Path("{usuario: [a-zA-Z][a-zA-Z0-9]*}")   
     public ClienteDetailDTO getCliente(@PathParam("usuario") String usuario) throws BusinessLogicException {
         ClienteEntity entity = clienteLogic.getCliente(usuario);
         if (entity == null) {
@@ -83,7 +83,7 @@ public class ClienteResource {
      * @throws BusinessLogicException
      */
     @PUT
-    @Path("{usuario: [a-zA-Z][a-zA-Z]*}") 
+    @Path("{usuario: [a-zA-Z0-9][a-zA-Z0-9]*}") 
     public ClienteDetailDTO updateCliente(@PathParam("usuario") String usuario, ClienteDetailDTO cliente) throws BusinessLogicException {
         cliente.setUsuario(usuario);
         ClienteEntity entity = clienteLogic.getCliente(usuario);
@@ -99,7 +99,7 @@ public class ClienteResource {
      * @throws BusinessLogicException
      */
     @DELETE
-    @Path("{usuario: [a-zA-Z][a-zA-Z]*}")
+    @Path("{usuario: [a-zA-Z0-9][a-zA-Z0-9]*}")
     public void deleteCliente(@PathParam("usuario") String usuario) throws BusinessLogicException {
         ClienteEntity entity = clienteLogic.getCliente(usuario);
         if (entity == null) {
@@ -113,7 +113,7 @@ public class ClienteResource {
      * @param usuario
      * @return TarjetaDeCreditoResource
      */
-    @Path("{usuario: [a-zA-Z][a-zA-Z]*}/tarjetasDeCredito")
+    @Path("{usuario: [a-zA-Z0-9][a-zA-Z0-9]*}/tarjetasDeCredito")
     public Class<TarjetaDeCreditoResource> getTarjetaDeCreditoResource(@PathParam("usuario") String usuario) {
         ClienteEntity entity = clienteLogic.getCliente(usuario);
         if (entity == null) {
@@ -127,7 +127,7 @@ public class ClienteResource {
      * @param usuario
      * @return RecargaResource
      */
-    @Path("{usuario: [a-zA-Z][a-zA-Z]*}/recargas")
+    @Path("{usuario: [a-zA-Z0-9][a-zA-Z0-9]*}/recargas")
     public Class<RecargaResource> getRecargaResource(@PathParam("usuario") String usuario) {
         ClienteEntity entity = clienteLogic.getCliente(usuario);
         if (entity == null) {
@@ -141,7 +141,7 @@ public class ClienteResource {
      * @param usuario
      * @return ComprasResource
      */
-    @Path("{usuario: [a-zA-Z][a-zA-Z]*}/compras")
+    @Path("{usuario: [a-zA-Z0-9][a-zA-Z0-9]*}/compras")
     public Class<ClienteCompraResource> getClienteCompraResource(@PathParam("usuario") String usuario) {
         ClienteEntity entity = clienteLogic.getCliente(usuario);
         if (entity == null) {
@@ -155,7 +155,7 @@ public class ClienteResource {
      * @param usuario
      * @return ComentariosResource
      */
-    @Path("{usuario: [a-zA-Z][a-zA-Z]*}/comentarios")
+    @Path("{usuario: [a-zA-Z0-9][a-zA-Z0-9]*}/comentarios")
     public Class<ClienteComentarioResource> getClienteComentarioResource(@PathParam("usuario") String usuario) {
         ClienteEntity entity = clienteLogic.getCliente(usuario);
         if (entity == null) {
@@ -169,7 +169,7 @@ public class ClienteResource {
      * @param usuario
      * @return TarjetaPuntosResource
      */
-    @Path("{usuario: [a-zA-Z][a-zA-Z]*}/tarjetasPuntos")
+    @Path("{usuario: [a-zA-Z0-9][a-zA-Z0-9]*}/tarjetasPuntos")
     public Class<ClienteTarjetaPuntosResource> getClienteTarjetaPuntosResource(@PathParam("usuario") String usuario) {
         ClienteEntity entity = clienteLogic.getCliente(usuario);
         if (entity == null) {

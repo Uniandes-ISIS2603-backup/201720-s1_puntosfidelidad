@@ -56,5 +56,6 @@ insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Ta
 insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Super Hamburguesas','4/7/1965' , '5/8/2010' , 'Se bajaran de precio las mejores hamburguesas de cada restaurante.' );
 insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Taquitos gratis 1','4/7/1965' , '2/6/2010' , 'Se regalaran tacos gratis.' );
 insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Taquitos gratis 2','4/7/1965' , '2/6/2010' , 'Se regalaran tacos gratis.' );
+
 insert into CompraEntity (ID, PAGOCONPUNTOS, CLIENTE_USUARIO, SUCURSAL_ID, TARJETAPUNTOS_ID) values (20, 1, 'C1', 87, (SELECT MAX(ID) FROM TarjetaPuntosEntity WHERE cliente_usuario='C1'));
 insert into CompraEntity (ID, PAGOCONPUNTOS, CLIENTE_USUARIO, SUCURSAL_ID, TARJETAPUNTOS_ID) values (60, 0, 'C1', 87, (SELECT MAX(ID) FROM TarjetaPuntosEntity WHERE cliente_usuario='C1'));
