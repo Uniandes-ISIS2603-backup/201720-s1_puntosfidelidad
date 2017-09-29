@@ -1,22 +1,24 @@
+lines (24 sloc)  1.64 KB
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-  <persistence-unit name="artesaniasPU" transaction-type="JTA">
+  <persistence-unit name="puntosfidelidadPU" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <jta-data-source>java:app/jdbc/jdbTest</jta-data-source>
-    <class>co.edu.uniandes.csw.puntosfidelidad.entities.AdministradorEntity</class>
     <class>co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity</class>
-    <class>co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity</class>
+    <class>co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaDeCreditoEntity</class>
+    <class>co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity</class>
+    <class>co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity</class>
     <class>co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity</class>
+    <class>co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity</class>
+    <class>co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity</class>
+    <class>co.edu.uniandes.csw.puntosfidelidad.entities.AdministradorEntity</class>
     <class>co.edu.uniandes.csw.puntosfidelidad.entities.EventoEntity</class>
     <class>co.edu.uniandes.csw.puntosfidelidad.entities.FotoEntity</class>
     <class>co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity</class>
-    <class>co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity</class>
     <class>co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity</class>
     <class>co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity</class>
-    <class>co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaDeCreditoEntity</class>
-    <class>co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity</class>
     <class>co.edu.uniandes.csw.puntosfidelidad.entities.UbicacionEntity</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <shared-cache-mode>NONE</shared-cache-mode>
     <properties>
       <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
       <property name="eclipselink.target-database" value="Derby"/>
@@ -26,6 +28,7 @@
       <property name="javax.persistence.jdbc.password" value="APP"/>
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.logging.parameters" value="true"/>
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
   </persistence-unit>
 </persistence>

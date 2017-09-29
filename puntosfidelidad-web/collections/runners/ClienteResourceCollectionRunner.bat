@@ -1,0 +1,1 @@
+newman run C:\Users\lv.vanegas10\Documents\Pro\s1_puntosfidelidad\puntosfidelidad-web\collections\ClienteResource.postman_collection.json --disable-unicode
