@@ -22,10 +22,10 @@ public class AdministradorDTO implements Serializable{
     private String usuario;
     private String contrasena;
 
-    
+    //Constructor vacío (¡¡¡OLBIGATORIO!!!)
     public AdministradorDTO()
     {
-         //Método vacio obligatorio. 
+        
     }
     
     /**
