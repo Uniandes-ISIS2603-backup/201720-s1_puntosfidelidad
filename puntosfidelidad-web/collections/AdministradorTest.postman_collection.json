@@ -8,10 +8,11 @@
 		"e24b4c75-1beb-6f6b-b01d-cc616bd4f6c7",
 		"f7bf9a13-6289-c371-061c-d677449ea073",
 		"ec202e4f-6d33-c5d0-12ac-edfa3a6422d6",
+		"c89f8149-0342-2afd-474c-3bdaa0cd9fc5",
+		"ccd0a297-15d1-08ae-69bb-451e91397665",
 		"785f7709-d91f-d251-1078-7a1d8466ebd1",
 		"5c706ca8-2b59-bfe3-2847-ffbb787959b1",
-		"017f4f7d-1c0c-b2b7-902c-34c575672f80",
-		"c89f8149-0342-2afd-474c-3bdaa0cd9fc5"
+		"9a8e98cd-c351-496c-f2dc-60788e785931"
 	],
 	"folders": [],
 	"folders_order": [],
@@ -19,35 +20,6 @@
 	"owner": "2593749",
 	"public": false,
 	"requests": [
-		{
-			"id": "017f4f7d-1c0c-b2b7-902c-34c575672f80",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:8080/puntosfidelidad-web/api/administradores/Andres/restaurantes",
-			"queryParams": [],
-			"preRequestScript": "",
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1506499236594,
-			"name": "Post restaurante",
-			"description": "El cliente no tiene recargas",
-			"collectionId": "bd96b778-c80e-fa8e-94bc-8b64f14a5df8",
-			"responses": [],
-			"rawModeData": "{\n\t\"NIT\":\"B\",\n\t\"NOMBRE\": \"AAA\",\n\t\"TIPOCOMINDA\":\"Mexicana\",\n\t\"ADMINISTRADOR_USUARIO\":\"Andres\"\n\t\n}"
-		},
 		{
 			"id": "0520ed01-a554-36e9-72a7-a002b22bd49d",
 			"headers": "",
@@ -63,7 +35,7 @@
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1506499210349,
+			"time": 1506700141286,
 			"name": "Get Administrador/usuario",
 			"description": "",
 			"collectionId": "bd96b778-c80e-fa8e-94bc-8b64f14a5df8",
@@ -126,11 +98,42 @@
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1506499206702,
+			"time": 1506700138996,
 			"name": "GetAdministrador",
 			"description": "",
 			"collectionId": "bd96b778-c80e-fa8e-94bc-8b64f14a5df8",
 			"responses": []
+		},
+		{
+			"id": "9a8e98cd-c351-496c-f2dc-60788e785931",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/puntosfidelidad-web/api/administradores/C1",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": "",
+			"method": "PUT",
+			"collectionId": "bd96b778-c80e-fa8e-94bc-8b64f14a5df8",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Put Administrador",
+			"description": "Editar un administrador",
+			"descriptionFormat": "html",
+			"time": 1506699489623,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n\n\ntests[\"Body matches string\"] = responseBody.has(\"Laura Maria\");",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"usuario\":\"C1\",\n\t\"nombre\":\"Laura Maria\",\n\t\"imagen\":\"laura.jpg\",\n\t\"contrasena\":\"123456\",\n\t\"recargas\": [],\n\t\"comentarios\":[],\n\t\"compras\":[],\n\t\"tarjetasDeCredito\":[],\n\t\"tarjetasPunto\":[]\n}"
 		},
 		{
 			"id": "c89f8149-0342-2afd-474c-3bdaa0cd9fc5",
@@ -162,6 +165,37 @@
 			"rawModeData": "{\n\t\"usuario\":\"Andres2\",\n\t\"contrasena\":\"1234\"\n}"
 		},
 		{
+			"id": "ccd0a297-15d1-08ae-69bb-451e91397665",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C2/recargas",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": "",
+			"method": "POST",
+			"collectionId": "bd96b778-c80e-fa8e-94bc-8b64f14a5df8",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Post restaurante",
+			"description": "Ingresar un restaurante al admin ",
+			"descriptionFormat": "html",
+			"time": 1506700311942,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"valor\":5000,\n\t\"fecha\": \"07/09/2017\"\n}"
+		},
+		{
 			"id": "e24b4c75-1beb-6f6b-b01d-cc616bd4f6c7",
 			"headers": "",
 			"headerData": [],
@@ -176,7 +210,7 @@
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1506499214085,
+			"time": 1506700143322,
 			"name": "GetAdministrador/restaurantes",
 			"description": "Obtener un cliente dado un usuario",
 			"collectionId": "bd96b778-c80e-fa8e-94bc-8b64f14a5df8",
