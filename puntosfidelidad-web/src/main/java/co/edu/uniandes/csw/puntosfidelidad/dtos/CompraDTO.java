@@ -29,8 +29,10 @@ public class CompraDTO implements Serializable{
      */
     public CompraDTO(CompraEntity entity)       
     {
+        if(entity != null){
         this.id = entity.getId();
         this.pagoConpuntos = entity.isPagoConpuntos();
+        }
     }
     
     /**

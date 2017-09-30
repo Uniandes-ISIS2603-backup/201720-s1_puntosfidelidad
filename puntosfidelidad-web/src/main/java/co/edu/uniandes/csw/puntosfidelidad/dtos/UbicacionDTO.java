@@ -25,9 +25,11 @@ public class UbicacionDTO implements Serializable{
     }
     
     public UbicacionDTO(UbicacionEntity entity){
+        if(entity != null){
         this.direccion = entity.getDireccion();
         this.latitud = entity.getLatitud();
         this.longitud = entity.getLongitud();      
+        }
     }
     
     public UbicacionEntity toEntity(){

@@ -22,10 +22,12 @@ public class ClienteDTO implements Serializable{
     }
     
     public ClienteDTO(ClienteEntity entity){
+        if(entity != null){
         this.usuario = entity.getUsuario();
         this.nombre = entity.getNombre();
         this.contrasena = entity.getContrasena();
         this.imagen = entity.getImagen();
+        }
     }
     
     public ClienteEntity toEntity(){

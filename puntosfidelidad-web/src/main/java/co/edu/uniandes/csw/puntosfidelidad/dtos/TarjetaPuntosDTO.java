@@ -31,10 +31,12 @@ public class TarjetaPuntosDTO implements Serializable{
      */
     public TarjetaPuntosDTO(TarjetaPuntosEntity entity)
     {
+        if(entity != null){
         this.id = entity.getId();
         this.montoActual = entity.getMontoActual();
         this.montoBasico = entity.getMontoBasico();
         this.numPuntos = entity.getNumPuntos();
+        }
     }
 
     /**

@@ -1,1 +1,1 @@
-newman run C:\Users\cass_\OneDrive\Documentos\NetBeansProjects\s1_puntosfidelidad\puntosfidelidad-web\collections\ClienteResource.postman_collection.json --disable-unicode
+newman run C:\Users\ca.sanchez38\Documents\NetBeansProjects\s1_puntosfidelidad\puntosfidelidad-web\collections\ClienteResource.postman_collection.json --disable-unicode

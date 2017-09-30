@@ -25,9 +25,11 @@ public class TarjetaDeCreditoDTO implements Serializable{
     }
     
     public TarjetaDeCreditoDTO(TarjetaDeCreditoEntity entity){
+        if(entity != null){
         this.banco = entity.getBanco();
         this.id = entity.getId();
         this.numero = entity.getNumero();
+        }
     }
     
     public TarjetaDeCreditoEntity toEntity(){

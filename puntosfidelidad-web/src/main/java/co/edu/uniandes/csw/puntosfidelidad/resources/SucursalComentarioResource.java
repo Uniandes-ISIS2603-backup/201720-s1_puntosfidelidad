@@ -85,8 +85,8 @@ public class SucursalComentarioResource {
      * 
      */
     @GET
-    @Path("{comprasId: \\d+}")
-    public ComentarioDetailDTO getComentarios(@PathParam("id") Long id, @PathParam("comprasId") Long comprasId) {
+    @Path("{comentarioId: \\d+}")
+    public ComentarioDetailDTO getComentarios(@PathParam("id") Long id, @PathParam("comentarioId") Long comprasId) {
         return new ComentarioDetailDTO(sucursalLogic.getComentario(id, comprasId));
     }
 
@@ -99,9 +99,9 @@ public class SucursalComentarioResource {
      * 
      */
     @POST
-    @Path("{comprasId: \\d+}")
-    public ComentarioDetailDTO addComentarios(@PathParam("id") Long id, @PathParam("comprasId") Long comprasId) {
-        return new ComentarioDetailDTO(sucursalLogic.addComentario(id, comprasId));
+    @Path("{comentarioId: \\d+}")
+    public ComentarioDetailDTO addComentarios(@PathParam("id") Long id , @PathParam("comentarioId") Long comentarioId) {
+        return new ComentarioDetailDTO(sucursalLogic.addComentario(id, comentarioId));
     }
 
     /**
@@ -126,8 +126,8 @@ public class SucursalComentarioResource {
      * 
      */
     @DELETE
-    @Path("{comprasId: \\d+}")
-    public void removeComentarios(@PathParam("id") Long id, @PathParam("comprasId") Long comprasId) {
+    @Path("{comentarioId: \\d+}")
+    public void removeComentarios(@PathParam("id") Long id, @PathParam("comentarioId") Long comprasId) {
         sucursalLogic.removeComentario(id, comprasId);
     }
 }

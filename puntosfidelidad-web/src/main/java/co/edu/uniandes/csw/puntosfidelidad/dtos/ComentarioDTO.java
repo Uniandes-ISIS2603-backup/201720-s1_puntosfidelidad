@@ -24,9 +24,11 @@ public class ComentarioDTO implements Serializable{
      * Constructir de comentarioDTO a partir de un Entity 
      */
     public ComentarioDTO(ComentarioEntity entity){
+        if(entity != null){
         this.id = entity.getId();
         this.comentario = entity.getComentario();
         this.calificacion = entity.getCalificacion();
+        }
     }
     
     /**

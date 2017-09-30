@@ -26,9 +26,11 @@ public class RecargaDTO implements Serializable{
     }
     
     public RecargaDTO(RecargaEntity entity){
+        if(entity != null){
         this.id = entity.getId();
         this.fecha = entity.getFecha();
         this.valor = entity.getValor();
+        }
     }
     
     public RecargaEntity toEntity(){

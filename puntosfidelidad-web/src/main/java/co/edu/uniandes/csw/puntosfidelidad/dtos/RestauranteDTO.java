@@ -31,9 +31,11 @@ public class RestauranteDTO implements Serializable{
      */
     public RestauranteDTO(RestauranteEntity entity)
     {
+        if(entity != null){
         this.nit = entity.getNit();
         this.nombre = entity.getNombre();
         this.tipoComida = entity.getTipoComida();
+        }
     }
     
     /**

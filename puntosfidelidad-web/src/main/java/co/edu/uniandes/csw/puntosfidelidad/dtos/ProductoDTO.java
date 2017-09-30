@@ -28,10 +28,12 @@ public class ProductoDTO implements Serializable{
     }
     
     public ProductoDTO(ProductoEntity entity){
+        if(entity != null){
         this.id = entity.getId();
         this.nombre = entity.getNombre();
         this.valorDinero = entity.getValorDinero();
         this.valorPuntos = entity.getValorPuntos();
+        }
     }
     
     public ProductoEntity toEntity(){

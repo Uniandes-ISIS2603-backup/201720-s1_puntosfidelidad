@@ -30,11 +30,13 @@ public class SucursalDTO implements Serializable{
     }
     
     public SucursalDTO(SucursalEntity entity){
+        if(entity != null){
         this.descripcion = entity.getDescripcion();
         this.id = entity.getId();
         this.nombre = entity.getNombre();
         this.horaApertura = entity.getHoraApertura();
         this.horaCierre = entity.getHoraCierre();
+        }
     }
     
     public SucursalEntity toEntity(){

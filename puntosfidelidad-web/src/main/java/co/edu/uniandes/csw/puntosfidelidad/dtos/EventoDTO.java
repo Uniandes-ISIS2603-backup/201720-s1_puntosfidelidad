@@ -30,10 +30,12 @@ public class EventoDTO implements Serializable{
     }
     
     public EventoDTO(EventoEntity entity){
+        if(entity != null){
         this.descripcion = entity.getDescripcion();
         this.nombre = entity.getNombre();
         this.fechaInicio = entity.getFechaInicio();
         this.fechaFin = entity.getFechaFin();
+        }
     }
     
     public EventoEntity toEntity(){

@@ -36,10 +36,10 @@ public class AdministradorDTO implements Serializable{
      * @param administrador
      */
     public AdministradorDTO(AdministradorEntity administrador) {
-        
+        if(administrador != null){
         this.usuario = administrador.getUsuario();
         this.contrasena = administrador.getContrasena();
-        
+        }
     }
     
     /**
