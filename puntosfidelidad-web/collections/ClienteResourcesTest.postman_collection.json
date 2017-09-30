@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "ClienteResourcesTest",
-		"_postman_id": "6f2517ce-f7ae-f816-4b56-ea4dc4d99d4d",
+		"_postman_id": "334fc9b2-24a5-0115-7474-d5f31a4f7813",
 		"description": "Test de los recursos de cliente",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -25,7 +25,10 @@
 				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -169,7 +172,10 @@
 				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/UsuarioNoExiste",
 				"method": "DELETE",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "elimina un usuario que no existe"
 			},
 			"response": []
@@ -191,7 +197,10 @@
 				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/lvvanegasG",
 				"method": "DELETE",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Borrar cliente "
 			},
 			"response": []
@@ -213,7 +222,10 @@
 				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C2/recargas",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -235,7 +247,10 @@
 				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C4/recargas",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "El cliente no tiene recargas"
 			},
 			"response": []
@@ -257,7 +272,10 @@
 				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C2/recargas/3",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -310,7 +328,10 @@
 				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C3/tarjetasDeCredito",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -332,7 +353,10 @@
 				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C4/tarjetasDeCredito",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -354,7 +378,10 @@
 				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C3/tarjetasDeCredito/5",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -407,7 +434,10 @@
 				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C1/tarjetasPuntos",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -429,7 +459,10 @@
 				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C5/tarjetasPuntos",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -451,7 +484,10 @@
 				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C1/compras",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -470,7 +506,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C4/compras",
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C5/compras",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -495,7 +531,10 @@
 				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C1/comentarios",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -517,7 +556,10 @@
 				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C4/comentarios",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
