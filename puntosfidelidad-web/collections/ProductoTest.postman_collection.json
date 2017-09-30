@@ -181,8 +181,30 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\"type\": \"productoDetailDTO\",\n        \"id\": 11,\n        \"nombre\": \"polloserio\",\n        \"valorDinero\": 5000,\n        \"valorPuntos\": 200,\n        \"restaurante\": {\n            \"nit\": \"A\",\n            \"nombre\": \"BBC\",\n            \"tipoComida\": \"alemana\"\n        }\n}"
+					"raw": "{\n        \"type\": \"productoDetailDTO\",\n        \"id\": 1003,\n        \"nombre\": \"MacNifica\",\n        \"valorDinero\": 16000,\n        \"valorPuntos\": 20,\n        \"restaurante\": {\n            \"nit\": \"187956f\",\n            \"nombre\": \"Mc Donalds\",\n            \"tipoComida\": \"Hamburguesas\"\n        }\n  }"
 				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/puntosfidelidad-web/api/productos/1003",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/productos/1003",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
 				"description": ""
 			},
 			"response": []
