@@ -34,6 +34,7 @@ public class ProductoDetailDTO extends ProductoDTO{
         if (entity != null) {
             restaurante = new RestauranteDTO(entity.getRestaurante());
         }
+        
     }
     
      /**

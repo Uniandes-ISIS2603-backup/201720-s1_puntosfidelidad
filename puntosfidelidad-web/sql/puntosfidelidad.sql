@@ -85,3 +85,7 @@ insert into CompraEntity (ID, PAGOCONPUNTOS, CLIENTE_USUARIO, SUCURSAL_ID, TARJE
 -- insert into EventoEntity_UbicacionEntity (EventoEntity_Nombre, Ubicaciones_Direccion) values ('Super Hamburguesas', 'McDonalds_Ubicacion');
 -- insert into EventoEntity_UbicacionEntity (EventoEntity_Nombre, Ubicaciones_Direccion) values ('Festival Super Picante', 'Subway_Ubicacion');
 -- insert into EventoEntity_UbicacionEntity (EventoEntity_Nombre, Ubicaciones_Direccion) values ('La Cocina Italiana', 'Archies_Ubicacion');
+
+insert into CompraEntity_ProductoEntity (COMPRAENTITY_ID, PRODUCTOS_ID) values (20,1);
+insert into CompraEntity_ProductoEntity (COMPRAENTITY_ID, PRODUCTOS_ID) values (20,10);
+insert into CompraEntity_ProductoEntity (COMPRAENTITY_ID, PRODUCTOS_ID) values (20,20);
