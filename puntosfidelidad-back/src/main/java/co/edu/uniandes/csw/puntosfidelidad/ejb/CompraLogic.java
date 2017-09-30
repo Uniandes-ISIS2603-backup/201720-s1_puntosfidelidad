@@ -109,9 +109,12 @@ public class CompraLogic {
         List<ProductoEntity> list = getCompra(compraId).getProductos();
         ProductoEntity productoEntity = new ProductoEntity();
         productoEntity.setId(productoId);
-        int index = list.indexOf(productoEntity);
-        if (index >= 0) {
-            return list.get(index);
+        for(ProductoEntity producto : list)
+        {
+            if (producto.getId() == productoEntity.getId())
+            {
+                return producto;
+            }
         }
         return null;
     }
