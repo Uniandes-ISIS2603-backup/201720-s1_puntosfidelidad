@@ -55,7 +55,7 @@ public class ComentarioResource {
         }
         catch (Exception e)
         {
-            throw new BusinessLogicException("El comentario con el id " + id + " no existe");
+            throw new WebApplicationException("El comentario con el id " + id + " no existe", 404);
         }       
     }
     
@@ -67,6 +67,14 @@ public class ComentarioResource {
     @Path("{id: \\d+}")
     public ComentarioDetailDTO putComentario(@PathParam("id") Long id, ComentarioDTO nuevo)
     {
+        try
+        {
+            ComentarioDetailDTO busq = new ComentarioDetailDTO (logic.getComentario(id));
+        }
+        catch (Exception e)
+        {
+            throw new WebApplicationException("El comentario con el id " + id + " no existe", 404);
+        } 
         return new ComentarioDetailDTO(logic.updateComentario(nuevo.toEntity()));
     }
     

@@ -41,7 +41,14 @@ public class TarjetaPuntosPersistence {
     public TarjetaPuntosEntity findWithId(Long id) {
         TypedQuery<TarjetaPuntosEntity> q = em.createQuery("select p from TarjetaPuntosEntity p where (p.id = :queryId)", TarjetaPuntosEntity.class);
         q.setParameter("queryId", id);
+        try
+        {
         return q.getSingleResult();
+        } catch (Exception e)
+        {
+            //hay excepción cuando el dignle result no encuentra nada
+            return null;
+        }
     }
     
     /**

@@ -28,16 +28,20 @@ public class TarjetaPuntosDetailDTO extends TarjetaPuntosDTO{
     public TarjetaPuntosDetailDTO(TarjetaPuntosEntity entity)
     {
         super(entity);
-        this.cliente = new ClienteDTO(entity.getCliente());
-        
-        List<CompraDTO> comp = new ArrayList<>();
-        
-        for(CompraEntity compra : entity.getCompras())
+        if(entity != null)
         {
-            comp.add(new CompraDTO(compra));
-        }
+            this.cliente = new ClienteDTO(entity.getCliente());
+
+            List<CompraDTO> comp = new ArrayList<>();
+
+            for(CompraEntity compra : entity.getCompras())
+            {
+                comp.add(new CompraDTO(compra));
+            }
         
-        this.compras = comp;
+        
+            this.compras = comp;
+        }
     }
 
     public List<CompraDTO> getCompras() {

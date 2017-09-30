@@ -50,7 +50,11 @@ public class TarjetaPuntosResource {
     @Path("{id: \\d+}")
     public TarjetaPuntosDetailDTO getTarjeta(@PathParam("id") Long id)
     {        
-        return new TarjetaPuntosDetailDTO(logic.getTarjetaPuntos(id));
+        TarjetaPuntosEntity ent = logic.getTarjetaPuntos(id);
+        if(ent == null)
+              throw new WebApplicationException("no existe ningúna tarjeta puntos con el id " + id, 404);
+        else
+            return new TarjetaPuntosDetailDTO(logic.getTarjetaPuntos(id));
     }
     
     /**
