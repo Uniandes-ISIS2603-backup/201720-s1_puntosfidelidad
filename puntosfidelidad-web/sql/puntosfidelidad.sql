@@ -11,6 +11,9 @@ delete from UbicacionEntity;
 delete from ClienteEntity;
 delete from RestauranteEntity;
 delete from AdministradorEntity;
+-- delete from EventoEntity_RestauranteEntity;
+-- delete from EventoEntity_UbicacionEntity;
+
 
 insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C1','C1','C1.jpg','C1');
 insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C2','C2','C2.jpg','C2');
@@ -74,3 +77,11 @@ insert into CompraEntity (ID, PAGOCONPUNTOS, CLIENTE_USUARIO, SUCURSAL_ID, TARJE
 insert into CompraEntity (ID, PAGOCONPUNTOS, CLIENTE_USUARIO, SUCURSAL_ID, TARJETAPUNTOS_ID) values (30, 0, 'C2', 89, (SELECT MAX(ID) FROM TarjetaPuntosEntity WHERE cliente_usuario='C1'));
 insert into CompraEntity (ID, PAGOCONPUNTOS, CLIENTE_USUARIO, SUCURSAL_ID, TARJETAPUNTOS_ID) values (40, 0, 'C3', 90, (SELECT MAX(ID) FROM TarjetaPuntosEntity WHERE cliente_usuario='C4'));
 insert into CompraEntity (ID, PAGOCONPUNTOS, CLIENTE_USUARIO, SUCURSAL_ID, TARJETAPUNTOS_ID) values (50, 0, 'C4', 88, (SELECT MAX(ID) FROM TarjetaPuntosEntity WHERE cliente_usuario='C3'));
+
+-- insert into EventoEntity_RestauranteEntity (Eventos_Nombre, Restaurante_Nit) values ('Super Hamburguesas', '187956f');
+-- insert into EventoEntity_RestauranteEntity (Eventos_Nombre, Restaurante_Nit) values ('La Cocina Italiana', '257687a');
+-- insert into EventoEntity_RestauranteEntity (Eventos_Nombre, Restaurante_Nit) values ('Festival Super Picante', '357484u');
+
+-- insert into EventoEntity_UbicacionEntity (EventoEntity_Nombre, Ubicaciones_Direccion) values ('Super Hamburguesas', 'McDonalds_Ubicacion');
+-- insert into EventoEntity_UbicacionEntity (EventoEntity_Nombre, Ubicaciones_Direccion) values ('Festival Super Picante', 'Subway_Ubicacion');
+-- insert into EventoEntity_UbicacionEntity (EventoEntity_Nombre, Ubicaciones_Direccion) values ('La Cocina Italiana', 'Archies_Ubicacion');

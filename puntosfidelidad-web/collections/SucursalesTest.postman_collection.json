@@ -1,0 +1,467 @@
+{
+	"variables": [],
+	"info": {
+		"name": "SucursalesTest",
+		"_postman_id": "dc76e2b1-7fd9-4507-6684-27637c889fd7",
+		"description": "Pruebas del recurso Sucursal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ejecucion Get Sucursales",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/sucursales",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"direccion\" : \"Cra 45 No 66 B 98\" , \"latitud\" : \"11111111\" , \"longitud\" : \"55555555\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Get {id} Sucursal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/sucursales/90",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Post {id} Sucursal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/sucursales",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t \"descripcion\": \"Sucursal de Mc Donalds Prueba\",\n        \"horaApertura\": \"1965-04-07T00:00:00-05:00\",\n        \"horaCierre\": \"1965-04-08T00:00:00-05:00\",\n        \"id\": 110,\n        \"nombre\": \"Mc Donalds\"\n        }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Put {id} Sucursal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/sucursales/90",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\t\t{\n\t\t\"descripcion\": \"Sucursal de Randys Economica\",\n        \"horaApertura\": \"1965-04-07T00:00:00-05:00\",\n        \"horaCierre\": \"1965-04-08T00:00:00-05:00\",\n        \"id\": 88,\n        \"nombre\": \"Randys\"\n        }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Delete {id} Sucrusal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"No existe una sucrusal con ese id, ademas no podemos borrar ninguna debido a las llaves foraneas.\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/sucursales/abcdefg",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Get Comentarios de una Sucursal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/sucursales/88/comentarios",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"direccion\" : \"Cra 45 No 66 B 98\" , \"latitud\" : \"11111111\" , \"longitud\" : \"55555555\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Get Un Comentario de una Sucursal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/sucursales/88/comentarios/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"direccion\" : \"Cra 45 No 66 B 98\" , \"latitud\" : \"11111111\" , \"longitud\" : \"55555555\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Post {id} Un Comentario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/sucursales/89/comentarios/4",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "        { \"id\" : 4,\n        \"calificacion\": 10,\n        \"comentario\": \"Delicioso, muy recomendado\"\n        }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Put {id} Un Comentario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/sucursales/89/comentarios",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "      [\n      \t{\"id\" : 4,\n        \"calificacion\": 10,\n        \"comentario\": \"Delicioso, moito bello, Taisty!\"\n        }\n      ]"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Delete {id} Un Comentario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/sucursales/89/comentarios/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Get Compras de una Sucrusal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/sucursales/90/compras",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"direccion\" : \"Cra 45 No 66 B 98\" , \"latitud\" : \"11111111\" , \"longitud\" : \"55555555\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Get Una Compra de una Sucursal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/sucursales/90/compras/40",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"direccion\" : \"Cra 45 No 66 B 98\" , \"latitud\" : \"11111111\" , \"longitud\" : \"55555555\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Post {id} Una Compra",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/sucursales/90/compras/50",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "        {\n        \"type\": \"compraDetailDTO\",\n        \"id\": 40,\n        \"pagoConpuntos\": false\n        }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Put {id} Una Compra",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/sucursales/90/compras",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    [\n        {\n        \"type\": \"compraDetailDTO\",\n        \"id\": 40,\n        \"pagoConpuntos\": false\n        }\n    ]"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Delete {id} Una Compra",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/sucursales/90/comentarios/2",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,469 @@
+{
+	"variables": [],
+	"info": {
+		"name": "EventoTest",
+		"_postman_id": "e0bcedb9-0f99-cfd0-a8cc-f0f80898ad98",
+		"description": "Pruebas del Recurso Evento",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ejecucion Get eventos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\":\"LOL\" ,\"horaApertura\": \"3/5/2001\", \"horaCierre\": \"3/5/2001\", \"descripcion\" : \"lkjhg\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Get {nombre} Evento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/Super Hamburguesas",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\":\"LOL\" ,\"horaApertura\": \"3/5/2001\", \"horaCierre\": \"3/5/2001\", \"descripcion\" : \"lkjhg\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Post Evento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"descripcion\": \"Se regalaran pruebas :v\",\n        \"fechaFin\": \"2010-06-06T00:00:00-05:00\",\n        \"fechaInicio\": \"1965-04-07T00:00:00-05:00\",\n        \"nombre\": \"Prueba\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion PUT {nombre} Evento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/Prueba",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"descripcion\": \"Ya no\",\n        \"fechaFin\": \"2010-06-06T00:00:00-05:00\",\n        \"fechaInicio\": \"1965-04-07T00:00:00-05:00\",\n        \"nombre\": \"Prueba\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Get eventos Sobre El evento agregado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/Prueba",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\":\"LOL\" ,\"horaApertura\": \"3/5/2001\", \"horaCierre\": \"3/5/2001\", \"descripcion\" : \"lkjhg\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion DELETE {nombre} Evento",
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/Prueba",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Get {nombre} Ubicaciones de Un Evento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/Super Hamburguesas/ubicaciones",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\":\"LOL\" ,\"horaApertura\": \"3/5/2001\", \"horaCierre\": \"3/5/2001\", \"descripcion\" : \"lkjhg\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Get {nombre} Una Ubicacion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Se busaca algo que no existe\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/Super Hamburguesas/ubicaciones/abcdef",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\":\"LOL\" ,\"horaApertura\": \"3/5/2001\", \"horaCierre\": \"3/5/2001\", \"descripcion\" : \"lkjhg\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Post Una Ubicacion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Se busaca algo que no existe, ademas no tenemos que probar debido a que la relacion debe trabajarse con una tercera tabla ya que ubicacion no tiene referencia a evento segun le modelo. Y Eventos puede tener muchas ubicaciones\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/Super Hamburguesas/ubicaciones/qwert",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"descripcion\": \"Se regalaran pruebas :v\",\n        \"fechaFin\": \"2010-06-06T00:00:00-05:00\",\n        \"fechaInicio\": \"1965-04-07T00:00:00-05:00\",\n        \"nombre\": \"Prueba\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion PUT {nombre} A una Ubicacion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Se busaca algo que no existe, ademas no tenemos que probar debido a que la relacion debe trabajarse con una tercera tabla ya que ubicacion no tiene referencia a evento segun le modelo. Y Eventos puede tener muchas ubicaciones\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/Super Hamburguesas/ubicaciones/abcdefg",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"descripcion\": \"Ya no\",\n        \"fechaFin\": \"2010-06-06T00:00:00-05:00\",\n        \"fechaInicio\": \"1965-04-07T00:00:00-05:00\",\n        \"nombre\": \"Prueba\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion DELETE {nombre} Una Ubicacion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Se busaca algo que no existe, ademas no tenemos que probar debido a que la relacion debe trabajarse con una tercera tabla ya que ubicacion no tiene referencia a evento segun le modelo. Y Eventos puede tener muchas ubicaciones\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/Super Hamburguesas/ubicaciones/abcdefg",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Get {nombre} Restaurantes de Una Sucursal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/Super Hamburguesas/restaurantes",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\":\"LOL\" ,\"horaApertura\": \"3/5/2001\", \"horaCierre\": \"3/5/2001\", \"descripcion\" : \"lkjhg\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Get {nombre} Un Restaurante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Se busaca algo que no existe, ademas no tenemos que probar debido a que la relacion es muchos a muchos\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/Super Hamburguesas/restaurantes/abcdefg",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\":\"LOL\" ,\"horaApertura\": \"3/5/2001\", \"horaCierre\": \"3/5/2001\", \"descripcion\" : \"lkjhg\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion Post Un Restaurante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"El nombre no es valido, ademas no tenemos que probar debido a que la relacion es muchos a muchos\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion PUT {nombre} A un Restaurante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Se busaca algo que no existe, ademas no tenemos que probar debido a que la relacion es muchos a muchos\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/Super Hamburguesas/abcdefg",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ejecucion DELETE {nombre} Un Restaurante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Se busaca algo que no existe, ademas no tenemos que probar debido a que la relacion es muchos a muchos\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/eventos/Super Hamburguesas/restaurantes/abcdefg",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
