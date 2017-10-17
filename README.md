@@ -46,7 +46,7 @@ Laura Valeria Vanegas García|lv.vanegas10|Líder de Planeación
     - [GET restaurantes/{restaurantesid}/sucursales](#GET-restaurantes/{restaurantesid}/sucursales)
     - [GET restaurantes/{restaurantesid}/sucursales/{sucursalesid}](#GET-restaurantes/{restaurantesid}/sucursales/{sucursalesid})
     - [POST restaurantes/{restaurantesid}/sucursales/{sucursalesid}](#POST-restaurantes/{restaurantesid}/sucursales/{sucursalesid})   
-    - [PUT restaurantes/{restaurantesid}/sucursales](#POST-/POST restaurantes/{restaurantesid}/sucursales)
+    - [PUT restaurantes/{restaurantesid}/sucursales](#POST-restaurantes/{restaurantesid}/sucursales)
     - [DELETE restaurantes/{restaurantesid}/sucursales /{sucursalesid}](#DELETE-/restaurantes/{restaurantesid}/sucursales/{sucursalesid})
     - [GET restaurantes/{restaurantesid}/productosCanjeables](#GET-restaurantes/{restaurantesid}/productosCanjeables)
     - [GET restaurantes/{restaurantesid}/productosCanjeables/{productosCanjeablesid}](#GET-restaurantes/{restaurantesid}/productosCanjeables/{productosCanjeablesid})
