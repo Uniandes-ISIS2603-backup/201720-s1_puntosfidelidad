@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "ProductoTest",
-		"_postman_id": "3ce8ded0-4d65-5c08-aa9d-2c91e98c9c10",
+		"_postman_id": "98e2390e-ce16-dec6-acfc-4ba89117d6d3",
 		"description": "pruebas relacionadas con productos",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -204,7 +204,116 @@
 				"url": "http://localhost:8080/puntosfidelidad-web/api/productos/1003",
 				"method": "DELETE",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/puntosfidelidad-web/api/productos/40",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/productos/30",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"type\": \"productoDetailDTO\",\n        \"id\": 30,\n        \"nombre\": \"Churro\",\n        \"valorDinero\": 16000,\n        \"valorPuntos\": 20,\n        \"restaurante\": {\n            \"nit\": \"187956f\",\n            \"nombre\": \"Mc Donalds\",\n            \"tipoComida\": \"Hamburguesas\"\n        }\n}"
+				},
+				"description": "error get id"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/puntosfidelidad-web/api/productos/40",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/productos/40",
+				"method": "GET",
+				"header": [],
 				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/puntosfidelidad-web/api/productos/40/restaurante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/productos/40/restaurante",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/puntosfidelidad-web/api/productos/40",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/productos/40",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"type\": \"productoDetailDTO\",\n        \"id\": 30,\n        \"nombre\": \"Churro\",\n        \"valorDinero\": 16000,\n        \"valorPuntos\": 20,\n        \"restaurante\": {\n            \"nit\": \"187956f\",\n            \"nombre\": \"Mc Donalds\",\n            \"tipoComida\": \"Hamburguesas\"\n        }\n}"
+				},
 				"description": ""
 			},
 			"response": []
