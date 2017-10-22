@@ -30,7 +30,9 @@ public class ComentarioLogic {
     
     public ComentarioEntity getComentario(Long id)
     {
-        return persistence.findWithId(id);
+        ComentarioEntity cmnt = persistence.findWithId(id);
+        cmnt.setFotos(persistence.getFotos(id));
+        return cmnt;
     }
     
     public List<ComentarioEntity> getComentarios()

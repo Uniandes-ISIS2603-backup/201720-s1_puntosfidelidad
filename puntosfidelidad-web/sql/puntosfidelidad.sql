@@ -71,6 +71,12 @@ insert into ComentarioEntity (id, comentario, calificacion, sucursal_id, cliente
 insert into ComentarioEntity (id, comentario, calificacion, sucursal_id, cliente_usuario) values (3, 'Comida fria, mal servicio', 2, 91, 'C3');
 insert into ComentarioEntity (id, comentario, calificacion, sucursal_id, cliente_usuario) values (4, 'Delicioso, muy recomendado', 10, 90, 'C2');
 
+insert into FotoEntity (COMENTARIO_ID, url) values (1, 'http://url.com');
+insert into FotoEntity (COMENTARIO_ID, url) values (1, 'http://url.net');
+insert into FotoEntity (COMENTARIO_ID, url) values (1, 'http://url.url');
+insert into FotoEntity (COMENTARIO_ID, url) values (2, 'http://com.com');
+insert into FotoEntity (COMENTARIO_ID, url) values (3, 'http://net.net');
+
 insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Taquitos gratis','4/7/1965' , '6/6/2010' , 'Se regalaran tacos gratis.' );
 insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Super Hamburguesas','4/7/1965' , '5/8/2010' , 'Se bajaran de precio las mejores hamburguesas de cada restaurante.' );
 insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Festival Super Picante','2/16/1965' , '3/6/2010' , 'Se realizara un festival con los platos mas picantes de cada restaurante.' );

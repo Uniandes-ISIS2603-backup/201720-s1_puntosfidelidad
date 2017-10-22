@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.FotoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
 import java.util.List;
 import java.util.logging.Level;
@@ -63,21 +64,11 @@ public class ComentarioPersistence {
         TypedQuery query = em.createQuery("select u from ComentarioEntity u", ComentarioEntity.class);
         return query.getResultList();
     }
-    
-    public ClienteEntity getCliente(Long id)
-    {
-        LOGGER.log(Level.INFO, "Consultando cliente del comentario con id={0}", id);
-        return findWithId(id).getCliente();
+
+    public List<FotoEntity> getFotos(Long id) {
+        LOGGER.info("Consultando todos los comentarios");        
+        TypedQuery<FotoEntity> query = em.createQuery("select p from FotoEntity p where (p.comentario.id = :comid)", FotoEntity.class);
+        query.setParameter("comid", id);
+        return query.getResultList();
     }
-            
-    public SucursalEntity getSucursal(Long id)
-    {
-        LOGGER.log(Level.INFO, "Consultando sucursal del comentario con id={0}", id);
-        return findWithId(id).getSucursal();
-    }
-    
-    /**
-     * Estos úlitmos 2 métodos son redundantes porque podemos 
-     * hacer findWithId y llamar los getSucursal() o getCliente()
-     */
 }
