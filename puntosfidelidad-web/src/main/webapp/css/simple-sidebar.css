@@ -1,8 +1,24 @@
+/*--------------------------------
+Estilos de la página
+--------------------------------*/
+
+#banner
+{
+    margin-top: 5px;
+    text-align: right;
+}
+
+
+/*--------------------------------
+Estilos del sidebar
+--------------------------------*/
+
 /*!
  * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
  * Copyright 2013-2017 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
  */
+
 
 body {
   overflow-x: hidden;
