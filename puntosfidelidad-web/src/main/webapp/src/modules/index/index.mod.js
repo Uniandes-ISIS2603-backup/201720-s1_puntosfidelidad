@@ -1,15 +1,16 @@
 (function (ng) {
-var mod = ng.module("pf.login", []);
-    mod.constant("loginContext", "api/login");
+var mod = ng.module("pf.index", []);
+    mod.constant("indexContext", "api/login");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/login/';
-            $urlRouterProvider.otherwise("/login");
+            var basePath = 'src/modules/index/';
+            $urlRouterProvider.otherwise("/home");
 
-            $stateProvider.state('login', {
-                url: '/login',
-                templateUrl: basePath + 'login.html'
+            $stateProvider.state('home', {
+                url: '/home',
+                templateUrl: basePath + 'index.html'
                 
                 //Código comentado porque no servía (Toca ver cuando se necesite controllers)
+
                 /*
                 views: {
                     'mainView': {

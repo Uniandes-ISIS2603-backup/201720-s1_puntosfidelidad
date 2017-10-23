@@ -4,7 +4,8 @@
         'ui.router',
        
         //Dependencias internas de módulos
-        'pf.index_login'
+        'pf.login',
+        'pf.index'
     ]);
     // Resuelve problemas de las promesas AKA no tocar
     app.config(['$qProvider', function ($qProvider) {
