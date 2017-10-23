@@ -1,5 +1,7 @@
 (function (ng) {
 var mod = ng.module("puntosFidelidadModule", []);
+    
+    //Creción de constante para el url
     mod.constant("citiesContext", "api/cities");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/cities/';
