@@ -2,7 +2,7 @@
 var mod = ng.module("pf.login", []);
     mod.constant("loginContext", "api/login");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/login/';
+            var basePath = 'src/modules/LogIn/';
             $urlRouterProvider.otherwise("/login");
 
             $stateProvider.state('login', {
