@@ -6,7 +6,8 @@
         //Dependencias internas de módulos
         'productoModule',
         'comprasModule',
-        'restaurantesModule'
+        'restaurantesModule',
+        'comentariosModule'
     ]);
     // Resuelve problemas de las promesas AKA no tocar
     app.config(['$qProvider', function ($qProvider) {
