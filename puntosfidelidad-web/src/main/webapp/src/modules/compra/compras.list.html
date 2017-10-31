@@ -3,7 +3,15 @@
     <ul class="list-group" ng-repeat="elem in elements">
         <li class="list-group-item">
             <h4> {{elem.id}} </h4>
-            <button class="btn btn-primary">select</button>
+            <div ng-show='collapse'>
+                Restaurante: {{elem.sucursal.nombre}}<br>
+                Ciente: {{elem.cliente.nombre}}<br>
+                Productos:{{elem.productos}}<br>
+            </div>
+            <button class="btn btn-primary">select</button>         
+            <input id='{{elem.id}}' type="checkbox" ng-model='collapse' style='display: none;'>
+                <label for='{{elem.id}}' class="btn btn-primary">Detail</label>
+            <button class="btn btn-primary">Delete</button> 
         </li>
     </ul>
 </div>

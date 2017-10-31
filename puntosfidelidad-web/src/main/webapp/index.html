@@ -34,23 +34,40 @@
     <script src="src/modules/comentario/comentarios.ctrl.js" type="text/javascript"></script>
     <script src="src/modules/tarjetaPuntos/tarjetasPuntos.mod.js" type="text/javascript"></script>
     <script src="src/modules/tarjetaPuntos/tarjetasPuntos.ctrl.js" type="text/javascript"></script>
+    <script src="src/modules/evento/eventos.mod.js" type="text/javascript"></script>
+    <script src="src/modules/evento/eventos.ctrl.js" type="text/javascript"></script>
+    
+    <!-- archivo CSS -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
     
 </head>
 
-<body>
+<body id='fondoMain'>
 
-    <div class="container-fluid">
-            <h2>Puntos de fidelidad</h2>
+    <div style='background-color: #36ABA7;' class="container-fluid">
+            <span data-text="PU"></span>
+            <span data-text="NT"></span>
+            <span data-text="OS"></span>
+            <span data-text=" DE"></span>
+            <span data-text=" FI"></span>
+            <span data-text="DE"></span>
+            <span data-text="LI"></span>
+            <span data-text="DAD"></span>
        
-                    <ul class = "nav nav-tabs">
-                        <li><a ui-sref="comprasList">Compras</a></li>
-                        <li><a ui-sref="productosList">Productos</a></li>
-                        <li><a ui-sref="restaurantesList">Restaurantes</a></li>
-                        <li><a ui-sref="comentariosList">Comentarios</a></li>
-                        <li><a ui-sref="tarjetasPuntosList">Tarjetas de puntos</a></li>
-                    </ul>
+            <div id='contenedor'>
+                    <lu id='listaNav'>                       
+                        <li><button ui-sref="comprasList" type="button" class="btn btn-success btn-lg">Compras</button>
+                        <li><button ui-sref="productosList" type="button" class="btn btn-success btn-lg">Productos</button>
+                        <li><button ui-sref="restaurantesList" type="button" class="btn btn-success btn-lg">Restaurantes</button>
+                        <li><button ui-sref="comentariosList" type="button" class="btn btn-success btn-lg">Comentarios</button>
+                        <li><button ui-sref="tarjetasPuntos" type="button" class="btn btn-success btn-lg">Trajetas de Puntos</button>
+                        <li><button ui-sref="eventosList" type="button" class="btn btn-success btn-lg">Eventos</button>
+                        <li id='alaDerecha'><button ui-sref="eventosList" type="button" class="btn btn-danger btn-lg">Cerrar Sesión</button>
+                    </lu>
+            </div>            
+            <hr>
     </div>
-     <div ui-view="mainView">
+    <div ui-view="mainView" id='fondoMain'>
        </div>
 </body>
 

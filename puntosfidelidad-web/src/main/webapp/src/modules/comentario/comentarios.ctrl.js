@@ -11,12 +11,14 @@
 
             $scope.revisarComentario = function(elem)
             {
+                temp = elem.calificacion;;
                 try 
                 {
                     elem.calificacion = Number(elem.calificacion)
                 } 
                 catch (error) 
                 {
+                    elem.calificacion = temp;
                     $scope.mensajeStyle.colorClass = "red";
                     $scope.mensaje = 'Debe colocar un número entre 1 y 10';
                     return false;
