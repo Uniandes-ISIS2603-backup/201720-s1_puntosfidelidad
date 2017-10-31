@@ -1,12 +1,12 @@
-<div class="container-fluid">
+<div id='fondoMain' class="container-fluid">
     <ul class="list-group" ng-repeat="elem in elements">
         <li class="list-group-item">
             <h4>[{{elem.id}}] Calificación: {{elem.calificacion}}</h4>
-            <input id='{{elem.id}}' type="checkbox" ng-model='collapse' style='display: none;'>
-                <label for='{{elem.id}}' class="btn btn-primary" onclick="">Detail</label>            
             <div ng-show='collapse'>
                 Comentario: {{elem.comentario}}
             </div>
+            <input id='{{elem.id}}' type="checkbox" ng-model='collapse' style='display: none;'>
+                <label for='{{elem.id}}' class="btn btn-primary">Detail</label>            
         </li>
     </ul>
 </div>

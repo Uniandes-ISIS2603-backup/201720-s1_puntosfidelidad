@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <ul class="list-group" ng-repeat="event in eventos">
+        <li class="list-group-item">
+            <h4> {{event.nombre}}</h4>
+            <input id='{{event.nombre}}' type="checkbox" ng-model='collapse' style='display: none;'>
+                <label for='{{event.nombre}}' class="btn btn-primary" onclick="">Descripción</label>            
+            <div ng-show='collapse'>
+                Descripción: {{event.descripcion}}
+            </div>
+        </li>
+    </ul>
+</div>

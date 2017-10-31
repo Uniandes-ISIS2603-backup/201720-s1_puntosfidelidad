@@ -8,7 +8,8 @@
         'comprasModule',
         'restaurantesModule',
         'comentariosModule',
-        'tarjetasPuntosModule'
+        'tarjetasPuntosModule',
+        'eventosModule'
     ]);
     // Resuelve problemas de las promesas AKA no tocar
     app.config(['$qProvider', function ($qProvider) {
