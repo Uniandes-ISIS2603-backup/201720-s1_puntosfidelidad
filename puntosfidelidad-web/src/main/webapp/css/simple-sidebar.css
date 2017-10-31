@@ -8,6 +8,16 @@ Estilos de la página
     text-align: right;
 }
 
+.green
+{
+  color:green;
+}
+
+.red
+{
+  color:red;
+}
+
 
 /*--------------------------------
 Estilos del sidebar
