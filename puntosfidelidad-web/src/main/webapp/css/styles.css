@@ -245,3 +245,7 @@ span:after {
   clip-path: polygon(0 0, 100% 100%, 0 100%);
   color: #3967CB;
 }
+
+img{
+  padding: 4px;
+}

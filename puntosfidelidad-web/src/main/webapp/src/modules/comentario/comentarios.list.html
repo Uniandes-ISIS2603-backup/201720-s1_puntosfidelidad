@@ -2,14 +2,18 @@
     <ul class="list-group" ng-repeat="elem in elements">
         <li class="list-group-item">
 
-            <input id='{{elem.id + " borrar"}}' type='checkbox' ng-model='collapseDelete' style='display: none;'>
+            <!-- Checkbox's que contienen los estados visuales -->
             <input id='{{elem.id}}' type="checkbox" ng-model='collapse' style='display: none'/>
+            <input id='{{elem.id + " borrar"}}' type='checkbox' ng-model='collapseDelete' style='display: none;'>
             <input id='{{elem.id + " edit"}}' type='checkbox' ng-model='collapseEdit' style='display: none;'>
             
+            <!-- nombre sucursal + rating -->
             <h4>{{elem.sucursal.nombre}}: {{elem.calificacion}}🌟</h4>
             
-                <label for='{{elem.id}}' class="btn btn-primary" ng-show="!collapse">Más detalles</label>            
+            <label for='{{elem.id}}' class="btn btn-primary" ng-show="!collapse">Más detalles</label>            
 
+            
+            <!-- Vista de edición -->
             <div ng-show='collapseEdit'>
                 
                     Nuevo comentario: <input ng-model='elem.comentario'> <br>
@@ -23,8 +27,16 @@
                 </label>
                 
             </div>
+
+            <!-- Vista detallada (detail) -->
             <div ng-show='collapse && !collapseEdit'>
+                <b>{{elem.cliente.usuario}}:</b><br>
                 {{elem.comentario}}<br>
+                Fotos:
+                <div ng-repeat="ph in elem.fotos">
+                    <img ng-src='{{ph.url}}'> <br>
+                </div>
+
                 <div id='{{elem.id + " mensaje"}}'></div>
                 <label for='{{elem.id}}' class="btn btn-primary">Menos detalles</label>            
 
