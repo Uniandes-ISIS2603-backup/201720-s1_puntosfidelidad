@@ -6,7 +6,7 @@
             <input id='{{elem.id}}' type="checkbox" ng-model='collapse' style='display: none'/>
             <input id='{{elem.id + " edit"}}' type='checkbox' ng-model='collapseEdit' style='display: none;'>
             
-            <h4>{{elem.sucursal.nombre}}: {{elem.calificacion}}</h4>
+            <h4>{{elem.sucursal.nombre}}: {{elem.calificacion}}🌟</h4>
             
                 <label for='{{elem.id}}' class="btn btn-primary" ng-show="!collapse">Más detalles</label>            
 
@@ -36,9 +36,7 @@
                 <label for='{{elem.id + " borrar"}}' class='btn btn-danger'>
                     Borrar
                 </label>
-            </div>
-            <input id='{{elem.id}}' type="checkbox" ng-model='collapse' style='display: none;'>
-                <label for='{{elem.id}}' class="btn btn-primary">Detail</label>            
+            </div>         
         </li>
     </ul>
 </div>
