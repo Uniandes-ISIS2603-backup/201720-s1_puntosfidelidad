@@ -16,11 +16,11 @@ delete from AdministradorEntity;
 -- delete from EventoEntity_UbicacionEntity;
 
 
-insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C1','C1','C1.jpg','C1');
-insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C2','C2','C2.jpg','C2');
-insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C3','C3','C3.jpg','C3');
-insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C4','C4','C4.jpg','C4');
-insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C5','C5','C5.jpg','C5');
+insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C1','C1','http://lorempixel.com/1200/1000','C1');
+insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C2','C2','http://lorempixel.com/1200/1000','C2');
+insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C3','C3','http://lorempixel.com/650/650','C3');
+insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C4','C4','http://lorempixel.com/1200/1000','C4');
+insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C5','C5','http://lorempixel.com/1200/1000','C5');
 
 insert into TarjetaDeCreditoEntity (id,banco, numero, cliente_usuario) values (1,'Bancolombia', 4562182, 'C1' );
 insert into TarjetaDeCreditoEntity (id,banco, numero, cliente_usuario) values (2,'Bancopichincha', 4578236, 'C1' );
@@ -71,11 +71,11 @@ insert into ComentarioEntity (id, comentario, calificacion, sucursal_id, cliente
 insert into ComentarioEntity (id, comentario, calificacion, sucursal_id, cliente_usuario) values (3, 'Comida fria, mal servicio', 2, 91, 'C3');
 insert into ComentarioEntity (id, comentario, calificacion, sucursal_id, cliente_usuario) values (4, 'Delicioso, muy recomendado', 10, 90, 'C2');
 
-insert into FotoEntity (COMENTARIO_ID, url) values (1, 'http://lorempixel.com/500/300');
+insert into FotoEntity (COMENTARIO_ID, url) values (1, 'http://lorempixel.com/1200/1000');
 insert into FotoEntity (COMENTARIO_ID, url) values (1, 'http://lorempixel.com/600/600');
-insert into FotoEntity (COMENTARIO_ID, url) values (1, 'http://lorempixel.com/300/400');
-insert into FotoEntity (COMENTARIO_ID, url) values (2, 'http://lorempixel.com/1080/720');
-insert into FotoEntity (COMENTARIO_ID, url) values (3, 'http://lorempixel.com/800/650');
+insert into FotoEntity (COMENTARIO_ID, url) values (1, 'http://lorempixel.com/1280/1280');
+insert into FotoEntity (COMENTARIO_ID, url) values (2, 'http://lorempixel.com/1280/720');
+insert into FotoEntity (COMENTARIO_ID, url) values (3, 'http://lorempixel.com/650/650');
 
 insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Taquitos gratis','4/7/1965' , '6/6/2010' , 'Se regalaran tacos gratis.' );
 insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Super Hamburguesas','4/7/1965' , '5/8/2010' , 'Se bajaran de precio las mejores hamburguesas de cada restaurante.' );

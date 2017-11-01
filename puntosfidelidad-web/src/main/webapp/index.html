@@ -42,6 +42,10 @@
     <script src="src/modules/tarjetaPuntos/tarjetasPuntos.ctrl.js" type="text/javascript"></script>
     <script src="src/modules/evento/eventos.mod.js" type="text/javascript"></script>
     <script src="src/modules/evento/eventos.ctrl.js" type="text/javascript"></script>
+    <script src="src/modules/cliente/clientes.mod.js" type="text/javascript"></script>
+    <script src="src/modules/cliente/clientes.ctrl.js" type="text/javascript"></script>
+    <script src="src/modules/recarga/recargas.mod.js" type="text/javascript"></script>
+    <script src="src/modules/recarga/recargas.ctrl.js" type="text/javascript"></script>
     
     <!-- archivo CSS -->
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
@@ -66,15 +70,17 @@
                         <li><button ui-sref="productosList" type="button" class="btn btn-success btn-lg">Productos</button>
                         <li><button ui-sref="restaurantesList" type="button" class="btn btn-success btn-lg">Restaurantes</button>
                         <li><button ui-sref="comentariosList" type="button" class="btn btn-success btn-lg">Comentarios</button>
-                        <li><button ui-sref="tarjetasPuntosList" type="button" class="btn btn-success btn-lg">Trajetas de Puntos</button>
-                        <li><button ui-sref="eventosList" type="button" class="btn btn-success btn-lg">Eventos</button>
+                        <li><button ui-sref="tarjetasPuntosList" type="button" class="btn btn-success btn-lg">Tarjetas de Puntos</button>
+                        <li><button ui-sref="eventosList" type="button" class="btn btn-success btn-lg">Eventos</button> 
+                        <li><button ui-sref="clientesList" type="button" class="btn btn-success btn-lg">Clientes</button>     
+                        <li><button ui-sref="recargasList" type="button" class="btn btn-success btn-lg">Recargas</button>                       
                         <li id='alaDerecha'><button ui-sref="eventosList" type="button" class="btn btn-danger btn-lg">Cerrar Sesión</button>
                     </lu>
             </div>            
             <hr>
     </div>
     <div ui-view="mainView" id='fondoMain'>
-       </div>
+    </div>
 </body>
 
 </html>

@@ -18,8 +18,12 @@
                 
                     Nuevo comentario: <input ng-model='elem.comentario'> <br>
                     Nueva calificación: <input ng-model='elem.calificacion'> <br>
+                    Fotos: <br>
+                    <div ng-repeat="ph in elem.fotos">
+                        <input ng-model='ph.url'>
+                    </div>
                 
-                <label  for='{{elem.id + " edit"}}' class='btn btn-info' ng-show='revisarComentario(elem)'>
+                <label  for='{{elem.id + " edit"}}' class='btn btn-info' ng-show='revisarComentario(elem) && revisarFotos(elem)'>
                         Terminar edición
                 </label>
                 <label ng-class="mensajeStyle.colorClass" ng-show='!revisarComentario(elem)'>
@@ -33,8 +37,8 @@
                 <b>{{elem.cliente.usuario}}:</b><br>
                 {{elem.comentario}}<br>
                 Fotos:
-                <div ng-repeat="ph in elem.fotos">
-                    <img ng-src='{{ph.url}}'> <br>
+                <div>
+                    <img ng-repeat="ph in elem.fotos" ng-src='{{ph.url}}'>
                 </div>
 
                 <div id='{{elem.id + " mensaje"}}'></div>

@@ -9,7 +9,9 @@
         'restaurantesModule',
         'comentariosModule',
         'tarjetasPuntosModule',
-        'eventosModule'
+        'eventosModule',
+        'clientesModule',
+        'recargasModule'
     ]);
     // Resuelve problemas de las promesas AKA no tocar
     app.config(['$qProvider', function ($qProvider) {
