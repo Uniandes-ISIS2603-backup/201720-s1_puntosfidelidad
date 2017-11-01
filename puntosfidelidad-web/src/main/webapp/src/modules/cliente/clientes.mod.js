@@ -14,9 +14,21 @@ var mod = ng.module("clientesModule", []);
                         templateUrl: basePath + 'clientes.list.html'
                     }
                 }
+            }).state('clienteDetail', {
+                url: '/{clienteUsuario:string}',
+                parent: 'clientesList',
+                param: {
+                    clienteUsuario: null
+                },
+                views: {
+                    'detailView': {
+                        controller: 'clientesDetailCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + '/clientes.detail.html'                       
+                    }
+                }
             });
             
         }]);
-
 })(window.angular);
 

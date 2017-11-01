@@ -5,11 +5,8 @@
             $http.get("http://localhost:8080/puntosfidelidad-web/api/clientes")
                     .then(function (response) {
                         $scope.elements = response.data;
-            });
+            });           
+            
         }]);
 
 })(window.angular);
-
-
-
-

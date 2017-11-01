@@ -1,38 +1,28 @@
 <div class="container-fluid">    
-    <button class="btn btn-primary btnCliente">Agregar Cliente</button>
+    <button class="btn btn-info btnCliente" ui-sref="clientesCreate"> <p class="glyphicon glyphicon-plus"></p> Nuevo cliente</button>
     <ul class="list-group" ng-repeat="elem in elements">
         <li class="list-group-item">
             
             <!-- Checkbox's que contienen los estados visuales -->
             <input id='{{elem.usuario}}' type="checkbox" ng-model='collapse' style='display: none'/>
-            <!--<input id='{{elem.usuario + " borrar"}}' type='checkbox' ng-model='collapseDelete' style='display: none;'>
-            <input id='{{elem.usuario + " edit"}}' type='checkbox' ng-model='collapseEdit' style='display: none;'>  -->
-            
+                       
             <!-- nombre cliente -->
             <h4> {{elem.usuario}} </h4>
             
             <label for='{{elem.usuario}}' class="btn btn-primary" ng-show="!collapse">Más detalles</label>  
             
-               
-            
+                           
             <div ng-show='collapse' class="btnsDerecha">
                
                 <div class="panelBtn">
+                    <button class="btn btn-primary btnCliente"  ui-sref="clienteDetail({clienteUsuario: elem.usuario})">Perfil</button> <br>
                     <button class="btn btn-primary btnCliente">Recargas</button> <br>
                     <button class="btn btn-primary btnCliente">Tarjetas De Credito</button> <br> 
                     <button class="btn btn-primary btnCliente">Tarjetas De Puntos</button>   <br> 
                     <button class="btn btn-primary btnCliente">Compras</button> 
-                </div>
-                               
-                
-                <div class="panelInformacion">
-                    Usuario: {{elem.usuario}}<br>
-                    Nombre: {{elem.nombre}}<br>
-                    Imagen: <br> 
-                        <img ng-src='{{elem.imagen}}'> 
-                </div>
-                
-                <div ui-view="perfilView" id='fondoMain' class="panelInformacion"> </div> 
+                </div>                               
+             
+                <div ui-view="detailView" id='fondoMain'> </div> 
                 
                 <br><br>
                 <div class="btnsDerecha">
