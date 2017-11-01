@@ -48,7 +48,8 @@
     <script src="src/modules/recarga/recargas.ctrl.js" type="text/javascript"></script>
     <script src="src/modules/sucursal/sucursal.mod.js" type="text/javascript"></script>
     <script src="src/modules/sucursal/sucursal.ctrl.js" type="text/javascript"></script>
-    
+    <script src="src/modules/administrador/administradores.mod.js" type="text/javascript"></script>
+    <script src="src/modules/administrador/administradores.ctrl.js" type="text/javascript"></script>
     
     <!-- archivo CSS -->
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
@@ -68,16 +69,20 @@
             <span data-text="DAD"></span>
        
             <div id='contenedor'>
-                    <lu id='listaNav'>                       
-                        <li><button ui-sref="comprasList" type="button" class="btn btn-success btn-lg">Compras</button>
-                        <li><button ui-sref="productosList" type="button" class="btn btn-success btn-lg">Productos</button>
+                    <lu id='listaNav'>      
+                        <li><button ui-sref="administradorList" type="button" class="btn btn-success btn-lg">Administradores</button>
+                        <li><button ui-sref="clientesList" type="button" class="btn btn-success btn-lg">Clientes</button>  
                         <li><button ui-sref="restaurantesList" type="button" class="btn btn-success btn-lg">Restaurantes</button>
+                        <li><button ui-sref="sucursalList" type="button" class="btn btn-success btn-lg">Sucursales</button>   
+                        <li><button ui-sref="productosList" type="button" class="btn btn-success btn-lg">Productos</button>    
+                        <li><button ui-sref="comprasList" type="button" class="btn btn-success btn-lg">Compras</button>
                         <li><button ui-sref="comentariosList" type="button" class="btn btn-success btn-lg">Comentarios</button>
                         <li><button ui-sref="tarjetasPuntosList" type="button" class="btn btn-success btn-lg">Tarjetas de Puntos</button>
                         <li><button ui-sref="eventosList" type="button" class="btn btn-success btn-lg">Eventos</button> 
-                        <li><button ui-sref="clientesList" type="button" class="btn btn-success btn-lg">Clientes</button>     
                         <li><button ui-sref="recargasList" type="button" class="btn btn-success btn-lg">Recargas</button>  
-                        <li><button ui-sref="sucursalList" type="button" class="btn btn-success btn-lg">Sucursales</button>    
+                        
+                            
+                            
                         <li id='alaDerecha'><button ui-sref="eventosList" type="button" class="btn btn-danger btn-lg">Cerrar Sesión</button>
                     </lu>
             </div>            
