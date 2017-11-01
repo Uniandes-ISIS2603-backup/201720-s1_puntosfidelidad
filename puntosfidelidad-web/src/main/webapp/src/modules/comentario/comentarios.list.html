@@ -20,13 +20,16 @@
                     Nueva calificación: <input ng-model='elem.calificacion'> <br>
                     Fotos: <br>
                     <div ng-repeat="ph in elem.fotos">
-                        <input ng-model='ph.url'>
+                        <input ng-model='ph.url'> <img src='media/borrar.png' ng-click="borrarFoto(elem.fotos, ph)" style='height: 30px; width: 30px;' >
                     </div>
-                
-                <label  for='{{elem.id + " edit"}}' class='btn btn-info' ng-show='revisarComentario(elem) && revisarFotos(elem)'>
+                    <button ng-click="nuevaFoto(elem.fotos)">
+                        Nueva foto
+                    </button>
+
+                <label  for='{{elem.id + " edit"}}' class='btn btn-info' ng-show='revisarComentario(elem) && revisarFotos(elem)' ng-click="postComentario(elements, elem)">
                         Terminar edición
                 </label>
-                <label ng-class="mensajeStyle.colorClass" ng-show='!revisarComentario(elem)'>
+                <label ng-class="mensajeStyle.colorClass" ng-show='!revisarComentario(elem) || !revisarFotos(elem)'>
                         {{mensaje}}
                 </label>
                 
