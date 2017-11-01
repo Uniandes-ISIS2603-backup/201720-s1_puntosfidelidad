@@ -39,13 +39,12 @@
                     return false;
                 }
 
-                $scope.mensaje = '';
+                //$scope.mensaje = '';
                 return true;
             }
 
             $scope.revisarFotos = function(elem)
             {
-                todoBien = true;
                 for(ph in elem.fotos)
                 {
                     url = elem.fotos[ph].url;
@@ -58,17 +57,60 @@
                         }
                         else
                         {
-                            $scope.mensaje += "<br>Inserte una url válida"; 
+                            $scope.mensaje = "\nInserte una url válida"; 
                         }
-                        $scope.mensaje += "<br>Inserte una url válida";
-                        todoBien = false;
-                        return todoBien;
+                        return false;
                     }
                 }
 
                 //Si llega acá es porque está todo bien
-                $scope.mensaje = '';
-                return todoBien;
+                //$scope.mensaje = '';
+                return true;
+            }
+
+            $scope.nuevaFoto = function(fotos)
+            {
+                nuevaFoto = {}
+                nuevaFoto.url = '';
+                fotos.push(nuevaFoto);                
+            }
+
+            $scope.borrarFoto = function(fotos, ph)
+            {
+                index = fotos.indexOf(ph);
+
+                if(index > -1)
+                {
+                    fotos.splice(index,1);
+                }                    
+            }
+
+            $scope.postComentario = function(comentarios, comentario)
+            {
+                usuario = comentario.cliente.usuario;
+                comentariosCliente = [];
+                
+                for(cmnt in comentarios)
+                {
+                    if(comentarios[cmnt].cliente.usuario == usuario)
+                    {
+                        comentariosCliente.push(comentarios[cmnt]);
+                    }
+                }
+
+                console.log("comentarios: ");
+                console.log(comentariosCliente);
+
+                $http.put('http://localhost:8080/puntosfidelidad-web/api/clientes/' + usuario + '/comentarios', comentarios).then(
+                    function todoBien(response) 
+                    {
+                        console.log("todo bien!")
+                    },
+                    function todoMal(error)
+                    {
+                        console.log(error);
+                    }
+                );
             }
         }]);
 })(window.angular);
