@@ -1,14 +1,21 @@
 (function (ng) {
     var mod = ng.module("productoModule");
-    mod.controller("productosCtrl", ['$scope', '$http', function ($scope, $http) {
-            $scope.elements = [];
-            $http.get("http://localhost:8080/puntosfidelidad-web/api/productos")
-                    .then(function (response) {
-                        $scope.elements = response.data;
+    mod.constant("productosContext", "api/productos");
+    mod.controller('productosCtrl', ['$scope', '$http', 'productosContext', '$state',
+        function ($scope, $http, productosContext, $state) {
+            $http.get(productosContext).then(function (response) {
+                $scope.productosRecords = response.data;
             });
-        }]);
 
-})(window.angular);
+            if (($state.params.productoId !== undefined) && ($state.params.productoId !== null)) {
+                $http.get(productosContext + '/' + $state.params.productoId).then(function (response) {
+                    $scope.currentProducto = response.data;
+                });
+            }
+        }
+    ]);
+}
+)(window.angular);
 
 
 

@@ -5,8 +5,18 @@ var mod = ng.module("productoModule", []);
             var basePath = 'src/modules/producto/';
             $urlRouterProvider.otherwise("");
 
-            $stateProvider.state('productosList', {
+            $stateProvider.state('productos', {
                 url: '/productos',
+                abstract: true,
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'productos.html',
+                        controller: 'productosCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('productosList', {
+                url: '/list',
                 views: {
                     'mainView': {
                         controller: 'productosCtrl',
@@ -14,16 +24,52 @@ var mod = ng.module("productoModule", []);
                         templateUrl: basePath + 'productos.list.html'
                     }
                 }
-            }).state('productosDetail', {
-                url: '/productos/detail',
+            }).state('productoDetail', {
+                url: '/{productoId:int}/detail',
+                parent: 'productos',
+                param: {
+                    productoId: null
+                },
                 views: {
-                    'mainView': {
-                        controller: 'productosDetailCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'cities.create.html'
+                    'detailView': {
+                        templateUrl: basePath + 'productos.detail.html',
+                        controller: 'productosCtrl',
+                        controllerAs: 'ctrl'
                     }
                 }
-
+            }).state('productosCreate', {
+                url: '/create',
+                parent: 'productos',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/productos.new.html',
+                        controller: 'productosNewCtrl'
+                    }
+                }
+            }).state('productoUpdate', {
+                url: '/update/{productoId:int}',
+                parent: 'productos',
+                param: {
+                    productoId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/productos.new.html',
+                        controller: 'productosUpdateCtrl'
+                    }
+                }
+            }).state('productoDelete', {
+                url: '/delete/{productoId:int}',
+                parent: 'productos',
+                param: {
+                    productoId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/delete/producto.delete.html',
+                        controller: 'productosDeleteCtrl'
+                    }
+                }
             });
         }]);
 
