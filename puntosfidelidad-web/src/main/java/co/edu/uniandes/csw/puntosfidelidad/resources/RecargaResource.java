@@ -40,7 +40,7 @@ public class RecargaResource {
      * @throws BusinessLogicException
      */
     @GET
-    public List<RecargaDTO> getTarjetasDeCredito(@PathParam("usuario") String usuario) throws BusinessLogicException {
+    public List<RecargaDTO> getRecargas(@PathParam("usuario") String usuario) throws BusinessLogicException {
         return listEntity2DTO(recargaLogic.getRecargas(usuario));
     }
 

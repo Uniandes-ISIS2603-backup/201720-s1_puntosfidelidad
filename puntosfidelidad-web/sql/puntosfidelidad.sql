@@ -16,11 +16,11 @@ delete from AdministradorEntity;
 -- delete from EventoEntity_UbicacionEntity;
 
 
-insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C1','C1','C1.jpg','C1');
-insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C2','C2','C2.jpg','C2');
-insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C3','C3','C3.jpg','C3');
-insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C4','C4','C4.jpg','C4');
-insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C5','C5','C5.jpg','C5');
+insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C1','C1','http://lorempixel.com/1200/1000','C1');
+insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C2','C2','http://lorempixel.com/1200/1000','C2');
+insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C3','C3','http://lorempixel.com/650/650','C3');
+insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C4','C4','http://lorempixel.com/1200/1000','C4');
+insert into ClienteEntity (usuario, contrasena, imagen, nombre) values ('C5','C5','http://lorempixel.com/1200/1000','C5');
 
 insert into TarjetaDeCreditoEntity (id,banco, numero, cliente_usuario) values (1,'Bancolombia', 4562182, 'C1' );
 insert into TarjetaDeCreditoEntity (id,banco, numero, cliente_usuario) values (2,'Bancopichincha', 4578236, 'C1' );

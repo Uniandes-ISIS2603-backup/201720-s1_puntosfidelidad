@@ -35,6 +35,24 @@
     font-size: 0;
 }
 
+.btnCliente{
+   margin:5px;
+   width: 200px; 
+}
+
+.panelBtn{
+	float:left;
+}
+
+.btnsDerecha{
+	clear:both;
+}
+
+.panelInformacion{
+	float:left;
+        position:relative;
+   	left:50px; 
+}
 #contenedor {
   overflow: hidden;
   _height:  1%;

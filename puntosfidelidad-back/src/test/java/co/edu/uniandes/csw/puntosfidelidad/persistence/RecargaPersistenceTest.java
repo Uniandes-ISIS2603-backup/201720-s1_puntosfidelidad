@@ -7,8 +7,6 @@ package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
