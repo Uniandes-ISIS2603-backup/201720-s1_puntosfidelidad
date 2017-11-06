@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    
+    <ul class="list-group" ng-repeat="elem in elements">
+        <li class="list-group-item">
+            
+            <input id='{{elem.id}}' type="checkbox" ng-model='collapse' style='display: none'/>
+                                    
+             <h4> {{elem.nombre}} ({{elem.id}}) </h4>
+             
+             
+             <label for='{{elem.id}}' class="btn btn-primary" ng-show="!collapse">Más detalles</label> 
+              
+             
+             <!-- Muestra los elementos de Restaurante -->
+             <div ng-if='collapse'>
+             
+                 <b>DESCRIPCIÓN: </b> {{elem.descripcion}} </br>
+                 <b>HORA APERTURA:</b> {{elem.horaApertura}} <br>          
+                 <b>HORA CIERRE:</b> {{elem.horaCierre}} <br> 
+                 <br> 
+                 <button class="btn btn-primary btnRestaurante" ui-sref="comentariosList">Comentarios</button> <br>
+                 <button class="btn btn-primary btnRestaurante" ui-sref="comprasList">Compras</button>   <br>
+                 <button class="btn btn-primary btnRestaurante">Ubicación</button> <br> 
+                 <br>
+                 <br>
+                 
+                 
+                <label for='{{elem.id}}' class="btn btn-primary">Menos detalles</label>
+                 
+            </div>
+                      
+            
+        </li>
+    </ul>
+</div>

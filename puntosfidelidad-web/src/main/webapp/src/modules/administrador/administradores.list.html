@@ -1,0 +1,35 @@
+<div class="container-fluid">    
+    <button class="btn btn-info btnCliente" ui-sref="administradoresCreate"> <p class="glyphicon glyphicon-plus"></p> Nuevo Administrador</button>
+    <ul class="list-group" ng-repeat="elem in elements">
+        <li class="list-group-item">
+            
+            <!-- Checkbox's que contienen los estados visuales -->
+            <input id='{{elem.usuario}}' type="checkbox" ng-model='collapse' style='display: none'/>
+                       
+            <!-- nombre cliente -->
+            <h4> {{elem.usuario}} </h4>
+            
+            <label for='{{elem.usuario}}' class="btn btn-primary" ng-show="!collapse">Más detalles</label>  
+            
+                           
+            <div ng-show='collapse' class="btnsDerecha">
+               
+                <div class="panelBtn">
+                    <button class="btn btn-primary btnCliente"  ui-sref="administradorDetail({administradorUsuario: elem.usuario})">Perfil</button> <br>
+                    <button class="btn btn-primary btnCliente" ui-sref="restaurantesList">Restaurantes</button> <br>
+                    <br>
+                </div>                               
+             
+                <div ui-view="detailView" id='fondoMain'> </div> 
+                
+                <br><br>
+                <div class="btnsDerecha">
+                <label for='{{elem.usuario}}' class="btn btn-primary">Menos detalles</label>
+                <label for='{{elem.usuario+"editar"}}' class='btn btn-info'>Editar</label> 
+                <label for='{{elem.usuario+"borrar"}}' class='btn btn-danger'>Borrar</label>
+            </div>
+                    
+            </div>                        
+        </li>
+    </ul>   
+</div>

@@ -1,14 +1,21 @@
 (function (ng) {
     var mod = ng.module("comprasModule");
-    mod.controller("comprasCtrl", ['$scope', '$http', function ($scope, $http) {
-            $scope.elements = [];
-            $http.get("http://localhost:8080/puntosfidelidad-web/api/compras")
-                    .then(function (response) {
-                        $scope.elements = response.data;
+    mod.constant("comprasContext", "api/compras");
+    mod.controller('comprasCtrl', ['$scope', '$http', 'comprasContext', '$state',
+        function ($scope, $http, comprasContext, $state) {
+            $http.get(comprasContext).then(function (response) {
+                $scope.comprasRecords = response.data;
             });
-        }]);
 
-})(window.angular);
+            if (($state.params.compraId !== undefined) && ($state.params.compraId !== null)) {
+                $http.get(comprasContext + '/' + $state.params.compraId).then(function (response) {
+                    $scope.currentCompra = response.data;
+                });
+            }
+        }
+    ]);
+}
+)(window.angular);
 
 
 
