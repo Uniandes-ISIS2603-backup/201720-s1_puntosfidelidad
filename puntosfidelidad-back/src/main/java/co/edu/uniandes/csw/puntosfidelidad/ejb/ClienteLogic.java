@@ -8,6 +8,7 @@ import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaDeCreditoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.ClientePersistence;
+import co.edu.uniandes.csw.puntosfidelidad.persistence.RecargaPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +26,9 @@ public class ClienteLogic {
 
     @Inject
     private ClientePersistence persistence;
+    
+    @Inject
+    private RecargaPersistence recargaPersistence;
 
     public List<ClienteEntity> getClientes() {
         LOGGER.info("Inicia proceso de consultar todos los clientes");
@@ -74,8 +78,11 @@ public class ClienteLogic {
         if (!validateContrasena(entity.getContrasena())) {
             throw new BusinessLogicException("La contraseña no es valida: " + entity.getContrasena());
         }  
-        if(entity.getNombre()==null){
+        if(entity.getNombre()==null || entity.getNombre().isEmpty()){
             entity.setNombre(entity.getUsuario());
+        }
+        if(entity.getImagen()==null || entity.getImagen().isEmpty()|| entity.getImagen().startsWith("http://")|| entity.getImagen().startsWith("https://") ){
+            entity.setImagen("http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png");
         }
         ClienteEntity newEntity = persistence.update(entity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar cliente con id={0}", entity.getUsuario());
@@ -84,9 +91,11 @@ public class ClienteLogic {
 
     public void deleteCliente(String usuario) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicia proceso de borrar cliente con id={0}", usuario);
-        if(persistence.find(usuario)==null) {
+        ClienteEntity actual= persistence.find(usuario);
+        if(actual==null) {
             throw new BusinessLogicException("El usuario no existe");
         }  
+               
         persistence.delete(usuario);
         LOGGER.log(Level.INFO, "Termina proceso de borrar cliente con id={0}", usuario);
     }
@@ -252,6 +261,7 @@ public class ClienteLogic {
         RecargaEntity recargaEntity = new RecargaEntity();
         recargaEntity.setId(recargaId);
         entity.getRecargas().remove(recargaEntity);
+        recargaPersistence.delete(recargaId);
     }
     
     /**

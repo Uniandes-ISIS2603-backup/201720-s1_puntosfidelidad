@@ -6,10 +6,6 @@
 package co.edu.uniandes.csw.puntosfidelidad.dtos;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.UbicacionEntity;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *

@@ -7,7 +7,7 @@
                 <div class="col-md-3"></div>           
                 <div class="col-md-3">
                     <div class="thumb">
-                        <img value="" class="img-responsive" ng-src="{{elementoCliente.imagen}}"/>
+                        <img onError="this.src ='http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png'" class="img-responsive" ng-src="{{elementoCliente.imagen}}"/>
                     </div>
 
                     <div class="thumb" ng-if="edit" >

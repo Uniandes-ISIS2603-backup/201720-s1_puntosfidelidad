@@ -6,7 +6,7 @@ var mod = ng.module("recargasModule", []);
             $urlRouterProvider.otherwise("");
 
             $stateProvider.state('recargasList', {
-                url: 'clientes/{clienteUsuario:string}/recargas',
+                url: '/recargas',
                 parent: 'clienteDetail',
                 param:{
                     clienteUsuario:null

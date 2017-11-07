@@ -4,8 +4,8 @@
         <a class="btn btn-default" ui-sref="clienteCreate">  <p class="glyphicon glyphicon-plus"></p>  Agregar Recarga  </a>
     </div>
     <br>
-    <div class="col-md-4"></div>    
-    <div class="col-md-4">        
+    <div class="col-md-3"></div>    
+    <div class="col-md-6">        
         <div class="alert alert-info" ng-if='elementosRegarga.length === 0'>
             <strong>!Ey!</strong> Actualmente no hay recargas registradas para este cliente.
         </div>
@@ -15,6 +15,8 @@
                     <th>Id</th>    
                     <th>Fecha</th>  
                     <th>Valor</th> 
+                    <th>Tarjeta De Crédito </th>
+                    <th>Tarjeta Puntos </th>
                 </tr>
             </thead>    
 
@@ -22,7 +24,9 @@
                 <tr ng-repeat="recarga in elementosRegarga">
                     <td id="{{$index}}-name"> {{recarga.id}}</td>
                     <td id="{{$index}}-fecha">{{recarga.fecha}}</td>
-                    <td id="{{$index}}-valor">{{recarga.valor}}</td>  
+                    <td id="{{$index}}-valor">{{recarga.valor}}</td>
+                    <td id="{{$index}}-tc">{{recarga.tarjetaDeCredito.id}}</td>
+                    <td id="{{$index}}-tp">{{recarga.tarjetaPuntos.id}}</td>
                 </tr>
             </tbody>
         </table>

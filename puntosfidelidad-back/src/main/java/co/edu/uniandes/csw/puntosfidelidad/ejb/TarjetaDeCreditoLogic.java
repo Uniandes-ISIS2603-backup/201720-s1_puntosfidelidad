@@ -1,10 +1,12 @@
 package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaDeCreditoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.TarjetaDeCreditoPersistence;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -93,6 +95,11 @@ public class TarjetaDeCreditoLogic {
      */
     public void deleteTarjetaDeCredito(String usuario, Long id) {
         LOGGER.info("Inicia proceso de borrar review");
+        ClienteEntity buscado= clienteLogic.getCliente(usuario);
+        for(RecargaEntity actual: buscado.getRecargas())
+        {
+            if(Objects.equals(actual.getTarjetaDeCredito().getId(), id)) clienteLogic.removeRecarga(usuario, actual.getId());
+        }        
         TarjetaDeCreditoEntity old = getTarjetaDeCredito(usuario, id);
         persistence.delete(old.getId());
     }
