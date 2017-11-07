@@ -52,13 +52,12 @@
 
             <ul class="nav nav-tabs">
                 <li ng-if="!edit" role="presentation" class="active"> <a ui-sref="recargasList({clienteUsuario: elementoCliente.usuario})">Recargas</a></li>
-                <li ng-if="!edit" role="presentation" class="active"> <a ui-sref="reviewsList({bookId: currentBook.id})">Tarjetas de Crédito</a></li>
-                <li ng-if="!edit" role="presentation" class="active"> <a ui-sref="reviewsList({bookId: currentBook.id})">Tarjetas de Puntos</a></li>
-                <li ng-if="!edit" role="presentation" class="active"> <a ui-sref="reviewsList({bookId: currentBook.id})">Compras</a></li>
+                <li ng-if="!edit" role="presentation" class="active"> <a ui-sref="tarjetasDeCreditoList({clienteUsuario: elementoCliente.usuario})">Tarjetas de Crédito</a></li>
+                <li ng-if="!edit" role="presentation" class="active"> <a ui-sref="tarjetasPuntosClienteList({clienteUsuario: elementoCliente.usuario})">Tarjetas de Puntos</a></li>
             </ul> 
         </form>
         
-        <div ui-view="detailClienteView">jjj</div>
+        <div ui-view="detailClienteView"></div>
         
     </div>
 </div>

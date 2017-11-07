@@ -1,14 +1,23 @@
 <div class="container-fluid">
-    <div class="col-md-4">
-        <table class="table table-hover">
+    <br>
+    <div class="btn-group mr-2" role="group" aria-label="First group">
+        <a class="btn btn-default" ui-sref="clienteCreate">  <p class="glyphicon glyphicon-plus"></p>  Agregar Recarga  </a>
+    </div>
+    <br>
+    <div class="col-md-4"></div>    
+    <div class="col-md-4">        
+        <div class="alert alert-info" ng-if='elementosRegarga.length === 0'>
+            <strong>!Ey!</strong> Actualmente no hay recargas registradas para este cliente.
+        </div>
+        <table class="table table-hover" ng-if='elementosRegarga.length !== 0'>
             <thead>
                 <tr>
                     <th>Id</th>    
                     <th>Fecha</th>  
                     <th>Valor</th> 
                 </tr>
-            </thead>
-            <label ng-if='elementosRegarga.length===0'>No hay recargas</label>
+            </thead>    
+
             <tbody>
                 <tr ng-repeat="recarga in elementosRegarga">
                     <td id="{{$index}}-name"> {{recarga.id}}</td>
