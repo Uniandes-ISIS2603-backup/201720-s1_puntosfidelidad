@@ -54,8 +54,12 @@ public class ClienteLogic {
         if (!validateContrasena(entity.getContrasena())) {
             throw new BusinessLogicException("La contraseña no es valida: " + entity.getContrasena());
         }
-        if(entity.getNombre()==null){
+        if(entity.getNombre()==null || entity.getNombre().equals("")){
             entity.setNombre(entity.getUsuario());
+        }
+        if(entity.getImagen().equals("")|| entity.getImagen()==null)
+        {
+            entity.setImagen("http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png");
         }
         persistence.create(entity);
         LOGGER.info("Termina proceso de creación de cliente");

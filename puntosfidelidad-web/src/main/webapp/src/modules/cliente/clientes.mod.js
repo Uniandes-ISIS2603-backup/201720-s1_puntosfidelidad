@@ -1,5 +1,5 @@
 (function (ng) {
-var mod = ng.module("clientesModule", []);
+    var mod = ng.module("clientesModule", ['recargasModule', 'tarjetasDeCreditoModule','tarjetasPuntosClienteModule']);
     mod.constant("clientesContext", "api/clientes");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/cliente/';
@@ -15,16 +15,34 @@ var mod = ng.module("clientesModule", []);
                     }
                 }
             }).state('clienteDetail', {
-                url: '/{clienteUsuario:string}',
-                parent: 'clientesList',
+                url: 'clientes/{clienteUsuario:string}',
                 param: {
                     clienteUsuario: null
                 },
                 views: {
-                    'detailView': {
+                    'mainView': {
                         controller: 'clientesDetailCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + '/clientes.detail.html'                       
+                        templateUrl: basePath + 'clientes.detail.html'
+                    }
+                }
+            }).state('clienteCreate', {
+                url: 'clientes/create',
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'new/clientes.new.html',
+                        controller: 'clientesNewCtrl'
+                    }
+                }
+            }).state('clienteUpdate', {
+                url: '/clientes/{clienteUsuario:string}/update',
+                param: {
+                    clienteUsuario: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'clientes.detail.html',
+                        controller: 'clientesUpdateCtrl'
                     }
                 }
             });
