@@ -1,12 +1,13 @@
 (function (ng) {
 var mod = ng.module("recargasModule", []);
-    mod.constant("recargasContext", "api/recargas");
+    mod.constant("recargasContext", "api/clientes");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/recarga/';
             $urlRouterProvider.otherwise("");
 
             $stateProvider.state('recargasList', {
                 url: 'clientes/{clienteUsuario:string}/recargas',
+                parent: 'clienteDetail',
                 param:{
                     clienteUsuario:null
                 },
@@ -14,12 +15,12 @@ var mod = ng.module("recargasModule", []);
                     'mainView': {
                         controller: 'clientesDetailCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'clientes.detail.html'
+                        templateUrl: 'src/modules/cliente/clientes.detail.html'                        
                     },
                     'detailClienteView': {
-                        controller: 'recargasCtrl',
+                       controller: 'recargasCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'recargas.list.html'
+                        templateUrl: basePath+'recargas.list.html' 
                     }
                 }
             });

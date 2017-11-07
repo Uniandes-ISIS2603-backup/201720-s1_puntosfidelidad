@@ -1,5 +1,5 @@
 (function (ng) {
-var mod = ng.module("clientesModule", []);
+    var mod = ng.module("clientesModule", ['recargasModule']);
     mod.constant("clientesContext", "api/clientes");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/cliente/';

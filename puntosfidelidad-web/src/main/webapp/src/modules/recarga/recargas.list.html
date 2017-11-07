@@ -8,6 +8,7 @@
                     <th>Valor</th> 
                 </tr>
             </thead>
+            <label ng-if='elementosRegarga.length===0'>No hay recargas</label>
             <tbody>
                 <tr ng-repeat="recarga in elementosRegarga">
                     <td id="{{$index}}-name"> {{recarga.id}}</td>
