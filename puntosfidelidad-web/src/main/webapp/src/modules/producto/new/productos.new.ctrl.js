@@ -7,9 +7,9 @@
             $scope.createProducto = function () {
                 $http.post(productosContext, {
                     id: $scope.productoId,
-                    name: $scope.productoName,
-                    productoValorPuntos: $scope.productoValorPuntos,
-                    productoValorDinero: $scope.productoValorDinero
+                    nombre: $scope.productoName,
+                    valorPuntos: $scope.productoValorPuntos,
+                    valorDinero: $scope.productoValorDinero
                 }).then(function (response) {
                     //producto created successfully
                     $state.go('productosList', {productoId: response.data.id}, {reload: true});

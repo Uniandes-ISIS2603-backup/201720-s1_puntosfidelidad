@@ -22,7 +22,7 @@
                                 <td id="{{$index}}-name"><a ui-sref="productoDetail({productoId: producto.id})">{{producto.nombre}}</a></td>
                                 <td id="{{$index}}-restaurante">{{producto.restaurante.nombre}}</td>
                                 <td id="{{$index}}-actions">
-                                    <a class="btn btn-default btn-sm" ui-sref="productoDelete({productoId: producto.id})" ><p class="glyphicon glyphicon-pencil"></p></a>
+                                    <a class="btn btn-default btn-sm" ui-sref="productoUpdate({productoId: producto.id})" ><p class="glyphicon glyphicon-pencil"></p></a>
                                     <a class="btn btn-danger btn-sm" ui-sref="productoDelete({productoId: producto.id})"><p class="glyphicon glyphicon-trash"></p></a>
                                 </td>
                             </tr>

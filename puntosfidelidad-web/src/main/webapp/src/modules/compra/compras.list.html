@@ -1,17 +1,37 @@
 <div class="container-fluid">
-    
-    <ul class="list-group" ng-repeat="elem in elements">
-        <li class="list-group-item">
-            <h4> {{elem.id}} </h4>
-            <div ng-show='collapse'>
-                Restaurante: {{elem.sucursal.nombre}}<br>
-                Ciente: {{elem.cliente.nombre}}<br>
-                Productos:{{elem.productos}}<br>
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label>Compras list</label></div>
+            <div class="panel-body">
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <a class="btn btn-info" ui-sref="comprasCreate"><p class="glyphicon glyphicon-plus"></p> Add new Compra</a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>    
+                                <th>Sucursal</th>  
+                                <th>Actions</th>  
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="compra in comprasRecords">
+                                <td id="{{$index}}-name"><a ui-sref="compraDetail({compraId: compra.id})">{{compra.id}}</a></td>
+                                <td id="{{$index}}-restaurante">{{compra.sucursal.nombre}}</td>
+                                <td id="{{$index}}-actions">
+                                    <a class="btn btn-default btn-sm" ui-sref="compraUpdate({compraId: compra.id})" ><p class="glyphicon glyphicon-pencil"></p></a>
+                                    <a class="btn btn-danger btn-sm" ui-sref="compraDelete({compraId: compra.id})"><p class="glyphicon glyphicon-trash"></p></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <button class="btn btn-primary">select</button>         
-            <input id='{{elem.id}}' type="checkbox" ng-model='collapse' style='display: none;'>
-                <label for='{{elem.id}}' class="btn btn-primary">Detail</label>
-            <button class="btn btn-primary">Delete</button> 
-        </li>
-    </ul>
+        </div>
+    </div>
+
+
 </div>
