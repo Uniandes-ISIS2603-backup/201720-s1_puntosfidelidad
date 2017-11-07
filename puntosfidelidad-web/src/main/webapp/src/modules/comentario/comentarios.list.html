@@ -26,7 +26,7 @@
                         Nueva foto
                     </button>
 
-                <label  for='{{elem.id + " edit"}}' class='btn btn-info' ng-show='revisarComentario(elem) && revisarFotos(elem)' ng-click="postComentario(elements, elem)">
+                <label  for='{{elem.id + " edit"}}' class='btn btn-info' ng-show='revisarComentario(elem) && revisarFotos(elem)' ng-click="putComentario(elements, elem)">
                         Terminar edición
                 </label>
                 <label ng-class="mensajeStyle.colorClass" ng-show='!revisarComentario(elem) || !revisarFotos(elem)'>
@@ -52,7 +52,7 @@
                 </label>                    
 
                 
-                <label for='{{elem.id + " borrar"}}' class='btn btn-danger'>
+                <label for='{{elem.id + " borrar"}}' class='btn btn-danger' ng-click="deleteComentario(elem)">
                     Borrar
                 </label>
             </div>         
