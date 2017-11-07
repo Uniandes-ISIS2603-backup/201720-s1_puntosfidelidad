@@ -3,6 +3,7 @@ var mod = ng.module("comprasModule", []);
     mod.constant("comprasContext", "api/compras");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/compra/';
+            var basePathProdutos = 'src/modules/producto/';
             $urlRouterProvider.otherwise("");
 
             $stateProvider.state('compras', {
@@ -34,6 +35,19 @@ var mod = ng.module("comprasModule", []);
                     'detailView': {
                         templateUrl: basePath + 'compras.detail.html',
                         controller: 'comprasCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('comprasProductosList', {
+                url: '/{compraId:int}/productos',
+                parent: 'compras',
+                param: {
+                    compraId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePathProdutos + 'productos.list.html',
+                        controller: 'comprasProductosCtrl',
                         controllerAs: 'ctrl'
                     }
                 }

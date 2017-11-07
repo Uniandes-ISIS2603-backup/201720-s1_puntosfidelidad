@@ -9,7 +9,8 @@
                     id: $scope.productoId,
                     nombre: $scope.productoName,
                     valorPuntos: $scope.productoValorPuntos,
-                    valorDinero: $scope.productoValorDinero
+                    valorDinero: $scope.productoValorDinero,
+                    restaurante: {nit: $scope.restauranteNit}
                 }).then(function (response) {
                     //producto created successfully
                     $state.go('productosList', {productoId: response.data.id}, {reload: true});

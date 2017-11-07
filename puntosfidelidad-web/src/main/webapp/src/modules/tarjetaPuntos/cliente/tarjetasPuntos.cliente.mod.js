@@ -1,12 +1,12 @@
 (function (ng) {
-var mod = ng.module("recargasModule", []);
-    mod.constant("recargasContext", "api/clientes");
+var mod = ng.module("tarjetasPuntosClienteModule", []);
+    mod.constant("tarjetasPuntosClienteContext", "api/clientes");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/recarga/';
+            var basePath = 'src/modules/tarjetaPuntos/cliente/';
             $urlRouterProvider.otherwise("");
 
-            $stateProvider.state('recargasList', {
-                url: 'clientes/{clienteUsuario:string}/recargas',
+            $stateProvider.state('tarjetasPuntosClienteList', {
+                url: 'clientes/{clienteUsuario:string}/tarjetasPuntos',
                 parent: 'clienteDetail',
                 param:{
                     clienteUsuario:null
@@ -18,9 +18,9 @@ var mod = ng.module("recargasModule", []);
                         templateUrl: 'src/modules/cliente/clientes.detail.html'                        
                     },
                     'detailClienteView': {
-                       controller: 'recargasCtrl',
+                       controller: 'tarjetasPuntosClienteCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath+'recargas.list.html' 
+                        templateUrl: basePath+'tarjetasPuntos.cliente.list.html' 
                     }
                 }
             });

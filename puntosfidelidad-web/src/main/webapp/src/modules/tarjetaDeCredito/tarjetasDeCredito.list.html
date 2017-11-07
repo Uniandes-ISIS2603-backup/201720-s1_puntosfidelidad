@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <br>
+    <div class="btn-group mr-2" role="group" aria-label="First group">
+        <a class="btn btn-default" ui-sref="tarjetasDeCreditoNew">  <p class="glyphicon glyphicon-plus"></p> Agregar Tarjeta De Crédito   </a>
+    </div>
+    <br>
+    <div class="col-md-4"></div>  
+    <form ng-submit="createTC()" name="tarjetaDeCredito">
+        <div class="col-md-5">        
+            <div class="alert alert-info" ng-if='elementosTC.length === 0'>
+                <strong>!Ey!</strong> Actualmente no hay tcs registradas para este cliente.
+            </div>
+            <table class="table table-hover" ng-if='elementosTC.length !== 0'>
+                <thead>
+                    <tr>
+                        <th>Id</th>    
+                        <th>Numero</th>  
+                        <th>Banco</th> 
+                        <th>Opciones</th> 
+                    </tr>
+                </thead>    
+
+                <tbody>
+
+                <tr ng-show='agregarTC' >
+                    <td></td>    
+                    <td>
+                        <input ng-app="mainApp"  type="number" id="tcNumero" ng-model="tc.numero" class="col-sm-6"/>
+                    </td>
+                    <td>
+                        <input ng-app="mainApp" id="tcBanco" ng-model="tc.banco" class="col-sm-6"/>
+                    </td>
+                    <td><input id="tcAgregar" type="submit" value="Agregar" class="btn btn-default"/> </td>                 
+                </tr>    
+
+                <tr ng-repeat="tc in elementosTC">
+                    <td id="{{$index}}-name"> {{tc.id}}</td>
+                    <td id="{{$index}}-fecha">{{tc.numero}}</td>
+                    <td id="{{$index}}-valor">{{tc.banco}}</td> 
+                    <td id="{{$index}}-actions">
+                        <a class="btn btn-default btn-sm" ui-sref="tarjetasDeCreditoUpdate({tarjetaId:tc.id})" ><p class="glyphicon glyphicon-pencil"></p></a>
+                        <a class="btn btn-danger btn-sm" ui-sref="productoDelete({productoId: producto.id})"><p class="glyphicon glyphicon-trash"></p></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>

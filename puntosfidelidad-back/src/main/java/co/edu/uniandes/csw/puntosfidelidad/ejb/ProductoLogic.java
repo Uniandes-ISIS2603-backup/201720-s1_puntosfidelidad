@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.CompraPersistence;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.ProductoPersistence;
+import co.edu.uniandes.csw.puntosfidelidad.persistence.RestaurantePersistence;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -24,6 +25,9 @@ public class ProductoLogic {
     
      @Inject
     private ProductoPersistence persistence;
+     
+     @Inject
+     private RestaurantePersistence restaurane;
     
     private static final Logger LOGGER = Logger.getLogger(ProductoLogic.class.getName());
     
@@ -37,6 +41,8 @@ public class ProductoLogic {
      */
     public ProductoEntity createProducto(ProductoEntity nuevoEntity)
     {
+        RestauranteEntity rest = restaurane.find(nuevoEntity.getRestaurante().getNit());
+        rest.getProductos().add(nuevoEntity);
         return persistence.create(nuevoEntity);
     }
     /**
