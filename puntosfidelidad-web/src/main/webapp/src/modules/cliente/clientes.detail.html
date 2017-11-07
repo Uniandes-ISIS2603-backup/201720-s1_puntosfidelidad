@@ -1,6 +1,62 @@
-<div class="panelInformacion">
-    Usuario: {{elementoCliente.usuario}}<br>
-    Nombre: {{elementoCliente.nombre}}<br>
-    Imagen: <br> 
-        <img ng-src='{{elementoCliente.imagen}}'> 
+<div class="panel panel-default"> 
+    <div class="panel-body">
+
+        <form name="clienteUpdate">
+            <div class="row">
+                <br>
+                <div class="col-md-3"></div>           
+                <div class="col-md-3">
+                    <div class="thumb">
+                        <img value="" class="img-responsive" ng-src="{{elementoCliente.imagen}}"/>
+                    </div>
+
+                    <div class="thumb" ng-if="edit" >
+                        <input id="clienteImagenU" ng-model="elementoCliente.imagen" class="col-sm-8" value="{{elementoCliente.imagen}}"/>
+                    </div>
+                </div>            
+                <div class="col-md-3">
+                    <dl> 
+                        <dt> Usuario</dt>
+                        <dd >{{elementoCliente.usuario}} <hr> </dd>                    
+
+                        <dt> Nombre </dt>
+                        <dd ng-if="!edit">{{elementoCliente.nombre}} <hr></dd>
+                        <dd ng-if="edit"><input value="" id="clienteNombreU" ng-model="elementoCliente.nombre" class="col-sm-8" /><br><hr> </dd>
+
+
+                        <dt>Contraseña</dt>
+                        <dd ng-if="!edit">{{elementoCliente.contrasena}}</dd> 
+                        <dd ng-if="edit"><input type=password id="clienteContrasenaU" required ng-model="elementoCliente.contrasena" class="col-sm-8" /> <br><br></dd>
+
+                        <dt ng-if="edit">Repetir contraseña</dt>
+                        <dd ng-if="edit"><input type=password id="clienteRepetirContrasenaU" required ng-model="elementoCliente.repetirContrasenaU" class="col-sm-8"/></dd>  
+
+                    </dl>  
+                    <br>                   
+                    <div class="form-group row">
+                        <div class="form-group col-sm-14" ng-if="edit && (((elementoCliente.contrasena) !== elementoCliente.repetirContrasenaU) || !clienteUpdate.$valid)">
+                            <div class="alert alert-danger" >
+                                <strong>!Cuidado!</strong><p>Las contraseñas no coinciden</p>
+                            </div> 
+                        </div> 
+                    </div>                    
+                    <a ng-if="!edit" class="btn btn-default" ui-sref="clienteUpdate({clienteUsuario: elementoCliente.usuario})"><p class="glyphicon glyphicon-pencil"></p></a>
+                    <a ng-if="!edit" class="btn btn-default" ui-sref="productosCreate"><p class="glyphicon glyphicon-trash"></p></a>
+                    <a ng-if="!edit" class="btn btn-default" ui-sref="clientesList"><p> Otros clientes</p></a>
+
+                    <a ng-if="edit" class="btn btn-default" ui-sref="clienteDetail({clienteUsuario: elementoCliente.usuario})"><p class="glyphicon glyphicon-remove"></p></a>
+                    <a ng-if="edit && !((elementoCliente.contrasena) !== elementoCliente.repetirContrasenaU) && clienteUpdate.$valid" class="btn btn-default" ng-click="updateCliente()"><p class="glyphicon glyphicon-floppy-saved"></p></a>
+                </div>
+            </div>
+            <br>
+
+            <ul class="nav nav-tabs">
+                <li ng-if="!edit" role="presentation" class="active"> <a ui-sref="recargasList({clienteUsuario: elementoCliente.usuario})">Recargas</a></li>
+                <li ng-if="!edit" role="presentation" class="active"> <a ui-sref="reviewsList({bookId: currentBook.id})">Tarjetas de Crédito</a></li>
+                <li ng-if="!edit" role="presentation" class="active"> <a ui-sref="reviewsList({bookId: currentBook.id})">Tarjetas de Puntos</a></li>
+                <li ng-if="!edit" role="presentation" class="active"> <a ui-sref="reviewsList({bookId: currentBook.id})">Compras</a></li>
+            </ul> 
+        </form>
+        <div ui-view="detailClienteView">jjj</div>
+    </div>
 </div>

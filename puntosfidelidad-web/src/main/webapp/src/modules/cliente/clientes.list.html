@@ -1,37 +1,25 @@
-<div class="container-fluid">    
-    <button class="btn btn-info btnCliente" ui-sref="clientesCreate"> <p class="glyphicon glyphicon-plus"></p> Nuevo cliente</button>
-    <ul class="list-group" ng-repeat="elem in elements">
-        <li class="list-group-item">
-            
-            <!-- Checkbox's que contienen los estados visuales -->
-            <input id='{{elem.usuario}}' type="checkbox" ng-model='collapse' style='display: none'/>
-                       
-            <!-- nombre cliente -->
-            <h4> {{elem.usuario}} </h4>
-            
-            <label for='{{elem.usuario}}' class="btn btn-primary" ng-show="!collapse">Más detalles</label>  
-            
-                           
-            <div ng-show='collapse' class="btnsDerecha">
-               
-                <div class="panelBtn">
-                    <button class="btn btn-primary btnCliente"  ui-sref="clienteDetail({clienteUsuario: elem.usuario})">Perfil</button> <br>
-                    <button class="btn btn-primary btnCliente">Recargas</button> <br>
-                    <button class="btn btn-primary btnCliente">Tarjetas De Credito</button> <br> 
-                    <button class="btn btn-primary btnCliente">Tarjetas De Puntos</button>   <br> 
-                    <button class="btn btn-primary btnCliente">Compras</button> 
-                </div>                               
-             
-                <div ui-view="detailView" id='fondoMain'> </div> 
-                
-                <br><br>
-                <div class="btnsDerecha">
-                <label for='{{elem.usuario}}' class="btn btn-primary">Menos detalles</label>
-                <label for='{{elem.usuario+"editar"}}' class='btn btn-info'>Editar</label> 
-                <label for='{{elem.usuario+"borrar"}}' class='btn btn-danger'>Borrar</label>
-            </div>
+<div class="container-fluid" >
+    <br>
+    <div class="btn-group mr-2" role="group" aria-label="First group">
+        <a class="btn btn-default" ui-sref="clienteCreate">  <p class="glyphicon glyphicon-plus"></p>  Nuevo Cliente   </a>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-2" ng-repeat="cliente in clientesLista" ng-if='cliente.usuario!=="Anonimo"'>
+            <div class="thumbnail" >      
+                <a ui-sref="clienteDetail({clienteUsuario: cliente.usuario})">
+                    <img class="img-responsive imagenCliente" ng-src='{{cliente.imagen}}' alt="{{cliente.usuario}}"/>                  
+                </a>
+                <div class="caption text-center">
+                    <p><i><b>Usuario:</b> </i>{{cliente.usuario}}</p>
                     
-            </div>                        
-        </li>
-    </ul>   
+                    <a class="btn btn-default" ui-sref="clienteDetail({clienteUsuario: cliente.usuario})"><p class="glyphicon glyphicon-plus"></p></a>
+                    <a class="btn btn-default" ui-sref="clienteUpdate({clienteUsuario: cliente.usuario})"><p class="glyphicon glyphicon-pencil"></p></a>
+                    <a class="btn btn-default" ui-sref="productosCreate"><p class="glyphicon glyphicon-trash"></p></a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
 </div>
