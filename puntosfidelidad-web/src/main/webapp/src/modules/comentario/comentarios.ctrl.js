@@ -2,6 +2,8 @@
     var mod = ng.module("comentariosModule");
     mod.controller("comentariosCtrl", ['$scope', '$http', function ($scope, $http) {
             $scope.elements = [];
+            $scope.nuevoComentario = {};
+            $scope.nuevoComentario.fotos = [];
             $http.get("http://localhost:8080/puntosfidelidad-web/api/comentarios")
                     .then(function (response) {
                         $scope.elements = response.data;
@@ -132,6 +134,16 @@
                             console.log(error);
                         }
                     );
+                }
+            }
+
+            $scope.postComentario = function(nuevoComentario)
+            {
+                if(nuevoComentario.calificacion != undefined)
+                {
+                    $scope.crear = false;
+                    $scope.elements = $scope.elements.concat(nuevoComentario)
+                    console.log(nuevoComentario);
                 }
             }
 
