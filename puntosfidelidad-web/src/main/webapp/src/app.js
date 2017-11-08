@@ -9,7 +9,7 @@
         'restaurantesModule',
         'comentariosModule',
         'tarjetasPuntosModule',
-        'sucursalesModule',
+        'sucursalModule',
         'eventosModule',
         'clientesModule',
         'recargasModule',

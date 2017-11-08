@@ -1,0 +1,60 @@
+
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label ng-if="!edit" id="createSucursal">Nueva Sucursal</label>
+                <label ng-if="edit" id="editSucursal">Editar Sucursal</label></div>
+            <div class="panel-body">
+                <form ng-submit="createSucursal()" name="sucursal">
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="sucursalId" class="col-sm-2">Id:</label>
+                            <input id="sucursalId" required ng-model="sucursalId" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="sucursalName" class="col-sm-2">Nombre:</label>
+                            <input id="sucursalName" required ng-model="sucursalName" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="sucursaldescripcion" class="col-sm-2">Descripción:</label>
+                            <textarea id="sucursaldescripcion" required ng-model="sucursaldescripcion" class="col-sm-6"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="sucursalApetura" class="col-sm-2">Hora Apertura:</label>
+                            <textarea id="sucursalApetura" required ng-model="sucursalApetura" class="col-sm-6"></textarea>
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="sucursalCierre" class="col-sm-2">Hora Cierre:</label>
+                            <input type="text" id="sucursalCierre" required ng-model="sucursalCierre" class="col-sm-6"/>
+                        </div>
+                    </div>
+                
+
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" ng-if="!sucursal.$valid">
+
+                            <div class="alert alert-warning" >
+                                <strong>Warning!</strong><p>Debe llenar todos los campos...</p>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input ng-show="sucursal.$valid" type="submit" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="sucursalList">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

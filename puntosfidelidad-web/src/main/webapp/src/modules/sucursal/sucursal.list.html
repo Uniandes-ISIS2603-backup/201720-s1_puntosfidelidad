@@ -1,35 +1,34 @@
 <div class="container-fluid">
-    
-    <ul class="list-group" ng-repeat="elem in elements">
-        <li class="list-group-item">
-            
-            <input id='{{elem.id}}' type="checkbox" ng-model='collapse' style='display: none'/>
-                                    
-             <h4> {{elem.nombre}} ({{elem.id}}) </h4>
-             
-             
-             <label for='{{elem.id}}' class="btn btn-primary" ng-show="!collapse">Más detalles</label> 
-              
-             
-             <!-- Muestra los elementos de Restaurante -->
-             <div ng-if='collapse'>
-             
-                 <b>DESCRIPCIÓN: </b> {{elem.descripcion}} </br>
-                 <b>HORA APERTURA:</b> {{elem.horaApertura}} <br>          
-                 <b>HORA CIERRE:</b> {{elem.horaCierre}} <br> 
-                 <br> 
-                 <button class="btn btn-primary btnRestaurante" ui-sref="comentariosList">Comentarios</button> <br>
-                 <button class="btn btn-primary btnRestaurante" ui-sref="comprasList">Compras</button>   <br>
-                 <button class="btn btn-primary btnRestaurante">Ubicación</button> <br> 
-                 <br>
-                 <br>
-                 
-                 
-                <label for='{{elem.id}}' class="btn btn-primary">Menos detalles</label>
-                 
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label>Lista Sucursales</label></div>
+            <div class="panel-body">
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <a class="btn btn-info" ui-sref="sucursalCreate"><p class="glyphicon glyphicon-plus"></p> Add new sucursal</a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre</th>                                  
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="sucursal in sucursalRecords">
+                                <td id="{{$index}}-id">{{sucursal.id}}</td>
+                                <td id="{{$index}}-nombre"><a ui-sref="sucursalDetail({sucursalId:sucursal.id})">{{sucursal.nombre}}</a></td>                                
+                                <td>
+                                    <a class="btn btn-default btn-sm" ui-sref="sucursalUpdate({sucursalId: sucursal.id})" ><p class="glyphicon glyphicon-pencil"></p></a>
+                                    <a class="btn btn-danger btn-sm" ui-sref="sucursalDelete({sucursalId: sucursal.id})"><p class="glyphicon glyphicon-trash"></p></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-                      
-            
-        </li>
-    </ul>
+        </div>
+    </div>
 </div>
