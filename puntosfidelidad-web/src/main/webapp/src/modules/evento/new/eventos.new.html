@@ -1,0 +1,54 @@
+
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label ng-if="!edit" id="createSucursal">Nuevo Evento</label>
+                <label ng-if="edit" id="editSucursal">Editar Evento</label></div>
+            <div class="panel-body">
+                <form ng-submit="createEvento()" name="evento">                    
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="eventoName" class="col-sm-2">Nombre:</label>
+                            <input id="eventoName" required ng-model="eventoName" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="eventodescripcion" class="col-sm-2">Descripción:</label>
+                            <textarea id="sucursaldescripcion" required ng-model="eventoDescripcion" class="col-sm-6"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="eventoInicio" class="col-sm-2">Hora Apertura:</label>
+                            <textarea id="eventoInicio" required ng-model="eventoInicio" class="col-sm-6"></textarea>
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="eventoFin" class="col-sm-2">Hora Cierre:</label>
+                            <input type="text" id="eventoFin" required ng-model="eventoFin" class="col-sm-6"/>
+                        </div>
+                    </div>
+                
+
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" ng-if="!evento.$valid">
+
+                            <div class="alert alert-warning" >
+                                <strong>Warning!</strong><p>Debe llenar todos los campos...</p>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input ng-show="sucursal.$valid" type="submit" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="sucursalList">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
