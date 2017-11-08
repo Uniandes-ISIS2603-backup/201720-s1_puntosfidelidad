@@ -2,6 +2,8 @@
     var mod = ng.module("comentariosModule");
     mod.controller("comentariosCtrl", ['$scope', '$http', function ($scope, $http) {
             $scope.elements = [];
+            $scope.nuevoComentario = {};
+            $scope.nuevoComentario.fotos = [];
             $http.get("http://localhost:8080/puntosfidelidad-web/api/comentarios")
                     .then(function (response) {
                         $scope.elements = response.data;
@@ -85,7 +87,7 @@
                 }                    
             }
 
-            $scope.postComentario = function(comentarios, comentario)
+            $scope.putComentario = function(comentarios, comentario)
             {
                 usuario = comentario.cliente.usuario;
                 comentariosCliente = [];
@@ -104,7 +106,7 @@
                 $http.put('http://localhost:8080/puntosfidelidad-web/api/clientes/' + usuario + '/comentarios', comentarios).then(
                     function todoBien(response) 
                     {
-                        console.log("todo bien!")
+                        console.log("todo bien!");
                     },
                     function todoMal(error)
                     {
@@ -112,5 +114,38 @@
                     }
                 );
             }
+
+            $scope.deleteComentario = function(comentario)
+            {
+                quiereBorrar = confirm("¿Quiere borrar el comentario?");
+
+                if(quiereBorrar)
+                {
+                    usuario = comentario.cliente.usuario;
+                    idComentario = comentario.id;
+
+                    $http.delete('http://localhost:8080/puntosfidelidad-web/api/clientes/' + usuario + '/comentarios/' + idComentario).then(
+                        function todoBien(response)
+                        {
+                            console.log("todo bien!");
+                        },
+                        function todoMal(error)
+                        {
+                            console.log(error);
+                        }
+                    );
+                }
+            }
+
+            $scope.postComentario = function(nuevoComentario)
+            {
+                if(nuevoComentario.calificacion != undefined)
+                {
+                    $scope.crear = false;
+                    $scope.elements = $scope.elements.concat(nuevoComentario)
+                    console.log(nuevoComentario);
+                }
+            }
+
         }]);
 })(window.angular);

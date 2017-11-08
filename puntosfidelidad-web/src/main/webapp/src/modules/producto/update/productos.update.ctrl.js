@@ -14,7 +14,8 @@
                         $scope.productoId = producto.id;
                         $scope.productoName = producto.nombre;
                         $scope.productoValorPuntos = producto.valorPuntos;
-                        $scope.productoValorDinero = producto.valorDinero;                                   
+                        $scope.productoValorDinero = producto.valorDinero; 
+                        $scope.restauranteNit = producto.restaurante.nit;
                     });
 
                   
@@ -39,6 +40,7 @@
                             nombre: $scope.productoName,
                             valorPuntos: $scope.productoValorPuntos,
                             valorDinero: $scope.productoValorDinero,
+                            restaurante: {nit: $scope.restauranteNit}
                         }).then(function (response) {
                 
                             //Author created successfully

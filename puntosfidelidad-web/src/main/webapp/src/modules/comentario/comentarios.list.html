@@ -1,4 +1,34 @@
 <div id='fondoMain' class="container-fluid">
+    <br>
+    <div class='panel-group'>
+        <div class = 'panel panel-primary' ng-if='crear'>
+            <div class='panel-heading'>
+                Agregar un nuevo comentario
+            </div>
+            <div id='formComentario' class='panel-body'>
+                <form class='form-group'>
+                    Id del comentario: <input ng-model='nuevoComentario.id'> <br>
+                    <div style='margin-top:5px; margin-bottom: 5px;'> Comentario: <textarea ng-model='nuevoComentario.comentario' rows='1' cols='25'></textarea></div>
+                    Calificación: <input type='number' ng-model='nuevoComentario.calificacion' min='1' max='10'> <br>
+                    Fotos: <br>
+                    <div ng-repeat="ph in nuevoComentario.fotos">
+                        <input ng-model='ph.url'> <img src='media/borrar.png' ng-click="borrarFoto(nuevoComentario.fotos, ph)" style='height: 30px; width: 30px;' ><br>
+                    </div>
+                    <button ng-click="nuevaFoto(nuevoComentario.fotos)">Nueva foto</button><br> 
+                    Nombre de la sucursal: <input ng-model='nuevoComentario.nombreSucursal'><br>
+                    Usuario asociado: <input ng-model='nuevoComentario.usuarioCliente'><br><br>
+                    <input type='submit' id='crearNuevoComentario' style="display: none;">
+                    <label for="crearNuevoComentario" class="btn btn-primary" ng-click="postComentario(nuevoComentario)">Crear nuevo comentario</label>
+                </form>
+                
+            </div>
+        </div>
+        <input id='crearComentario' type='checkbox' ng-model='crear' style='display:none'>
+        <label for='crearComentario' class='btn btn-primary' ng-show='crear' class='btn btn-info'> Cancelar</label><br>        
+        <label for='crearComentario' class='btn btn-primary' ng-show='!crear' class='btn btn-info'> <p class="glyphicon glyphicon-plus"></p>Nuevo comentario</label><br>
+    </div>    
+    
+
     <ul class="list-group" ng-repeat="elem in elements">
         <li class="list-group-item">
 
@@ -26,7 +56,7 @@
                         Nueva foto
                     </button>
 
-                <label  for='{{elem.id + " edit"}}' class='btn btn-info' ng-show='revisarComentario(elem) && revisarFotos(elem)' ng-click="postComentario(elements, elem)">
+                <label  for='{{elem.id + " edit"}}' class='btn btn-info' ng-show='revisarComentario(elem) && revisarFotos(elem)' ng-click="putComentario(elements, elem)">
                         Terminar edición
                 </label>
                 <label ng-class="mensajeStyle.colorClass" ng-show='!revisarComentario(elem) || !revisarFotos(elem)'>
@@ -52,7 +82,7 @@
                 </label>                    
 
                 
-                <label for='{{elem.id + " borrar"}}' class='btn btn-danger'>
+                <label for='{{elem.id + " borrar"}}' class='btn btn-danger' ng-click="deleteComentario(elem)">
                     Borrar
                 </label>
             </div>         
