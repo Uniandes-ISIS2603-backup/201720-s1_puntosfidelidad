@@ -4,6 +4,7 @@ delete from FotoEntity;
 delete from ComentarioEntity;
 delete from CompraEntity_ProductoEntity;
 delete from ProductoEntity;
+delete from TARJETAPUNTOSENTITY_COMPRAENTITY;
 delete from CompraEntity;
 delete from EventoEntity;
 delete from TarjetaPuntosEntity;
