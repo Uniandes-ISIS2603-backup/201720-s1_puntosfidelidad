@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <br>
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <label  id="createadministrador">Agregar administrador</label>                
+            </div>
+
+            <div class="panel-body">               
+
+                <form ng-submit="createAdministrador()" name="administrador">
+                    <div class="form-group col-md-4"></div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="administradorId" class="col-sm-4">Usuario*:</label>
+                            <input id="administradorId" pattern="[a-zA-Z0-9-]+" title="Espacios no admitidos" required ng-model="usuario" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group col-md-4"></div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="administradorContrasena" class="col-sm-4">Contraseña*:</label>
+                            <input id="administradorContrasena" required type="password"  ng-model="contrasena" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4"></div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="repetirContrasena" class="col-sm-4">Repetir contraseña*:</label>
+                            <input id="repetirContrasena" required type="password"  ng-model="repetirContrasena" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group col-md-4"></div>
+                    <div class="form-group row">                        
+                        <div class="form-group col-sm-5" ng-if="!administrador.$valid">
+                            <div class="alert alert-warning" >
+                                <strong>!Atención!</strong>
+                                <p>Completar campos requeridos*</p>
+                                <p> El usuario solo puede contener letras y números, sin espacios.</p>
+                            </div> 
+                        </div>                         
+                    </div> 
+                                                      
+                    <div class="form-group col-md-4"></div>
+                    <div class="form-group row">
+                        <div class="form-group col-sm-5" ng-if="contrasena !== repetirContrasena">
+                            <div class="alert alert-danger" >
+                                <strong>!Cuidado!</strong><p>Las contraseñas no coinciden</p>
+                            </div> 
+                        </div> 
+                    </div> 
+
+                    <div class="form-group col-md-6"></div>
+                    <div class="form-group row">
+                        <div class="form-group col-sm-14">
+                            <a class="btn btn-default" ui-sref="administradoresList">Cancel</a>
+                            <input ng-show="administrador.$valid && contrasena === repetirContrasena" type="submit" value="Save" class="btn btn-default"/>    
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

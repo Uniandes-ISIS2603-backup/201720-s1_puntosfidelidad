@@ -1,11 +1,11 @@
 (function (ng) {
-var mod = ng.module("administradoresModule", []);
-    mod.constant("administradoresContext", "api/clientes");
+    var mod = ng.module("administradoresModule", ['restauranteAdministradorModule']);
+    mod.constant("administradoresContext", "api/administradores");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/administrador/';
             $urlRouterProvider.otherwise("");
 
-            $stateProvider.state('administradorList', {
+            $stateProvider.state('administradoresList', {
                 url: '/administradores',
                 views: {
                     'mainView': {
@@ -15,16 +15,34 @@ var mod = ng.module("administradoresModule", []);
                     }
                 }
             }).state('administradorDetail', {
-                url: '/{administradorUsuario:string}',
-                parent: 'administradorList',
+                url: 'administradores/{administradorUsuario:string}',
                 param: {
                     administradorUsuario: null
                 },
                 views: {
-                    'detailView': {
+                    'mainView': {
                         controller: 'administradoresDetailCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + '/administradores.detail.html'                       
+                        templateUrl: basePath + 'administradores.detail.html'
+                    }
+                }
+            }).state('administradorCreate', {
+                url: 'administradores/create',
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'new/administradores.new.html',
+                        controller: 'administradoresNewCtrl'
+                    }
+                }
+            }).state('administradorUpdate', {
+                url: '/administradores/{administradorUsuario:string}/update',
+                param: {
+                    administradorUsuario: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'administradores.detail.html',
+                        controller: 'administradoresUpdateCtrl'
                     }
                 }
             });
