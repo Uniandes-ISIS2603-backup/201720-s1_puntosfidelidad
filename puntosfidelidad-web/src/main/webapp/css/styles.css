@@ -1,3 +1,16 @@
+#contenedor {
+  overflor: hidden;
+}
+
+#columna1 {
+  float:left;
+}
+
+
+#center{
+  padding: 1em 3em;
+  margin: 1em 50%;
+}
 
 #listaNav {
     font-size:13px;

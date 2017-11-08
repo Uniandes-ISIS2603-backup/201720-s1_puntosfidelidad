@@ -1,0 +1,30 @@
+<div class="container">
+<br>
+<div class="panel panel-primary">
+    <div class="panel-heading">Restaurante : {{actual.nombre}}</div>
+        <div class="panel-body contenedor-tabla"> 
+    <div class='conteneder-fila'>
+                    <div id="columna1">                        
+                        <button class="btn btn-primary btnRestaurante" ui-sref='restaurantesDetail({restauranteNit:"{{actual.nit}}"})'>Información</button> <br>
+                        <button class="btn btn-primary btnRestaurante" ui-sref='restaurantesProductos({restauranteNit:"{{actual.nit}}"})'>Productos</button> <br>               
+                        <button class="btn btn-primary btnRestaurante" ui-sref='restaurantesSucursales({restauranteNit:"{{actual.nit}}"})'>Sucursales</button> <br> 
+                        <button class="btn btn-primary btnRestaurante" ui-sref="eventosList" >Eventos</button>
+                        <br>
+                        <div class="row">
+                        <div style="padding-left: 30px">
+                        <a class="btn btn-default" ui-sref='restaurantesPost({restauranteNit:"{{actual.nit}}"})'><p class="glyphicon glyphicon-plus"></p></a>
+                        <a class="btn btn-default" ui-sref='restaurantesUpdate({restauranteNit:"{{actual.nit}}"})'><p class="glyphicon glyphicon-pencil"></p></a>
+                        <a class="btn btn-default" ui-sref='restaurantesDelete'><p class="glyphicon glyphicon-trash"></p></a>
+                        </div>
+                        </div>
+                    </div>
+                    <div ui-view="extrasView" id="columna1">
+                        <b>NIT :</b> <p>{{actual.nit}}</p>
+                        <b>TIPO DE COMIDA :</b> <p> {{actual.tipoComida}}</p>
+                        <img ng-src='http://lorempixel.com/200/200'>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

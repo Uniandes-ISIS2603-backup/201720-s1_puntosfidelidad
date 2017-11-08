@@ -1,0 +1,22 @@
+<div class="panel panel-success" id='columna1'>
+    <div class="panel-heading"><b>Productos</b></div>
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>    
+            <th>Valor Dinero</th>  
+            <th>Valor Puntos</th>  
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="producto in actual.productos">
+            <td id="{{$index}}-name"><a ui-sref="productoDetail({productoId: producto.id})">{{producto.nombre}}</a></td>
+            <td id="{{$index}}-dinero">{{producto.valorDinero}}</td>
+            <td id="{{$index}}-puntos">{{producto.valorPuntos}}</td>
+            <td><a class="btn btn-default btn-sm" ui-sref="productoUpdate({productoId: producto.id})" ><p class="glyphicon glyphicon-pencil"></p></a>
+                <a class="btn btn-danger btn-sm" ui-sref="productoDelete({productoId: producto.id})"><p class="glyphicon glyphicon-trash"></p></a>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+</div>
