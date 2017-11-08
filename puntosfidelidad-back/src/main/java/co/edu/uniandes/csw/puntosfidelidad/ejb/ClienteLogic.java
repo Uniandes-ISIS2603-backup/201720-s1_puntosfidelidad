@@ -8,6 +8,10 @@ import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaDeCreditoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.ClientePersistence;
+import co.edu.uniandes.csw.puntosfidelidad.persistence.ComentarioPersistence;
+import co.edu.uniandes.csw.puntosfidelidad.persistence.CompraPersistence;
+import co.edu.uniandes.csw.puntosfidelidad.persistence.RecargaPersistence;
+import co.edu.uniandes.csw.puntosfidelidad.persistence.TarjetaPuntosPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +29,18 @@ public class ClienteLogic {
 
     @Inject
     private ClientePersistence persistence;
+    
+    @Inject
+    private RecargaPersistence recargaPersistence;
+    
+    @Inject
+    private ComentarioPersistence comentarioPersistence;
+    
+    @Inject
+    private TarjetaPuntosPersistence tarjetaPuntosPersistence;
+    
+    @Inject
+    private CompraPersistence compraPersistence;
 
     public List<ClienteEntity> getClientes() {
         LOGGER.info("Inicia proceso de consultar todos los clientes");
@@ -74,8 +90,11 @@ public class ClienteLogic {
         if (!validateContrasena(entity.getContrasena())) {
             throw new BusinessLogicException("La contraseña no es valida: " + entity.getContrasena());
         }  
-        if(entity.getNombre()==null){
+        if(entity.getNombre()==null || entity.getNombre().isEmpty()){
             entity.setNombre(entity.getUsuario());
+        }
+        if(entity.getImagen()==null || entity.getImagen().isEmpty()|| entity.getImagen().startsWith("http://")|| entity.getImagen().startsWith("https://") ){
+            entity.setImagen("http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png");
         }
         ClienteEntity newEntity = persistence.update(entity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar cliente con id={0}", entity.getUsuario());
@@ -84,13 +103,64 @@ public class ClienteLogic {
 
     public void deleteCliente(String usuario) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicia proceso de borrar cliente con id={0}", usuario);
-        if(persistence.find(usuario)==null) {
+        ClienteEntity actual= persistence.find(usuario);
+        ClienteEntity anonimo= persistence.find("Anonimo");
+        if(actual==null) {
             throw new BusinessLogicException("El usuario no existe");
         }  
+        if(anonimo==null)
+        {
+            anonimo= new ClienteEntity();
+            anonimo.setUsuario("Anonimo");
+            anonimo.setNombre("Anonimo");
+            anonimo.setContrasena("Anonimo");
+            anonimo=persistence.create(anonimo);
+        }        
+        if(persistence.find("Anonimo")!=null)LOGGER.log(Level.INFO, "ANONIMO CREADO");
+        deleteClienteComentarios(actual, anonimo);        
+        LOGGER.log(Level.INFO, "Comentarios actualizados");
+        
+        deleteClienteTP(actual, anonimo);
+        LOGGER.log(Level.INFO, "TP actualizados");
+        
+        deleteClienteCompras(actual, anonimo);
+        LOGGER.log(Level.INFO, "Compras actualizados");
+
+        
+
         persistence.delete(usuario);
         LOGGER.log(Level.INFO, "Termina proceso de borrar cliente con id={0}", usuario);
     }
 
+    private void deleteClienteComentarios(ClienteEntity cliente, ClienteEntity anonimo){
+        
+        for(ComentarioEntity comentario: cliente.getComentarios())
+        {            
+            ComentarioEntity nuevo= new ComentarioEntity();
+            nuevo.setId(comentario.getId());
+            nuevo.setCliente(anonimo);            
+            comentarioPersistence.update(nuevo);           
+        }
+    }
+    
+    private void deleteClienteCompras(ClienteEntity cliente, ClienteEntity anonimo){
+        for(CompraEntity compra: cliente.getCompras())
+        {
+            CompraEntity nuevo= new CompraEntity();
+            nuevo.setId(compra.getId());
+            nuevo.setCliente(anonimo);
+            compraPersistence.update(nuevo);
+        }
+    }
+    private void deleteClienteTP(ClienteEntity cliente, ClienteEntity anonimo){
+        for(TarjetaPuntosEntity tp: cliente.getTarjetasPuntos())
+        {
+            TarjetaPuntosEntity nuevo= new TarjetaPuntosEntity();
+            nuevo.setId(tp.getId());
+            nuevo.setCliente(anonimo);
+            tarjetaPuntosPersistence.update(nuevo);
+        }
+    }
     private boolean validateContrasena(String contrasena) {
         return !(contrasena == null || contrasena.isEmpty());
     }
@@ -252,6 +322,7 @@ public class ClienteLogic {
         RecargaEntity recargaEntity = new RecargaEntity();
         recargaEntity.setId(recargaId);
         entity.getRecargas().remove(recargaEntity);
+        recargaPersistence.delete(recargaId);
     }
     
     /**

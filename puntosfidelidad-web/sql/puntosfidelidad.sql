@@ -4,6 +4,7 @@ delete from FotoEntity;
 delete from ComentarioEntity;
 delete from CompraEntity_ProductoEntity;
 delete from ProductoEntity;
+delete from TARJETAPUNTOSENTITY_COMPRAENTITY;
 delete from CompraEntity;
 delete from EventoEntity;
 delete from TarjetaPuntosEntity;
@@ -35,11 +36,11 @@ insert into TarjetaPuntosEntity (id, montoactual, montobasico, numpuntos, client
 insert into TarjetaPuntosEntity (id, montoactual, montobasico, numpuntos, cliente_usuario) values (4, 8000,5010,20,'C4');
 insert into TarjetaPuntosEntity (id, montoactual, montobasico, numpuntos, cliente_usuario) values (5, 5900,2000,20,'C4');
 
-insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (1,'4/7/1965', 8000, 'C1' ,1,10030 );
-insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (2,'4/7/1965', 8000, 'C1' ,1,10030 );
-insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (3,'4/8/1967', 8000, 'C2' ,2,10040);
-insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (4,'10/9/1968', 8000, 'C3',3,10050 );
-insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (5,'10/9/1968', 84000, 'C3',3,10050 );
+insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (10000,'4/7/1965', 8000, 'C1' ,1,10030 );
+insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (20000,'4/7/1965', 8000, 'C1' ,1,10030 );
+insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (30000,'4/8/1967', 8000, 'C2' ,2,10040);
+insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (40000,'10/9/1968', 8000, 'C3',3,10050 );
+insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (50000,'10/9/1968', 84000, 'C3',3,10050 );
 
 insert into AdministradorEntity (USUARIO, CONTRASENA) values ('Valeria','loli123');
 insert into AdministradorEntity (USUARIO, CONTRASENA) values ('Andres','meencantalapizza');

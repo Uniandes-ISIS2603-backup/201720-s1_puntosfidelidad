@@ -6,7 +6,7 @@
             $urlRouterProvider.otherwise("");
 
             $stateProvider.state('tarjetasDeCreditoList', {
-                url: 'clientes/{clienteUsuario:string}/tarjetasDeCredito',
+                url: '/tarjetasDeCredito',
                 parent: 'clienteDetail',
                 param: {
                     clienteUsuario: null
@@ -24,7 +24,7 @@
                     }
                 }
             }).state('tarjetasDeCreditoNew', {
-                url: 'clientes/{clienteUsuario:string}/tarjetasDeCredito/crear',
+                url: '/tarjetasDeCredito/crear',
                 parent: 'clienteDetail',
                 param: {
                     clienteUsuario: null
@@ -41,11 +41,29 @@
                         templateUrl: basePath + 'tarjetasDeCredito.list.html'
                     }
                 }
-            }).state('tarjetasDeCreditoUpdate', {
-                url: 'clientes/{clienteUsuario:string}/tarjetasDeCredito/update',
+            }).state('tarjetasDeCreditoDelete', {
+                url: '/tarjetasDeCredito/{tarjetaCreditoId:int}/eliminar',                 
                 parent: 'clienteDetail',
                 param: {
-                    clienteUsuario: null
+                    tarjetaCreditoId:null
+                },
+                views: {
+                    'mainView': {
+                        controller: 'clientesDetailCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/cliente/clientes.detail.html'
+                    },
+                    'detailClienteView': {
+                        controller: 'tarjetaDeCreditoDeleteCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath+'delete/tarjetasDeCredito.delete.html'
+                    }
+                }
+            }).state('tarjetasDeCreditoUpdate', {
+                url: '/tarjetasDeCredito/{tarjetaCreditoId:int}/update',                 
+                parent: 'clienteDetail',
+                param: {
+                    tarjetaCreditoId:null
                 },
                 views: {
                     'mainView': {
@@ -56,7 +74,7 @@
                     'detailClienteView': {
                         controller: 'tarjetasDeCreditoUpdateCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'tarjetasDeCredito.list.html'
+                        templateUrl: basePath+'update/tarjetasDeCredito.update.html'
                     }
                 }
             });

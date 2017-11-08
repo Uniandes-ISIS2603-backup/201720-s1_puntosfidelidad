@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.puntosfidelidad.resources;
 
 import co.edu.uniandes.csw.puntosfidelidad.dtos.RecargaDTO;
+import co.edu.uniandes.csw.puntosfidelidad.dtos.RecargaDetailDTO;
 import co.edu.uniandes.csw.puntosfidelidad.ejb.RecargaLogic;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
@@ -40,7 +41,7 @@ public class RecargaResource {
      * @throws BusinessLogicException
      */
     @GET
-    public List<RecargaDTO> getRecargas(@PathParam("usuario") String usuario) throws BusinessLogicException {
+    public List<RecargaDetailDTO> getRecargas(@PathParam("usuario") String usuario) throws BusinessLogicException {
         return listEntity2DTO(recargaLogic.getRecargas(usuario));
     }
 
@@ -68,8 +69,8 @@ public class RecargaResource {
      * @throws BusinessLogicException
      */
     @POST
-    public RecargaDTO createRecarga(@PathParam("usuario") String usuario, RecargaDTO recarga) throws BusinessLogicException {
-        return new RecargaDTO(recargaLogic.createRecarga(usuario, recarga.toEntity()));
+    public RecargaDetailDTO createRecarga(@PathParam("usuario") String usuario, RecargaDetailDTO recarga) throws BusinessLogicException {
+        return new RecargaDetailDTO(recargaLogic.createRecarga(usuario, recarga.toEntity()));
     }
     
     /**
@@ -112,10 +113,10 @@ public class RecargaResource {
      * @param entityList
      * @return lista DTOS
      */
-    private List<RecargaDTO> listEntity2DTO(List<RecargaEntity> entityList) {
-        List<RecargaDTO> list = new ArrayList<>();
+    private List<RecargaDetailDTO> listEntity2DTO(List<RecargaEntity> entityList) {
+        List<RecargaDetailDTO> list = new ArrayList<>();
         for (RecargaEntity entity : entityList) {
-            list.add(new RecargaDTO(entity));
+            list.add(new RecargaDetailDTO(entity));
         }
         return list;
     }

@@ -13,7 +13,8 @@
         'eventosModule',
         'clientesModule',
         'recargasModule',
-        'administradoresModule'
+        'administradoresModule',
+        'tarjetasDeCreditoModule'
     ]);
     // Resuelve problemas de las promesas AKA no tocar
     app.config(['$qProvider', function ($qProvider) {

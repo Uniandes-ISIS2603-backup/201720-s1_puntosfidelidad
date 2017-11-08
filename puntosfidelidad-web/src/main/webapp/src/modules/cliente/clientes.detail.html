@@ -7,7 +7,7 @@
                 <div class="col-md-3"></div>           
                 <div class="col-md-3">
                     <div class="thumb">
-                        <img value="" class="img-responsive" ng-src="{{elementoCliente.imagen}}"/>
+                        <img onError="this.src ='http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png'" class="img-responsive" ng-src="{{elementoCliente.imagen}}"/>
                     </div>
 
                     <div class="thumb" ng-if="edit" >
@@ -41,10 +41,10 @@
                         </div> 
                     </div>                    
                     <a ng-if="!edit" class="btn btn-default" ui-sref="clienteUpdate({clienteUsuario: elementoCliente.usuario})"><p class="glyphicon glyphicon-pencil"></p></a>
-                    <a ng-if="!edit" class="btn btn-default" ui-sref="productosCreate"><p class="glyphicon glyphicon-trash"></p></a>
+                    <a ng-if="!edit" class="btn btn-default" ui-sref="clienteDelete({clienteUsuario: elementoCliente.usuario})"><p class="glyphicon glyphicon-trash"></p></a>
                     <a ng-if="!edit" class="btn btn-default" ui-sref="clientesList"><p> Otros clientes</p></a>
 
-                    <a ng-if="edit" class="btn btn-default" ui-sref="clienteDetail({clienteUsuario: elementoCliente.usuario})"><p class="glyphicon glyphicon-remove"></p></a>
+                    <a ng-if="edit" class="btn btn-default" ui-sref="clienteDetail({clienteUsuario: elementoCliente.usuario})">Cancelar</a>
                     <a ng-if="edit && !((elementoCliente.contrasena) !== elementoCliente.repetirContrasenaU) && clienteUpdate.$valid" class="btn btn-default" ng-click="updateCliente()"><p class="glyphicon glyphicon-floppy-saved"></p></a>
                 </div>
             </div>

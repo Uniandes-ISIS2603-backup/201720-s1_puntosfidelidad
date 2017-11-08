@@ -41,8 +41,13 @@
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="clienteImagen" class="col-sm-4">Imagen:</label>
-                            <input id="clienteImagen" ng-model="imagen" class="col-sm-6"/>
-                        </div>
+                            <input id="clienteImagen" ng-model="imagen" class="col-sm-6" ng-value="http://"/>
+                        </div>                        
+                    </div>
+                    
+                    <div class="form-group col-md-6"></div>
+                    <div class="thumb">
+                        <img  src="http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png"  onError="this.src ='http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png'" class="img-responsive" ng-src="{{imagen}}"/>
                     </div>
 
                     <div class="form-group col-md-4"></div>
@@ -55,7 +60,7 @@
                             </div> 
                         </div>                         
                     </div> 
-                                                      
+
                     <div class="form-group col-md-4"></div>
                     <div class="form-group row">
                         <div class="form-group col-sm-5" ng-if="contrasena !== repetirContrasena">

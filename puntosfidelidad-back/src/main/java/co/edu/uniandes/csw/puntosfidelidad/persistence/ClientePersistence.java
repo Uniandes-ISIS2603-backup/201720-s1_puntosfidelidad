@@ -35,6 +35,7 @@ public class ClientePersistence {
     public void delete(String usuario) {
         LOGGER.log(Level.INFO, "Borrando cliente con usuario={0}", usuario);
         ClienteEntity entity = em.find(ClienteEntity.class, usuario);
+        
         em.remove(entity);
     }
 

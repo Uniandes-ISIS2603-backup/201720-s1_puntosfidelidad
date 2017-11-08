@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "TarjetaDeCreditoResource",
-		"_postman_id": "40d6ea1b-bb47-96b7-54fc-51722657f265",
+		"_postman_id": "d9a7fd04-3fa9-98de-b108-b6479952b13c",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -96,7 +96,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C3/tarjetasDeCredito/5",
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C3/tarjetasDeCredito/10050",
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -209,7 +209,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C3/tarjetasDeCredito/6",
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C3/tarjetasDeCredito/10050",
 				"method": "PUT",
 				"header": [
 					{
@@ -302,7 +302,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C3/tarjetasDeCredito/6",
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C3/tarjetasDeCredito/10060",
 				"method": "DELETE",
 				"header": [],
 				"body": {

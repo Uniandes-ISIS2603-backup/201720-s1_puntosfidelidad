@@ -2,13 +2,9 @@ package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.RecargaPersistence;
-import co.edu.uniandes.csw.puntosfidelidad.persistence.RecargaPersistence;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
