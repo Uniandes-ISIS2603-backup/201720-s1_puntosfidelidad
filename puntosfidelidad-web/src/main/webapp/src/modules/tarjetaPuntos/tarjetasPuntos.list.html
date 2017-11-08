@@ -1,93 +1,87 @@
-<!--
-<div class="container-fluid">
-    <ul class="list-group" ng-repeat="elem in elements">
-        <li class="list-group-item">
-            <h4>[{{elem.id}}] Monto actual: {{elem.montoActual}}</h4>
-            <input id='{{elem.id}}' type="checkbox" ng-model='collapse' style='display: none;'>
-                <label for='{{elem.id}}' class="btn btn-primary" onclick="">Detail</label>            
-            <div ng-show='collapse'>
-                Numero de puntos: {{elem.numPuntos}} <br>
-                Cliente: {{elem.cliente.nombre}}
+<div id='fondoMain' class="container-fluid">
+    <br>
+    <input id='crearTarjetaPuntos' type='checkbox' ng-model='crear' style='display:none'>
+
+    <!--vista para el POST-->
+
+    <div class='panel-group'>
+        <div class = 'panel panel-primary' ng-if='crear'>
+            <div class='panel-heading'>
+                Agregar una nueva tarjeta puntos
             </div>
-        </li>
-    </ul>
-</div>
-
----------------------- ESTO ESTA COPIADO Y PEGAO OJO REVISAR
-
--->
-<div class="container-fluid">
-    <div id='crear'>
-        <div id='formComentario' ng-show='crear'>
-            Id de la tarjeta: <input ng-model='nuevaTarjeta.id'> <br>
-            montoBasico: <input ng-model='nuevaTarjeta.montoBasico' type="number" min='10000'>
-            montoActual: <input type='number' ng-model='nuevaTarjeta.montoActual' min='10000'>
-            Usuario asociado: <input ng-model='nuevaTarjeta.usuarioCliente'>
-        </div>
-        <input id='crearTarjetaPuntos' type='checkbox' ng-model='crear' style='display:none'>
-        <label for='crearTarjetaPuntos' class='btn btn-primary' ng-show='crear' class='btn btn-info'> Cancelar</label><br>        
+            <div id='formComentario' class='panel-body'>
+                <form class='form-group'>                    
+                    Id de la tarjeta: <input style="margin-top: 5px; margin-bottom: 5px;" ng-model='nuevaTarjeta.id'> <br>
+                    montoBasico: <input style="margin-top: 5px; margin-bottom: 5px;" ng-model='nuevaTarjeta.montoBasico' type="number" min='10000'><br>
+                    montoActual: <input style="margin-top: 5px; margin-bottom: 5px;" type='number' ng-model='nuevaTarjeta.montoActual' min='10000'><br>
+                    Usuario asociado: <input style="margin-top: 5px; margin-bottom: 5px;" ng-model='nuevaTarjeta.usuarioCliente'><br>
+                    <input type='submit' id='crearNuevaTarjetaPuntos' style="display: none;">
+                    <label for="crearNuevaTarjetaPuntos" class="btn btn-primary" ng-click="postTarjetaPuntos(nuevaTarjeta)" ng-show="revisarTP(nuevaTarjeta)">Crear nueva tarjeta</label>
+                    <label for='crearTarjetaPuntos' class='btn btn-primary' class='btn btn-info'> Cancelar</label>
+                </form>
+            </div>
+        </div>        
         <label for='crearTarjetaPuntos' class='btn btn-primary' ng-show='!crear' class='btn btn-info'> <p class="glyphicon glyphicon-plus"></p>Nueva tarjeta puntos</label><br>
     </div>
-    <div id='fondoMain' class="container-fluid">
-        <ul class="list-group" ng-repeat="elem in elements">
-            <li class="list-group-item">
-    
-                <!-- Checkbox's que contienen los estados visuales -->
-                <input id='{{elem.id}}' type="checkbox" ng-model='collapse' style='display: none'/>
-                <input id='{{elem.id + " borrar"}}' type='checkbox' ng-model='collapseDelete' style='display: none;'>
-                <input id='{{elem.id + " edit"}}' type='checkbox' ng-model='collapseEdit' style='display: none;'>
-                
-                <!-- nombre sucursal + rating -->
-                <h4>Tarjeta #{{elem.id}}</h4>
-                
-                <label for='{{elem.id}}' class="btn btn-primary" ng-show="!collapse">Más detalles</label>            
-    
-                <!-- Vista de edición -->
-                <div ng-show='collapseEdit'>
-                    
-                        Nuevo monto básico: <input ng-model='elem.montoBasico'> <br>
-                        Nuevo monto actual: <input ng-model='elem.montoActual'> <br>
-    
-                    <label  for='{{elem.id + " edit"}}' class='btn btn-info' ng-show='revisarComentario(elem) && revisarFotos(elem)' ng-click="putComentario(elements, elem)">
-                            Terminar edición
-                    </label>
-                    <label ng-class="mensajeStyle.colorClass" ng-show='!revisarComentario(elem) || !revisarFotos(elem)'>
-                            {{mensaje}}
-                    </label>
-                    
-                </div>
-    
-                <!-- Vista detallada (detail) -->
-                <div ng-show='collapse && !collapseEdit'>
-                    Cliente: {{elem.cliente.usuario}}<br>
-                    Monto básico: {{elem.montoBasico}}<br>
-                    Monto actual: {{elem.montoActual}}<br>
-                    <b>Compras:</b>
-                    <ul>
-                        <li ng-repeat="compra in elem.compras">
-                            <div ng-if='compra.pagoConpuntos'>
-                                Compra #{{compra.id}}: 🔵<br>
-                            </div>
-                            <div ng-if='!compra.pagoConpuntos'>
-                                Compra #{{compra.id}}: 💸<br>
-                            </div>
-                        </li>
-                    </ul>
-    
-                    <div id='{{elem.id + " mensaje"}}'></div>
 
-                    <label for='{{elem.id}}' class="btn btn-primary">Menos detalles</label>            
-    
-                    <label for='{{elem.id + " edit"}}' class='btn btn-info'>
-                        Editar
-                    </label>                    
-    
-                    
-                    <label for='{{elem.id + " borrar"}}' class='btn btn-danger'>
-                        Borrar
-                    </label>
-                </div>         
-            </li>
-        </ul>
-    </div>
+    <ul class="list-group" ng-repeat="elem in elements">
+        <li class="list-group-item">
+
+            <!-- Checkbox's que contienen los estados visuales -->
+            <input id='{{elem.id}}' type="checkbox" ng-model='collapse' style='display: none'/>
+            <input id='{{elem.id + " borrar"}}' type='checkbox' ng-model='collapseDelete' style='display: none;'>
+            <input id='{{elem.id + " edit"}}' type='checkbox' ng-model='collapseEdit' style='display: none;'>
+            
+            <!-- nombre sucursal + rating -->
+            <h4>Tarjeta #{{elem.id}}</h4>
+            
+            <label for='{{elem.id}}' class="btn btn-primary" ng-show="!collapse">Más detalles</label>            
+
+            <!-- Vista de edición -->
+            <div ng-show='collapseEdit'>
+                
+                Nuevo monto básico: <input ng-model='elem.montoBasico'> <br>
+                Nuevo monto actual: <input ng-model='elem.montoActual'> <br>
+
+                <label  for='{{elem.id + " edit"}}' class='btn btn-info' ng-show='revisarTP(elem)' ng-click="putTarjetaPuntos(elements, elem)">
+                        Terminar edición
+                </label>
+                <label ng-class="mensajeStyle.colorClass" ng-show='!revisarTP(elem)'>
+                        {{mensaje}}
+                </label>
+                
+            </div>
+
+            <!-- Vista detallada (detail) -->
+            <div ng-show='collapse && !collapseEdit'>
+                Cliente: {{elem.cliente.usuario}}<br>
+                Monto básico: {{elem.montoBasico}}<br>
+                Monto actual: {{elem.montoActual}}<br>
+                <b>Compras:</b>
+                <ul>
+                    <li ng-repeat="compra in elem.compras">
+                        <div ng-if='compra.pagoConpuntos'>
+                            Compra #{{compra.id}}: 🔵<br>
+                        </div>
+                        <div ng-if='!compra.pagoConpuntos'>
+                            Compra #{{compra.id}}: 💸<br>
+                        </div>
+                    </li>
+                </ul>
+
+                <div id='{{elem.id + " mensaje"}}'></div>
+
+                <label for='{{elem.id}}' class="btn btn-primary">Menos detalles</label>            
+
+                <label for='{{elem.id + " edit"}}' class='btn btn-info'>
+                    Editar
+                </label>                    
+
+                
+                <label for='{{elem.id + " borrar"}}' class='btn btn-danger'>
+                    Borrar
+                </label>
+            </div>         
+        </li>
+    </ul>
 </div>

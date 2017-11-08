@@ -1,5 +1,6 @@
 <div id='fondoMain' class="container-fluid">
     <br>
+    <input id='crearComentario' type='checkbox' ng-model='crear' style='display:none'>
     <div class='panel-group'>
         <div class = 'panel panel-primary' ng-if='crear'>
             <div class='panel-heading'>
@@ -15,16 +16,14 @@
                         <input ng-model='ph.url'> <img src='media/borrar.png' ng-click="borrarFoto(nuevoComentario.fotos, ph)" style='height: 30px; width: 30px;' ><br>
                     </div>
                     <button ng-click="nuevaFoto(nuevoComentario.fotos)">Nueva foto</button><br> 
-                    Nombre de la sucursal: <input ng-model='nuevoComentario.nombreSucursal'><br>
-                    Usuario asociado: <input ng-model='nuevoComentario.usuarioCliente'><br><br>
+                    Nombre de la sucursal: <input ng-model='nuevoComentario.sucursal.nombre' style="margin-top: 5px; margin-bottom: 5px;"><br>
+                    Usuario asociado: <input ng-model='nuevoComentario.cliente.usuario' style="margin-top: 5px; margin-bottom: 5px;"><br><br>
                     <input type='submit' id='crearNuevoComentario' style="display: none;">
                     <label for="crearNuevoComentario" class="btn btn-primary" ng-click="postComentario(nuevoComentario)">Crear nuevo comentario</label>
+                    <label for='crearComentario' class='btn btn-primary' ng-show='crear' class='btn btn-info'> Cancelar</label><br>
                 </form>
-                
             </div>
         </div>
-        <input id='crearComentario' type='checkbox' ng-model='crear' style='display:none'>
-        <label for='crearComentario' class='btn btn-primary' ng-show='crear' class='btn btn-info'> Cancelar</label><br>        
         <label for='crearComentario' class='btn btn-primary' ng-show='!crear' class='btn btn-info'> <p class="glyphicon glyphicon-plus"></p>Nuevo comentario</label><br>
     </div>    
     

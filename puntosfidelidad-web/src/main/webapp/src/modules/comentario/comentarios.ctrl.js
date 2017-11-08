@@ -4,6 +4,9 @@
             $scope.elements = [];
             $scope.nuevoComentario = {};
             $scope.nuevoComentario.fotos = [];
+            $scope.nuevoComentario.cliente = {};
+            $scope.nuevoComentario.sucursal = {};
+            
             $http.get("http://localhost:8080/puntosfidelidad-web/api/comentarios")
                     .then(function (response) {
                         $scope.elements = response.data;
@@ -127,7 +130,16 @@
                     $http.delete('http://localhost:8080/puntosfidelidad-web/api/clientes/' + usuario + '/comentarios/' + idComentario).then(
                         function todoBien(response)
                         {
-                            console.log("todo bien!");
+                            index = $scope.elements.indexOf(comentario);
+                            if(index > -1)
+                            {
+                                $scope.elements.splice(index, 1);
+                                console.log("todo bien!");
+                            }
+                            else
+                            {
+                                console.log("Error con el index!")
+                            }
                         },
                         function todoMal(error)
                         {
@@ -139,6 +151,7 @@
 
             $scope.postComentario = function(nuevoComentario)
             {
+                console.log(nuevoComentario)
                 if(nuevoComentario.calificacion != undefined)
                 {
                     $scope.crear = false;
