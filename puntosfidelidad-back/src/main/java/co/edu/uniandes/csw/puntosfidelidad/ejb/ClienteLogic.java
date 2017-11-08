@@ -8,7 +8,10 @@ import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaDeCreditoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.ClientePersistence;
+import co.edu.uniandes.csw.puntosfidelidad.persistence.ComentarioPersistence;
+import co.edu.uniandes.csw.puntosfidelidad.persistence.CompraPersistence;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.RecargaPersistence;
+import co.edu.uniandes.csw.puntosfidelidad.persistence.TarjetaPuntosPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +32,15 @@ public class ClienteLogic {
     
     @Inject
     private RecargaPersistence recargaPersistence;
+    
+    @Inject
+    private ComentarioPersistence comentarioPersistence;
+    
+    @Inject
+    private TarjetaPuntosPersistence tarjetaPuntosPersistence;
+    
+    @Inject
+    private CompraPersistence compraPersistence;
 
     public List<ClienteEntity> getClientes() {
         LOGGER.info("Inicia proceso de consultar todos los clientes");
@@ -92,14 +104,63 @@ public class ClienteLogic {
     public void deleteCliente(String usuario) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicia proceso de borrar cliente con id={0}", usuario);
         ClienteEntity actual= persistence.find(usuario);
+        ClienteEntity anonimo= persistence.find("Anonimo");
         if(actual==null) {
             throw new BusinessLogicException("El usuario no existe");
         }  
-               
+        if(anonimo==null)
+        {
+            anonimo= new ClienteEntity();
+            anonimo.setUsuario("Anonimo");
+            anonimo.setNombre("Anonimo");
+            anonimo.setContrasena("Anonimo");
+            anonimo=persistence.create(anonimo);
+        }        
+        if(persistence.find("Anonimo")!=null)LOGGER.log(Level.INFO, "ANONIMO CREADO");
+        deleteClienteComentarios(actual, anonimo);        
+        LOGGER.log(Level.INFO, "Comentarios actualizados");
+        
+        deleteClienteTP(actual, anonimo);
+        LOGGER.log(Level.INFO, "TP actualizados");
+        
+        deleteClienteCompras(actual, anonimo);
+        LOGGER.log(Level.INFO, "Compras actualizados");
+
+        
+
         persistence.delete(usuario);
         LOGGER.log(Level.INFO, "Termina proceso de borrar cliente con id={0}", usuario);
     }
 
+    private void deleteClienteComentarios(ClienteEntity cliente, ClienteEntity anonimo){
+        
+        for(ComentarioEntity comentario: cliente.getComentarios())
+        {            
+            ComentarioEntity nuevo= new ComentarioEntity();
+            nuevo.setId(comentario.getId());
+            nuevo.setCliente(anonimo);            
+            comentarioPersistence.update(nuevo);           
+        }
+    }
+    
+    private void deleteClienteCompras(ClienteEntity cliente, ClienteEntity anonimo){
+        for(CompraEntity compra: cliente.getCompras())
+        {
+            CompraEntity nuevo= new CompraEntity();
+            nuevo.setId(compra.getId());
+            nuevo.setCliente(anonimo);
+            compraPersistence.update(nuevo);
+        }
+    }
+    private void deleteClienteTP(ClienteEntity cliente, ClienteEntity anonimo){
+        for(TarjetaPuntosEntity tp: cliente.getTarjetasPuntos())
+        {
+            TarjetaPuntosEntity nuevo= new TarjetaPuntosEntity();
+            nuevo.setId(tp.getId());
+            nuevo.setCliente(anonimo);
+            tarjetaPuntosPersistence.update(nuevo);
+        }
+    }
     private boolean validateContrasena(String contrasena) {
         return !(contrasena == null || contrasena.isEmpty());
     }

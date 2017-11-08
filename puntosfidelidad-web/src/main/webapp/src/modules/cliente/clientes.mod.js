@@ -45,6 +45,17 @@
                         controller: 'clientesUpdateCtrl'
                     }
                 }
+            }).state('clienteDelete', {
+                url: '/clientes/{clienteUsuario:string}/delete',
+                param: {
+                    clienteUsuario: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'delete/clientes.delete.html',
+                        controller: 'clienteDeleteCtrl'
+                    }
+                }
             });
             
         }]);
