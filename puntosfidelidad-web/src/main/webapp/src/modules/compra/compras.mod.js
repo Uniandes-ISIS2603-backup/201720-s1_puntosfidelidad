@@ -46,7 +46,7 @@ var mod = ng.module("comprasModule", []);
                 },
                 views: {
                     'detailView': {
-                        templateUrl: basePathProdutos + 'productos.list.html',
+                        templateUrl: basePath + 'compras.productos.list.html',
                         controller: 'comprasProductosCtrl',
                         controllerAs: 'ctrl'
                     }
