@@ -85,5 +85,36 @@
                     }
                 );
             }
+
+            $scope.deleteTarjetaPuntos = function(tarjetaPts)
+            {
+                quiereBorrar = confirm("¿Quiere borrar la tarjeta puntos?");
+                
+                if(quiereBorrar)
+                {
+                    usuario = tarjetaPts.cliente.usuario;
+                    idTarjeta = tarjetaPts.id;
+
+                    $http.delete('http://localhost:8080/puntosfidelidad-web/api/clientes/' + usuario + '/tarjetasPuntos/' + idTarjeta).then(
+                        function todoBien(response)
+                        {
+                            index = $scope.elements.indexOf(tarjetaPts);
+                            if(index > -1)
+                            {
+                                $scope.elements.splice(index, 1);
+                                console.log("todo bien!");
+                            }
+                            else
+                            {
+                                console.log("Error con el index!")
+                            }
+                        },
+                        function todoMal(error)
+                        {
+                            console.log(error);
+                        }
+                    );
+                }
+            }
         }]);
 })(window.angular);
