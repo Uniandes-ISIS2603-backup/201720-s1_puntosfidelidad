@@ -9,7 +9,8 @@
         <table class="table table-hover" ng-if='elementosRes.length !== 0'>
             <thead>
                 <tr>
-                    <th>NIT</th>    
+                    <th>NIT</th> 
+                    <th>Nombre</th> 
                     <th>Tipo de comida</th>  
                 </tr>
             </thead>    
@@ -17,6 +18,7 @@
             <tbody>
                 <tr ng-repeat="restaurante in elementosRes">
                     <td id="{{$index}}-name"> {{restaurante.nit}}</td>
+                    <td id="{{$index}}-nombre"> {{restaurante.nombre}}</td>
                     <td id="{{$index}}-mbasico">{{restaurante.tipoComida}}</td>
                     <td <button class="btn btn-primary btnRestaurante" ui-sref="productosList">Productos</button> </td>
                     <td <button class="btn btn-primary btnRestaurante" ui-sref="sucursalList">Sucursales</button> </td>

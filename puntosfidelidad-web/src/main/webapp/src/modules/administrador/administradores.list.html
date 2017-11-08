@@ -5,7 +5,7 @@
         <h3> <b> &nbsp;&nbsp; Administradores Registrados:</b> </h3>
           <br>
     <br>
-        <div class="col-md-2" ng-repeat="administrador in administradoresLista" ng-if='administrador.usuario!=="Anonimo"'>
+        <div class="col-md-2" ng-repeat="administrador in administradoresLista" >
             <div class="thumbnail" >      
                 <a ui-sref="administradorDetail({administradorUsuario: administrador.usuario})">
                                       
@@ -15,7 +15,7 @@
                     
                     <a class="btn btn-default" ui-sref="administradorDetail({administradorUsuario: administrador.usuario})"><p class="glyphicon glyphicon-plus"></p></a>
                     <a class="btn btn-default" ui-sref="administradorUpdate({administradorUsuario: administrador.usuario})"><p class="glyphicon glyphicon-pencil"></p></a>
-                    <a class="btn btn-default" ui-sref="productosCreate"><p class="glyphicon glyphicon-trash"></p></a>
+                    <a class="btn btn-default" ng-click="deleteAdministrador(administrador)"><p class="glyphicon glyphicon-trash"></p></a>
                 </div>
                 
             </div>
