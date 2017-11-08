@@ -5,12 +5,10 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
-import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.EventoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaDeCreditoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.RestaurantePersistence;
 import java.util.List;
@@ -271,7 +269,7 @@ public class RestauranteLogic {
         RestauranteEntity entity = getRestaurante(nit);
         EventoEntity EventoEntity = new EventoEntity();
         EventoEntity.setNombre(Id);
-        entity.getProductos().remove(EventoEntity);
+        entity.getEventos().remove(EventoEntity);
     }
     
     
