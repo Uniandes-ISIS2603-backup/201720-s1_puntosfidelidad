@@ -15,7 +15,7 @@
                 $http.post("http://localhost:8080/puntosfidelidad-web/api/clientes/" + $state.params.clienteUsuario + "/tarjetasDeCredito", {
                     numero: $scope.tc.numero,
                     banco: $scope.tc.banco
-                }).then(function (response) {
+                }).then(function () {
                     $state.go('tarjetasDeCreditoList', {clienteUsuario: $state.params.clienteUsuario}, {reload: true});
                 });
             };

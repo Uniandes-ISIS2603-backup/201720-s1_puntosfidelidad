@@ -23,6 +23,24 @@ var mod = ng.module("recargasModule", []);
                         templateUrl: basePath+'recargas.list.html' 
                     }
                 }
+            }).state('recargasNew', {
+                url: '/recargas/crear',
+                parent: 'clienteDetail',
+                param: {
+                    clienteUsuario: null
+                },
+                views: {
+                    'mainView': {
+                        controller: 'clientesDetailCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/cliente/clientes.detail.html'                        
+                    },
+                    'detailClienteView': {
+                        controller: 'recargasNewCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath+'recargas.list.html' 
+                    }
+                }
             });
         }]);
 

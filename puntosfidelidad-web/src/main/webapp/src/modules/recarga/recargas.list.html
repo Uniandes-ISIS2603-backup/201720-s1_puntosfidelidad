@@ -1,34 +1,63 @@
 <div class="container-fluid">
     <br>
     <div class="btn-group mr-2" role="group" aria-label="First group">
-        <a class="btn btn-default" ui-sref="clienteCreate">  <p class="glyphicon glyphicon-plus"></p>  Agregar Recarga  </a>
+        <a class="btn btn-default" ui-sref="recargasNew">  <p class="glyphicon glyphicon-plus"></p>  Agregar Recarga  </a>
     </div>
     <br>
-    <div class="col-md-3"></div>    
-    <div class="col-md-6">        
-        <div class="alert alert-info" ng-if='elementosRegarga.length === 0'>
+    <div class="col-md-1"></div>    
+    <div class="col-md-9">        
+        <div class="alert alert-info" ng-if='elementosRecarga.length === 0'>
             <strong>!Ey!</strong> Actualmente no hay recargas registradas para este cliente.
         </div>
-        <table class="table table-hover" ng-if='elementosRegarga.length !== 0'>
-            <thead>
-                <tr>
-                    <th>Id</th>    
-                    <th>Fecha</th>  
-                    <th>Valor</th> 
-                    <th>Tarjeta De Crédito </th>
-                    <th>Tarjeta Puntos </th>
-                </tr>
-            </thead>    
+        <form ng-submit="createRecarga()" name="nuevaRecargaForm">
+            <table class="table table-hover" ng-if='elementosRecarga.length !== 0'>
+                <thead>
+                    <tr>
+                        <th>Id</th>    
+                        <th>Fecha</th>  
+                        <th>Valor</th> 
+                        <th>Tarjeta Crédito </th>
+                        <th>Tarjeta Puntos </th>
+                        <th></th>
+                    </tr>
+                </thead>    
 
-            <tbody>
-                <tr ng-repeat="recarga in elementosRegarga">
-                    <td id="{{$index}}-name"> {{recarga.id}}</td>
-                    <td id="{{$index}}-fecha">{{recarga.fecha}}</td>
-                    <td id="{{$index}}-valor">{{recarga.valor}}</td>
-                    <td id="{{$index}}-tc">{{recarga.tarjetaDeCredito.id}}</td>
-                    <td id="{{$index}}-tp">{{recarga.tarjetaPuntos.id}}</td>
-                </tr>
-            </tbody>
-        </table>
+                <tbody>
+
+                    <tr ng-show='nuevaRecarga' >
+                        <td></td> 
+                        <td></td> 
+                        <td>
+                            <input type='number' min='0' required ng-app="mainApp" id="rValor" ng-model="recargaNueva.valor" class="col-sm-6"/>
+                        </td>
+                        <td>
+                            <select required name="repeatSelectTC" id="repeatSelectTC" ng-model="recargaNueva.tarjetaDeCredito">
+                                <option value="">Seleccione</option>
+                                <option ng-repeat="tarjeta in elementosRtarjetaC" value="{{tarjeta.id}}">{{tarjeta.id}}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select required name="repeatSelectTP" id="repeatSelectTP" ng-model="recargaNueva.tarjetaPuntos">
+                                <option value="">Seleccione</option>
+                                <option ng-repeat="tarjetaP in elementosRtarjetaP" value="{{tarjetaP.id}}">{{tarjetaP.id}}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input id="recargaAgregar" type="submit" value="Agregar" class="btn btn-default"/> 
+                        </td>                 
+                    </tr>           
+
+                    <tr ng-repeat="recarga in elementosRecarga" ng-if='elementosRecarga.length !== 0'>
+                        <td id="{{$index}}-name"> {{recarga.id}}</td>
+                        <td id="{{$index}}-fecha">{{recarga.fecha}}</td>
+                        <td id="{{$index}}-valor">{{recarga.valor}}</td>
+                        <td id="{{$index}}-tc">{{recarga.tarjetaDeCredito.id}}</td>
+                        <td id="{{$index}}-tp">{{recarga.tarjetaPuntos.id}}</td>
+                        <td></td> 
+                    </tr>
+                </tbody>
+            </table>
+        </form> 
     </div>
+
 </div>

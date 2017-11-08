@@ -69,8 +69,8 @@ public class RecargaResource {
      * @throws BusinessLogicException
      */
     @POST
-    public RecargaDTO createRecarga(@PathParam("usuario") String usuario, RecargaDTO recarga) throws BusinessLogicException {
-        return new RecargaDTO(recargaLogic.createRecarga(usuario, recarga.toEntity()));
+    public RecargaDetailDTO createRecarga(@PathParam("usuario") String usuario, RecargaDetailDTO recarga) throws BusinessLogicException {
+        return new RecargaDetailDTO(recargaLogic.createRecarga(usuario, recarga.toEntity()));
     }
     
     /**
