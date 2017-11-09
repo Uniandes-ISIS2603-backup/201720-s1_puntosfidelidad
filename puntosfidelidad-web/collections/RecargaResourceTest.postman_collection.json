@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "RecargaResourceTest",
-		"_postman_id": "d4eb1bda-5a29-26a9-cdb9-1b40e128bd0a",
+		"_postman_id": "77748ff5-4296-3466-beea-93e178183aae",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -96,7 +96,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C2/recargas/3",
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C2/recargas/30000",
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -208,7 +208,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C3/recargas/5",
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C3/recargas/50000",
 				"method": "DELETE",
 				"header": [],
 				"body": {
