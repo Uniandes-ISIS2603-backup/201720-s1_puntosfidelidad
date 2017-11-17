@@ -191,7 +191,7 @@ public class RestaurantePersistenceTest {
     public void testFindByName() throws Exception {
         
     RestauranteEntity entity = data.get(0);
-    RestauranteEntity newEntity = persistence.findByName(entity.getNombre());
+    RestauranteEntity newEntity = persistence.find(entity.getNit());
     Assert.assertNotNull(newEntity);
     Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
     }

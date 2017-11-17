@@ -34,7 +34,7 @@ public class RestauranteLogic {
     public RestauranteEntity createRestaurante(RestauranteEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de restaurante");
         // Verifica la regla de negocio que dice que no puede haber dos restaurantes con el mismo NIT
-        if (persistence.findByName(entity.getNit()) != null) {
+        if (persistence.find(entity.getNit()) != null) {
             throw new BusinessLogicException("Ya existe un restaurante con ese NIT \"" + entity.getNit()+ "\"");
         }
         // Invoca la persistencia para crear la bodega
