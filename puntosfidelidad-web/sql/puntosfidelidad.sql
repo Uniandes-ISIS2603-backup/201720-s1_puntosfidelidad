@@ -17,11 +17,11 @@ delete from AdministradorEntity;
 -- delete from EventoEntity_UbicacionEntity;
 
 insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('Anonimo','Anónimo','','');
-insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C1','Cliente1','http://lorempixel.com/1200/1200/animals','*');
-insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C2','Cliente2','http://lorempixel.com/1200/1200/sports','**');
-insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C3','Cliente3','http://lorempixel.com/1200/1200/cats','***');
-insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C4','Cliente4','http://lorempixel.com/1200/1200/city','****');
-insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C5','Cliente5','http://lorempixel.com/1200/1200/people','*****');
+insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C1','Cliente1','https://goo.gl/LiKY8c','*');
+insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C2','Cliente2','https://goo.gl/T4RNU3','**');
+insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C3','Cliente3','https://goo.gl/kv6f2M','***');
+insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C4','Cliente4','https://goo.gl/7hKVMD','****');
+insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C5','Cliente5','https://goo.gl/LiKY8c','*****');
 
 insert into TarjetaDeCreditoEntity (id,banco, numero, cliente_usuario) values (10000,'Bancolombia', 4562182, 'C1' );
 insert into TarjetaDeCreditoEntity (id,banco, numero, cliente_usuario) values (10010,'Bancopichincha', 4578236, 'C1' );

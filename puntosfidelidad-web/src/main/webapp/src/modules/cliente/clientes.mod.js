@@ -7,7 +7,8 @@
 
             $stateProvider.state('clientesList', {
                 url: '/clientes',
-                views: {
+                parent: 'iniciar',
+                views: {                    
                     'mainView': {
                         controller: 'clientesCtrl',
                         controllerAs: 'ctrl',
@@ -16,6 +17,7 @@
                 }
             }).state('clienteDetail', {
                 url: 'clientes/{clienteUsuario:string}',
+                parent: 'iniciar',
                 param: {
                     clienteUsuario: null
                 },
@@ -27,7 +29,8 @@
                     }
                 }
             }).state('clienteCreate', {
-                url: 'clientes/create',
+                url: 'create',
+                parent: 'iniciar/clientes',
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'new/clientes.new.html',
@@ -36,6 +39,7 @@
                 }
             }).state('clienteUpdate', {
                 url: '/clientes/{clienteUsuario:string}/update',
+                parent: 'iniciar',
                 param: {
                     clienteUsuario: null
                 },
@@ -47,6 +51,7 @@
                 }
             }).state('clienteDelete', {
                 url: '/clientes/{clienteUsuario:string}/delete',
+                parent: 'iniciar',
                 param: {
                     clienteUsuario: null
                 },

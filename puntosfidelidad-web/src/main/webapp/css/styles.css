@@ -53,6 +53,10 @@
    width: 200px; 
 }
 
+.btnIniciar{
+    margin:5px;
+    width: 200px; 
+}
 
 
 .panelBtn{
@@ -293,4 +297,13 @@ img{
   padding: 4px;
   height: 200px;
   width: 200px;
+}
+
+.bannerInicial{
+  padding: 4px;
+  width: 100%;
+  height: 100%
+}
+.divInicial{
+   height: 100%
 }
