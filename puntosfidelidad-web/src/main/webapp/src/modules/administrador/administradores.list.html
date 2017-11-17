@@ -13,15 +13,15 @@
                 <div class="caption text-center">
                     <p><i><b>USUARIO:</b> </i>{{administrador.usuario}}</p>
                     
-                    <a class="btn btn-default" ui-sref="administradorDetail({administradorUsuario: administrador.usuario})"><p class="glyphicon glyphicon-plus"></p></a>
+                    <a class="btn btn-default" ui-sref="administradorDetail({administradorUsuario: administrador.usuario})"><p class="glyphicon glyphicon-th-list"></p></a>
                     <a class="btn btn-default" ui-sref="administradorUpdate({administradorUsuario: administrador.usuario})"><p class="glyphicon glyphicon-pencil"></p></a>
-                    <a class="btn btn-default" ng-click="deleteAdministrador(administrador)"><p class="glyphicon glyphicon-trash"></p></a>
+                    <a class="btn btn-danger btn-sm" ng-click="deleteAdministrador(administrador)"><p class="glyphicon glyphicon-trash"></p></a>
                 </div>
                 
             </div>
         </div>
     </div>
     <div class="btn-group mr-2" role="group" aria-label="First group">
-        <a class="btn btn-default" ui-sref="administradorCreate">  <p class="glyphicon glyphicon-plus"></p> Agregar Administrador   </a>
+        <a class="btn btn-info" ui-sref="administradorCreate">  <p class="glyphicon glyphicon-plus"></p> Agregar Administrador   </a>
     </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="container-fluid" >
     <br>
     <div class="btn-group mr-2" role="group" aria-label="First group">
-        <a class="btn btn-default" ui-sref="clienteCreate">  <p class="glyphicon glyphicon-plus"></p>  Nuevo Cliente   </a>
+        <a class="btn btn-info" ui-sref="clienteCreate">  <p class="glyphicon glyphicon-plus"></p>  Nuevo Cliente   </a>
     </div>
     <br>
     <br>
@@ -14,9 +14,9 @@
                 <div class="caption text-center">
                     <p><i><b>Usuario:</b> </i>{{cliente.usuario}}</p>
                     
-                    <a class="btn btn-default" ui-sref="clienteDetail({clienteUsuario: cliente.usuario})"><p class="glyphicon glyphicon-plus"></p></a>
+                    <a class="btn btn-default" ui-sref="clienteDetail({clienteUsuario: cliente.usuario})"><p class="glyphicon glyphicon-th-list"></p></a>
                     <a class="btn btn-default" ui-sref="clienteUpdate({clienteUsuario: cliente.usuario})"><p class="glyphicon glyphicon-pencil"></p></a>
-                    <a class="btn btn-default" ui-sref="clienteDelete({clienteUsuario: cliente.usuario})"><p class="glyphicon glyphicon-trash"></p></a>
+                    <a class="btn btn-danger btn-sm" ui-sref="clienteDelete({clienteUsuario: cliente.usuario})"><p class="glyphicon glyphicon-trash"></p></a>
                 </div>
                 
             </div>
