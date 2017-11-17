@@ -12,7 +12,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -29,7 +29,7 @@ public class RestaurantePersistence {
       /**
      * Busca si hay algun Restaurante con el usuario que se envía de argumento
      *
-     * @param nit: Nombre del restaurante que se está buscando
+     * @param name: Nombre del restaurante que se está buscando
      * @return null si no existe ningun cliente con el nombre del argumento.
      * Si existe alguno devuelve la primera.
      */
@@ -37,7 +37,23 @@ public class RestaurantePersistence {
         
         return em.find(RestauranteEntity.class, nit);
     }
-   
+    
+     /**
+     * Busca si hay algun Restaurante con el nombre que se envía de argumento
+     *
+     * @param name: Nombre del restaurante que se está buscando
+     * @return null si no existe ningun cliente con el nombre del argumento.
+     * Si existe alguno devuelve la primera.
+     */
+    public RestauranteEntity findByName(String nombre) {
+        
+        TypedQuery<RestauranteEntity> q
+                = em.createQuery("select u from RestauranteEntity u where u.nombre = :nombre", RestauranteEntity.class);
+        q = q.setParameter("nombre", nombre);
+        return q.getSingleResult();
+    }
+    
+    
     /**
      * Devuelve todos los restaurantes de la base de datos.
      *
