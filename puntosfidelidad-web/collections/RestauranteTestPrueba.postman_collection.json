@@ -1,0 +1,397 @@
+{
+	"variables": [],
+	"info": {
+		"name": "RestauranteTestPrueba",
+		"_postman_id": "34c80cb2-fa80-0796-3dad-0db2c0b9e769",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetRestaurantes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GetRestaurantes/nit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GetRestaurantes/nit/productos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/productos",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GetRestaurantes/nit/productos/id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/1/productos/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GetRestaurantes/nit/eventos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/eventos",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GetRestaurantes/nit/eventos/id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/eventos",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PostRestaurante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/1/87/sucursales",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ID\":\"1\",\n\t\"DESCRIPCION\":\"BBC\",\n\t\"HORAAPERTURA\":\"4/7/1965\",\n\t\"HORACIERRE\":\"4/7/1965\",\n\t\"NOMBRE\":\"X\",\n\t\"RESTAURANTENIT\":\"1\",\n\t\"UBICACION_DIRECCION\":\"asad\",\n\t\"ADMINISTRADOR_USUARIO\":\"aa\"\n}"
+				},
+				"description": "Crar un cliente que ya existe"
+			},
+			"response": []
+		},
+		{
+			"name": "Put Restaurante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"",
+							"",
+							"tests[\"Body matches string\"] = responseBody.has(\"Laura Maria\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"usuario\":\"C1\",\n\t\"nombre\":\"Laura Maria\",\n\t\"imagen\":\"laura.jpg\",\n\t\"contrasena\":\"123456\",\n\t\"recargas\": [],\n\t\"comentarios\":[],\n\t\"compras\":[],\n\t\"tarjetasDeCredito\":[],\n\t\"tarjetasPunto\":[]\n}"
+				},
+				"description": "Editar un cliente"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete cliente copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/lvvanegasG",
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Borrar cliente "
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Productos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/productos/1",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "Borrar cliente "
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Eventos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/1/eventos/1",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "Borrar cliente "
+			},
+			"response": []
+		},
+		{
+			"name": "GetRestaurantes/nit/sucursales",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/sucursales",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GetRestaurantes/nit/sucursales/id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/sucursales/89",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post Sucursal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/1/87/sucursales",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ID\":\"1\",\n\t\"DESCRIPCION\":\"BBC\",\n\t\"HORAAPERTURA\":\"4/7/1965\",\n\t\"HORACIERRE\":\"4/7/1965\",\n\t\"NOMBRE\":\"X\",\n\t\"RESTAURANTENIT\":\"1\",\n\t\"UBICACION_DIRECCION\":\"asad\",\n\t\"ADMINISTRADOR_USUARIO\":\"aa\"\n}"
+				},
+				"description": "Crar un cliente que ya existe"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Sucursales copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/1/87",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "Borrar cliente "
+			},
+			"response": []
+		},
+		{
+			"name": "Put Productos",
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/productos",
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 30,\n                \"nombre\": \"Hamburguesa Res\",\n                \"valorDinero\": 5000,\n                \"valorPuntos\": 20\n\t\n\t\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
