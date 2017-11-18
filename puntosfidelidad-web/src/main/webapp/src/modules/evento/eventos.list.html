@@ -4,7 +4,10 @@
         <li class="list-group-item">
             <h3> {{event.nombre}}</h3>
             <hr>
+            <img ng-src='http://lorempixel.com/200/800'>
+            <br>
             <div ng-show='collapse'>
+                <br>
                 <b>Descripción:</b> {{event.descripcion}}
                 <hr>
                 <b>Fecha De Inicio:</b> {{event.fechaInicio}}
@@ -13,12 +16,15 @@
                 <hr>
             </div>           
             <div class="row">
+            <div style="padding-left: 30px">
+                
                 <input id='{{event.nombre}}' type="checkbox" ng-model='collapse' style='display: none;'>
                 <label for='{{event.nombre}}' class="btn btn-primary" onclick="">Descripción</label>            
-                        <div style="padding-left: 30px">
-                        <a class="btn btn-default" ui-sref='eventosPost({eventoNombre:"{{event.nombre}}"})'><p class="glyphicon glyphicon-plus"></p></a>
+                
+                        <a class="btn btn-default" ui-sref='eventosPost()'><p class="glyphicon glyphicon-plus"></p></a>
                         <a class="btn btn-default" ui-sref='eventosUpdate({eventoNombre:"{{event.nombre}}"})'><p class="glyphicon glyphicon-pencil"></p></a>
-                        <a class="btn btn-default" ui-sref='eventosDelete'><p class="glyphicon glyphicon-trash"></p></a>
+                        <a class="btn btn-default" ui-sref='eventosDelete({eventoNombre:"{{event.nombre}}"})'><p class="glyphicon glyphicon-trash"></p></a>
+            </div>
             </div>
         </li>
     </ul>

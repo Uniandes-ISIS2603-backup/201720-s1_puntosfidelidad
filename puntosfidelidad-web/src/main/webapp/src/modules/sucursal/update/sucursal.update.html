@@ -2,10 +2,16 @@
 <div class="container-fluid">
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading"><label id="createSucursal">Nueva Sucursal</label>
-            </div>
+            <div class="panel-heading">
+                <label id="editSucursal">Editar Sucursal</label></div>
             <div class="panel-body">
-                <form ng-submit="createSucursal()" name="sucursal">
+                <form ng-submit="updateSucursal()" name="sucursal">
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="sucursalId" class="col-sm-2">Id:</label>
+                            <input id="sucursalId" required ng-model="sucursalId" class="col-sm-6"/>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="sucursalName" class="col-sm-2">Nombre:</label>
@@ -15,13 +21,13 @@
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="sucursaldescripcion" class="col-sm-2">Descripción:</label>
-                            <textarea id="sucursaldescripcion" required ng-model="sucursaldescripcion" class="col-sm-6"></textarea>
+                            <textarea id="sucursaldescripcion" required ng-model="sucursalDescripcion" class="col-sm-6"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for="sucursalApetura" class="col-sm-2">Hora Apertura:</label>
-                            <textarea id="sucursalApetura" required ng-model="sucursalApetura" class="col-sm-6"></textarea>
+                            <label for="sucursalCierre" class="col-sm-2">Hora Apertura:</label>
+                            <input type="text" id="sucursalCierre" required ng-model="sucursalApertura" class="col-sm-6"/>
                         </div>
                     </div>
                      <div class="form-group row">
@@ -47,6 +53,7 @@
                         </div>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>

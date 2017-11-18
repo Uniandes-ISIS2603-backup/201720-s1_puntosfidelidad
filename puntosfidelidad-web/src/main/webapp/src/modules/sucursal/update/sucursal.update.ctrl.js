@@ -3,8 +3,7 @@
             var mod = ng.module("sucursalModule");
             mod.constant("sucursalContext", "api/sucursales");
             mod.controller('sucursalUpdateCtrl', ['$scope', '$http', 'sucursalContext', '$state', '$rootScope', '$filter',
-                function ($scope, $http, productosContext, $state, $rootScope, $filter) {
-                    $rootScope.edit = true;
+                function ($scope, $http, productosContext, $state, $rootScope, $filter) {                    
 
                     var idsucursal = $state.params.sucursalId;
                     
@@ -14,13 +13,10 @@
                         $scope.sucursalId = sucursal.id;
                         $scope.sucursalName = sucursal.nombre;
                         $scope.sucursalDescripcion = sucursal.descripcion;
-                        $scope.sucursalApertura = sucursal.horaAperutra; 
+                        $scope.sucursalApertura = sucursal.horaApertura; 
                         $scope.sucursalCierre = sucursal.horaCierre;
                     });
-
-                  
-
-
+              
                     //funciones para el drag and drop de HTML5 nativo
                     $scope.allowDrop = function (ev) {
                         ev.preventDefault();
@@ -30,16 +26,12 @@
                         ev.dataTransfer.setData("text", ev.target.id);
                     };
 
-
-                    $scope.createProducto = function () {
-                        /*Se llama a la función newBooks() para buscar cada uno de los ids de los books
-                         en el array que tiene todos los books y así saber como queda la lista final de los books asociados al autor.
-                         */
+                    $scope.updateSucursal = function () {
                         $http.put("api/sucursales" + "/" + idsucursal, {
                             id: $scope.sucursalId,
                             nombre: $scope.sucursalName,
-                            descrpcion: $scope.sucursalDescripcion,
-                            horaApetura: $scope.sucursalApertura,
+                            descripcion: $scope.sucursalDescripcion,
+                            horaApertura: $scope.sucursalApertura,
                             horaCierre: $scope.sucursalCierre                            
                         }).then(function (response) {
                 

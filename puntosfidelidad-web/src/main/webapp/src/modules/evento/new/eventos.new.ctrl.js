@@ -3,16 +3,16 @@
     mod.constant("eventoContext", "api/eventos");
     mod.controller('eventosNewCtrl', ['$scope', '$http', 'sucursalContext', '$state', '$rootScope',
         function ($scope, $http, productosContext, $state, $rootScope) {
-            $rootScope.edit = false;
+            
             $scope.createEvento = function () {
                 $http.post("api/eventos", {                    
                     nombre: $scope.eventoName,
                     descripcion: $scope.eventoDescripcion,
                     fechaInicio: $scope.eventoInicio,
-                    fechaFin: $scope.eventoFIn
+                    fechaFin: $scope.eventoFin                    
                 }).then(function (response) {
                     //producto created successfully
-                    $state.go('eventoList', {eventoNombre: response.data.id}, {reload: true});
+                    $state.go('eventosList', {eventoNombre: response.data.nombre}, {reload: true});
                 });
             };
         }
