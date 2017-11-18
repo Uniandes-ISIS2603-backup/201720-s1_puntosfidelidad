@@ -1,20 +1,56 @@
-<form> 
-  <div class="container">
-    <label><b>Usuario</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
-    <br>
-
-    <label><b>Contraseña</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-    <br>
-
-    <button type="submit">Login</button>
-    <br>
-    <input type="checkbox" checked="checked"> Recordarme
-  </div>
-
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancelar</button>
-    <span class="psw">Olvidaste tu <a href="#">contraseña?</a></span>
-  </div>
-</form>
+<div class="container">
+    <div class="card"></div>
+    <div class="card">
+        <h1 class="title">Login</h1>
+        <form>
+            <div class="input-container">
+                <input type="text" id="#{label}" required="required"/>
+                <label for="#{label}">Username</label>
+                <div class="bar"></div>
+            </div>
+            <div class="input-container">
+                <input type="password" id="#{label}" required="required"/>
+                <label for="#{label}">Password</label>
+                <div class="bar"></div>
+            </div>
+            <div class="listaLog">
+                Usuario:
+                <select id="#{label}" required="required"  class="selectLog">
+                    <option value=""></option>
+                    <option value="administrador">Administrador</option>
+                    <option value="cliente">Cliente</option>
+                </select>
+                <div class="bar"></div>
+            </div>
+            <div class="button-container">
+                <button><span>Go</span></button>
+            </div>
+            <div class="footer"><a href="#">Forgot your password?</a></div>
+        </form>
+    </div>
+    <div class="card alt">
+        <h1 class="title">Register
+            <div class="close"></div>
+        </h1>
+        <form>
+            <div class="input-container">
+                <input type="#{type}" id="#{label}" required="required"/>
+                <label for="#{label}">Username</label>
+                <div class="bar"></div>
+            </div>
+            <div class="input-container">
+                <input type="#{type}" id="#{label}" required="required"/>
+                <label for="#{label}">Password</label>
+                <div class="bar"></div>
+            </div>
+            <div class="input-container">
+                <input type="#{type}" id="#{label}" required="required"/>
+                <label for="#{label}">Repeat Password</label>
+                <div class="bar"></div>
+            </div>
+            <div class="button-container">
+                <button><span>Next</span></button>
+            </div>
+        </form>
+    </div>
+</div>

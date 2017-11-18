@@ -117,40 +117,31 @@
 
     </head>
 
-    <body  id='fondoMain'>
+    <body  >
                 
-        <nav class="navbar navbar-default navbar-fixed-top" > 
-            <div class="container">
+        <nav class="navbar navbar-inverse navbar-static-bottom" > 
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">
                     Puntos De Fidelidad
                     </a>
                 </div>
                 <div ui-view="navBarView">
-                <button id='alaDerecha' type="button" class="btn btn-primary btnIniciar navbar-btn">Registrarse</button>
-                <button id='alaDerecha' type="button" ui-sref="login" class="btn btn-success btnIniciar navbar-btn">Iniciar sesión</button> 
-                </div>
-            </div>
+                    <button id='alaDerecha' type="button" class="btn  btn-default btnIniciar navbar-btn">Registrarse</button>
+                    <button id='alaDerecha' type="button" ui-sref="login" class="btn  btn-default btnIniciar navbar-btn">Iniciar sesión</button> 
+                </div>                
         </nav>
-                        
-        <br>
-        <br>
-
-        <div ui-view="bannerView">            
-        </div>
+                
 
         <div ui-view="mainView">
             <div class="divInicial"><img id= "imagenIndex" alt="Banner" src="./media/ImagenIndex.jpg" class="bannerInicial"/></div>
         </div>
                                 
         <nav class="navbar navbar-inverse navbar-static-bottom"> 
-            <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">
-                    Universidad De Los Andes - Desarrollo De Software 
+                        Universidad De Los Andes - Desarrollo De Software 
                     </a>
-                </div>                
-            </div>
+                </div> 
         </nav>
     </body>
 
