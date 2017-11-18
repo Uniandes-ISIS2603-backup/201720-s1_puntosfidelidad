@@ -34,19 +34,19 @@ var mod = ng.module("eventosModule", []);
                     }
                 }
             }).state('eventosUpdate', {
-                url: '/update/{eventosId:int}',
+                url: '/update/{eventoNombre:string}',
                 parent: 'eventos',
                 param: {
                     eventosId: null
                 },
                 views: {
                     'detailView': {
-                        templateUrl: basePath + 'new/eventos.new.html',
+                        templateUrl: basePath + 'update/eventos.update.html',
                         controller: 'eventosUpdateCtrl'
                     }
                 }
             }).state('eventosDelete', {
-                url: '/delete/{eventosId:int}',
+                url: '/delete/{eventoNombre:string}',
                 parent: 'eventos',
                 param: {
                     eventosId: null
