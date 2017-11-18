@@ -40,7 +40,7 @@ public class TarjetaPuntosLogic {
         return persistence.update(nuevoEntity);
     }
     public void deleteTarjetaPuntos(Long id)            
-    {
+    {        
         persistence.delete(id);
     }
     public TarjetaPuntosEntity createTarjetaPuntos(TarjetaPuntosEntity nuevoEntity)

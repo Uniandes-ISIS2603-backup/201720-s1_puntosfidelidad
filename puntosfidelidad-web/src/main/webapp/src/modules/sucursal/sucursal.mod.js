@@ -54,7 +54,7 @@ var mod = ng.module("sucursalModule", []);
                 },
                 views: {
                     'detailView': {
-                        templateUrl: basePath + 'new/sucursal.new.html',
+                        templateUrl: basePath + 'update/sucursal.update.html',
                         controller: 'sucursalUpdateCtrl'
                     }
                 }

@@ -30,17 +30,17 @@ insert into TarjetaDeCreditoEntity (id,banco, numero, cliente_usuario) values (1
 insert into TarjetaDeCreditoEntity (id,banco, numero, cliente_usuario) values (10050,'BancoLadron', 897521, 'C3' );
 insert into TarjetaDeCreditoEntity (id,banco, numero, cliente_usuario) values (10060,'BancoLadron', 8497521, 'C3' );
 
-insert into TarjetaPuntosEntity (id, montoactual, montobasico, numpuntos, cliente_usuario) values (1, 5000,5000,10,'C1');
-insert into TarjetaPuntosEntity (id, montoactual, montobasico, numpuntos, cliente_usuario) values (2, 5000,5000,20,'C2');
-insert into TarjetaPuntosEntity (id, montoactual, montobasico, numpuntos, cliente_usuario) values (3, 1000,5000,20,'C3');
-insert into TarjetaPuntosEntity (id, montoactual, montobasico, numpuntos, cliente_usuario) values (4, 8000,5010,20,'C4');
-insert into TarjetaPuntosEntity (id, montoactual, montobasico, numpuntos, cliente_usuario) values (5, 5900,2000,20,'C4');
+insert into TarjetaPuntosEntity (id, montoactual, montobasico, numpuntos, cliente_usuario) values (100000, 5000,5000,10,'C1');
+insert into TarjetaPuntosEntity (id, montoactual, montobasico, numpuntos, cliente_usuario) values (200000, 5000,5000,20,'C2');
+insert into TarjetaPuntosEntity (id, montoactual, montobasico, numpuntos, cliente_usuario) values (300000, 1000,5000,20,'C3');
+insert into TarjetaPuntosEntity (id, montoactual, montobasico, numpuntos, cliente_usuario) values (400000, 8000,5010,20,'C4');
+insert into TarjetaPuntosEntity (id, montoactual, montobasico, numpuntos, cliente_usuario) values (500000, 5900,2000,20,'C4');
 
-insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (10000,'4/7/1965', 8000, 'C1' ,1,10030 );
-insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (20000,'4/7/1965', 8000, 'C1' ,1,10030 );
-insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (30000,'4/8/1967', 8000, 'C2' ,2,10040);
-insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (40000,'10/9/1968', 8000, 'C3',3,10050 );
-insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (50000,'10/9/1968', 84000, 'C3',3,10050 );
+insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (10000,'4/7/1965', 8000, 'C1' ,100000,10030 );
+insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (20000,'4/7/1965', 8000, 'C1' ,100000,10030 );
+insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (30000,'4/8/1967', 8000, 'C2' ,200000,10040);
+insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (40000,'10/9/1968', 8000, 'C3',300000,10050 );
+insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (50000,'10/9/1968', 84000, 'C3',300000,10050 );
 
 insert into AdministradorEntity (USUARIO, CONTRASENA) values ('Valeria','loli123');
 insert into AdministradorEntity (USUARIO, CONTRASENA) values ('Andres','meencantalapizza');
@@ -100,7 +100,7 @@ insert into CompraEntity_ProductoEntity (COMPRAENTITY_ID, PRODUCTOS_ID) values (
 insert into CompraEntity_ProductoEntity (COMPRAENTITY_ID, PRODUCTOS_ID) values (20,10);
 insert into CompraEntity_ProductoEntity (COMPRAENTITY_ID, PRODUCTOS_ID) values (20,20);
 
-insert into TARJETAPUNTOSENTITY_COMPRAENTITY (COMPRAS_ID, TARJETAPUNTOSENTITY_ID) values (20, 1);
-insert into TARJETAPUNTOSENTITY_COMPRAENTITY (COMPRAS_ID, TARJETAPUNTOSENTITY_ID) values (30, 1);
-insert into TARJETAPUNTOSENTITY_COMPRAENTITY (COMPRAS_ID, TARJETAPUNTOSENTITY_ID) values (40, 2);
-insert into TARJETAPUNTOSENTITY_COMPRAENTITY (COMPRAS_ID, TARJETAPUNTOSENTITY_ID) values (50, 3);
+insert into TARJETAPUNTOSENTITY_COMPRAENTITY (COMPRAS_ID, TARJETAPUNTOSENTITY_ID) values (20, 100000);
+insert into TARJETAPUNTOSENTITY_COMPRAENTITY (COMPRAS_ID, TARJETAPUNTOSENTITY_ID) values (30, 100000);
+insert into TARJETAPUNTOSENTITY_COMPRAENTITY (COMPRAS_ID, TARJETAPUNTOSENTITY_ID) values (40, 200000);
+insert into TARJETAPUNTOSENTITY_COMPRAENTITY (COMPRAS_ID, TARJETAPUNTOSENTITY_ID) values (50, 300000);

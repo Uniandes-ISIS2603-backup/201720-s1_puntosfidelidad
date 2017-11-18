@@ -3,7 +3,7 @@
     mod.constant("sucursalContext", "api/sucursales");
     mod.controller('sucursalNewCtrl', ['$scope', '$http', 'sucursalContext', '$state', '$rootScope',
         function ($scope, $http, productosContext, $state, $rootScope) {
-            $rootScope.edit = false;
+            $scope.sucursalId = 1;
             $scope.createSucursal = function () {
                 $http.post("api/sucursales", {
                     id: $scope.sucursalId,
