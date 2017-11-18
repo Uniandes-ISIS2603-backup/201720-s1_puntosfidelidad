@@ -1,22 +1,18 @@
 (function (ng) {
     var mod = ng.module("restaurantesModule");
     mod.constant("restaurantesContext", "api/restaurantes");
-    mod.controller('restaurantesPostCtrl', ['$scope', '$http', 'restaurantesContext', '$state', 
-        function ($scope, $http, restaurantesContext, $state ) {
-            $scope.res={
-                nit:null,
-                nombre:null,
-                tipoComida:null
-            };
-            $scope.createRestaurate = function () {                          
+      mod.controller('restaurantesPostCtrl', ['$scope', '$http', 'restaurantesContext', '$state', '$rootScope',
+        function ($scope, $http, restaurantesContext, $state, $rootScope) {
+            $rootScope.edit = false;
+            $scope.createRestaurante = function () {
                 $http.post(restaurantesContext, {
-                    nit: $scope.res.usuario,
-                    nombre: $scope.res.nombre,
-                    tipoComida: $scope.res.tipoComida,
-                }).then(function successCallback(response) {                    
-                    $state.go('restaurantesList', {restauranteNit: response.data.nit}, {reload: true});
-                }, function errorCallback(response) {
-                    alert("Ups! Parece que el usuario ya existe, por favor ingresa otro usuario");
+                    nit: $scope.resNit,
+                    nombre: $scope.resName,
+                    tipoComida: $scope.restipo
+                    
+                }).then(function (response) {
+                    //crea el restaurante
+                    $state.go('restaurantesList', {resNit: response.data.nit}, {reload: true});
                 });
             };
         }
