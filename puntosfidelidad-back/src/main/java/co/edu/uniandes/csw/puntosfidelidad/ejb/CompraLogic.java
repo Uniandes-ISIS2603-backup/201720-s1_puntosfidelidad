@@ -6,12 +6,10 @@
 package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
-import co.edu.uniandes.csw.puntosfidelidad.persistence.ComentarioPersistence;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.CompraPersistence;
 import java.util.List;
 import java.util.logging.Logger;

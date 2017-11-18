@@ -33,7 +33,7 @@ public class RecargaLogic {
     public List<RecargaEntity> getRecargas(String usuario) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de consultar todos los recargas");
         ClienteEntity cliente = clienteLogic.getCliente(usuario);
-        if (cliente.getTarjetasDeCredito() == null || cliente.getTarjetasDeCredito().isEmpty() ) {
+        if (cliente.getRecargas() == null || cliente.getRecargas().isEmpty() ) {
             throw new BusinessLogicException("El cliente que consulta aún no tiene recargas");
         }
         return cliente.getRecargas();
