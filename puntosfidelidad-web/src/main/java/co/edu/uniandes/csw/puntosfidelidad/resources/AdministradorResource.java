@@ -110,7 +110,7 @@ public class AdministradorResource {
      * @throws BusinessLogicException
      */
     @DELETE
-    @Path("{usuario}")
+    @Path("{usuario: [a-zA-Z0-9][a-zA-Z0-9]*}")
     public void deleteAdministrador(@PathParam("usuario") String usuario) throws BusinessLogicException
     {
         AdministradorEntity entity = logic.getAdministrador(usuario);

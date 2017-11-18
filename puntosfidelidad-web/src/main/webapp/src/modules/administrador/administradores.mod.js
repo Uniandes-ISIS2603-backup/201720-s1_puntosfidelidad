@@ -45,6 +45,18 @@
                         controller: 'administradoresUpdateCtrl'
                     }
                 }
+            
+            }).state('administradorDelete', {
+                url: '/administradores/{administradorUsuario:string}/delete',
+                param: {
+                    clienteUsuario: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'delete/administradores.delete.html',
+                        controller: 'administradorDeleteCtrl'
+                    }
+                }
             });
             
         }]);
