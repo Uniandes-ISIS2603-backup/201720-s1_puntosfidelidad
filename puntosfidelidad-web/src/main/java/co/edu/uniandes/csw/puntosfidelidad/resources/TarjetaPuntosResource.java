@@ -6,8 +6,11 @@
 package co.edu.uniandes.csw.puntosfidelidad.resources;
 
 import co.edu.uniandes.csw.puntosfidelidad.dtos.CompraDetailDTO;
+import co.edu.uniandes.csw.puntosfidelidad.dtos.TarjetaPuntosDTO;
 import co.edu.uniandes.csw.puntosfidelidad.dtos.TarjetaPuntosDetailDTO;
+import co.edu.uniandes.csw.puntosfidelidad.ejb.ClienteLogic;
 import co.edu.uniandes.csw.puntosfidelidad.ejb.TarjetaPuntosLogic;
+import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import java.util.ArrayList;
@@ -30,6 +33,9 @@ public class TarjetaPuntosResource {
      */
     @Inject
     TarjetaPuntosLogic logic;
+    
+    @Inject
+    ClienteLogic clienteLogic;
     
     /**
      * Método que retorna todas las tarjetas depuntos del sistema
@@ -70,8 +76,18 @@ public class TarjetaPuntosResource {
     }
     
     //Los demás métodos rest están desde la clase que las contiene (toca crearlas desde allá)
-    //Cliente resource [ver API]
-    
+    //Cliente resource [ver API]    
+    @POST    
+    public TarjetaPuntosDetailDTO createTarjetaPuntos(@PathParam("usuario") String usuario,TarjetaPuntosDetailDTO tarjetaNueva )
+    {
+        ClienteEntity cliente= clienteLogic.getCliente(usuario);
+        TarjetaPuntosEntity tarjeta= tarjetaNueva.toEntity();
+        tarjeta.setCliente(cliente);        
+        List lista= cliente.getTarjetasPuntos();
+        lista.add(tarjeta);
+        cliente.setTarjetasPuntos(lista);
+        return new TarjetaPuntosDetailDTO(logic.createTarjetaPuntos(tarjeta));
+    }    
     
     /**
      * Método privado que convierte de una lista de entities de TarjetasPuntos a su representación DetailDTO
@@ -108,5 +124,4 @@ public class TarjetaPuntosResource {
         
         return DTOList;
     }
-    
 }

@@ -5,8 +5,12 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.resources;
 
+import co.edu.uniandes.csw.puntosfidelidad.dtos.ClienteDTO;
 import co.edu.uniandes.csw.puntosfidelidad.dtos.TarjetaPuntosDetailDTO;
+import co.edu.uniandes.csw.puntosfidelidad.dtos.TarjetaPuntosDTO;
 import co.edu.uniandes.csw.puntosfidelidad.ejb.ClienteLogic;
+import co.edu.uniandes.csw.puntosfidelidad.ejb.TarjetaPuntosLogic;
+import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import java.util.List;
@@ -21,6 +25,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
+import javax.ws.rs.WebApplicationException;
 /**
  *
  * @author lv.vanegas10
@@ -30,6 +35,9 @@ import java.util.ArrayList;
 public class ClienteTarjetaPuntosResource {
     @Inject
     private ClienteLogic clienteLogic;
+    
+    @Inject
+    private TarjetaPuntosLogic logic;
 
     /**
      * Convierte una lista de TarjetaPuntosEntity a una lista de TarjetaPuntosDetailDTO.
@@ -85,7 +93,7 @@ public class ClienteTarjetaPuntosResource {
      */
     @GET
     @Path("{tarjetasPuntosId: \\d+}")
-    public TarjetaPuntosDetailDTO getTarjetasPuntos(@PathParam("usuario") String usuario, @PathParam("tarjetasPuntosId") Long tarjetasPuntosId) {
+    public TarjetaPuntosDetailDTO getTarjetasPuntos(@PathParam("usuario") String usuario, @PathParam("tarjetasPuntosId") Long tarjetasPuntosId) {        
         return new TarjetaPuntosDetailDTO(clienteLogic.getTarjetaPuntos(usuario, tarjetasPuntosId));
     }
 
@@ -93,16 +101,29 @@ public class ClienteTarjetaPuntosResource {
      * Asocia un TarjetaPuntos existente a un Cliente
      *
      * @param usuario Identificador de la instancia de Cliente
-     * @param tarjetasPuntosId Identificador de la instancia de TarjetaPuntos
+     * @param tarjetaNueva GG
      * @return Instancia de TarjetaPuntosDetailDTO que fue asociada a Cliente
      * 
      */
-    @POST
-    @Path("{tarjetasPuntosId: \\d+}")
-    public TarjetaPuntosDetailDTO addTarjetasPuntos(@PathParam("usuario") String usuario, @PathParam("tarjetasPuntosId") Long tarjetasPuntosId) {
-        return new TarjetaPuntosDetailDTO(clienteLogic.addTarjetaPuntos(usuario, tarjetasPuntosId));
-    }
+//    @POST
+//    @Path("{tarjetasPuntosId: \\d+}")
+//    public TarjetaPuntosDetailDTO addTarjetasPuntos(@PathParam("usuario") String usuario, @PathParam("tarjetasPuntosId") Long tarjetasPuntosId) {        
+//        return new TarjetaPuntosDetailDTO(clienteLogic.addTarjetaPuntos(usuario, tarjetasPuntosId));
+//    }
 
+    @POST    
+    public TarjetaPuntosDTO createTarjetaPuntos(@PathParam("usuario") String usuario,TarjetaPuntosDTO tarjetaNueva )
+    {
+        ClienteEntity cliente= clienteLogic.getCliente(usuario);
+        TarjetaPuntosEntity tarjeta= tarjetaNueva.toEntity();
+        tarjeta.setCliente(cliente);        
+        List lista= cliente.getTarjetasPuntos();
+        lista.add(tarjeta);
+        cliente.setTarjetasPuntos(lista);
+        return new TarjetaPuntosDTO(logic.createTarjetaPuntos(tarjeta));
+    }    
+    
+    
     /**
      * Remplaza las instancias de TarjetaPuntos asociadas a una instancia de Cliente
      *
@@ -112,10 +133,10 @@ public class ClienteTarjetaPuntosResource {
      * @return Nueva colección de TarjetaPuntosDTO asociada a la instancia de Cliente
      * 
      */
-    @PUT
-    public List<TarjetaPuntosDetailDTO> replaceTarjetasPuntos(@PathParam("usuario") String usuario, List<TarjetaPuntosDetailDTO> tarjetasPuntos) {
-        return tarjetasPuntosListEntity2DTO(clienteLogic.replaceTarjetasPuntos(usuario, tarjetasPuntosListDTO2Entity(tarjetasPuntos)));
-    }
+//    @PUT
+//    public List<TarjetaPuntosDetailDTO> replaceTarjetasPuntos(@PathParam("usuario") String usuario, List<TarjetaPuntosDetailDTO> tarjetasPuntos) {
+//        return tarjetasPuntosListEntity2DTO(clienteLogic.replaceTarjetasPuntos(usuario, tarjetasPuntosListDTO2Entity(tarjetasPuntos)));
+//    }
 
     /**
      * Desasocia un TarjetaPuntos existente de un Cliente existente
@@ -127,7 +148,23 @@ public class ClienteTarjetaPuntosResource {
     @DELETE
     @Path("{tarjetasPuntosId: \\d+}")
     public void removeTarjetaPuntos(@PathParam("usuario") String usuario, @PathParam("tarjetasPuntosId") Long tarjetasPuntosId) {
+        logic.deleteTarjetaPuntos(tarjetasPuntosId);
         clienteLogic.removeTarjetaPuntos(usuario, tarjetasPuntosId);
+    }
+    
+    @PUT
+    @Path("{id: \\d+}")
+    public TarjetaPuntosDetailDTO updateTarjetaPuntos(@PathParam("usuario") String usuario, @PathParam("id") Long id, TarjetaPuntosDetailDTO tarjeta) throws BusinessLogicException {
+        tarjeta.setId(id);   
+        ClienteEntity cliente= clienteLogic.getCliente(usuario);
+        tarjeta.setCliente(new ClienteDTO(cliente));
+        TarjetaPuntosEntity entity = logic.getTarjetaPuntos(id);
+        cliente.getTarjetasPuntos().remove(entity);
+        cliente.getTarjetasPuntos().add(tarjeta.toEntity());
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /clientes/" + usuario + "/tarjetas/" + id + " no existe.", 404);
+        }        
+        return new TarjetaPuntosDetailDTO(logic.updateTarjetaPuntos(tarjeta.toEntity()));
     }
 }
 
