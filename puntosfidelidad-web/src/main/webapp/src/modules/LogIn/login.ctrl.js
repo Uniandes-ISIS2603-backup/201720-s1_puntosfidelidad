@@ -1,6 +1,6 @@
 (function (ng) {
     
-        var mod = ng.module("pf.login");
+        var mod = ng.module("loginModule");
     
         mod.controller("loginCtrl", ['$scope', '$state', '$stateParams', '$http', 'loginContext', function ($scope, $state, $stateParams, $http, context) {
             

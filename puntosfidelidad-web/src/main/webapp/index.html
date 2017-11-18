@@ -104,9 +104,13 @@
         <script src="src/modules/administrador/new/administradores.new.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/administrador/update/administradores.update.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/administrador/delete/administradores.delete.ctrl.js" type="text/javascript"></script>
+        
          <!-- Restaurantes Admin -->
         <script src="src/modules/restaurante/administrador/restaurantes.administrador.mod.js" type="text/javascript"></script>
         <script src="src/modules/restaurante/administrador/restaurantes.administrador.ctrl.js" type="text/javascript"></script>
+        
+        <script src="src/modules/LogIn/login.mod.js" type="text/javascript"></script>
+        <script src="src/modules/LogIn/login.ctrl.js" type="text/javascript"></script>
         
         <!-- archivo CSS -->
         <link rel="stylesheet" type="text/css" href="css/styles.css" />
@@ -114,42 +118,40 @@
     </head>
 
     <body  id='fondoMain'>
+                
+        <nav class="navbar navbar-default navbar-fixed-top" > 
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                    Puntos De Fidelidad
+                    </a>
+                </div>
+                <div ui-view="navBarView">
+                <button id='alaDerecha' type="button" class="btn btn-primary btnIniciar navbar-btn">Registrarse</button>
+                <button id='alaDerecha' type="button" class="btn btn-success btnIniciar navbar-btn">Iniciar sesión</button> 
+                </div>
+            </div>
+        </nav>
+                        
+        <br>
+        <br>
 
-        <div style='background-color: #36ABA7;' class="container-fluid">
-            <br>
-            <CENTER>
-            <span data-text="PU"></span>
-                <span data-text="NT"></span>
-                <span data-text="OS"></span>
-                <span data-text=" DE"></span>
-                <span data-text=" FI"></span>
-                <span data-text="DE"></span>
-                <span data-text="LI"></span>
-                <span data-text="DAD"></span>
-
-                </CENTER>
-            <div id='contenedor'>
-                <lu id='listaNav'>      
-                    <li><button ui-sref="administradoresList" type="button" class="btn btn-success btn-lg">Administradores</button>
-                    <li><button ui-sref="clientesList" type="button" class="btn btn-success btn-lg">Clientes</button>  
-                    <li><button ui-sref="restaurantesList" type="button" class="btn btn-success btn-lg">Restaurantes</button>
-                    <li><button ui-sref="sucursalList" type="button" class="btn btn-success btn-lg">Sucursales</button>   
-                    <li><button ui-sref="productosList" type="button" class="btn btn-success btn-lg">Productos</button>    
-                    <li><button ui-sref="comprasList" type="button" class="btn btn-success btn-lg">Compras</button>
-                    <li><button ui-sref="comentariosList" type="button" class="btn btn-success btn-lg">Comentarios</button>
-                    <li><button ui-sref="tarjetasPuntosList" type="button" class="btn btn-success btn-lg">Tarjetas de Puntos</button>
-                    <li><button ui-sref="eventosList" type="button" class="btn btn-success btn-lg">Eventos</button> 
-
-
-
-                    <li id='alaDerecha'><button ui-sref="eventosList" type="button" class="btn btn-danger btn-lg">Cerrar Sesión</button>
-                </lu>
-            </div>            
-            <hr>
+        <div ui-view="bannerView">            
         </div>
-        <div ui-view="mainView">                           
 
+        <div ui-view="mainView">
+            <div class="divInicial"><img id= "imagenIndex" alt="Banner" src="./media/ImagenIndex.jpg" class="bannerInicial"/></div>
         </div>
+                                
+        <nav class="navbar navbar-inverse navbar-static-bottom"> 
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                    Universidad De Los Andes - Desarrollo De Software 
+                    </a>
+                </div>                
+            </div>
+        </nav>
     </body>
 
 </html>

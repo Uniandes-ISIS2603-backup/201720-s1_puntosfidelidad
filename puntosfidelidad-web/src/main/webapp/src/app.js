@@ -4,6 +4,7 @@
         'ui.router',
        
         //Dependencias internas de módulos
+        'loginModule',
         'productoModule',
         'comprasModule',
         'restaurantesModule',
