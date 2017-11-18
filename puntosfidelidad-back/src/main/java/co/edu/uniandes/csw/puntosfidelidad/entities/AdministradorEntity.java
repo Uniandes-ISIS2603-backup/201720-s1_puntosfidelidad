@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.puntosfidelidad.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +30,7 @@ public class AdministradorEntity implements Serializable {
     private String contrasena; 
     
     @PodamExclude
-    @OneToMany(mappedBy = "administrador")
+    @OneToMany(mappedBy = "administrador",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RestauranteEntity> restaurantes = new ArrayList<>();
 
    

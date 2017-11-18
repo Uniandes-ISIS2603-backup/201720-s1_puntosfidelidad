@@ -1,12 +1,11 @@
 (function (ng) {
     var mod = ng.module("restaurantesModule");
-    mod.constant("restaurantesContext", "api/restaurantes");
-    mod.controller('restaurantesDeleteCtrl', ['$scope', '$http', 'restaurantesContext', '$state',
-        function ($scope, $http, restaurantesContext, $state) {
-            var nitRestaurante = $state.params.restauranteNit;
-            $scope.deleteRestaurantes = function () {
-                $http.delete(restaurantesContext + '/' + nitRestaurante, {}).then(function (response) {
-                    $state.go('restaurantesList', {restauranteNit: response.data.id}, {reload: true});
+    mod.controller('restauranteDeleteCtrl', ['$scope', '$http', '$state',
+        function ($scope, $http, $state) { 
+            
+            $scope.deleteRestaurante = function () {
+                $http.delete("http://localhost:8080/puntosfidelidad-web/api/restaurantes/"+ $state.params.restauranteNit , {}).then(function () {
+                    $state.go('restaurantesList', {reload: true});
                 });
             };
         }

@@ -74,7 +74,7 @@
                     }
                 }
             }).state('restaurantesUpdate', {
-                url: '/update/{productoId:int}',
+                url: '/update/{restauranteNit:string}',
                 parent: 'restaurantes',
                 param: {
                     restauranteNit: null
@@ -87,16 +87,15 @@
                     }
                 }
             }).state('restaurantesDelete', {
-                url: '/delete/{restauranteNit:string}',
-                parent: 'restaurantesDetail',
+                url: '/restaurantes/{restauranteNit:string}/delete',
+                parent: 'restaurantes',
                 param: {
                     restauranteNit: null
                 },
                 views: {
-                    'extrasView': {
-                        templateUrl: basePath + '/delete/restaurantes.delete.html',
-                        controller: 'restaurantesDeleteCtrl',
-                        controllerAs: 'ctrl'
+                    'mainView': {
+                        templateUrl: basePath + 'delete/restaurantes.delete.html',
+                        controller: 'restauranteDeleteCtrl'
                     }
                 }
             });
