@@ -6,17 +6,15 @@ var mod = ng.module("loginModule", []);
             $urlRouterProvider.otherwise("/login");
 
             $stateProvider.state('login', {
-                url: '/login',            
+                url: '/login',    
+                data: {
+                    requireLogin: false
+                },
                 views: {
                     'mainView': {
                         controller: 'loginCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'login.html'
-                    },
-                    'bannerView':{                        
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'bannerLogin.html'
                     }
                 }
 

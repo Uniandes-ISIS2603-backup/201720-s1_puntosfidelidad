@@ -122,26 +122,29 @@
         <!--Mostrar solo cuando inicie sesion
         <h1><a  href="">Puntos De Fidelidad</a></h1>
         -->    
-        <div class="row navbar-index" >
+        <div class="row navbar-index barcolor" >
             <header>        
                 <nav> 
                     <ul>
-                        <li><a id='alaDerecha'  ui-sref="clienteCreate"> Iniciar Sesión</a></li>
-                        <li><a id='alaDerecha'  ui-sref="login"> Registrarse </a></li>
+                        <li><a  ui-sref="login">Iniciar Sesión  </a></li>
+                        <li><a  ui-sref="clienteCreate">Registrarse</a></li>
                     </ul>
                 </nav> 
             </header>
         </div>
 
+        <br>
         <div ui-view="mainView">
             <div class="divInicial"><img id= "imagenIndex" alt="Banner" src="./media/I1.jpg" class="bannerInicial"/></div>
         </div>   
 
-            <footer>                           
-                    <a href="#">
-                        Universidad De Los Andes - Desarrollo De Software 
-                    </a>               
+        <div class="row barcolor" >
+            <footer >                           
+                <a href="">
+                    Universidad De Los Andes - Desarrollo De Software En Equipos 2017-02 
+                </a>               
             </footer> 
+        </div>
     </body>
 
 </html>

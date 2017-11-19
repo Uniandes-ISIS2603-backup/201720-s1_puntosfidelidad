@@ -1,21 +1,21 @@
-<div class="container">      
+<div class="container">
     <div class="card"></div>
     <div class="card">
         <h1 class="title">Login</h1>
         <form>
             <div class="input-container">
-                <input type="text" id="userPass" required="required"/>
+                <input type="text" id="userPass" required="required" ng-model="data.usuario"/>
                 <label for="#{label}">Usuario</label>
                 <div class="bar"></div>
             </div>
             <div class="input-container">
-                <input type="password" id="loginPass" required="required"/>
+                <input type="password" id="loginPass" required="required" ng-model="data.password"/>
                 <label for="#{label}">Contraseña</label>
                 <div class="bar"></div>
             </div>
             <div class="listaLog">
                 Usuario:
-                <select id="tipoUsuario" required="required"  class="selectLog">
+                <select id="tipoUsuario"  name="singleSelect" ng-model="data.rol" required="required"  class="selectLog">
                     <option value=""></option>
                     <option value="administrador">Administrador</option>
                     <option value="cliente">Cliente</option>
@@ -23,9 +23,9 @@
                 <div class="bar"></div>
             </div>
             <div class="button-container">
-                <button ui-sref="clientesList"><span>Go</span></button>
+                <button ng-click="autenticar()" ><span>Go</span></button>
             </div>
-            <div class="footer"><a href="#">¿No tienes una cuenta?</a></div>
+            <div class="footer"><a ui-sref="clienteCreate">¿No tienes una cuenta?</a></div>
         </form>
     </div>    
 </div>

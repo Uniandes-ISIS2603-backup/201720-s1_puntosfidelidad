@@ -20,7 +20,7 @@
     // Resuelve problemas de las promesas AKA no tocar
     app.config(['$qProvider', function ($qProvider) {
             $qProvider.errorOnUnhandledRejections(false);
-
+            
             /**
              * Array con las imagenes que se iran mostrando en la web
              */
