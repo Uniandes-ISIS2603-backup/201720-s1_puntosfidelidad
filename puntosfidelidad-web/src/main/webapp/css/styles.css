@@ -605,5 +605,12 @@ footer a:hover, footer a:link,footer a:visited {
     background-color: black;
 }
 
+.alertError{
+    padding: 20px;
+    background-color: #d7df01; /* Red */
+    color: white;
+    margin-bottom: 15px;
+}
+
 
 

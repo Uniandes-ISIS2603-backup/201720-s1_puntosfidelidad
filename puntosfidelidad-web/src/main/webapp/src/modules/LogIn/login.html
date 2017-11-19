@@ -1,15 +1,18 @@
 <div class="container">
     <div class="card"></div>
     <div class="card">
-        <h1 class="title">Login</h1>
-        <form>
+        <h1 class="title">Login</h1> 
+        <div ng-if="hayError" class="input-container alertError">
+            <span><strong>¡Ups!</strong><br>{{errortxt}}</span>
+        </div>
+        <form>            
             <div class="input-container">
                 <input type="text" id="userPass" required="required" ng-model="data.usuario"/>
                 <label for="#{label}">Usuario</label>
                 <div class="bar"></div>
             </div>
             <div class="input-container">
-                <input type="password" id="loginPass" required="required" ng-model="data.password"/>
+                <input type="password" id="loginPass" required="required" ng-model="data.password"/>                
                 <label for="#{label}">Contraseña</label>
                 <div class="bar"></div>
             </div>
@@ -21,7 +24,7 @@
                     <option value="cliente">Cliente</option>
                 </select>
                 <div class="bar"></div>
-            </div>
+            </div>            
             <div class="button-container">
                 <button ng-click="autenticar()" ><span>Go</span></button>
             </div>
