@@ -41,20 +41,20 @@
         <script src="src/modules/compra/update/compras.update.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/compra/new/compras.new.ctrl.js" type="text/javascript"></script>
 
-        
+
         <!-- restaurantes -->
         <script src="src/modules/restaurante/restaurantes.mod.js" type="text/javascript"></script>
         <script src="src/modules/restaurante/restaurantes.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/restaurante/post/restaurantes.post.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/restaurante/delete/restaurantes.delete.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/restaurante/update/restaurantes.update.ctrl.js" type="text/javascript"></script>
-        
+
         <script src="src/modules/comentario/comentarios.mod.js" type="text/javascript"></script>
         <script src="src/modules/comentario/comentarios.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/tarjetaPuntos/tarjetasPuntos.mod.js" type="text/javascript"></script>
         <script src="src/modules/tarjetaPuntos/tarjetasPuntos.ctrl.js" type="text/javascript"></script>
-        
-        
+
+
         <!-- Eventos -->
         <script src="src/modules/evento/eventos.mod.js" type="text/javascript"></script>
         <script src="src/modules/evento/eventos.ctrl.js" type="text/javascript"></script>
@@ -94,9 +94,9 @@
         <script src="src/modules/sucursal/delete/sucursal.delete.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/sucursal/new/sucursal.new.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/sucursal/update/sucursal.update.ctrl.js" type="text/javascript"></script>
-        
 
-        
+
+
         <!-- Administradores -->
         <script src="src/modules/administrador/administradores.mod.js" type="text/javascript"></script>
         <script src="src/modules/administrador/administradores.ctrl.js" type="text/javascript"></script>
@@ -104,45 +104,44 @@
         <script src="src/modules/administrador/new/administradores.new.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/administrador/update/administradores.update.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/administrador/delete/administradores.delete.ctrl.js" type="text/javascript"></script>
-        
-         <!-- Restaurantes Admin -->
+
+        <!-- Restaurantes Admin -->
         <script src="src/modules/restaurante/administrador/restaurantes.administrador.mod.js" type="text/javascript"></script>
         <script src="src/modules/restaurante/administrador/restaurantes.administrador.ctrl.js" type="text/javascript"></script>
-        
+
         <script src="src/modules/LogIn/login.mod.js" type="text/javascript"></script>
         <script src="src/modules/LogIn/login.ctrl.js" type="text/javascript"></script>
-        
+
         <!-- archivo CSS -->
         <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
     </head>
 
-    <body  >
-                
-        <nav class="navbar navbar-inverse navbar-static-bottom" > 
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
-                    Puntos De Fidelidad
-                    </a>
-                </div>
-                <div ui-view="navBarView">
-                    <button id='alaDerecha' type="button" ui-sref="clienteCreate" class="btn  btn-default btnIniciar navbar-btn">Registrarse</button>
-                    <button id='alaDerecha' type="button" ui-sref="login" class="btn  btn-default btnIniciar navbar-btn">Iniciar sesión</button> 
-                </div>                
-        </nav>
-                
+    <body  > 
+
+        <!--Mostrar solo cuando inicie sesion
+        <h1><a  href="">Puntos De Fidelidad</a></h1>
+        -->    
+        <div class="row navbar-index" >
+            <header>        
+                <nav> 
+                    <ul>
+                        <li><a id='alaDerecha'  ui-sref="clienteCreate"> Iniciar Sesión</a></li>
+                        <li><a id='alaDerecha'  ui-sref="login"> Registrarse </a></li>
+                    </ul>
+                </nav> 
+            </header>
+        </div>
 
         <div ui-view="mainView">
-            <div class="divInicial"><img id= "imagenIndex" alt="Banner" src="./media/ImagenIndex.jpg" class="bannerInicial"/></div>
-        </div>
-                                
-        <nav class="navbar navbar-inverse navbar-static-bottom"> 
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
+            <div class="divInicial"><img id= "imagenIndex" alt="Banner" src="./media/I1.jpg" class="bannerInicial"/></div>
+        </div>   
+
+            <footer>                           
+                    <a href="#">
                         Universidad De Los Andes - Desarrollo De Software 
-                    </a>
-                </div> 
-        </nav>
+                    </a>               
+            </footer> 
     </body>
 
 </html>

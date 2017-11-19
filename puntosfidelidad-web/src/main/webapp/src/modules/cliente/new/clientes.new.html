@@ -24,33 +24,27 @@
                 <div class="bar"></div>
             </div>
             <div class="input-container">
-                <input id="clienteImagen" ng-model="imagen" required="" ng-value="http://"/>
+                <input id="clienteImagen" ng-model="imagen" required=""/>
                 <label for="clienteImagen">Imagen</label>
                 <div class="bar"></div>
             </div>
 
             <div class="input-container" >  
-                <div class="row"></div>
-                <img  src="http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png"  onError="this.src ='http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png'" class="img-responsive" ng-src="{{imagen}}"/>
+                <div class="col-sm-14"></div>
+                <img  src="http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png"  onError="this.src ='http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png'" class="img-responsive col-md-6" ng-src="{{imagen}}"/>
             </div>
 
-                         
-                <div class="input-container" ng-if="!cliente.$valid">
-                    <div class="card" >
-                        <strong>!Atención!</strong>
-                        <p>Completar campos requeridos*</p>
-                        <p> El usuario solo puede contener letras y números, sin espacios.</p>
-                    </div> 
-                </div>                         
-            
+            <div class="input-container alert alert-success" ng-if="!cliente.$valid">
+                <strong>!Atención!</strong>
+                <p>Completar campos requeridos*</p>
+                <p> El usuario solo puede contener letras y números, sin espacios.</p>
+            </div>                         
 
-            <div class="form-group row">
-                <div class="form-group col-sm-5" ng-if="contrasena !== repetirContrasena">
-                    <div class="alert alert-danger" >
-                        <strong>!Cuidado!</strong><p>Las contraseñas no coinciden</p>
-                    </div> 
-                </div> 
+
+            <div class="input-container alert alert-success" ng-if="contrasena !== repetirContrasena">
+                <strong>!Cuidado!</strong><p>Las contraseñas no coinciden</p>
             </div> 
+
 
             <div class="form-group col-md-6"></div>
             <div class="form-group row">
