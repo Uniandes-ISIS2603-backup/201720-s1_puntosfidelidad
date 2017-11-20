@@ -88,6 +88,7 @@
     background-color: #F2EDD0
 }
 
+
 .btnRestaurante{
     margin:5px;
     width: 150px; 
@@ -108,56 +109,12 @@ img{
     height: 100%
 }
 body {
-    background-color: black;
+    background-color: whitesmoke;
     color: #666666;
     font-family: 'RobotoDraft', 'Roboto', sans-serif;
     font-size: 14px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-/* Pen Title */
-.pen-title {
-    padding: 50px 0;
-    text-align: center;
-    letter-spacing: 2px;
-}
-.pen-title h1 {
-    margin: 0 0 20px;
-    font-size: 48px;
-    font-weight: 300;
-}
-.pen-title span {
-    font-size: 12px;
-}
-.pen-title span .fa {
-    color: #d7df01;
-}
-.pen-title span a {
-    color: #d7df01;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-/* Rerun */
-.rerun {
-    margin: 0 0 30px;
-    text-align: center;
-}
-.rerun a {
-    cursor: pointer;
-    display: inline-block;
-    background: #d7df01;
-    border-radius: 3px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    padding: 10px 20px;
-    color: #ffffff;
-    text-decoration: none;
-    -webkit-transition: 0.3s ease;
-    transition: 0.3s ease;
-}
-.rerun a:hover {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 /* Scroll To Bottom */
@@ -572,7 +529,7 @@ nav li{
     float:left;
 }
 nav a:link, nav a:visited{
-    color:white;
+    color:#585858;
     display:block;
     width:160px;
     text-align:center;
@@ -587,7 +544,7 @@ nav a:hover{
 }
 
 .navbar-index{
-    background-color:black;
+    background-color:whitesmoke;
 }
 
 footer {
@@ -597,18 +554,18 @@ footer {
 }
 
 footer a:hover, footer a:link,footer a:visited {
-    color: white;
+    color: whitesmoke;
     text-decoration:none;
 }
 
 .barcolor{
-    background-color: black;
+    background-color: #36ABA7;
 }
 
 .alertError{
     padding: 20px;
     background-color: #d7df01; /* Red */
-    color: white;
+    color: #585858;
     margin-bottom: 15px;
 }
 
@@ -622,7 +579,7 @@ footer a:hover, footer a:link,footer a:visited {
 #tituloBanner{
     position: relative;
     right: -60px;
-    color: white;
+    color: #36ABA7;
     text-decoration:none;
     font-weight:bold;
 }
