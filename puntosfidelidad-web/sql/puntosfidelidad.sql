@@ -4,7 +4,6 @@ delete from FotoEntity;
 delete from ComentarioEntity;
 delete from CompraEntity_ProductoEntity;
 delete from ProductoEntity;
-delete from TARJETAPUNTOSENTITY_COMPRAENTITY;
 delete from CompraEntity;
 delete from EventoEntity;
 delete from TarjetaPuntosEntity;
@@ -99,8 +98,3 @@ insert into CompraEntity (ID, PAGOCONPUNTOS, CLIENTE_USUARIO, SUCURSAL_ID, TARJE
 insert into CompraEntity_ProductoEntity (COMPRAENTITY_ID, PRODUCTOS_ID) values (20,1);
 insert into CompraEntity_ProductoEntity (COMPRAENTITY_ID, PRODUCTOS_ID) values (20,10);
 insert into CompraEntity_ProductoEntity (COMPRAENTITY_ID, PRODUCTOS_ID) values (20,20);
-
-insert into TARJETAPUNTOSENTITY_COMPRAENTITY (COMPRAS_ID, TARJETAPUNTOSENTITY_ID) values (20, 100000);
-insert into TARJETAPUNTOSENTITY_COMPRAENTITY (COMPRAS_ID, TARJETAPUNTOSENTITY_ID) values (30, 100000);
-insert into TARJETAPUNTOSENTITY_COMPRAENTITY (COMPRAS_ID, TARJETAPUNTOSENTITY_ID) values (40, 200000);
-insert into TARJETAPUNTOSENTITY_COMPRAENTITY (COMPRAS_ID, TARJETAPUNTOSENTITY_ID) values (50, 300000);
