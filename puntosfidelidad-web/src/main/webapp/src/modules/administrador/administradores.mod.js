@@ -42,7 +42,7 @@
                     },
                     'navBar': {
                         controller: 'administradoresCtrl',
-                        controllerAs: 'ctrl',
+                        controllerAs: 'administradoresDetailCtrl',
                         templateUrl: basePath + 'navBar.html'
 
                     }

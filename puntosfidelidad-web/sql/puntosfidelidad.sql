@@ -41,7 +41,7 @@ insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, 
 insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (40000,'10/9/1968', 8000, 'C3',300000,10050 );
 insert into RecargaEntity (id,fecha, valor, cliente_usuario,  tarjetaPuntos_id, tarjetaDeCredito_id) values (50000,'10/9/1968', 84000, 'C3',300000,10050 );
 
-insert into AdministradorEntity (USUARIO, CONTRASENA) values ('Valeria','loli123');
+insert into AdministradorEntity (USUARIO, CONTRASENA) values ('Valeria','a');
 insert into AdministradorEntity (USUARIO, CONTRASENA) values ('Andres','meencantalapizza');
 insert into AdministradorEntity (USUARIO, CONTRASENA) values ('Camilo','programing');
 insert into AdministradorEntity (USUARIO, CONTRASENA) values ('Julian','cacamolida');

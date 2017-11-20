@@ -6,9 +6,21 @@
 package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.AdministradorEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.EventoEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistence;
+import co.edu.uniandes.csw.puntosfidelidad.persistence.ComentarioPersistence;
+import co.edu.uniandes.csw.puntosfidelidad.persistence.EventoPersistence;
+import co.edu.uniandes.csw.puntosfidelidad.persistence.ProductoPersistence;
+import co.edu.uniandes.csw.puntosfidelidad.persistence.RestaurantePersistence;
+import co.edu.uniandes.csw.puntosfidelidad.persistence.SucursalPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +42,21 @@ public class AdministradorLogic {
     @Inject
      private AdministradorPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
     
+    @Inject
+     private RestaurantePersistence restauranteLogic;
+    
+    @Inject
+     private ProductoPersistence productoLogic;
+    
+    @Inject
+     private SucursalPersistence sucursalLogic;
+    
+     @Inject
+     private ComentarioPersistence comentarioLogic;
+    
+     @Inject
+     private EventoPersistence eventoLogic;
+     
     
     public AdministradorEntity createAdministrador(AdministradorEntity entity) throws BusinessLogicException {
          LOGGER.info("Inicia proceso de creación de administrador");
@@ -82,11 +109,64 @@ public class AdministradorLogic {
     
     
     public void removeAdministrador(String usuario) throws BusinessLogicException{
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar cliente con id={0}", usuario);
-        if(persistence.find(usuario)==null) {
-            throw new BusinessLogicException("El usuario no existe");
-        }  
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar admin con id={0}", usuario);
+        
+        AdministradorEntity actual = getAdministrador(usuario);
+        try {
+            
+            List<RestauranteEntity> restaurantes = actual.getRestaurantes();
+            if (restaurantes != null) {
+            for(RestauranteEntity res:restaurantes){
+                
+                List<ProductoEntity> productos = res.getProductos();
+                if (productos != null) {
+                for(ProductoEntity prod:productos){
+                        
+                    productoLogic.delete(prod.getId());
+                    LOGGER.log(Level.INFO, "BORRO PRODUCTOOOS", usuario);
+                }
+                }
+                
+                List<EventoEntity> eventos = res.getEventos();
+                if (eventos != null) {
+                for(EventoEntity eve:eventos){
+                                   
+                eventoLogic.delete(eve.getNombre());
+                LOGGER.log(Level.INFO, "BORRO EVENTOOOOS", usuario);
+                }
+                }
+                
+                List<SucursalEntity> sucursales = res.getSucursales();
+                if (sucursales != null) {
+                 for(SucursalEntity sucur:sucursales){
+                     
+                   
+                    List<ComentarioEntity> comentarios = sucur.getComentarios();
+                    if (comentarios != null) {
+                    for(ComentarioEntity coment:comentarios){
+                        
+                    comentarioLogic.delete(coment.getId());
+                    LOGGER.log(Level.INFO, "BORRO COMENTARIOOS", usuario);
+                   }  
+                    
+                    }   
+                    
+                sucursalLogic.delete(sucur.getId());
+                LOGGER.log(Level.INFO, "BORRO SUCURSAAAL", usuario);
+            }   
+            }    
+                restauranteLogic.delete(res.getNit());
+                 LOGGER.log(Level.INFO, "BORRO RESTAURANTE", usuario);
+            
+            
+            }
+            }
+        } catch (Exception e) {
+        }
+
+                
            persistence.delete(usuario);
+           LOGGER.log(Level.INFO, "BORRO ADMIIIN :)", usuario);
     }
     
     

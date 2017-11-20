@@ -23,6 +23,25 @@ var mod = ng.module("restauranteAdministradorModule", []);
                         templateUrl: basePath+'restaurantes.administrador.list.html' 
                     }
                 }
+                
+                }).state('restauranteAdminNew', {
+                url: '/restaurante/crear',
+                parent: 'administradorDetail',
+                param: {
+                    administradorUsuario: null
+                },
+                views: {
+                    'mainView': {
+                        controller: 'administradorDetailCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/administrador/administradores.detail.html'
+                    },
+                    'detailClienteView': {
+                        controller: 'restauranteNewCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'restaurantes.newlist.html'
+                    }
+                }
             });
         }]);
 
