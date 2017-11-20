@@ -28,7 +28,7 @@
                     </div>                    
                     <a ng-if="!edit" class="btn btn-default" ui-sref="administradorUpdate({administradorUsuario: elementoAdministrador.usuario})"><p class="glyphicon glyphicon-pencil"></p></a>
                     <a ng-if="!edit" class="btn btn-default" ui-sref="productosCreate"><p class="glyphicon glyphicon-trash"></p></a>
-                    <a ng-if="!edit" class="btn btn-default" ui-sref="administradoresList"><p> Volver </p></a>
+                    <a ng-if="!edit" class="btn btn-default" ui-sref="administradoresList"><p> Ver otros administradores </p></a>
 
                     <a ng-if="edit" class="btn btn-default" ui-sref="administradorDetail({administradorUsuario: elementoAdministrador.usuario})"><p class="glyphicon glyphicon-remove"></p></a>
                     <a ng-if="edit && !((elementoAdministrador.contrasena) !== elementoAdministrador.repetirContrasenaU) && administradorUpdate.$valid" class="btn btn-default" ng-click="updateAdministrador()"><p class="glyphicon glyphicon-floppy-saved"></p></a>

@@ -2,8 +2,10 @@
     var app = angular.module('mainApp', [
         //Dependencias externas
         'ui.router',
-       
+
         //Dependencias internas de módulos
+        'inicioModule',
+        'loginModule',
         'productoModule',
         'comprasModule',
         'restaurantesModule',
@@ -18,6 +20,6 @@
     ]);
     // Resuelve problemas de las promesas AKA no tocar
     app.config(['$qProvider', function ($qProvider) {
-            $qProvider.errorOnUnhandledRejections(false);
+            $qProvider.errorOnUnhandledRejections(false); 
         }]);
 })(window.angular);

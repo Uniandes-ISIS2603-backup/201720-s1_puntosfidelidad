@@ -1,87 +1,38 @@
-<div class="container-fluid">
-    <br>
-    <div class="panel-group">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <label  id="createcliente">Agregar cliente</label>                
+<div class="container">      
+    <div class="card"></div> 
+    <div class="card">               
+        <h1 class="title">Regístrate</h1>
+        <form ng-submit="createCliente()" name="cliente">
+            <div class="input-container">
+                <input id="clienteId" pattern="[a-zA-Z0-9-]+" title=" El usuario solo puede contener letras y números, sin espacios." required ng-model="usuario"/>
+                <label for="clienteId" >Usuario</label>
+                <div class="bar"></div>
             </div>
 
-            <div class="panel-body">               
-
-                <form ng-submit="createCliente()" name="cliente">
-                    <div class="form-group col-md-4"></div>
-                    <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label for="clienteId" class="col-sm-4">Usuario*:</label>
-                            <input id="clienteId" pattern="[a-zA-Z0-9-]+" title="Espacios no admitidos" required ng-model="usuario" class="col-sm-6"/>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-4"></div>
-                    <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label for="clienteName" class="col-sm-4">Nombre</label>
-                            <input id="clienteName" ng-model="nombre" class="col-sm-6"/>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-4"></div>
-                    <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label for="clienteContrasena" class="col-sm-4">Contraseña*:</label>
-                            <input id="clienteContrasena" required type="password"  ng-model="contrasena" class="col-sm-6"/>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-4"></div>
-                    <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label for="repetirContrasena" class="col-sm-4">Repetir contraseña*:</label>
-                            <input id="repetirContrasena" required type="password"  ng-model="repetirContrasena" class="col-sm-6"/>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-4"></div>
-                    <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label for="clienteImagen" class="col-sm-4">Imagen:</label>
-                            <input id="clienteImagen" ng-model="imagen" class="col-sm-6" ng-value="http://"/>
-                        </div>                        
-                    </div>
-                    
-                    <div class="form-group col-md-6"></div>
-                    <div class="thumb">
-                        <img  src="http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png"  onError="this.src ='http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png'" class="img-responsive" ng-src="{{imagen}}"/>
-                    </div>
-
-                    <div class="form-group col-md-4"></div>
-                    <div class="form-group row">                        
-                        <div class="form-group col-sm-5" ng-if="!cliente.$valid">
-                            <div class="alert alert-warning" >
-                                <strong>!Atención!</strong>
-                                <p>Completar campos requeridos*</p>
-                                <p> El usuario solo puede contener letras y números, sin espacios.</p>
-                            </div> 
-                        </div>                         
-                    </div> 
-
-                    <div class="form-group col-md-4"></div>
-                    <div class="form-group row">
-                        <div class="form-group col-sm-5" ng-if="contrasena !== repetirContrasena">
-                            <div class="alert alert-danger" >
-                                <strong>!Cuidado!</strong><p>Las contraseñas no coinciden</p>
-                            </div> 
-                        </div> 
-                    </div> 
-
-                    <div class="form-group col-md-6"></div>
-                    <div class="form-group row">
-                        <div class="form-group col-sm-14">
-                            <a class="btn btn-default" ui-sref="clientesList">Cancel</a>
-                            <input ng-show="cliente.$valid && contrasena === repetirContrasena" type="submit" value="Save" class="btn btn-default"/>    
-                        </div>
-                    </div>
-                </form>
-
+            <div class="input-container">
+                <input id="clienteContrasena" required type="password"  ng-model="contrasena"/>
+                <label for="clienteContrasena">Contraseña</label>                
+                <div class="bar"></div>
             </div>
-        </div>
+            <div class="input-container">
+                <input id="repetirContrasena" required type="password"  ng-model="repetirContrasena" data-match="clienteContrasena"/>
+                <label for="repetirContrasena">Repetir contraseña</label>
+                <div class="bar"></div>
+            </div> 
+            <div class="input-container alertError" ng-if="contrasena !== repetirContrasena">
+                <span> <strong>!Cuidado!</strong><br>Las contraseñas no coinciden</span>
+            </div> 
+            <div ng-if="hayErrorCreando" class="input-container alertError">
+                <span><strong>¡Ups!</strong><br>{{errortxt}}</span>
+            </div>
+
+            <div class="button-container">
+                <button ng-click="createCliente()" ><span>Crear</span></button>
+            </div>
+        </form>
+
     </div>
-</div>
+</div> 
+
 
 
