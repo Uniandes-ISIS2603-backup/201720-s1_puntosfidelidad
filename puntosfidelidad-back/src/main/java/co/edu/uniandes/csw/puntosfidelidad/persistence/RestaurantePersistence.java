@@ -50,7 +50,12 @@ public class RestaurantePersistence {
         TypedQuery<RestauranteEntity> q
                 = em.createQuery("select u from RestauranteEntity u where u.nombre = :nombre", RestauranteEntity.class);
         q = q.setParameter("nombre", nombre);
-        return q.getSingleResult();
+        try{
+        return q.getSingleResult();}
+        catch(Exception e)
+        {
+            return null;
+        }
     }
     
     
