@@ -591,7 +591,7 @@ text-decoration:none;
 }
 
 footer {
-	margin:40px 0;        
+	margin:40px;        
         text-align: center; 
         font-weight:bold;
 }
@@ -610,6 +610,21 @@ footer a:hover, footer a:link,footer a:visited {
     background-color: #d7df01; /* Red */
     color: white;
     margin-bottom: 15px;
+}
+
+#logo{
+    margin: 10px;
+    float:left;
+    height: 80px;
+    width: 80px;
+}
+
+#tituloBanner{
+    position: relative;
+    right: -60px;
+    color: white;
+    text-decoration:none;
+    font-weight:bold;
 }
 
 

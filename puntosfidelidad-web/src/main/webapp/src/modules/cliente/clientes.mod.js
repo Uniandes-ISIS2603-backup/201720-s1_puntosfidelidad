@@ -20,6 +20,11 @@
                     clienteUsuario: null
                 },
                 views: {
+                    'bannerView':{
+                        controller: 'loginCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl:  'src/modules/LogIn/bannerLogin.html'
+                    },
                     'mainView': {
                         controller: 'clientesDetailCtrl',
                         controllerAs: 'ctrl',
@@ -29,6 +34,11 @@
             }).state('clienteCreate', {
                 url: 'clientes/create',
                 views: {
+                    'bannerView':{
+                        controller: 'loginCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
+                    },
                     'mainView': {
                         templateUrl: basePath + 'new/clientes.new.html',
                         controller: 'clientesNewCtrl'
@@ -39,7 +49,7 @@
                 param: {
                     clienteUsuario: null
                 },
-                views: {
+                views: {                   
                     'mainView': {
                         templateUrl: basePath + 'clientes.detail.html',
                         controller: 'clientesUpdateCtrl'
@@ -50,7 +60,7 @@
                 param: {
                     clienteUsuario: null
                 },
-                views: {
+                views: {                    
                     'mainView': {
                         templateUrl: basePath + 'delete/clientes.delete.html',
                         controller: 'clienteDeleteCtrl'

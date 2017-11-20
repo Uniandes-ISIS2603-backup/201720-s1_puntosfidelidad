@@ -1,57 +1,33 @@
 <div class="container">      
     <div class="card"></div> 
     <div class="card">               
-        <h1 class="title">Registrate</h1>
+        <h1 class="title">Regístrate</h1>
         <form ng-submit="createCliente()" name="cliente">
             <div class="input-container">
                 <input id="clienteId" pattern="[a-zA-Z0-9-]+" title=" El usuario solo puede contener letras y números, sin espacios." required ng-model="usuario"/>
-                <label for="clienteId" >Usuario*</label>
+                <label for="clienteId" >Usuario</label>
                 <div class="bar"></div>
             </div>
-            <div class="input-container">                
-                <input id="clienteName" required="null" ng-model="nombre" value=" "/>
-                <label for="clienteName">Nombre</label>
-                <div class="bar"></div>
-            </div>
+
             <div class="input-container">
                 <input id="clienteContrasena" required type="password"  ng-model="contrasena"/>
-                <label for="clienteContrasena">Contraseña*</label>                
+                <label for="clienteContrasena">Contraseña</label>                
                 <div class="bar"></div>
             </div>
             <div class="input-container">
                 <input id="repetirContrasena" required type="password"  ng-model="repetirContrasena" data-match="clienteContrasena"/>
-                <label for="repetirContrasena">Repetir contraseña*</label>
+                <label for="repetirContrasena">Repetir contraseña</label>
                 <div class="bar"></div>
-            </div>
-            <div class="input-container">
-                <input id="clienteImagen" ng-model="imagen" required=""/>
-                <label for="clienteImagen">Imagen</label>
-                <div class="bar"></div>
-            </div>
-
-            <div class="input-container" >  
-                <div class="col-sm-14"></div>
-                <img  src="http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png"  onError="this.src ='http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png'" class="img-responsive col-md-6" ng-src="{{imagen}}"/>
-            </div>
-
-            <div class="input-container alert alert-success" ng-if="!cliente.$valid">
-                <strong>!Atención!</strong>
-                <p>Completar campos requeridos*</p>
-                <p> El usuario solo puede contener letras y números, sin espacios.</p>
-            </div>                         
-
-
-            <div class="input-container alert alert-success" ng-if="contrasena !== repetirContrasena">
-                <strong>!Cuidado!</strong><p>Las contraseñas no coinciden</p>
             </div> 
+            <div class="input-container alertError" ng-if="contrasena !== repetirContrasena">
+                <span> <strong>!Cuidado!</strong>Las contraseñas no coinciden</span>
+            </div> 
+            <div ng-if="hayErrorCreando" class="input-container alertError">
+                <span><strong>¡Ups!</strong><br>{{errortxt}}</span>
+            </div>
 
-
-            <div class="form-group col-md-6"></div>
-            <div class="form-group row">
-                <div class="form-group col-sm-14">
-                    <a class="btn btn-default" ui-sref="clientesList">Cancel</a>
-                    <input ng-show="cliente.$valid && contrasena === repetirContrasena" type="submit" value="Save" class="btn btn-default"/>    
-                </div>
+            <div class="button-container">
+                <button ng-click="createCliente()" ><span>Crear</span></button>
             </div>
         </form>
 
