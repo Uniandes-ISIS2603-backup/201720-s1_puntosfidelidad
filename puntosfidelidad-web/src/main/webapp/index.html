@@ -122,23 +122,26 @@
 
     <body  > 
 
-        <div lass="row navbar-index barcolor" >
+        <div class="row">
             <div ui-view="bannerView" class="row"></div>
-            <header>        
-                <nav> 
-                    <ul>
-                        <li><a  ui-sref="login">Iniciar Sesión  </a></li>
-                        <li><a  ui-sref="clienteCreate">Registrarse</a></li>
-                    </ul>
-                </nav> 
-            </header>
+            <div ui-view="navBar">
+                <header>        
+                    <nav> 
+                        <ul>
+                            <li><a  ui-sref="login">Iniciar Sesión  </a></li>
+                            <li><a  ui-sref="clienteCreate">Registrarse</a></li>
+                        </ul>
+                    </nav>
+                    <br>
+                </header> 
+            </div>
+            <hr>            
         </div>
-
-        <br>
-        <hr>
         
+        
+
         <div ui-view="mainView">
-                <img id= "imagenIndex" alt="Banner" src="./media/I1.jpg" class="bannerInicial"/>
+            <img id= "imagenIndex" alt="Banner" src="./media/I1.jpg" class="bannerInicial"/>
         </div>   
         <hr>
         <div class="row barcolor" >

@@ -6,7 +6,7 @@
             var nuevoUsuario = [];
 
             $scope.createCliente = function () {
-                if ($scope.contrasena === $scope.repetirContrasena) {
+                if ($scope.contrasena === $scope.repetirContrasena && angular.isDefined($scope.usuario) && angular.isDefined($scope.contrasena)) {
                     $http.post(clientesContext, {
                         usuario: $scope.usuario,
                         nombre: $scope.vacio($scope.nombre),
@@ -26,7 +26,7 @@
                         $scope.hayErrorCreando = true;
                         $scope.errortxt = " Parece que el cliente con ese usuario ya existe";
                     });
-                }
+                }                
             };
 
             $scope.vacio = function (valor) {

@@ -8,10 +8,20 @@
             $stateProvider.state('administradoresList', {
                 url: '/administradores',
                 views: {
+                    'bannerView': {
+                        controller: 'loginCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
+                    },
                     'mainView': {
                         controller: 'administradoresCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'administradores.list.html'
+                    },
+                    'navBar': {
+                        controller: 'administradoresCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'navBar.html'
                     }
                 }
             }).state('administradorDetail', {
@@ -20,18 +30,40 @@
                     administradorUsuario: null
                 },
                 views: {
+                    'bannerView': {
+                        controller: 'loginCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
+                    },
                     'mainView': {
                         controller: 'administradoresDetailCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'administradores.detail.html'
+                    },
+                    'navBar': {
+                        controller: 'administradoresCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'navBar.html'
+
                     }
                 }
             }).state('administradorCreate', {
                 url: 'administradores/create',
                 views: {
+                    'bannerView': {
+                        controller: 'loginCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
+                    },
                     'mainView': {
                         templateUrl: basePath + 'new/administradores.new.html',
                         controller: 'administradoresNewCtrl'
+                    },
+                    'navBar': {
+                        controller: 'administradoresCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'navBar.html'
+
                     }
                 }
             }).state('administradorUpdate', {
@@ -40,9 +72,20 @@
                     administradorUsuario: null
                 },
                 views: {
+                    'bannerView': {
+                        controller: 'loginCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
+                    },
                     'mainView': {
                         templateUrl: basePath + 'administradores.detail.html',
                         controller: 'administradoresUpdateCtrl'
+                    },
+                    'navBar': {
+                        controller: 'administradoresCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'navBar.html'
+
                     }
                 }
             
@@ -52,9 +95,20 @@
                     clienteUsuario: null
                 },
                 views: {
+                    'bannerView': {
+                        controller: 'loginCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
+                    },
                     'mainView': {
                         templateUrl: basePath + 'delete/administradores.delete.html',
                         controller: 'administradorDeleteCtrl'
+                    },
+                    'navBar': {
+                        controller: 'administradoresCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'navBar.html'
+
                     }
                 }
             });
