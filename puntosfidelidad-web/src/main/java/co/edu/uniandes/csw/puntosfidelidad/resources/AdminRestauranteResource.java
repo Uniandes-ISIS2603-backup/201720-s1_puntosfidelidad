@@ -6,8 +6,11 @@
 package co.edu.uniandes.csw.puntosfidelidad.resources;
 
 import co.edu.uniandes.csw.puntosfidelidad.dtos.ComentarioDetailDTO;
+import co.edu.uniandes.csw.puntosfidelidad.dtos.RestauranteDTO;
 import co.edu.uniandes.csw.puntosfidelidad.dtos.RestauranteDetailDTO;
 import co.edu.uniandes.csw.puntosfidelidad.ejb.AdministradorLogic;
+import co.edu.uniandes.csw.puntosfidelidad.ejb.RestauranteLogic;
+import co.edu.uniandes.csw.puntosfidelidad.entities.AdministradorEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
@@ -33,6 +36,8 @@ public class AdminRestauranteResource {
     @Inject
     private AdministradorLogic adminLogic;
 
+    @Inject
+    private RestauranteLogic logic;
     /**
      * Convierte una lista de RestauranteEntity a una lista de ComentarioDetailDTO.
      *
@@ -95,16 +100,22 @@ public class AdminRestauranteResource {
     /**
      * Asocia un Restaurante existente a un Administrador
      *
-     * @param usuario Identificador de la instancia de Cliente
+     * @param nombre Identificador de la instancia de Cliente
      * @param nit Identificador de la instancia de Comentario
      * @return Instancia de ComentarioDetailDTO que fue asociada a Cliente
      * 
      */
-    @POST
-    @Path("{restaurantesId: \\d+}")
-    public RestauranteDetailDTO addRestaurantes(@PathParam("usuario") String usuario, @PathParam("restaurantesId") String nit) {
-        return new RestauranteDetailDTO(adminLogic.addRestaurantes(usuario, nit));
-    }
+     @POST    
+    public RestauranteDTO createRestaurante(@PathParam("usuario") String usuario,RestauranteDTO res ) throws BusinessLogicException
+    {
+        AdministradorEntity admin= adminLogic.getAdministrador(usuario);
+        RestauranteEntity restaurant= res.toEntity();
+        restaurant.setAdministrador(admin);        
+        List lista= admin.getRestaurantes();
+        lista.add(restaurant);
+        admin.setRestaurantes(lista);
+        return new RestauranteDTO(logic.createRestaurante(restaurant));
+    }  
 
     /**
      * Remplaza las instancias de Restaurante asociadas a una instancia de Administrador
@@ -116,6 +127,7 @@ public class AdminRestauranteResource {
      * 
      */
     @PUT
+    @Path("{restaurantesId: \\d+}")
     public List<RestauranteDetailDTO> replaceRestaurantes(@PathParam("usuario") String usuario, List<RestauranteDetailDTO> restaurantes) {
         return restaurantesListEntity2DTO(adminLogic.replaceRestaurantes(usuario, restaurantesListDTO2Entity(restaurantes)));
     }

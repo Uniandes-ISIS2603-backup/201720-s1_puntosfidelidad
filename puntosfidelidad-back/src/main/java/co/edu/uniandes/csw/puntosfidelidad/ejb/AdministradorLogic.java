@@ -73,7 +73,7 @@ public class AdministradorLogic {
             entity.setUsuario(entity.getUsuario());
         }
         persistence.create(entity);
-        LOGGER.info("Termina proceso de creación de cliente");
+        LOGGER.info("Termina proceso de creación de administrador");
         return entity;
     }
     
@@ -92,7 +92,7 @@ public class AdministradorLogic {
     }
 
     public AdministradorEntity getAdministrador(String usuario) {
-       LOGGER.log(Level.INFO, "Inicia proceso de consultar cliente con id={0}", usuario);
+       LOGGER.log(Level.INFO, "Inicia proceso de consultar Administrador con id={0}", usuario);
        AdministradorEntity admin= persistence.find(usuario);
        
        if(admin==null)
@@ -120,51 +120,45 @@ public class AdministradorLogic {
                 
                 List<ProductoEntity> productos = res.getProductos();
                 if (productos != null) {
-                for(ProductoEntity prod:productos){
-                        
+                for(ProductoEntity prod:productos){  
                     productoLogic.delete(prod.getId());
                     LOGGER.log(Level.INFO, "BORRO PRODUCTOOOS", usuario);
-                }
+                  }
                 }
                 
                 List<EventoEntity> eventos = res.getEventos();
                 if (eventos != null) {
-                for(EventoEntity eve:eventos){
-                                   
+                for(EventoEntity eve:eventos){              
                 eventoLogic.delete(eve.getNombre());
                 LOGGER.log(Level.INFO, "BORRO EVENTOOOOS", usuario);
+                  }
                 }
-                }
+                
                 
                 List<SucursalEntity> sucursales = res.getSucursales();
                 if (sucursales != null) {
                  for(SucursalEntity sucur:sucursales){
-                     
-                   
+
                     List<ComentarioEntity> comentarios = sucur.getComentarios();
                     if (comentarios != null) {
                     for(ComentarioEntity coment:comentarios){
                         
                     comentarioLogic.delete(coment.getId());
                     LOGGER.log(Level.INFO, "BORRO COMENTARIOOS", usuario);
-                   }  
-                    
+                     }   
                     }   
                     
                 sucursalLogic.delete(sucur.getId());
                 LOGGER.log(Level.INFO, "BORRO SUCURSAAAL", usuario);
-            }   
-            }    
+              }   
+             }    
                 restauranteLogic.delete(res.getNit());
                  LOGGER.log(Level.INFO, "BORRO RESTAURANTE", usuario);
-            
-            
+
             }
             }
         } catch (Exception e) {
-        }
-
-                
+        }     
            persistence.delete(usuario);
            LOGGER.log(Level.INFO, "BORRO ADMIIIN :)", usuario);
     }
@@ -223,19 +217,19 @@ public class AdministradorLogic {
     }
 
     /**
-     * Asocia un Restaurante existente a un cliente
+     * Asocia un Restaurante existente a un Admin
      *
      * @param usuario Identificador de la instancia de cliente
-     * @param tarjetaId Identificador de la instancia de TarjetaDeCredito      * @return Instancia de RestauaranteEntity que fue asociada a admin
+     * @param nit Identificador de la instancia de TarjetaDeCredito      * @return Instancia de RestauaranteEntity que fue asociada a admin
      * @return Instancia de RestauranteEntity buscada 
      */
-    public RestauranteEntity addRestaurantes (String usuario, String tarjetaId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de asociar un autor al cliente con id = {0}", usuario);
+    public RestauranteEntity addRestaurantes (String usuario, String nit) {
+        LOGGER.log(Level.INFO, "Inicia proceso de asociar un restaurante al admin con id = {0}", usuario);
         AdministradorEntity administradorEntity = getAdministrador(usuario);
-        RestauranteEntity tarjetaEntity = new RestauranteEntity();
-        tarjetaEntity.setNit(tarjetaId);
-        administradorEntity.getRestaurantes().add(tarjetaEntity);
-        return getRestaurante(usuario, tarjetaId);
+        RestauranteEntity resEntity = new RestauranteEntity();
+        resEntity.setNit(nit);
+        administradorEntity.getRestaurantes().add(resEntity);
+        return getRestaurante(usuario, nit);
     }
 
     /**
@@ -248,7 +242,7 @@ public class AdministradorLogic {
      * 
      */
     public List<RestauranteEntity> replaceRestaurantes (String usuario, List<RestauranteEntity> list) {
-        LOGGER.log(Level.INFO, "Inicia proceso de reemplazar un autor del cliente con id = {0}", usuario);
+        LOGGER.log(Level.INFO, "Inicia proceso de reemplazar un restaurante del administrador con id = {0}", usuario);
         AdministradorEntity clienteEntity = getAdministrador(usuario);
         clienteEntity.setRestaurantes(list);
         return clienteEntity.getRestaurantes();
