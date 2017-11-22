@@ -94,7 +94,7 @@ public class AdministradorResource {
      */
     @PUT
     @Path("{usuario: [a-zA-Z0-9][a-zA-Z0-9]*}") 
-    public AdministradorDetailDTO updateCliente(@PathParam("usuario") String usuario, AdministradorDetailDTO admin) throws BusinessLogicException {
+    public AdministradorDetailDTO updateAdministrador(@PathParam("usuario") String usuario, AdministradorDetailDTO admin) throws BusinessLogicException {
         admin.setUsuario(usuario);
         AdministradorEntity entity = logic.getAdministrador(usuario);
         if (entity == null) {
