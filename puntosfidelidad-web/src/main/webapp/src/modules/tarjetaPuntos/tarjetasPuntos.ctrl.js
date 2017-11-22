@@ -47,7 +47,7 @@
 
             $scope.revisarTP = function(tarjetaPts)
             {
-                if(tarjetaPts.montoBasico == undefined || tarjetaPts.montoActual == undefined)      
+                if(tarjetaPts.montoBasico === undefined || tarjetaPts.montoActual === undefined)      
                 {
                     return false;
                 }          
@@ -67,7 +67,7 @@
                 
                 for(tp in tarjetas)
                 {
-                    if(tarjetas[tp].cliente.usuario == usuario)
+                    if(tarjetas[tp].cliente.usuario === usuario)
                     {
                         tarjetasCliente.push(tarjetas[tp]);
                     }

@@ -192,7 +192,8 @@ public class AdministradorLogic {
     public List<RestauranteEntity> listRestaurantes(String usuario) {
         
         List<RestauranteEntity> lista= getAdministrador(usuario).getRestaurantes();
-        if(lista.isEmpty()) throw new WebApplicationException("El Administrador que consulta aún no tiene restaurantes", 404);
+        if(lista.isEmpty())
+            throw new WebApplicationException("El Administrador que consulta aún no tiene restaurantes", 404);
         return lista;
     }
     

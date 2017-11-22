@@ -18,10 +18,9 @@ public class RestauranteDTO implements Serializable{
      //Atributo que modela el tipo de comida del restaurante
     private String tipoComida;
     
-    //Constructor vacío (¡¡¡OLBIGATORIO!!!)
     public RestauranteDTO()
     {
-        
+        //Constructor vacío (¡¡¡OLBIGATORIO!!!)    
     }
     
     /**

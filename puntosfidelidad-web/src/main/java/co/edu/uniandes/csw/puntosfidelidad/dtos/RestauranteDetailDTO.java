@@ -22,6 +22,43 @@ public class RestauranteDetailDTO extends RestauranteDTO{
     //Lista de productos
     private List<ProductoDTO> productos;
 
+    // Contructor 'vacío'
+    public RestauranteDetailDTO()
+    {
+        super();
+    }
+
+    /**
+     * Crea un objeto RestaureanteDetailDTO a partir de un objetoRestauranteEntity
+     * incluyendo los atributos de ClienteDTO.
+     *
+     * @param entity Entidad RestauranteEntity desde la cual se va a crear el nuevo
+     * objeto.
+     *
+     */
+    public RestauranteDetailDTO(RestauranteEntity entity)
+    {
+        super(entity);
+        
+         if (entity != null) {
+            sucursales = new ArrayList<>();
+            for (SucursalEntity entitySucursal : entity.getSucursales()) {
+                sucursales.add(new SucursalDTO(entitySucursal));
+            }
+            
+            productos = new ArrayList<>();
+            for (ProductoEntity entityProductos : entity.getProductos()) {
+                productos.add(new ProductoDTO(entityProductos));
+            }
+            
+            eventos = new ArrayList<>();
+            for (EventoEntity entityEvento : entity.getEventos()) {
+                eventos.add(new EventoDTO(entityEvento));
+            }
+            
+         }    
+    }
+
      /**
      *Obtiene la lista de sucursales
      *
@@ -58,44 +95,6 @@ public class RestauranteDetailDTO extends RestauranteDTO{
 
     public void setProductos(List<ProductoDTO> productos) {
         this.productos = productos;
-    }
-    
-    // Contructor
-    public RestauranteDetailDTO()
-    {
-        super();
-    }
-    
-      /**
-     * Crea un objeto RestaureanteDetailDTO a partir de un objetoRestauranteEntity
-     * incluyendo los atributos de ClienteDTO.
-     *
-     * @param entity Entidad RestauranteEntity desde la cual se va a crear el nuevo
-     * objeto.
-     *
-     */
-    public RestauranteDetailDTO(RestauranteEntity entity)
-    {
-        super(entity);
-        
-         if (entity != null) {
-            sucursales = new ArrayList<>();
-            for (SucursalEntity entitySucursal : entity.getSucursales()) {
-                sucursales.add(new SucursalDTO(entitySucursal));
-            }
-            
-            productos = new ArrayList<>();
-            for (ProductoEntity entityProductos : entity.getProductos()) {
-                productos.add(new ProductoDTO(entityProductos));
-            }
-            
-            eventos = new ArrayList<>();
-            for (EventoEntity entityEvento : entity.getEventos()) {
-                eventos.add(new EventoDTO(entityEvento));
-            }
-            
-         }    
-        
     }
     
     /**

@@ -24,10 +24,9 @@ public class AdministradorDTO implements Serializable{
     //Atributo de la contrsaeña del administrador
     private String contrasena;
 
-    //Constructor vacío (¡¡¡OLBIGATORIO!!!)
     public AdministradorDTO()
-    {
-        
+    {        
+        //Constructor vacío (¡¡¡OLBIGATORIO!!!)
     }
     
     /**

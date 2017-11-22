@@ -4,11 +4,7 @@
             /**
              * Array con las imagenes que se iran mostrando en la web
              */
-            var imagenes = new Array(
-                    './media/I1.jpg',
-                    './media/I2.jpg',
-                    './media/I3.jpg'
-                    );
+            var imagenes = ['./media/I1.jpg', './media/I2.jpg', './media/I3.jpg'];
 
             /**
              * Funcion para cambiar la imagen

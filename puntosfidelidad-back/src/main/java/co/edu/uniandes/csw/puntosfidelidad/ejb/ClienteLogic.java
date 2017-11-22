@@ -42,6 +42,11 @@ public class ClienteLogic {
     @Inject
     private CompraPersistence compraPersistence;
 
+    private static final String CLIENTE_ANONIMO = "Anonimo";
+    private static final String MENSAJE_INICIAR_LOGGER = "Inicia proceso de asociar un autor del cliente con id = {0}";
+    private static final String MENSAJE_ASOCIAR_LOGGER = "Inicia proceso de reemplazar un autor del cliente con id = {0}";
+    private static final String MENSAJE_BORRAR_LOGGER = "Inicia proceso de borrar un autor del cliente con id = {0}";
+
     public List<ClienteEntity> getClientes() {
         LOGGER.info("Inicia proceso de consultar todos los clientes");
         List<ClienteEntity> clientes = persistence.findAll();
@@ -70,10 +75,10 @@ public class ClienteLogic {
         if (!validateContrasena(entity.getContrasena())) {
             throw new BusinessLogicException("La contraseña no es valida: " + entity.getContrasena());
         }
-        if(entity.getNombre()==null || entity.getNombre().equals("")){
+        if(entity.getNombre()==null || "".equals(entity.getNombre())){
             entity.setNombre(entity.getUsuario());
         }
-        if(entity.getImagen().equals("")|| entity.getImagen()==null)
+        if("".equals(entity.getImagen())|| entity.getImagen()==null)
         {
             entity.setImagen("http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png");
         }
@@ -83,7 +88,7 @@ public class ClienteLogic {
     }
 
     public ClienteEntity updateCliente(String usuario, ClienteEntity entity) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar cliente con id={0}", usuario);
+        LOGGER.log(Level.INFO, "Inicia actualización de cliente con id={0}", usuario);
         if (!usuario.equals(entity.getUsuario())) {
             throw new BusinessLogicException("No es posible cambiar el usuario");
         }
@@ -97,26 +102,28 @@ public class ClienteLogic {
             entity.setImagen("http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png");
         }
         ClienteEntity newEntity = persistence.update(entity);
-        LOGGER.log(Level.INFO, "Termina proceso de actualizar cliente con id={0}", entity.getUsuario());
         return newEntity;
     }
 
     public void deleteCliente(String usuario) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicia proceso de borrar cliente con id={0}", usuario);
         ClienteEntity actual= persistence.find(usuario);
-        ClienteEntity anonimo= persistence.find("Anonimo");
+        ClienteEntity anonimo= persistence.find(CLIENTE_ANONIMO);
         if(actual==null) {
             throw new BusinessLogicException("El usuario no existe");
         }  
         if(anonimo==null)
         {
             anonimo= new ClienteEntity();
-            anonimo.setUsuario("Anonimo");
-            anonimo.setNombre("Anonimo");
-            anonimo.setContrasena("Anonimo");
+            anonimo.setUsuario(CLIENTE_ANONIMO);
+            anonimo.setNombre(CLIENTE_ANONIMO);
+            anonimo.setContrasena(CLIENTE_ANONIMO);
             anonimo=persistence.create(anonimo);
         }        
-        if(persistence.find("Anonimo")!=null)LOGGER.log(Level.INFO, "ANONIMO CREADO");
+        
+        if(persistence.find(CLIENTE_ANONIMO)!=null)
+            LOGGER.log(Level.INFO, "ANONIMO CREADO");
+        
         deleteClienteComentarios(actual, anonimo);        
         LOGGER.log(Level.INFO, "Comentarios actualizados");
         
@@ -207,7 +214,7 @@ public class ClienteLogic {
      * @return Instancia de TarjetaDeCreditoEntity buscada 
      */
     public TarjetaDeCreditoEntity addTarjetaDeCredito (String usuario, Long tarjetaId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de asociar un autor al cliente con id = {0}", usuario);
+        LOGGER.log(Level.INFO, MENSAJE_ASOCIAR_LOGGER, usuario);
         ClienteEntity clienteEntity = getCliente(usuario);
         TarjetaDeCreditoEntity tarjetaEntity = new TarjetaDeCreditoEntity();
         tarjetaEntity.setId(tarjetaId);
@@ -225,7 +232,7 @@ public class ClienteLogic {
      * 
      */
     public List<TarjetaDeCreditoEntity> replaceTarjetasDeCredito (String usuario, List<TarjetaDeCreditoEntity> list) {
-        LOGGER.log(Level.INFO, "Inicia proceso de reemplazar un autor del cliente con id = {0}", usuario);
+        LOGGER.log(Level.INFO, MENSAJE_ASOCIAR_LOGGER, usuario);
         ClienteEntity clienteEntity = getCliente(usuario);
         clienteEntity.setTarjetasDeCredito(list);
         return clienteEntity.getTarjetasDeCredito();
@@ -238,7 +245,7 @@ public class ClienteLogic {
      * @param tarjetaId Identificador de la instancia de TarjetaDeCredito      * 
      */
     public void removeTarjetaDeCredito (String usuario, Long tarjetaId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar un autor del cliente con id = {0}", usuario);
+        LOGGER.log(Level.INFO, MENSAJE_BORRAR_LOGGER, usuario);
         ClienteEntity entity = getCliente(usuario);
         TarjetaDeCreditoEntity tarjetaEntity = new TarjetaDeCreditoEntity();
         tarjetaEntity.setId(tarjetaId);
@@ -287,7 +294,7 @@ public class ClienteLogic {
      * @return Instancia de RecargaEntity buscada 
      */
     public RecargaEntity addRecarga (String usuario, Long recargaId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de asociar un autor al cliente con id = {0}", usuario);
+        LOGGER.log(Level.INFO, MENSAJE_ASOCIAR_LOGGER, usuario);
         ClienteEntity clienteEntity = getCliente(usuario);
         RecargaEntity recargaEntity = new RecargaEntity();
         recargaEntity.setId(recargaId);
@@ -305,7 +312,7 @@ public class ClienteLogic {
      * 
      */
     public List<RecargaEntity> replaceRecargas (String usuario, List<RecargaEntity> list) {
-        LOGGER.log(Level.INFO, "Inicia proceso de reemplazar un autor del cliente con id = {0}", usuario);
+        LOGGER.log(Level.INFO, MENSAJE_ASOCIAR_LOGGER, usuario);
         ClienteEntity clienteEntity = getCliente(usuario);
         clienteEntity.setRecargas(list);
         return clienteEntity.getRecargas();
@@ -317,7 +324,7 @@ public class ClienteLogic {
      * @param recargaId Identificador de la instancia de Recarga      * 
      */
     public void removeRecarga (String usuario, Long recargaId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar un autor del cliente con id = {0}", usuario);
+        LOGGER.log(Level.INFO, MENSAJE_BORRAR_LOGGER, usuario);
         ClienteEntity entity = getCliente(usuario);
         RecargaEntity recargaEntity = new RecargaEntity();
         recargaEntity.setId(recargaId);
@@ -338,7 +345,8 @@ public class ClienteLogic {
     public List<TarjetaPuntosEntity> listTarjetasPuntos(String usuario) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los Tarjetas de Credito del usuario con id = {0}", usuario);
         List<TarjetaPuntosEntity> lista= getCliente(usuario).getTarjetasPuntos();
-        if(lista.isEmpty()) throw new BusinessLogicException("El cliente que consulta aún no tiene tarjetas de puntos");
+        if(lista.isEmpty()) 
+            throw new BusinessLogicException("El cliente que consulta aún no tiene tarjetas de puntos");
         return lista;
     }
 
@@ -370,7 +378,7 @@ public class ClienteLogic {
      * @return Instancia de TarjetaPuntosEntity buscada 
      */
     public TarjetaPuntosEntity addTarjetaPuntos (String usuario, Long tarjetaId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de asociar un autor al cliente con id = {0}", usuario);
+        LOGGER.log(Level.INFO, MENSAJE_ASOCIAR_LOGGER, usuario);
         ClienteEntity clienteEntity = getCliente(usuario);
         TarjetaPuntosEntity tarjetaEntity = new TarjetaPuntosEntity();
         tarjetaEntity.setId(tarjetaId);
@@ -388,7 +396,7 @@ public class ClienteLogic {
      * 
      */
     public List<TarjetaPuntosEntity> replaceTarjetasPuntos (String usuario, List<TarjetaPuntosEntity> list) {
-        LOGGER.log(Level.INFO, "Inicia proceso de reemplazar un autor del cliente con id = {0}", usuario);
+        LOGGER.log(Level.INFO, MENSAJE_ASOCIAR_LOGGER, usuario);
         ClienteEntity clienteEntity = getCliente(usuario);
         clienteEntity.setTarjetasPuntos(list);
         return clienteEntity.getTarjetasPuntos();
@@ -401,7 +409,7 @@ public class ClienteLogic {
      * @param tarjetaId Identificador de la instancia de TarjetaPuntos      * 
      */
     public void removeTarjetaPuntos (String usuario, Long tarjetaId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar un autor del cliente con id = {0}", usuario);
+        LOGGER.log(Level.INFO, MENSAJE_BORRAR_LOGGER, usuario);
         ClienteEntity entity = getCliente(usuario);
         TarjetaPuntosEntity tarjetaEntity = new TarjetaPuntosEntity();
         tarjetaEntity.setId(tarjetaId);
@@ -421,7 +429,8 @@ public class ClienteLogic {
     public List<CompraEntity> listCompras(String usuario) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los autores del libro con id = {0}", usuario);
         List<CompraEntity> lista= getCliente(usuario).getCompras();
-        if(lista.isEmpty()) throw new BusinessLogicException("El cliente que consulta aún no tiene compras");
+        if(lista.isEmpty()) 
+            throw new BusinessLogicException("El cliente que consulta aún no tiene compras");
         return lista;
     }
 
@@ -502,7 +511,8 @@ public class ClienteLogic {
     */
     public List<ComentarioEntity> listComentarios(String usuario) throws BusinessLogicException {
         List<ComentarioEntity> lista= getCliente(usuario).getComentarios();
-        if(lista.isEmpty()) throw new BusinessLogicException("El cliente que consulta aún no tiene comentarios");
+        if(lista.isEmpty()) 
+            throw new BusinessLogicException("El cliente que consulta aún no tiene comentarios");
         return lista;
     }
 

@@ -52,19 +52,22 @@
             {
                 for(ph in elem.fotos)
                 {
-                    url = elem.fotos[ph].url;
-                    if(!regExpHttp.test(url))
-                    {
-                        $scope.mensajeStyle.colorClass = "red";                      
-                        if($scope.mensaje == '')
+                    if (elem.fotos.hasOwnProperty(ph)) 
+                    {   
+                        url = elem.fotos[ph].url;
+                        if(!regExpHttp.test(url))
                         {
-                            $scope.mensaje = "Inserte una url válida";                              
+                            $scope.mensajeStyle.colorClass = "red";                      
+                            if($scope.mensaje === '')
+                            {
+                                $scope.mensaje = "Inserte una url válida";                              
+                            }
+                            else
+                            {
+                                $scope.mensaje = "\nInserte una url válida"; 
+                            }
+                            return false;
                         }
-                        else
-                        {
-                            $scope.mensaje = "\nInserte una url válida"; 
-                        }
-                        return false;
                     }
                 }
 
@@ -97,7 +100,7 @@
                 
                 for(cmnt in comentarios)
                 {
-                    if(comentarios[cmnt].cliente.usuario == usuario)
+                    if(comentarios[cmnt].cliente.usuario === usuario)
                     {
                         comentariosCliente.push(comentarios[cmnt]);
                     }
@@ -152,7 +155,7 @@
             $scope.postComentario = function(nuevoComentario)
             {
                 console.log(nuevoComentario)
-                if(nuevoComentario.calificacion != undefined)
+                if(nuevoComentario.calificacion !== undefined)
                 {
                     $scope.crear = false;
                     $scope.elements = $scope.elements.concat(nuevoComentario)
