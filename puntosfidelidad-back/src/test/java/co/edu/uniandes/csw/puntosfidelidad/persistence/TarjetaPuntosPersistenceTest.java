@@ -209,7 +209,8 @@ public class TarjetaPuntosPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 8; i++) {
             TarjetaPuntosEntity entity = factory.manufacturePojo(TarjetaPuntosEntity.class);
-
+            em.persist(entity);
+            
             List<CompraEntity> compras = new ArrayList<>();
             
             //Agrego 3 compras
@@ -228,7 +229,7 @@ public class TarjetaPuntosPersistenceTest {
             entity.setCliente(cliente); 
             em.persist(cliente);  
             
-            em.persist(entity);
+            em.merge(entity);
             data.add(entity);
         }        
     }

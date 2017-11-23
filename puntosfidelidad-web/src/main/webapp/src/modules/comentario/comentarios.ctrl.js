@@ -106,17 +106,17 @@
                     }
                 }
 
-                console.log("comentarios: ");
-                console.log(comentariosCliente);
+                //console.log("comentarios: ");
+                //console.log(comentariosCliente); comentado para reducir deuda técnica
 
                 $http.put('http://localhost:8080/puntosfidelidad-web/api/clientes/' + usuario + '/comentarios', comentarios).then(
                     function todoBien(response) 
                     {
-                        console.log("todo bien!");
+                        //console.log("todo bien!"); 
                     },
                     function todoMal(error)
                     {
-                        console.log(error);
+                        //console.log(error);
                     }
                 );
             }
@@ -137,16 +137,16 @@
                             if(index > -1)
                             {
                                 $scope.elements.splice(index, 1);
-                                console.log("todo bien!");
+                                //console.log("todo bien!"); comentado para reducir deuda técnica
                             }
                             else
                             {
-                                console.log("Error con el index!")
+                                // console.log("Error con el index!")comentado para reducir deuda técnica
                             }
                         },
                         function todoMal(error)
                         {
-                            console.log(error);
+                            // console.log(error); comentado para reducir deuda técnica
                         }
                     );
                 }
@@ -154,12 +154,10 @@
 
             $scope.postComentario = function(nuevoComentario)
             {
-                console.log(nuevoComentario)
                 if(nuevoComentario.calificacion !== undefined)
                 {
                     $scope.crear = false;
                     $scope.elements = $scope.elements.concat(nuevoComentario)
-                    console.log(nuevoComentario);
                 }
             }
 
