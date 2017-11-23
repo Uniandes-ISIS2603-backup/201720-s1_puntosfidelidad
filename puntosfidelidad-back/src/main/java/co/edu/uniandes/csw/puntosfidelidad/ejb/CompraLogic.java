@@ -30,8 +30,6 @@ public class CompraLogic {
     @Inject
     private ProductoLogic prodLogic;
     
-    private static final Logger LOGGER = Logger.getLogger(CompraLogic.class.getName());
-    
     /*
      * CRUD
      */

@@ -48,14 +48,14 @@ public class ClienteLogic {
     private static final String MENSAJE_BORRAR_LOGGER = "Inicia proceso de borrar un autor del cliente con id = {0}";
 
     public List<ClienteEntity> getClientes() {
-        LOGGER.info("Inicia proceso de consultar todos los clientes");
+        LOGGER.info(MENSAJE_INICIAR_LOGGER);
         List<ClienteEntity> clientes = persistence.findAll();
         LOGGER.info("Termina proceso de consultar todos los clientes");
         return clientes;
     }
 
     public ClienteEntity getCliente(String usuario) {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar cliente con id={0}", usuario);
+        LOGGER.log(Level.INFO, MENSAJE_INICIAR_LOGGER, usuario);
         ClienteEntity cliente = persistence.find(usuario);
         if (cliente == null) {
             LOGGER.log(Level.SEVERE, "El cliente con el id {0} no existe", usuario);
@@ -101,12 +101,11 @@ public class ClienteLogic {
         if(entity.getImagen()==null || entity.getImagen().isEmpty()|| entity.getImagen().startsWith("http://")|| entity.getImagen().startsWith("https://") ){
             entity.setImagen("http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png");
         }
-        ClienteEntity newEntity = persistence.update(entity);
-        return newEntity;
+        return persistence.update(entity);
     }
 
     public void deleteCliente(String usuario) throws BusinessLogicException{
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar cliente con id={0}", usuario);
+        LOGGER.log(Level.INFO, MENSAJE_BORRAR_LOGGER, usuario);
         ClienteEntity actual= persistence.find(usuario);
         ClienteEntity anonimo= persistence.find(CLIENTE_ANONIMO);
         if(actual==null) {

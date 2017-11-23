@@ -24,7 +24,7 @@ public class FotoPersistence {
     @PersistenceContext( unitName = "puntosfidelidadPU")
     private EntityManager em;
     
-    private Logger LOGGER = Logger.getLogger(ComentarioPersistence.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(ComentarioPersistence.class.getName());
     
     public FotoEntity create(FotoEntity entity)
     {
@@ -55,10 +55,10 @@ public class FotoPersistence {
         return query.getResultList();
     }
     
-    public FotoEntity findWithURL( String URL)
+    public FotoEntity findWithURL( String uRL)
     {       
         TypedQuery<FotoEntity> q = em.createQuery("select p from FotoEntity p where (p.URL = :fotoURL)", FotoEntity.class);
-        q.setParameter("fotoURL", URL);
+        q.setParameter("fotoURL", uRL);
         return q.getSingleResult();
     }
     

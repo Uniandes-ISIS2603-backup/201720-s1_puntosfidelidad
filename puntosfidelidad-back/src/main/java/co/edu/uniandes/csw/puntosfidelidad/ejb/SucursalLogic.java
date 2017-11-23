@@ -5,13 +5,10 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
-import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.UbicacionEntity;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.SucursalPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -90,7 +87,8 @@ public class SucursalLogic {
     public List<CompraEntity> listCompras(Long id) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar todos las compras de la sucursal con id = {0}", id);
         List<CompraEntity> lista= getSucursal(id).getCompras();
-        if(lista.isEmpty()) throw new BusinessLogicException("La Sucursal que consulta aún no tiene compras");
+        if(lista.isEmpty())
+            throw new BusinessLogicException("La Sucursal que consulta aún no tiene compras");
         return lista;
     }
 
@@ -171,7 +169,8 @@ public class SucursalLogic {
     */
     public List<ComentarioEntity> listComentarios(Long id) throws BusinessLogicException {
         List<ComentarioEntity> lista= getSucursal(id).getComentarios();
-        if(lista.isEmpty()) throw new BusinessLogicException("El cliente que consulta aún no tiene comentarios");
+        if(lista.isEmpty())
+            throw new BusinessLogicException("El cliente que consulta aún no tiene comentarios");
         return lista;
     }
 

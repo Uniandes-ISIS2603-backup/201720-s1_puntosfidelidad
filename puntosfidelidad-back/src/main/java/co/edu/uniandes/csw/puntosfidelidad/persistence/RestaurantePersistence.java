@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
-import co.edu.uniandes.csw.puntosfidelidad.entities.AdministradorEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -54,6 +53,7 @@ public class RestaurantePersistence {
         return q.getSingleResult();}
         catch(Exception e)
         {
+            //no encontró restaurante
             return null;
         }
     }

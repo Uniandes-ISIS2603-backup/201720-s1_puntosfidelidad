@@ -7,13 +7,10 @@ package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.AdministradorEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.EventoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistence;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.ComentarioPersistence;
@@ -22,6 +19,7 @@ import co.edu.uniandes.csw.puntosfidelidad.persistence.ProductoPersistence;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.RestaurantePersistence;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.SucursalPersistence;
 import java.util.List;
+import java.util.function.Supplier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -158,6 +156,7 @@ public class AdministradorLogic {
             }
             }
         } catch (Exception e) {
+            LOGGER.info((Supplier<String>) e);
         }     
            persistence.delete(usuario);
            LOGGER.log(Level.INFO, "BORRO ADMIIIN :)", usuario);

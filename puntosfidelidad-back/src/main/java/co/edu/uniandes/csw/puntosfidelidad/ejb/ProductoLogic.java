@@ -5,10 +5,8 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
-import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
-import co.edu.uniandes.csw.puntosfidelidad.persistence.CompraPersistence;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.ProductoPersistence;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.RestaurantePersistence;
 import java.util.List;
@@ -28,8 +26,6 @@ public class ProductoLogic {
      
      @Inject
      private RestaurantePersistence restaurane;
-    
-    private static final Logger LOGGER = Logger.getLogger(ProductoLogic.class.getName());
     
     /*
      * CRUD
