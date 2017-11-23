@@ -10,7 +10,7 @@ import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.TarjetaPuntosPersistence;
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -61,7 +61,7 @@ public class TarjetaPuntosLogic {
                 }
             }
         } catch (Exception e) {
-            LOGGER.info((Supplier<String>) e);
+            LOGGER.log(Level.INFO, e.getMessage());
         }
         persistence.delete(id);
     }

@@ -36,6 +36,10 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @RequestScoped
 public class ClienteResource {
+    
+    private static final String RUTA_CLIENTE = "El recurso /cliente/";  
+    private static final String NEX = " no existe.";
+    
     @Inject
     ClienteLogic clienteLogic;
     
@@ -59,7 +63,7 @@ public class ClienteResource {
     public ClienteDetailDTO getCliente(@PathParam("usuario") String usuario) throws BusinessLogicException {
         ClienteEntity entity = clienteLogic.getCliente(usuario);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /cliente/" + usuario + " no existe.", 404);
+            throw new WebApplicationException(RUTA_CLIENTE + usuario + NEX, 404);
         }
         return new ClienteDetailDTO(entity);
     }
@@ -88,7 +92,7 @@ public class ClienteResource {
         cliente.setUsuario(usuario);
         ClienteEntity entity = clienteLogic.getCliente(usuario);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /cliente/" + usuario + " no existe.", 404);
+            throw new WebApplicationException(RUTA_CLIENTE + usuario + NEX, 404);
         }
         return new ClienteDetailDTO(clienteLogic.updateCliente(usuario, cliente.toEntity()));
     }
@@ -103,7 +107,7 @@ public class ClienteResource {
     public void deleteCliente(@PathParam("usuario") String usuario) throws BusinessLogicException {
         ClienteEntity entity = clienteLogic.getCliente(usuario);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /cliente/" + usuario + " no existe.", 404);
+            throw new WebApplicationException(RUTA_CLIENTE + usuario + NEX, 404);
         }
         clienteLogic.deleteCliente(usuario);
     }
@@ -159,7 +163,7 @@ public class ClienteResource {
     public Class<ClienteComentarioResource> getClienteComentarioResource(@PathParam("usuario") String usuario) {
         ClienteEntity entity = clienteLogic.getCliente(usuario);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /cliente/" + usuario + "/coemntarios no existe.", 404);
+            throw new WebApplicationException(RUTA_CLIENTE + usuario + "/coemntarios no existe.", 404);
         }
         return ClienteComentarioResource.class;
     }
@@ -173,7 +177,7 @@ public class ClienteResource {
     public Class<ClienteTarjetaPuntosResource> getClienteTarjetaPuntosResource(@PathParam("usuario") String usuario) {
         ClienteEntity entity = clienteLogic.getCliente(usuario);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /cliente/" + usuario + "/coemntarios no existe.", 404);
+            throw new WebApplicationException(RUTA_CLIENTE + usuario + "/coemntarios no existe.", 404);
         }
         return ClienteTarjetaPuntosResource.class;
     }

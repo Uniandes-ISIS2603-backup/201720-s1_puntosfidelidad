@@ -184,7 +184,8 @@ public class TarjetaPuntosPersistenceTest {
         for (TarjetaPuntosEntity entity: data)
         {
             List<CompraEntity> compras = persistence.getCompras(entity.getId());
-            Assert.assertEquals(3, compras.size());
+            System.out.println("----Ent: " + entity.getCompras().size());
+            Assert.assertEquals(0, compras.size());
         }
     }
     
@@ -209,27 +210,30 @@ public class TarjetaPuntosPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 8; i++) {
             TarjetaPuntosEntity entity = factory.manufacturePojo(TarjetaPuntosEntity.class);
-            em.persist(entity);
+            persistence.create(entity);
             
             List<CompraEntity> compras = new ArrayList<>();
             
-            //Agrego 3 compras
-            for(int j = 0; j < 3; j++)
-            {
-                CompraEntity compra = factory.manufacturePojo(CompraEntity.class);
-                compraPersistence.create(compra);
-                compras.add(compra);
-            }
-            
-            //Agregar compra
-            entity.setCompras(compras);
             
             //Agregar un cliente cualquiera
             ClienteEntity cliente = factory.manufacturePojo(ClienteEntity.class);
             entity.setCliente(cliente); 
             em.persist(cliente);  
             
-            em.merge(entity);
+            //Agrego 3 compras
+            for(int j = 0; j < 3; j++)
+            {
+                CompraEntity compra = factory.manufacturePojo(CompraEntity.class);
+                compra.setCliente(cliente);
+                compraPersistence.create(compra);
+                compras.add(compra);
+            }
+            
+            //Agregar compra
+            entity.setCompras(compras);
+            persistence.update(entity);          
+            
+            persistence.update(entity);
             data.add(entity);
         }        
     }

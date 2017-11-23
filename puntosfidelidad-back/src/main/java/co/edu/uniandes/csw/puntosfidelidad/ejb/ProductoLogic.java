@@ -10,7 +10,6 @@ import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.ProductoPersistence;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.RestaurantePersistence;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 

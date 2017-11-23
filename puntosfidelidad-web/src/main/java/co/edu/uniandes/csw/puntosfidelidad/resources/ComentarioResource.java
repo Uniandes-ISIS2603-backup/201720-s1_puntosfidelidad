@@ -35,7 +35,7 @@ public class ComentarioResource {
     @GET
     public List<ComentarioDetailDTO> getComentarios()
     {
-        return ListEntityToDetailDTO(logic.getComentarios());
+        return listEntityToDetailDTO(logic.getComentarios());
     }
     
     /**
@@ -50,8 +50,7 @@ public class ComentarioResource {
     {
         try
         {
-            ComentarioDetailDTO busq = new ComentarioDetailDTO (logic.getComentario(id));
-            return busq;
+            return new ComentarioDetailDTO (logic.getComentario(id));
         }
         catch (Exception e)
         {
@@ -69,9 +68,9 @@ public class ComentarioResource {
     {
         try
         {
-            ComentarioDetailDTO busq = new ComentarioDetailDTO (logic.getComentario(id));
+            logic.getComentario(id);
         }
-        catch (Exception e)
+        catch (NullPointerException e)
         {
             throw new WebApplicationException("El comentario con el id " + id + " no existe", 404);
         } 
@@ -86,7 +85,7 @@ public class ComentarioResource {
      * con la información de las entidades que entraron por parámetro
      */
     
-    private List<ComentarioDetailDTO> ListEntityToDetailDTO(List<ComentarioEntity> entities)
+    private List<ComentarioDetailDTO> listEntityToDetailDTO(List<ComentarioEntity> entities)
     {
         List<ComentarioDetailDTO> DTOList = new ArrayList<>();
         

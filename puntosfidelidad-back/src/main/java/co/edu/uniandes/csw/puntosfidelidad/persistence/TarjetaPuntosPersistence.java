@@ -44,7 +44,7 @@ public class TarjetaPuntosPersistence {
         try {
             return q.getSingleResult();
         } catch (Exception e) {
-            //hay excepción cuando el dignle result no encuentra nada
+            //hay excepción cuando el signle result no encuentra nada
             return null;
         }
     }

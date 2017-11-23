@@ -12,7 +12,6 @@ import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.CompraPersistence;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 

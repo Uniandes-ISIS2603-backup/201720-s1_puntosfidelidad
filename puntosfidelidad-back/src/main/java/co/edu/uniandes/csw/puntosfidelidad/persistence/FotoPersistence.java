@@ -57,7 +57,7 @@ public class FotoPersistence {
     
     public FotoEntity findWithURL( String uRL)
     {       
-        TypedQuery<FotoEntity> q = em.createQuery("select p from FotoEntity p where (p.URL = :fotoURL)", FotoEntity.class);
+        TypedQuery<FotoEntity> q = em.createQuery("select p from FotoEntity p where (p.uRL = :fotoURL)", FotoEntity.class);
         q.setParameter("fotoURL", uRL);
         return q.getSingleResult();
     }

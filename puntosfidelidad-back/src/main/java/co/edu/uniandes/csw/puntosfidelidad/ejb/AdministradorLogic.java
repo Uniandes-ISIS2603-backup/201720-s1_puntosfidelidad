@@ -19,7 +19,6 @@ import co.edu.uniandes.csw.puntosfidelidad.persistence.ProductoPersistence;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.RestaurantePersistence;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.SucursalPersistence;
 import java.util.List;
-import java.util.function.Supplier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -156,7 +155,7 @@ public class AdministradorLogic {
             }
             }
         } catch (Exception e) {
-            LOGGER.info((Supplier<String>) e);
+            LOGGER.log(Level.INFO, e.getMessage());
         }     
            persistence.delete(usuario);
            LOGGER.log(Level.INFO, "BORRO ADMIIIN :)", usuario);
