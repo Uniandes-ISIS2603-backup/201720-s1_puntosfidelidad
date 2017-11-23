@@ -19,7 +19,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class FotoEntity implements Serializable{
  
     @Id
-    private String URL;
+    private String uRL;
 
     
     @PodamExclude
@@ -35,11 +35,11 @@ public class FotoEntity implements Serializable{
     }
     
     public String getURL() {
-        return URL;
+        return uRL;
     }
 
-    public void setURL(String URL) {
-        this.URL = URL;
+    public void setURL(String uRL) {
+        this.uRL = uRL;
     }
     
 }

@@ -32,8 +32,8 @@
                             $http.get("http://localhost:8080/puntosfidelidad-web/api/tarjetasPuntos/" + $scope.recargaNueva.tarjetaPuntos)
                                     .then(function (response) {
                                         $scope.tpun = response.data;
-                                        console.log($scope.tpun);
-                                        console.log($scope.tcred);
+                                        //console.log($scope.tpun); comentado para reducir deuda técnica
+                                        //console.log($scope.tcred); comentado para reducir deuda técnica
                                         $http.post("http://localhost:8080/puntosfidelidad-web/api/clientes/" + $state.params.clienteUsuario + "/recargas", {
                                             valor: $scope.recargaNueva.valor,
                                             fecha: (new Date()),

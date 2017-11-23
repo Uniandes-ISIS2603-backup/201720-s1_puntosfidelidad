@@ -16,8 +16,6 @@ import co.edu.uniandes.csw.puntosfidelidad.entities.UbicacionEntity;
  */
 public class UbicacionDetailDTO extends UbicacionDTO{
     
-    private RestauranteDTO restaurante; 
-    
     private EventoDTO evento;
     
     private SucursalDTO sucursal;    
@@ -37,18 +35,6 @@ public class UbicacionDetailDTO extends UbicacionDTO{
     public UbicacionDetailDTO(UbicacionEntity entity) {
         
         super(entity);
-        
-//        if (entity != null) {
-//            
-//            
-//            
-//            if(entity.getEvento()!=null){
-//            evento = new EventoDTO(entity.getEvento());
-//            }
-//            if(entity.getSucursal()!=null){
-//            sucursal = new SucursalDTO(entity.getSucursal());            
-//            }
-//        }
     }
     
      /**
@@ -60,17 +46,7 @@ public class UbicacionDetailDTO extends UbicacionDTO{
      */
     @Override
     public UbicacionEntity toEntity() {
-        UbicacionEntity entity = super.toEntity();
-        
-//        if (getEvento() != null) {
-//            entity.setEvento(getEvento().toEntity());
-//        }
-//        
-//        if (getSucursal() != null) {
-//            entity.setSucursal(getSucursal().toEntity());
-//        }
-
-        return entity;
+        return super.toEntity();
     }
 
     /**

@@ -129,7 +129,7 @@ public class CompraPersistenceTest {
     }
 
 
- private void insertData() {
+    private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             CompraEntity entity = factory.manufacturePojo(CompraEntity.class);
@@ -285,5 +285,4 @@ public class CompraPersistenceTest {
        Assert.assertEquals(persistence.gerProductos(entity.getId()).size(), entity.getProductos().size());
        Assert.assertEquals(persistence.gerProductos(entity.getId()).get(0).getId(), entity.getProductos().get(0).getId());
     }
-    
 }

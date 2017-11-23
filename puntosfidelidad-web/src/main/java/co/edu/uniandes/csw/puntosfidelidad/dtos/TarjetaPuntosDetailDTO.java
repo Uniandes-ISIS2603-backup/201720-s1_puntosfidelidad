@@ -22,7 +22,7 @@ public class TarjetaPuntosDetailDTO extends TarjetaPuntosDTO{
     
     public TarjetaPuntosDetailDTO()
     {
-        
+        //Constructor obligatorio
     }
     
     public TarjetaPuntosDetailDTO(TarjetaPuntosEntity entity)

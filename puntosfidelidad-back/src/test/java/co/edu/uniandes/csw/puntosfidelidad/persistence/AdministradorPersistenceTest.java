@@ -103,7 +103,7 @@ public class AdministradorPersistenceTest {
     }
 
 
- private void insertData() {
+    private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             AdministradorEntity entity = factory.manufacturePojo(AdministradorEntity.class);
@@ -121,8 +121,7 @@ public class AdministradorPersistenceTest {
             em.merge(entity);
             data.add(entity);
         }
-    
-}
+    }
     
     
     public AdministradorPersistenceTest() {
@@ -225,7 +224,5 @@ public class AdministradorPersistenceTest {
     persistence.delete(entity.getUsuario());
     AdministradorEntity deleted = em.find(AdministradorEntity.class, entity.getUsuario());
     Assert.assertNull(deleted);
-    }
-
-    
+    }    
 }

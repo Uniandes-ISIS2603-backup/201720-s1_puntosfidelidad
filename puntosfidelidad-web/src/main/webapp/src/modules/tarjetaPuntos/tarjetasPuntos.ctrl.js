@@ -33,7 +33,7 @@
                             },
                             function(error)
                             {
-                                console.log(error);
+                                //console.log(error); comentado para reducir deuda técnica
                                 //alert('Error creando la tarjeta de puntos: ' + error.message);
                             }
                         )
@@ -47,7 +47,7 @@
 
             $scope.revisarTP = function(tarjetaPts)
             {
-                if(tarjetaPts.montoBasico == undefined || tarjetaPts.montoActual == undefined)      
+                if(tarjetaPts.montoBasico === undefined || tarjetaPts.montoActual === undefined)      
                 {
                     return false;
                 }          
@@ -67,7 +67,7 @@
                 
                 for(tp in tarjetas)
                 {
-                    if(tarjetas[tp].cliente.usuario == usuario)
+                    if(tarjetas[tp].cliente.usuario === usuario)
                     {
                         tarjetasCliente.push(tarjetas[tp]);
                     }
@@ -77,11 +77,11 @@
                     function todoBien(response) 
                     {
                         alert('Tarjeta puntos actualizada exitosamente!')
-                        console.log("todo bien!");
+                        //console.log("todo bien!"); comentado para reducir deuda técnica
                     },
                     function todoMal(error)
                     {
-                        console.log(error);
+                        //console.log(error);comentado para reducir deuda técnica
                     }
                 );
             }
@@ -102,16 +102,16 @@
                             if(index > -1)
                             {
                                 $scope.elements.splice(index, 1);
-                                console.log("todo bien!");
+                                //console.log("todo bien!"); comentado para reducir deuda técnica
                             }
                             else
                             {
-                                console.log("Error con el index!")
+                                //console.log("Error con el index!")comentado para reducir deuda técnica
                             }
                         },
                         function todoMal(error)
                         {
-                            console.log(error);
+                            //console.log(error); comentado para reducir deuda técnica
                         }
                     );
                 }

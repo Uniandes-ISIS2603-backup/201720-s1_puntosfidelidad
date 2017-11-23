@@ -7,13 +7,10 @@ package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.AdministradorEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.EventoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.AdministradorPersistence;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.ComentarioPersistence;
@@ -158,6 +155,7 @@ public class AdministradorLogic {
             }
             }
         } catch (Exception e) {
+            LOGGER.log(Level.INFO, e.getMessage());
         }     
            persistence.delete(usuario);
            LOGGER.log(Level.INFO, "BORRO ADMIIIN :)", usuario);
@@ -196,7 +194,8 @@ public class AdministradorLogic {
     public List<RestauranteEntity> listRestaurantes(String usuario) {
         
         List<RestauranteEntity> lista= getAdministrador(usuario).getRestaurantes();
-        if(lista.isEmpty()) throw new WebApplicationException("El Administrador que consulta aún no tiene restaurantes", 404);
+        if(lista.isEmpty())
+            throw new WebApplicationException("El Administrador que consulta aún no tiene restaurantes", 404);
         return lista;
     }
     

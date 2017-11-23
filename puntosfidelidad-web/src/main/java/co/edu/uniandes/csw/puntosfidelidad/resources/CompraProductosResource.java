@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.resources;
 
-import co.edu.uniandes.csw.puntosfidelidad.dtos.ProductoDTO;
 import co.edu.uniandes.csw.puntosfidelidad.dtos.ProductoDetailDTO;
 import co.edu.uniandes.csw.puntosfidelidad.ejb.CompraLogic;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
@@ -16,7 +15,6 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -43,21 +41,6 @@ public class CompraProductosResource {
         List<ProductoDetailDTO> list = new ArrayList<>();
         for (ProductoEntity entity : entityList) {
             list.add(new ProductoDetailDTO(entity));
-        }
-        return list;
-    }
-
-    /**
-     * Convierte una lista de BookDetailDTO a una lista de BookEntity.
-     *
-     * @param dtos Lista de BookDetailDTO a convertir.
-     * @return Lista de BookEntity convertida.
-     * 
-     */
-    private List<ProductoEntity> booksListDTO2Entity(List<ProductoDetailDTO> dtos){
-        List<ProductoEntity> list = new ArrayList<>();
-        for (ProductoDetailDTO dto : dtos) {
-            list.add(dto.toEntity());
         }
         return list;
     }

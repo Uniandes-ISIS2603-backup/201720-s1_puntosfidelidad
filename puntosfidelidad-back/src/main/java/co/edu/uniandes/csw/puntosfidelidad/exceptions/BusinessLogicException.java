@@ -32,6 +32,7 @@ import javax.ejb.ApplicationException;
 public class BusinessLogicException extends Exception {
 
     public BusinessLogicException() {
+        //Constructor vacío necesario
     }
 
     /**
@@ -50,6 +51,7 @@ public class BusinessLogicException extends Exception {
      */
     public BusinessLogicException(Throwable cause) {
         super(cause);
+        
     }
 
     /**

@@ -48,7 +48,7 @@ public class TarjetaDeCreditoPersistence {
             tarjeta = null;
         } else if (results.isEmpty()) {
             tarjeta = null;
-        } else if (results.size() >= 1) {
+        } else {
             tarjeta = results.get(0);
         }
         return tarjeta;

@@ -67,7 +67,7 @@ public class AdministradorResource {
     {
         AdministradorEntity entity = logic.getAdministrador(usuario);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /administradores/" + usuario + " no existe.", 404);
+            throw new WebApplicationException("El recurso /administradores/" + usuario + " no existe :(.", 404);
         }
         return new AdministradorDetailDTO(entity);
     }
@@ -98,7 +98,7 @@ public class AdministradorResource {
         admin.setUsuario(usuario);
         AdministradorEntity entity = logic.getAdministrador(usuario);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /administrador/" + usuario + " no existe.", 404);
+            throw new WebApplicationException("El recurso /administrador/" + usuario + " no existe", 404);
         }
         return new AdministradorDetailDTO(logic.actualizarAdministrador(usuario, admin.toEntity()));
     }
@@ -143,15 +143,15 @@ public class AdministradorResource {
     
     private List<AdministradorDetailDTO> ListEntityToDetailDTO(List<AdministradorEntity> entities)
     {
-        List<AdministradorDetailDTO> DTOList = new ArrayList<>();
+        List<AdministradorDetailDTO> dTOList = new ArrayList<>();
         
         for(AdministradorEntity entity: entities)
         {
             //Convierto el entity con el constructor del DTO
-            DTOList.add(new AdministradorDetailDTO(entity));
+            dTOList.add(new AdministradorDetailDTO(entity));
         }
         
-        return DTOList;
+        return dTOList;
     }
     
  

@@ -36,6 +36,8 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class CompraResource {
     
+    private static final String NEX = " no existe.";
+    private static final String RUTA = "El recurso /compra/";
     
     @Inject
     CompraLogic compraLogic;
@@ -76,7 +78,7 @@ public class CompraResource {
     public CompraDetailDTO getCompra(@PathParam("id") Long id) throws BusinessLogicException {
         CompraEntity entity = compraLogic.getCompra(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /compra/" + id + " no existe.", 404);
+            throw new WebApplicationException(RUTA + id + NEX, 404);
         }
         return new CompraDetailDTO(entity);
     }
@@ -154,7 +156,7 @@ public class CompraResource {
     public SucursalDetailDTO getSucursal(@PathParam("id") Long id) throws BusinessLogicException {
         CompraEntity entity = compraLogic.getCompra(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /compra/" + id + " no existe.", 404);
+            throw new WebApplicationException(RUTA + id + NEX, 404);
         }
         return new SucursalDetailDTO(entity.getSucursal());
     }
@@ -164,7 +166,7 @@ public class CompraResource {
     public ClienteDetailDTO getCliente(@PathParam("id") Long id) throws BusinessLogicException {
         CompraEntity entity = compraLogic.getCompra(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /compra/" + id + " no existe.", 404);
+            throw new WebApplicationException(RUTA + id + NEX, 404);
         }
         return new ClienteDetailDTO(entity.getCliente());
     }
@@ -181,7 +183,7 @@ public class CompraResource {
     public TarjetaPuntosDetailDTO getTarjetaPuntos(@PathParam("id") Long id) throws BusinessLogicException {
         CompraEntity entity = compraLogic.getCompra(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /compra/" + id + " no existe.", 404);
+            throw new WebApplicationException(RUTA + id + NEX, 404);
         }
         return new TarjetaPuntosDetailDTO(entity.getTarjetaPuntos());
     }

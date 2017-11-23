@@ -9,11 +9,9 @@ package co.edu.uniandes.csw.puntosfidelidad.persistence;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
 import java.util.List;
-import java.util.logging.Level;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**

@@ -5,10 +5,8 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
-import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.FotoEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +25,7 @@ public class ComentarioPersistence {
     @PersistenceContext( unitName= "puntosfidelidadPU")
     private EntityManager em;
     
-    private Logger LOGGER = Logger.getLogger(ComentarioPersistence.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(ComentarioPersistence.class.getName());
     
     public ComentarioEntity create(ComentarioEntity entity) {
         LOGGER.info("Creando un nuevo comentario");

@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.puntosfidelidad.dtos;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.EventoEntity;
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 
 

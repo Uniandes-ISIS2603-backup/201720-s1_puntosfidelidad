@@ -165,46 +165,4 @@ public class SucursalEntity implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-//    /**
-//     * @return the ubicacion
-//     */
-//    public UbicacionEntity getUbicacion() {
-//        return ubicacion;
-//    }
-//
-//    /**
-//     * @param ubicacion the ubicacion to set
-//     */
-//    public void setUbicacion(UbicacionEntity ubicacion) {
-//        this.ubicacion = ubicacion;
-//    }
-
-//    /**
-//     * @return the comentarios
-//     */
-//    public ArrayList<ComentarioENtity> getComentarios() {
-//        return comentarios;
-//    }
-//
-//    /**
-//     * @param comentarios the comentarios to set
-//     */
-//    public void setComentarios(ArrayList<ComentarioENtity> comentarios) {
-//        this.comentarios = comentarios;
-//    }
-//
-//    /**
-//     * @return the compras
-//     */
-//    public ArrayList<CompraEntity> getCompras() {
-//        return compras;
-//    }
-//
-//    /**
-//     * @param compras the compras to set
-//     */
-//    public void setCompras(ArrayList<CompraEntity> compras) {
-//        this.compras = compras;
-//    }
 }

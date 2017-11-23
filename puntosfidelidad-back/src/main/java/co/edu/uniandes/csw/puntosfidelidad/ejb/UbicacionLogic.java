@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.puntosfidelidad.entities.UbicacionEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.UbicacionEntity;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.UbicacionPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -29,19 +28,19 @@ public class UbicacionLogic {
 
     public List<UbicacionEntity> getUbicacions() {
         LOGGER.info("Inicia proceso de consultar todos los Ubicacions");
-        List<UbicacionEntity> Ubicacions = persistence.findAll();
+        List<UbicacionEntity> ubicacions = persistence.findAll();
         LOGGER.info("Termina proceso de consultar todos los Ubicacions");
-        return Ubicacions;
+        return ubicacions;
     }
 
     public UbicacionEntity getUbicacion(String dir) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar Ubicacion con direccion={0}", dir);
-        UbicacionEntity Ubicacion = persistence.find(dir);
-        if (Ubicacion == null) {
+        UbicacionEntity ubicacion = persistence.find(dir);
+        if (ubicacion == null) {
             LOGGER.log(Level.SEVERE, "El Ubicacion con el direccion {0} no existe", dir);
         }
         LOGGER.log(Level.INFO, "Termina proceso de consultar Ubicacion con direccion={0}", dir);
-        return Ubicacion;
+        return ubicacion;
     }
 
     public UbicacionEntity createUbicacion(UbicacionEntity entity) throws BusinessLogicException {

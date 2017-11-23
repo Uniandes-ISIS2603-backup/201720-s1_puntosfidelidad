@@ -3,7 +3,7 @@ var mod = ng.module("comprasModule", []);
     mod.constant("comprasContext", "api/compras");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/compra/';
-            var basePathProdutos = 'src/modules/producto/';
+            //var basePathProdutos = 'src/modules/producto/'; SEGUN SONAR ESTO NO SE USA -julián
             $urlRouterProvider.otherwise("");
 
             $stateProvider.state('compras', {

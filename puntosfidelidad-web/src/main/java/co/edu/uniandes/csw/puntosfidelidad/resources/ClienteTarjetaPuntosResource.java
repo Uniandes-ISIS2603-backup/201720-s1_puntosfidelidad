@@ -1,11 +1,10 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.puntosfidelidad.resources;
 
-import co.edu.uniandes.csw.puntosfidelidad.dtos.ClienteDTO;
 import co.edu.uniandes.csw.puntosfidelidad.dtos.TarjetaPuntosDetailDTO;
 import co.edu.uniandes.csw.puntosfidelidad.dtos.TarjetaPuntosDTO;
 import co.edu.uniandes.csw.puntosfidelidad.ejb.ClienteLogic;
@@ -50,21 +49,6 @@ public class ClienteTarjetaPuntosResource {
         List<TarjetaPuntosDetailDTO> list = new ArrayList<>();
         for (TarjetaPuntosEntity entity : entityList) {
             list.add(new TarjetaPuntosDetailDTO(entity));
-        }
-        return list;
-    }
-
-    /**
-     * Convierte una lista de TarjetaPuntosDetailDTO a una lista de TarjetaPuntosEntity.
-     *
-     * @param dtos Lista de TarjetaPuntosDetailDTO a convertir.
-     * @return Lista de TarjetaPuntosEntity convertida.
-     * 
-     */
-    private List<TarjetaPuntosEntity> tarjetasPuntosListDTO2Entity(List<TarjetaPuntosDetailDTO> dtos) {
-        List<TarjetaPuntosEntity> list = new ArrayList<>();
-        for (TarjetaPuntosDetailDTO dto : dtos) {
-            list.add(dto.toEntity());
         }
         return list;
     }

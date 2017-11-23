@@ -49,7 +49,7 @@ public class RecargaPersistence {
             recarga = null;
         } else if (results.isEmpty()) {
             recarga = null;
-        } else if (results.size() >= 1) {
+        } else {
             recarga = results.get(0);
         }
         return recarga;

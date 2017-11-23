@@ -52,19 +52,22 @@
             {
                 for(ph in elem.fotos)
                 {
-                    url = elem.fotos[ph].url;
-                    if(!regExpHttp.test(url))
-                    {
-                        $scope.mensajeStyle.colorClass = "red";                      
-                        if($scope.mensaje == '')
+                    if (elem.fotos.hasOwnProperty(ph)) 
+                    {   
+                        url = elem.fotos[ph].url;
+                        if(!regExpHttp.test(url))
                         {
-                            $scope.mensaje = "Inserte una url válida";                              
+                            $scope.mensajeStyle.colorClass = "red";                      
+                            if($scope.mensaje === '')
+                            {
+                                $scope.mensaje = "Inserte una url válida";                              
+                            }
+                            else
+                            {
+                                $scope.mensaje = "\nInserte una url válida"; 
+                            }
+                            return false;
                         }
-                        else
-                        {
-                            $scope.mensaje = "\nInserte una url válida"; 
-                        }
-                        return false;
                     }
                 }
 
@@ -97,23 +100,23 @@
                 
                 for(cmnt in comentarios)
                 {
-                    if(comentarios[cmnt].cliente.usuario == usuario)
+                    if(comentarios[cmnt].cliente.usuario === usuario)
                     {
                         comentariosCliente.push(comentarios[cmnt]);
                     }
                 }
 
-                console.log("comentarios: ");
-                console.log(comentariosCliente);
+                //console.log("comentarios: ");
+                //console.log(comentariosCliente); comentado para reducir deuda técnica
 
                 $http.put('http://localhost:8080/puntosfidelidad-web/api/clientes/' + usuario + '/comentarios', comentarios).then(
                     function todoBien(response) 
                     {
-                        console.log("todo bien!");
+                        //console.log("todo bien!"); 
                     },
                     function todoMal(error)
                     {
-                        console.log(error);
+                        //console.log(error);
                     }
                 );
             }
@@ -134,16 +137,16 @@
                             if(index > -1)
                             {
                                 $scope.elements.splice(index, 1);
-                                console.log("todo bien!");
+                                //console.log("todo bien!"); comentado para reducir deuda técnica
                             }
                             else
                             {
-                                console.log("Error con el index!")
+                                // console.log("Error con el index!")comentado para reducir deuda técnica
                             }
                         },
                         function todoMal(error)
                         {
-                            console.log(error);
+                            // console.log(error); comentado para reducir deuda técnica
                         }
                     );
                 }
@@ -151,12 +154,10 @@
 
             $scope.postComentario = function(nuevoComentario)
             {
-                console.log(nuevoComentario)
-                if(nuevoComentario.calificacion != undefined)
+                if(nuevoComentario.calificacion !== undefined)
                 {
                     $scope.crear = false;
                     $scope.elements = $scope.elements.concat(nuevoComentario)
-                    console.log(nuevoComentario);
                 }
             }
 

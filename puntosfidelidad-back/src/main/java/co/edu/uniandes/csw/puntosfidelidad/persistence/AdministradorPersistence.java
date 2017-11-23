@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.AdministradorEntity;
 import java.util.List;
-import java.util.logging.Level;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
