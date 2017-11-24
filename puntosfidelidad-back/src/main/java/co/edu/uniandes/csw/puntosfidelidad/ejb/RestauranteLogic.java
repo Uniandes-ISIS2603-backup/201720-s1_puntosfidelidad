@@ -59,12 +59,12 @@ public class RestauranteLogic {
     }
 
     public RestauranteEntity getRestaurante(String nit) {
-       LOGGER.log(Level.INFO, "Inicia proceso de consultar cliente con id={0}", nit);
+       LOGGER.log(Level.INFO, "Inicia proceso de consultar REstaurante con id={0}", nit);
         RestauranteEntity restaurante = persistence.find(nit);
         if (restaurante == null) {
             LOGGER.log(Level.SEVERE, "El cliente con el id {0} no existe", nit);
         }
-        LOGGER.log(Level.INFO, "Termina proceso de consultar cliente con id={0}", nit);
+        LOGGER.log(Level.INFO, "Termina proceso de consultarRestaurante con id={0}", nit);
         return restaurante;
 
     }

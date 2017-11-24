@@ -1,0 +1,25 @@
+<div class="panel panel-success" id='columna1'>
+    <div class="panel-heading"><b>Eventos</b></div>
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>    
+            <th>Descripción</th>  
+            <th>Inicia</th>            
+            <th>Termina</th>  
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="evento in actual.eventos">
+            <td id="{{$index}}-nombre">{{evento.nombre}}</td>
+            <td id="{{$index}}-descripcion">{{evento.descripcion}}</td>
+            <td id="{{$index}}-puntos">{{evento.fechaInicio}}</td>
+            <td id="{{$index}}-puntos">{{evento.fechaFin}}</td>
+            <td>
+                <a class="btn btn-default btn-sm" ui-sref="eventoUpdate({sucursalId: sucursal.id})" ><p class="glyphicon glyphicon-pencil"></p></a>
+                <a class="btn btn-danger btn-sm" ui-sref="eventoDelete({sucursalId: sucursal.id})"><p class="glyphicon glyphicon-trash"></p></a>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+</div>
