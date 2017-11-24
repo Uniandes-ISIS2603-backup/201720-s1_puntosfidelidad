@@ -170,23 +170,5 @@ public class RestauranteResource {
         }
         return list;
     } 
-    
-    /**
-     * Convierte una lista de RestauranteDetailDTO a una lista de RestauranteEntity.
-     *
-     * @param dtos Lista de SucursalDetailDTO a convertir.
-     * @return Lista de SucursalEntity convertida.    
-     */
-    private List<RestauranteEntity> restaurantesListDTO2Entity(List<RestauranteDetailDTO> dtos){
-        List<RestauranteEntity> list = new ArrayList<>();
-        for (RestauranteDetailDTO dto : dtos) {
-            list.add(dto.toEntity());
-        }
-        return list;
-    }
-    
-    
-    
-    
 }
     

@@ -43,7 +43,7 @@ public class TarjetaDeCreditoPersistence {
         q.setParameter("usuario", usuario);
         q.setParameter("tarjetaid", tarjetaid);
         List<TarjetaDeCreditoEntity> results = q.getResultList();
-        TarjetaDeCreditoEntity tarjeta = null;
+        TarjetaDeCreditoEntity tarjeta;
         if (results == null) {
             tarjeta = null;
         } else if (results.isEmpty()) {

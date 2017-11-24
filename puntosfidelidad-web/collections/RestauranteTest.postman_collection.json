@@ -1,998 +1,354 @@
 {
-	"id": "075d356c-9558-450e-8b1e-6303429e7e53",
-	"name": "RestauranteTest",
-	"allTests": [],
-	"timestamp": "2017-09-30T01:57:50.801Z",
-	"collection_id": "8387e021-72f2-6d80-4457-5b20104f12a4",
-	"folder_id": 0,
-	"target_type": "collection",
-	"environment_id": "no-environment",
-	"data": [],
-	"delay": 0,
-	"count": 1,
-	"collection": {
-		"id": "8387e021-72f2-6d80-4457-5b20104f12a4",
+	"variables": [],
+	"info": {
 		"name": "RestauranteTest",
-		"description": "",
-		"order": [
-			"df104b4a-9764-c267-674e-abf2f27dfaf3",
-			"d59dd87a-9dee-6c49-ee63-495aa6fc4262",
-			"c8725359-52a0-7083-7aca-e151980f178b",
-			"ef01e78d-4003-968c-a0ba-6f3abc112f00",
-			"3716eb37-4f4d-79e6-3f49-ffc980483d1e",
-			"d399df85-aca2-5eb6-9a41-c032540c1664",
-			"6e0d8064-68d5-a692-78f7-f3b56611e70d",
-			"623267c9-a463-db48-5b77-86a435bb7779",
-			"d5f8f6d0-7944-4464-7234-3084ff011ce8",
-			"baa177bd-e3b4-c607-db1c-1f6b52579f2a",
-			"bbaa63a4-d0a3-2e99-6199-a4ec4881ba0d",
-			"9d3344ce-c9d4-199c-e00a-2e019700a363",
-			"fc89255f-8111-67b4-cdf0-06d39e48b39a",
-			"22c7e9e3-0c2b-bcef-6a6c-2bb850216263",
-			"5aaf2720-1de0-9e2d-02fd-9d470709f35d",
-			"5753b9d8-e9f5-2d8e-556f-c962694d6e62",
-			"c7484a43-84dc-a7a4-5b9f-3670932068b2",
-			"a2093a74-ae02-5d60-a6da-f20f72fa6a26"
-		],
-		"folders": [],
-		"folders_order": [],
-		"timestamp": 1506499111068,
-		"synced": true,
-		"remote_id": 0,
-		"owner": "2593742",
-		"sharedWithTeam": false,
-		"subscribed": false,
-		"remoteLink": "",
-		"remoteLinkUpdatedAt": null,
-		"public": false,
-		"createdAt": 1506735460548,
-		"updatedAt": 1506735460548,
-		"write": true,
-		"published": false,
-		"favorite": false,
-		"permissions": {},
-		"syncedPermissions": {}
+		"_postman_id": "7c9a6ead-ebab-2b11-6345-83fc6aae7727",
+		"description": "Test de los recursos de cliente",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
-	"folder": null,
-	"environment": null,
-	"globals": [],
-	"results": [
+	"item": [
 		{
 			"name": "GetRestaurantes",
-			"id": "df104b4a-9764-c267-674e-abf2f27dfaf3",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes",
-			"totalTime": 0,
-			"responseCode": {
-				"code": 200,
-				"name": "OK",
-				"detail": {
-					"name": "OK",
-					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
-				}
-			},
-			"tests": {
-				"Status code is 200": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				"75"
-			],
-			"allTests": [
+			"event": [
 				{
-					"Status code is 200": true
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
 				}
 			],
-			"time": "75",
-			"totalRequestTime": "75",
-			"iterationResults": {}
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
 		},
 		{
-			"name": "GetRestaurantes/nit",
-			"id": "d59dd87a-9dee-6c49-ee63-495aa6fc4262",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f",
-			"totalTime": 0,
-			"responseCode": {
-				"code": 200,
-				"name": "OK",
-				"detail": {
-					"name": "OK",
-					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
-				}
-			},
-			"tests": {
-				"Status code is 200": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				"32"
-			],
-			"allTests": [
+			"name": "GetRestaurantes Usuario",
+			"event": [
 				{
-					"Status code is 200": true
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
 				}
 			],
-			"time": "32",
-			"totalRequestTime": "32",
-			"iterationResults": {}
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/administradores/Valeria/restaurantes",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Obtener un cliente dado un usuario"
+			},
+			"response": []
 		},
 		{
-			"name": "GetRestaurantes/nit/productos",
-			"id": "c8725359-52a0-7083-7aca-e151980f178b",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/productos",
-			"totalTime": 0,
-			"responseCode": {
-				"code": 200,
-				"name": "OK",
-				"detail": {
-					"name": "OK",
-					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
-				}
-			},
-			"tests": {
-				"Status code is 200": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				"54"
-			],
-			"allTests": [
+			"name": "GetProductos Restaurantes",
+			"event": [
 				{
-					"Status code is 200": true
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
 				}
 			],
-			"time": "54",
-			"totalRequestTime": "54",
-			"iterationResults": {}
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/productos",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		},
 		{
-			"name": "GetRestaurantes/nit/productos/id",
-			"id": "ef01e78d-4003-968c-a0ba-6f3abc112f00",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/productos/1",
-			"totalTime": 0,
-			"responseCode": {
-				"code": 200,
-				"name": "OK",
-				"detail": {
-					"name": "OK",
-					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
-				}
-			},
-			"tests": {
-				"Status code is 200": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				"48"
-			],
-			"allTests": [
+			"name": "GetEventos",
+			"event": [
 				{
-					"Status code is 200": true
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
 				}
 			],
-			"time": "48",
-			"totalRequestTime": "48",
-			"iterationResults": {}
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/eventos",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		},
 		{
-			"name": "GetRestaurantes/nit/eventos",
-			"id": "3716eb37-4f4d-79e6-3f49-ffc980483d1e",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/eventos",
-			"totalTime": 0,
-			"responseCode": {
-				"code": 200,
-				"name": "OK",
-				"detail": {
-					"name": "OK",
-					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
-				}
-			},
-			"tests": {
-				"Status code is 200": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				"25"
-			],
-			"allTests": [
+			"name": "GetSucursales",
+			"event": [
 				{
-					"Status code is 200": true
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
 				}
 			],
-			"time": "25",
-			"totalRequestTime": "25",
-			"iterationResults": {}
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/eventos",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		},
 		{
-			"name": "GetRestaurantes/nit/eventos/id",
-			"id": "d399df85-aca2-5eb6-9a41-c032540c1664",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/eventos",
-			"totalTime": 0,
-			"responseCode": {
-				"code": 200,
-				"name": "OK",
-				"detail": {
-					"name": "OK",
-					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
-				}
-			},
-			"tests": {
-				"Status code is 200": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				"37"
-			],
-			"allTests": [
+			"name": "PostRestaurante",
+			"event": [
 				{
-					"Status code is 200": true
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
 				}
 			],
-			"time": "37",
-			"totalRequestTime": "37",
-			"iterationResults": {}
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \n        \"nit\": \"2310\",\n        \"nombre\": \"Meec Donalds\",\n        \"tipoComida\": \"Hamburguesas\"\n       \n        }"
+				},
+				"description": ""
+			},
+			"response": []
 		},
 		{
-			"name": "Delete Productos",
-			"id": "6e0d8064-68d5-a692-78f7-f3b56611e70d",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/productos/1",
-			"totalTime": 0,
-			"responseCode": {
-				"code": 204,
-				"name": "No Content",
-				"detail": {
-					"name": "No Content",
-					"detail": "The server successfully processed the request, but is not returning any content."
-				}
-			},
-			"tests": {
-				"Status code is 204": true
-			},
-			"testPassFailCounts": {
-				"Status code is 204": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				"40"
-			],
-			"allTests": [
+			"name": "PostProductoRestaurantes",
+			"event": [
 				{
-					"Status code is 204": true
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
 				}
 			],
-			"time": "40",
-			"totalRequestTime": "40",
-			"iterationResults": {}
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/productos/1",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t               \"id\": 123,\n                \"nombre\": \"BigMac\",\n                \"valorDinero\": 16000,\n                \"valorPuntos\": 20\n}"
+				},
+				"description": ""
+			},
+			"response": []
 		},
 		{
-			"name": "Delete Eventos",
-			"id": "623267c9-a463-db48-5b77-86a435bb7779",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/1/eventos/1",
-			"totalTime": 0,
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found",
-				"detail": {
-					"name": "Not Found",
-					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
-				}
-			},
-			"tests": {
-				"Status code is 204": false
-			},
-			"testPassFailCounts": {
-				"Status code is 204": {
-					"pass": 0,
-					"fail": 1
-				}
-			},
-			"times": [
-				"21"
-			],
-			"allTests": [
+			"name": "PostSucursalRestaurante",
+			"event": [
 				{
-					"Status code is 204": false
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
 				}
 			],
-			"time": "21",
-			"totalRequestTime": "21",
-			"iterationResults": {}
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/productos/1",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t               \"id\": 123,\n                \"nombre\": \"BigMac\",\n                \"valorDinero\": 16000,\n                \"valorPuntos\": 20\n}"
+				},
+				"description": ""
+			},
+			"response": []
 		},
 		{
-			"name": "GetRestaurantes/nit/sucursales",
-			"id": "d5f8f6d0-7944-4464-7234-3084ff011ce8",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/sucursales",
-			"totalTime": 0,
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found",
-				"detail": {
-					"name": "Not Found",
-					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
-				}
-			},
-			"tests": {
-				"Status code is 200": false
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 0,
-					"fail": 1
-				}
-			},
-			"times": [
-				"11"
-			],
-			"allTests": [
+			"name": "DeleteRestaurante",
+			"event": [
 				{
-					"Status code is 200": false
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 204;"
+						]
+					}
 				}
 			],
-			"time": "11",
-			"totalRequestTime": "11",
-			"iterationResults": {}
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/2310",
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
 		},
 		{
-			"name": "GetRestaurantes/nit/sucursales/id",
-			"id": "baa177bd-e3b4-c607-db1c-1f6b52579f2a",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/sucursales/89",
-			"totalTime": 0,
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found",
-				"detail": {
-					"name": "Not Found",
-					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
-				}
-			},
-			"tests": {
-				"Status code is 200": false
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 0,
-					"fail": 1
-				}
-			},
-			"times": [
-				"8"
-			],
-			"allTests": [
+			"name": "Put Restaurante",
+			"event": [
 				{
-					"Status code is 200": false
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"",
+							"",
+							"tests[\"Body matches string\"] = responseBody.has(\"Laura Maria\");"
+						]
+					}
 				}
 			],
-			"time": "8",
-			"totalRequestTime": "8",
-			"iterationResults": {}
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"usuario\":\"C1\",\n\t\"nombre\":\"Laura Maria\",\n\t\"imagen\":\"laura.jpg\",\n\t\"contrasena\":\"123456\",\n\t\"recargas\": [],\n\t\"comentarios\":[],\n\t\"compras\":[],\n\t\"tarjetasDeCredito\":[],\n\t\"tarjetasPunto\":[]\n}"
+				},
+				"description": "Editar un cliente"
+			},
+			"response": []
 		},
 		{
-			"name": "Post Sucursal",
-			"id": "bbaa63a4-d0a3-2e99-6199-a4ec4881ba0d",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/1/87/sucursales",
-			"totalTime": 0,
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found",
-				"detail": {
-					"name": "Not Found",
-					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
-				}
-			},
-			"tests": {
-				"Status code is 200": false
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 0,
-					"fail": 1
-				}
-			},
-			"times": [
-				"17"
-			],
-			"allTests": [
+			"name": "Put Sucursal Restaurante",
+			"event": [
 				{
-					"Status code is 200": false
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"",
+							"",
+							"tests[\"Body matches string\"] = responseBody.has(\"Laura Maria\");"
+						]
+					}
 				}
 			],
-			"time": "17",
-			"totalRequestTime": "17",
-			"iterationResults": {}
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"usuario\":\"C1\",\n\t\"nombre\":\"Laura Maria\",\n\t\"imagen\":\"laura.jpg\",\n\t\"contrasena\":\"123456\",\n\t\"recargas\": [],\n\t\"comentarios\":[],\n\t\"compras\":[],\n\t\"tarjetasDeCredito\":[],\n\t\"tarjetasPunto\":[]\n}"
+				},
+				"description": "Editar un cliente"
+			},
+			"response": []
 		},
 		{
-			"name": "Put Sucursal copy",
-			"id": "9d3344ce-c9d4-199c-e00a-2e019700a363",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/sucursal/89",
-			"totalTime": 0,
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found",
-				"detail": {
-					"name": "Not Found",
-					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
-				}
-			},
-			"tests": {},
-			"testPassFailCounts": {},
-			"times": [
-				"6"
-			],
-			"allTests": [
-				{}
-			],
-			"time": "6",
-			"totalRequestTime": "6",
-			"iterationResults": {}
-		},
-		{
-			"name": "Delete Sucursales copy",
-			"id": "fc89255f-8111-67b4-cdf0-06d39e48b39a",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/1/87",
-			"totalTime": 0,
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found",
-				"detail": {
-					"name": "Not Found",
-					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
-				}
-			},
-			"tests": {
-				"Status code is 204": false
-			},
-			"testPassFailCounts": {
-				"Status code is 204": {
-					"pass": 0,
-					"fail": 1
-				}
-			},
-			"times": [
-				"17"
-			],
-			"allTests": [
+			"name": "PutProductos",
+			"event": [
 				{
-					"Status code is 204": false
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"",
+							"",
+							"tests[\"Body matches string\"] = responseBody.has(\"Laura Maria\");"
+						]
+					}
 				}
 			],
-			"time": "17",
-			"totalRequestTime": "17",
-			"iterationResults": {}
-		},
-		{
-			"name": "Post Productos",
-			"id": "22c7e9e3-0c2b-bcef-6a6c-2bb850216263",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/productos/1",
-			"totalTime": 0,
-			"responseCode": {
-				"code": 500,
-				"name": "Internal Server Error",
-				"detail": {
-					"name": "Internal Server Error",
-					"detail": "A generic error message, given when no more specific message is suitable."
-				}
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"usuario\":\"C1\",\n\t\"nombre\":\"Laura Maria\",\n\t\"imagen\":\"laura.jpg\",\n\t\"contrasena\":\"123456\",\n\t\"recargas\": [],\n\t\"comentarios\":[],\n\t\"compras\":[],\n\t\"tarjetasDeCredito\":[],\n\t\"tarjetasPunto\":[]\n}"
+				},
+				"description": "Editar un cliente"
 			},
-			"tests": {
-				"Status code is 200": false
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 0,
-					"fail": 1
-				}
-			},
-			"times": [
-				"58"
-			],
-			"allTests": [
-				{
-					"Status code is 200": false
-				}
-			],
-			"time": "58",
-			"totalRequestTime": "58",
-			"iterationResults": {}
-		},
-		{
-			"name": "Put Productos",
-			"id": "5aaf2720-1de0-9e2d-02fd-9d470709f35d",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/productos",
-			"totalTime": 0,
-			"responseCode": {
-				"code": 415,
-				"name": "Unsupported Media Type",
-				"detail": {
-					"name": "Unsupported Media Type",
-					"detail": "The request entity has a media type which the server or resource does not support. For example, the client uploads an image as image/svg+xml, but the server requires that images use a different format."
-				}
-			},
-			"tests": {},
-			"testPassFailCounts": {},
-			"times": [
-				"28"
-			],
-			"allTests": [
-				{}
-			],
-			"time": "28",
-			"totalRequestTime": "28",
-			"iterationResults": {}
-		},
-		{
-			"name": "GetRestaurantes/nit/eventos/id",
-			"id": "5753b9d8-e9f5-2d8e-556f-c962694d6e62",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/1/eventos/1",
-			"totalTime": 0,
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found",
-				"detail": {
-					"name": "Not Found",
-					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
-				}
-			},
-			"tests": {
-				"Status code is 200": false
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 0,
-					"fail": 1
-				}
-			},
-			"times": [
-				"11"
-			],
-			"allTests": [
-				{
-					"Status code is 200": false
-				}
-			],
-			"time": "11",
-			"totalRequestTime": "11",
-			"iterationResults": {}
-		},
-		{
-			"name": "Post Eventos",
-			"id": "c7484a43-84dc-a7a4-5b9f-3670932068b2",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/1/87/sucursales",
-			"totalTime": 0,
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found",
-				"detail": {
-					"name": "Not Found",
-					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
-				}
-			},
-			"tests": {
-				"Status code is 200": false
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 0,
-					"fail": 1
-				}
-			},
-			"times": [
-				"9"
-			],
-			"allTests": [
-				{
-					"Status code is 200": false
-				}
-			],
-			"time": "9",
-			"totalRequestTime": "9",
-			"iterationResults": {}
-		},
-		{
-			"name": "Put Eventos",
-			"id": "a2093a74-ae02-5d60-a6da-f20f72fa6a26",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/1/Sucursales",
-			"totalTime": 0,
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found",
-				"detail": {
-					"name": "Not Found",
-					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
-				}
-			},
-			"tests": {},
-			"testPassFailCounts": {},
-			"times": [
-				"5"
-			],
-			"allTests": [
-				{}
-			],
-			"time": "5",
-			"totalRequestTime": "5",
-			"iterationResults": {}
+			"response": []
 		}
-	],
-	"totalPass": 7,
-	"totalFail": 8,
-	"totalTime": 502,
-	"lifecycle": "done",
-	"requests": [
-		{
-			"name": "GetRestaurantes",
-			"id": "df104b4a-9764-c267-674e-abf2f27dfaf3",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes",
-			"time": "2017-09-30T01:57:50.801Z",
-			"responseCode": {
-				"code": 200,
-				"name": "OK",
-				"detail": {
-					"name": "OK",
-					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
-				}
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			}
-		},
-		{
-			"name": "GetRestaurantes/nit",
-			"id": "d59dd87a-9dee-6c49-ee63-495aa6fc4262",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f",
-			"time": "2017-09-30T01:57:50.801Z",
-			"responseCode": {
-				"code": 200,
-				"name": "OK",
-				"detail": {
-					"name": "OK",
-					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
-				}
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			}
-		},
-		{
-			"name": "GetRestaurantes/nit/productos",
-			"id": "c8725359-52a0-7083-7aca-e151980f178b",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/productos",
-			"time": "2017-09-30T01:57:50.801Z",
-			"responseCode": {
-				"code": 200,
-				"name": "OK",
-				"detail": {
-					"name": "OK",
-					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
-				}
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			}
-		},
-		{
-			"name": "GetRestaurantes/nit/productos/id",
-			"id": "ef01e78d-4003-968c-a0ba-6f3abc112f00",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/productos/1",
-			"time": "2017-09-30T01:57:50.801Z",
-			"responseCode": {
-				"code": 200,
-				"name": "OK",
-				"detail": {
-					"name": "OK",
-					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
-				}
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			}
-		},
-		{
-			"name": "GetRestaurantes/nit/eventos",
-			"id": "3716eb37-4f4d-79e6-3f49-ffc980483d1e",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/eventos",
-			"time": "2017-09-30T01:57:50.801Z",
-			"responseCode": {
-				"code": 200,
-				"name": "OK",
-				"detail": {
-					"name": "OK",
-					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
-				}
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			}
-		},
-		{
-			"name": "GetRestaurantes/nit/eventos/id",
-			"id": "d399df85-aca2-5eb6-9a41-c032540c1664",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/eventos",
-			"time": "2017-09-30T01:57:50.801Z",
-			"responseCode": {
-				"code": 200,
-				"name": "OK",
-				"detail": {
-					"name": "OK",
-					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
-				}
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			}
-		},
-		{
-			"name": "Delete Productos",
-			"id": "6e0d8064-68d5-a692-78f7-f3b56611e70d",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/productos/1",
-			"time": "2017-09-30T01:57:50.801Z",
-			"responseCode": {
-				"code": 204,
-				"name": "No Content",
-				"detail": {
-					"name": "No Content",
-					"detail": "The server successfully processed the request, but is not returning any content."
-				}
-			},
-			"testPassFailCounts": {
-				"Status code is 204": {
-					"pass": 1,
-					"fail": 0
-				}
-			}
-		},
-		{
-			"name": "Delete Eventos",
-			"id": "623267c9-a463-db48-5b77-86a435bb7779",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/1/eventos/1",
-			"time": "2017-09-30T01:57:50.801Z",
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found",
-				"detail": {
-					"name": "Not Found",
-					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
-				}
-			},
-			"testPassFailCounts": {
-				"Status code is 204": {
-					"pass": 0,
-					"fail": 1
-				}
-			}
-		},
-		{
-			"name": "GetRestaurantes/nit/sucursales",
-			"id": "d5f8f6d0-7944-4464-7234-3084ff011ce8",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/sucursales",
-			"time": "2017-09-30T01:57:50.801Z",
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found",
-				"detail": {
-					"name": "Not Found",
-					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
-				}
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 0,
-					"fail": 1
-				}
-			}
-		},
-		{
-			"name": "GetRestaurantes/nit/sucursales/id",
-			"id": "baa177bd-e3b4-c607-db1c-1f6b52579f2a",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/sucursales/89",
-			"time": "2017-09-30T01:57:50.801Z",
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found",
-				"detail": {
-					"name": "Not Found",
-					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
-				}
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 0,
-					"fail": 1
-				}
-			}
-		},
-		{
-			"name": "Post Sucursal",
-			"id": "bbaa63a4-d0a3-2e99-6199-a4ec4881ba0d",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/1/87/sucursales",
-			"time": "2017-09-30T01:57:50.801Z",
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found",
-				"detail": {
-					"name": "Not Found",
-					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
-				}
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 0,
-					"fail": 1
-				}
-			}
-		},
-		{
-			"name": "Put Sucursal copy",
-			"id": "9d3344ce-c9d4-199c-e00a-2e019700a363",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/sucursal/89",
-			"time": "2017-09-30T01:57:50.801Z",
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found",
-				"detail": {
-					"name": "Not Found",
-					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
-				}
-			},
-			"testPassFailCounts": {}
-		},
-		{
-			"name": "Delete Sucursales copy",
-			"id": "fc89255f-8111-67b4-cdf0-06d39e48b39a",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/1/87",
-			"time": "2017-09-30T01:57:50.801Z",
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found",
-				"detail": {
-					"name": "Not Found",
-					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
-				}
-			},
-			"testPassFailCounts": {
-				"Status code is 204": {
-					"pass": 0,
-					"fail": 1
-				}
-			}
-		},
-		{
-			"name": "Post Productos",
-			"id": "22c7e9e3-0c2b-bcef-6a6c-2bb850216263",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/productos/1",
-			"time": "2017-09-30T01:57:50.801Z",
-			"responseCode": {
-				"code": 500,
-				"name": "Internal Server Error",
-				"detail": {
-					"name": "Internal Server Error",
-					"detail": "A generic error message, given when no more specific message is suitable."
-				}
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 0,
-					"fail": 1
-				}
-			}
-		},
-		{
-			"name": "Put Productos",
-			"id": "5aaf2720-1de0-9e2d-02fd-9d470709f35d",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/187956f/productos",
-			"time": "2017-09-30T01:57:50.801Z",
-			"responseCode": {
-				"code": 415,
-				"name": "Unsupported Media Type",
-				"detail": {
-					"name": "Unsupported Media Type",
-					"detail": "The request entity has a media type which the server or resource does not support. For example, the client uploads an image as image/svg+xml, but the server requires that images use a different format."
-				}
-			},
-			"testPassFailCounts": {}
-		},
-		{
-			"name": "GetRestaurantes/nit/eventos/id",
-			"id": "5753b9d8-e9f5-2d8e-556f-c962694d6e62",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/1/eventos/1",
-			"time": "2017-09-30T01:57:50.801Z",
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found",
-				"detail": {
-					"name": "Not Found",
-					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
-				}
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 0,
-					"fail": 1
-				}
-			}
-		},
-		{
-			"name": "Post Eventos",
-			"id": "c7484a43-84dc-a7a4-5b9f-3670932068b2",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/1/87/sucursales",
-			"time": "2017-09-30T01:57:50.801Z",
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found",
-				"detail": {
-					"name": "Not Found",
-					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
-				}
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 0,
-					"fail": 1
-				}
-			}
-		},
-		{
-			"name": "Put Eventos",
-			"id": "a2093a74-ae02-5d60-a6da-f20f72fa6a26",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/restaurantes/1/Sucursales",
-			"time": "2017-09-30T01:57:50.801Z",
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found",
-				"detail": {
-					"name": "Not Found",
-					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
-				}
-			},
-			"testPassFailCounts": {}
-		}
-	],
-	"synced": false
+	]
 }

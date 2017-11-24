@@ -1,323 +1,317 @@
 {
-	"id": "cdf055b1-b304-a554-de2c-41077df52ce9",
-	"name": "AdministradorTest",
-	"description": "",
-	"order": [
-		"18b8ee71-cd12-1da6-62af-ff2ba783c81d",
-		"66d2e87d-601d-70b0-8e8c-2296c1a749ce",
-		"49439ef5-6d13-c269-3a97-ff04297d1428",
-		"2577312c-ab3d-3d87-2f85-b6c8d25ccc84",
-		"e3257805-556e-17db-87ce-8d6d27b2e5a4",
-		"cde227b3-ccc1-e1cc-3107-2d62409b5764",
-		"41762fea-1c77-1cf3-5977-ddd67352ad62",
-		"20ba84e2-9d21-963d-997c-9d418ea26d14",
-		"be61d31c-7db6-6e79-9b58-f5c824c7272a",
-		"42891cbf-1e67-4cdf-d55b-4c66b6ceafd1",
-		"ed1cda9c-9324-04ff-a097-e15b352114b1",
-		"5ac5ca2d-816a-9725-f4e1-22f07b43f60c"
-	],
-	"folders": [],
-	"folders_order": [],
-	"timestamp": 1506493264831,
-	"owner": "2593749",
-	"public": false,
-	"requests": [
+	"variables": [],
+	"info": {
+		"name": "AdministradorTest",
+		"_postman_id": "a7e3498f-e2e6-1068-7c8e-255066a25c42",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
 		{
-			"id": "18b8ee71-cd12-1da6-62af-ff2ba783c81d",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:8080/puntosfidelidad-web/api/administradores",
-			"queryParams": [],
-			"preRequestScript": "",
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1506700138996,
 			"name": "GetAdministrador",
-			"description": "",
-			"collectionId": "cdf055b1-b304-a554-de2c-41077df52ce9",
-			"responses": [],
-			"collection_id": "cdf055b1-b304-a554-de2c-41077df52ce9"
-		},
-		{
-			"id": "20ba84e2-9d21-963d-997c-9d418ea26d14",
-			"name": "Put Cliente contraseña incorrecta copy",
-			"description": "Editar un cliente",
-			"collectionId": "cdf055b1-b304-a554-de2c-41077df52ce9",
-			"method": "PUT",
-			"headers": "Content-Type: application/json",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "{\n\t\"usuario\":\"C1\",\n\t\"nombre\":\"Laura Maria\",\n\t\"imagen\":\"laura.jpg\",\n\t\"contrasena\":\"\",\n\t\"recargas\": [],\n\t\"comentarios\":[],\n\t\"compras\":[],\n\t\"tarjetasDeCredito\":[],\n\t\"tarjetasPunto\":[]\n}",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 412;\n",
-			"preRequestScript": "",
-			"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C1",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [
+			"event": [
 				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": ""
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
 				}
 			],
-			"collection_id": "a7c0cc4a-e4d6-7e00-079c-7e0b005dc18a",
-			"isFromCollection": true,
-			"collectionRequestId": "8b4b4750-25cd-602e-d489-8262a08bd8c3"
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/administradores",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		},
 		{
-			"id": "2577312c-ab3d-3d87-2f85-b6c8d25ccc84",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:8080/puntosfidelidad-web/api/administradores",
-			"queryParams": [],
-			"preRequestScript": "",
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1508296568013,
-			"name": "Post Administrador",
-			"description": "Crar un cliente",
-			"collectionId": "cdf055b1-b304-a554-de2c-41077df52ce9",
-			"responses": [],
-			"rawModeData": "{\n\t\"usuario\":\"Sebas Ces\",\n\t\"contrasena\":\"1234\"\n}"
-		},
-		{
-			"id": "41762fea-1c77-1cf3-5977-ddd67352ad62",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:8080/puntosfidelidad-web/api/administradores/Valeria",
-			"queryParams": [],
-			"preRequestScript": "",
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "PUT",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n\n\ntests[\"Body matches string\"] = responseBody.has(\"Laura Maria\");",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1508294944045,
-			"name": "Put Administrador",
-			"description": "Editar un administrador",
-			"collectionId": "cdf055b1-b304-a554-de2c-41077df52ce9",
-			"responses": [],
-			"rawModeData": "{\n\t\"usuario\":\"Valeria\",\n\t\"nombre\":\"Laura Maria\",\n\t\"imagen\":\"laura.jpg\",\n\t\"contrasena\":\"123456\",\n\t\"recargas\": [],\n\t\"comentarios\":[],\n\t\"compras\":[],\n\t\"tarjetasDeCredito\":[],\n\t\"tarjetasPunto\":[]\n}"
-		},
-		{
-			"id": "42891cbf-1e67-4cdf-d55b-4c66b6ceafd1",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/Andres/restaurantes",
-			"queryParams": [],
-			"preRequestScript": "",
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"tests": "tests[\"Body matches string\"] = responseBody.has(\"no tiene restaurantes el administrador\");",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1506499218186,
-			"name": "Get administrador  (no tiene)",
-			"description": "El cliente no tiene recargas",
-			"collectionId": "cdf055b1-b304-a554-de2c-41077df52ce9",
-			"responses": [],
-			"collection_id": "cdf055b1-b304-a554-de2c-41077df52ce9"
-		},
-		{
-			"id": "49439ef5-6d13-c269-3a97-ff04297d1428",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:8080/puntosfidelidad-web/api/administradores/C999",
-			"queryParams": [],
-			"preRequestScript": "",
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 404;",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1508293651102,
-			"name": "GetClientes/usuario No existe copy",
-			"description": "Obtener un cliente dado un usuario que no existe",
-			"collectionId": "cdf055b1-b304-a554-de2c-41077df52ce9",
-			"responses": [],
-			"rawModeData": ""
-		},
-		{
-			"id": "5ac5ca2d-816a-9725-f4e1-22f07b43f60c",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:8080/puntosfidelidad-web/api/administradores/adminX",
-			"queryParams": [],
-			"preRequestScript": "",
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "DELETE",
-			"data": [],
-			"dataMode": "params",
-			"tests": "tests[\"Status code is 405\"] = responseCode.code === 405;",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1508295929309,
-			"name": "Delete (no existe)",
-			"description": "elimina un usuario que no existe",
-			"collectionId": "cdf055b1-b304-a554-de2c-41077df52ce9",
-			"responses": []
-		},
-		{
-			"id": "66d2e87d-601d-70b0-8e8c-2296c1a749ce",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:8080/puntosfidelidad-web/api/administradores/Andres",
-			"queryParams": [],
-			"preRequestScript": "",
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1508296565052,
 			"name": "Get Administrador/usuario",
-			"description": "",
-			"collectionId": "cdf055b1-b304-a554-de2c-41077df52ce9",
-			"responses": []
-		},
-		{
-			"id": "be61d31c-7db6-6e79-9b58-f5c824c7272a",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:8080/puntosfidelidad-web/api/administradores/aa/restaurantes",
-			"queryParams": [],
-			"preRequestScript": "",
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1506700143322,
-			"name": "GetAdministrador/restaurantes",
-			"description": "Obtener un cliente dado un usuario",
-			"collectionId": "cdf055b1-b304-a554-de2c-41077df52ce9",
-			"responses": [],
-			"rawModeData": "",
-			"collection_id": "cdf055b1-b304-a554-de2c-41077df52ce9"
-		},
-		{
-			"id": "cde227b3-ccc1-e1cc-3107-2d62409b5764",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
+			"event": [
 				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
 				}
 			],
-			"url": "http://localhost:8080/puntosfidelidad-web/api/clientes",
-			"queryParams": [],
-			"preRequestScript": "",
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 412;",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1508294947924,
-			"name": "PostCliente contraseña vacia copy",
-			"description": "Crar un cliente con contraseña vacia",
-			"collectionId": "cdf055b1-b304-a554-de2c-41077df52ce9",
-			"responses": [],
-			"rawModeData": "{\n\t\"usuario\":\"Sebas O\",\n\t\"contrasena\":\"\"\n}"
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/administradores/Andres",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		},
 		{
-			"id": "e3257805-556e-17db-87ce-8d6d27b2e5a4",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
+			"name": "Post Administrador",
+			"event": [
 				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
 				}
 			],
-			"url": "http://localhost:8080/puntosfidelidad-web/api/administradores",
-			"queryParams": [],
-			"preRequestScript": "",
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Body matches string\"] = responseBody.has(\"existe\");",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1508296571945,
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/administradores",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"usuario\":\"Sebas Ces\",\n\t\"contrasena\":\"1234\"\n}"
+				},
+				"description": "Crar un cliente"
+			},
+			"response": []
+		},
+		{
 			"name": "Post administrador (Duplicado)",
-			"description": "Crar un cliente que ya existe",
-			"collectionId": "cdf055b1-b304-a554-de2c-41077df52ce9",
-			"responses": [],
-			"rawModeData": "{\n\t\"usuario\":\"Andres\",\n\t\"contrasena\":\"1234\"\n}"
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Body matches string\"] = responseBody.has(\"existe\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/administradores",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"usuario\":\"Andres\",\n\t\"contrasena\":\"1234\"\n}"
+				},
+				"description": "Crar un cliente que ya existe"
+			},
+			"response": []
 		},
 		{
-			"id": "ed1cda9c-9324-04ff-a097-e15b352114b1",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:8080/puntosfidelidad-web/api/administrador/aa",
-			"queryParams": [],
-			"preRequestScript": "",
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "DELETE",
-			"data": [],
-			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 204;",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1506499230804,
+			"name": "PostCliente contraseña vacia copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"usuario\":\"Sebas O\",\n\t\"contrasena\":\"\"\n}"
+				},
+				"description": "Crar un cliente con contraseña vacia"
+			},
+			"response": []
+		},
+		{
+			"name": "Put Administrador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"",
+							"",
+							"tests[\"Body matches string\"] = responseBody.has(\"Laura Maria\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/administradores/Valeria",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"usuario\":\"ValeriaNuevo\",\n\t\"contrasena\":\"1234e56\",\n\t\"restaurantes\": []\n\n}"
+				},
+				"description": "Editar un administrador"
+			},
+			"response": []
+		},
+		{
+			"name": "Put Cliente contraseña incorrecta copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 412;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/clientes/C1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"usuario\":\"C1\",\n\t\"nombre\":\"Laura Maria\",\n\t\"imagen\":\"laura.jpg\",\n\t\"contrasena\":\"\",\n\t\"recargas\": [],\n\t\"comentarios\":[],\n\t\"compras\":[],\n\t\"tarjetasDeCredito\":[],\n\t\"tarjetasPunto\":[]\n}"
+				},
+				"description": "Editar un cliente"
+			},
+			"response": []
+		},
+		{
+			"name": "GetAdministrador/restaurantes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/administradores/aa/restaurantes",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Obtener un cliente dado un usuario"
+			},
+			"response": []
+		},
+		{
+			"name": "Post Restaurante Admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Body matches string\"] = responseBody.has(\"existe\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/administradores/Valeria/restaurantes",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \n        \"nit\": \"22634187956f\",\n        \"nombre\": \"Meec Donalds\",\n        \"tipoComida\": \"Hamburguesas\"\n       \n        }"
+				},
+				"description": "Crar un cliente que ya existe"
+			},
+			"response": []
+		},
+		{
 			"name": "Delete Administrador",
-			"description": "Borrar cliente ",
-			"collectionId": "cdf055b1-b304-a554-de2c-41077df52ce9",
-			"responses": [],
-			"collection_id": "cdf055b1-b304-a554-de2c-41077df52ce9"
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/administrador/aa",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "Borrar cliente "
+			},
+			"response": []
+		},
+		{
+			"name": "Delete (no existe)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 405\"] = responseCode.code === 405;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/puntosfidelidad-web/api/administradores/adminX",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "elimina un usuario que no existe"
+			},
+			"response": []
 		}
 	]
 }

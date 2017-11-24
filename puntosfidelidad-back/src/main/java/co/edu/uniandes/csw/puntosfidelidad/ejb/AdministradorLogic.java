@@ -164,16 +164,20 @@ public class AdministradorLogic {
     
     public AdministradorEntity actualizarAdministrador(String usuario, AdministradorEntity entity  ) throws BusinessLogicException{
             
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar cliente con id={0}", usuario);
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar el Admin con id={0}", usuario);
         if (!usuario.equals(entity.getUsuario())) {
-            throw new BusinessLogicException("No es posible cambiar el administrador");
+            throw new BusinessLogicException("No es posible cambiar el usuario");
         }
         if (!validateContrasena(entity.getContrasena())) {
-            throw new BusinessLogicException("La contraseña no es valida");
-        } 
+            throw new BusinessLogicException("La contraseña no es valida: " + entity.getContrasena());
+        }  
+        if(entity.getUsuario()==null || entity.getUsuario().isEmpty()){
+            entity.setUsuario(entity.getUsuario());
+        }
         
-            return persistence.update(entity);
-            
+        AdministradorEntity newEntity = persistence.update(entity);
+        LOGGER.log(Level.INFO, "Termina proceso de actualizar Administrador con id={0}", entity.getUsuario());
+        return newEntity;
     }
 
     
@@ -183,7 +187,7 @@ public class AdministradorLogic {
      *
      * @param usuario Identificador de la instancia de administrador
      * @return Colección de instancias de RestauranteEntity asociadas a la instancia
-     * de cliente
+     * de admin
      * @throws co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException
      * 
      */
@@ -196,15 +200,15 @@ public class AdministradorLogic {
     }
     
     /**
-     * Obtiene una instancia de TarjetaDeCreditoEntity asociada a una instancia de cliente
+     * Obtiene una instancia de TarjetaDeCreditoEntity asociada a una instancia de Admin
      *
-     * @param usuario Identificador de la instancia de cliente
+     * @param usuario Identificador de la instancia de admin
      * @param nit Identificador de la instancia de TarjetaDeCredito
      * @return Instancia de TarjetaDeCreditoEntity buscada 
      * 
      */
     public RestauranteEntity getRestaurante(String usuario, String nit) {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar un Restaurantes del cliente con usuario = {0}", usuario);
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar un Restaurantes del admin con usuario = {0}", usuario);
         List<RestauranteEntity> list = getAdministrador(usuario).getRestaurantes();
         RestauranteEntity entity = new RestauranteEntity();
         entity.setNit(nit);
@@ -242,9 +246,9 @@ public class AdministradorLogic {
      */
     public List<RestauranteEntity> replaceRestaurantes (String usuario, List<RestauranteEntity> list) {
         LOGGER.log(Level.INFO, "Inicia proceso de reemplazar un restaurante del administrador con id = {0}", usuario);
-        AdministradorEntity clienteEntity = getAdministrador(usuario);
-        clienteEntity.setRestaurantes(list);
-        return clienteEntity.getRestaurantes();
+        AdministradorEntity adminEntity = getAdministrador(usuario);
+        adminEntity.setRestaurantes(list);
+        return adminEntity.getRestaurantes();
     }
 
     /**

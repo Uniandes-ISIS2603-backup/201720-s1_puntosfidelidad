@@ -3,7 +3,6 @@ package co.edu.uniandes.csw.puntosfidelidad.ejb;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.ComentarioPersistence;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
