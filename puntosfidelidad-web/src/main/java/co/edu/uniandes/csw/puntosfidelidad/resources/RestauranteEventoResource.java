@@ -80,28 +80,28 @@ public class RestauranteEventoResource {
      * Obtiene una instancia de Evento asociada a una instancia de Restaurante
      *
      * @param usuario Identificador de la instancia de Restaurante
-     * @param EventoId Identificador de la instancia de Evento
+     * @param eventoId
      * @return 
      * 
      */
     @GET
     @Path("{eventosId: \\d+}")
-    public EventoDetailDTO getEventos(@PathParam("usuario") String usuario, @PathParam("eventosId") String EventoId) {
-        return new EventoDetailDTO(restauranteLogic.getEvento(usuario, EventoId));
+    public EventoDetailDTO getEventos(@PathParam("usuario") String usuario, @PathParam("eventosId") String eventoId) {
+        return new EventoDetailDTO(restauranteLogic.getEvento(usuario, eventoId));
     }
 
     /**
      * Asocia un Evento existente a un Restaurante
      *
      * @param usuario Identificador de la instancia de Restaurante
-     * @param EventoId Id del Evento
+     * @param eventoId Id del Evento
      * @return Instancia de EventoDetailDTO que fue asociada a Restaurante
      * 
      */
     @POST
     @Path("{eventosId: \\d+}")
-    public EventoDetailDTO addEventos(@PathParam("usuario") String usuario, @PathParam("eventosId") String EventoId) {
-        return new EventoDetailDTO(restauranteLogic.addEvento(usuario, EventoId));
+    public EventoDetailDTO addEventos(@PathParam("usuario") String usuario, @PathParam("eventosId") String eventoId) {
+        return new EventoDetailDTO(restauranteLogic.addEvento(usuario, eventoId));
     }
 
     /**

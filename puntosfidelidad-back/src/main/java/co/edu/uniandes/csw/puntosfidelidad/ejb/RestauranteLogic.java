@@ -28,6 +28,7 @@ public class RestauranteLogic {
     private static final String MENSAJE_INICIAR_LOGGER = "Inicia proceso de consultar una sucursal del restaurante con el NIT = {0}"; 
     private static final String MENSAJE_REEMPLAZAR_LOGGER = "Inicia proceso de reemplazar una sucursal del restaurante con nit = {0}";
     private static final String MENSAJE_BORRAR_LOGGER = "Inicia proceso de borrar un autor del cliente con id = {0}";
+    private static final String MENSAJE= "Inicia proceso de asociar restaurante con NIT = {0}";
     private static final Logger LOGGER = Logger.getLogger(RestauranteLogic.class.getName());
     
     @Inject
@@ -58,12 +59,12 @@ public class RestauranteLogic {
     }
 
     public RestauranteEntity getRestaurante(String nit) {
-       LOGGER.log(Level.INFO, "Inicia proceso de consultar cliente con id={0}", nit);
+       LOGGER.log(Level.INFO, "Inicia proceso de consultar REstaurante con id={0}", nit);
         RestauranteEntity restaurante = persistence.find(nit);
         if (restaurante == null) {
             LOGGER.log(Level.SEVERE, "El cliente con el id {0} no existe", nit);
         }
-        LOGGER.log(Level.INFO, "Termina proceso de consultar cliente con id={0}", nit);
+        LOGGER.log(Level.INFO, "Termina proceso de consultarRestaurante con id={0}", nit);
         return restaurante;
 
     }
@@ -119,7 +120,7 @@ public class RestauranteLogic {
      * @return Instancia de TarjetaDeCreditoEntity buscada 
      */
     public SucursalEntity addSucursales (String nit, Long sucursalId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de asociar un autor al cliente con id = {0}", nit);
+        LOGGER.log(Level.INFO, MENSAJE, nit);
         RestauranteEntity restauranteEntity = getRestaurante(nit);
         SucursalEntity sucursalEntity = new SucursalEntity();
         sucursalEntity.setId(sucursalId);
@@ -147,7 +148,7 @@ public class RestauranteLogic {
      * Desasocia una Sucursal existente de un Restaurante existente
      *
      * @param nit Identificador de la instancia del restaurante
-     * @param Id Identificador de la instancia de la sucursal
+     * @param id Identificador de la instancia de la sucursal
      */
     public void removeSucursales (String nit, Long id) {
         LOGGER.log(Level.INFO, MENSAJE_BORRAR_LOGGER, nit);
@@ -180,11 +181,11 @@ public class RestauranteLogic {
      * Asocia un Producto existente a un Restaurante
      *
      * @param nit Identificador de la instancia de cliente
-     * @param Id Identificador de la instancia de TarjetaDeCredito      * @return Instancia de TarjetaDeCreditoEntity que fue asociada a cliente
+     * @param id Identificador de la instancia de TarjetaDeCredito      * @return Instancia de TarjetaDeCreditoEntity que fue asociada a cliente
      * @return Instancia de TarjetaDeCreditoEntity buscada 
      */
     public EventoEntity addEvento (String nit, String id) {
-        LOGGER.log(Level.INFO, "Inicia proceso de asociar un autor al cliente con id = {0}", nit);
+        LOGGER.log(Level.INFO, MENSAJE, nit);
         RestauranteEntity restauranteEntity = getRestaurante(nit);
         EventoEntity eventoEntity = new EventoEntity();
         eventoEntity.setNombre(id);
@@ -214,11 +215,11 @@ public class RestauranteLogic {
      * Asocia un Producto existente a un Restaurante
      *
      * @param nit Identificador de la instancia de cliente
-     * @param Id Identificador de la instancia de TarjetaDeCredito      * @return Instancia de TarjetaDeCreditoEntity que fue asociada a cliente
+     * @param id Identificador de la instancia de TarjetaDeCredito      * @return Instancia de TarjetaDeCreditoEntity que fue asociada a cliente
      * @return Instancia de TarjetaDeCreditoEntity buscada 
      */
     public ProductoEntity addProducto (String nit, Long id) {
-        LOGGER.log(Level.INFO, "Inicia proceso de asociar un autor al cliente con id = {0}", nit);
+        LOGGER.log(Level.INFO, MENSAJE, nit);
         RestauranteEntity restauranteEntity = getRestaurante(nit);
         ProductoEntity productoEntity = new ProductoEntity();
         productoEntity.setId(id);
@@ -262,7 +263,7 @@ public class RestauranteLogic {
      * Desasocia una Sucursal existente de un Restaurante existente
      *
      * @param nit Identificador de la instancia del restaurante
-     * @param Id Identificador de la instancia de la sucursal
+     * @param id
      */
     public void removeEventos (String nit, String id) {
         LOGGER.log(Level.INFO, MENSAJE_BORRAR_LOGGER, nit);

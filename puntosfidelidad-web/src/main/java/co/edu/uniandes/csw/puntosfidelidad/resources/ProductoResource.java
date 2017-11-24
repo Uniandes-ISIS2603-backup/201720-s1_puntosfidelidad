@@ -5,13 +5,9 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.resources;
 
-import co.edu.uniandes.csw.puntosfidelidad.dtos.CompraDetailDTO;
 import co.edu.uniandes.csw.puntosfidelidad.dtos.ProductoDetailDTO;
 import co.edu.uniandes.csw.puntosfidelidad.dtos.RestauranteDetailDTO;
-import co.edu.uniandes.csw.puntosfidelidad.dtos.SucursalDetailDTO;
-import co.edu.uniandes.csw.puntosfidelidad.ejb.CompraLogic;
 import co.edu.uniandes.csw.puntosfidelidad.ejb.ProductoLogic;
-import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import java.util.ArrayList;

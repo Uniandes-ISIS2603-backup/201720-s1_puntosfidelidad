@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,7 +21,8 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class RestaurantePersistence {
-    
+    private static final Logger LOGGER = Logger.getLogger(RestauranteEntity.class.getName());
+
     @PersistenceContext(unitName = "puntosfidelidadPU")
     protected EntityManager em;
     
@@ -28,7 +31,7 @@ public class RestaurantePersistence {
       /**
      * Busca si hay algun Restaurante con el usuario que se envía de argumento
      *
-     * @param name: Nombre del restaurante que se está buscando
+     * @param nit: Nombre del restaurante que se está buscando
      * @return null si no existe ningun cliente con el nombre del argumento.
      * Si existe alguno devuelve la primera.
      */
@@ -40,7 +43,7 @@ public class RestaurantePersistence {
      /**
      * Busca si hay algun Restaurante con el nombre que se envía de argumento
      *
-     * @param name: Nombre del restaurante que se está buscando
+     * @param nombre: Nombre del restaurante que se está buscando
      * @return null si no existe ningun cliente con el nombre del argumento.
      * Si existe alguno devuelve la primera.
      */
@@ -49,13 +52,16 @@ public class RestaurantePersistence {
         TypedQuery<RestauranteEntity> q
                 = em.createQuery("select u from RestauranteEntity u where u.nombre = :nombre", RestauranteEntity.class);
         q = q.setParameter("nombre", nombre);
+        RestauranteEntity restaurante;
         try{
-        return q.getSingleResult();}
+            restaurante= q.getSingleResult();}
         catch(Exception e)
         {
             //no encontró restaurante
-            return null;
+            restaurante= null;
+            LOGGER.log(Level.INFO, "{0}", e);
         }
+        return restaurante;
     }
     
     

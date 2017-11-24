@@ -44,11 +44,9 @@ public class RecargaPersistence {
         q.setParameter("usuario", usuario);
         q.setParameter("recargaid", recargaid);
         List<RecargaEntity> results = q.getResultList();
-        RecargaEntity recarga = null;
-        if (results == null) {
-            recarga = null;
-        } else if (results.isEmpty()) {
-            recarga = null;
+        RecargaEntity recarga;
+        if (results == null || results.isEmpty()) {
+            recarga = null;        
         } else {
             recarga = results.get(0);
         }

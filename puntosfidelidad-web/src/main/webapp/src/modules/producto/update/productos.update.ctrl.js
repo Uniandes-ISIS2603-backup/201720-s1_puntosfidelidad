@@ -2,8 +2,8 @@
         function (ng) {
             var mod = ng.module("productoModule");
             mod.constant("productosContext", "api/productos");
-            mod.controller('productosUpdateCtrl', ['$scope', '$http', 'productosContext', '$state', '$rootScope', '$filter',
-                function ($scope, $http, productosContext, $state, $rootScope, $filter) {
+            mod.controller('productosUpdateCtrl', ['$scope', '$http', 'productosContext', '$state', '$rootScope',
+                function ($scope, $http, productosContext, $state, $rootScope) {
                     $rootScope.edit = true;
 
                     var idProducto = $state.params.productoId;

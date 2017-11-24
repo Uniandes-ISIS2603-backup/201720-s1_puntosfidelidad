@@ -32,6 +32,9 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 @Consumes("application/json")
 public class RestauranteResource {
+    public static final String MENSAJE = "El recurso /restaurante/";
+    public static final String NOEXISTE = " no existe.";
+
     
    @Inject
     RestauranteLogic logic;
@@ -60,7 +63,7 @@ public class RestauranteResource {
     public RestauranteDetailDTO getRestaurante(@PathParam("id") String id) throws BusinessLogicException {
         RestauranteEntity entity = logic.getRestaurante(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /restaurante/" + id + " no existe.", 404);
+            throw new WebApplicationException(MENSAJE + id + NOEXISTE, 404);
         }
         return new RestauranteDetailDTO(entity);
     }
@@ -90,7 +93,7 @@ public class RestauranteResource {
         cliente.setNit(usuario);
         RestauranteEntity entity = logic.getRestaurante(usuario);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /restaurante/" + usuario + " no existe.", 404);
+            throw new WebApplicationException(MENSAJE + " usuario" + usuario + NOEXISTE, 404);
         }
         return new RestauranteDetailDTO(logic.actualizarRestaurante(usuario, cliente.toEntity()));
     }
@@ -105,7 +108,7 @@ public class RestauranteResource {
     public void deleteRestaurante(@PathParam("usuario") String usuario) throws BusinessLogicException {
         RestauranteEntity entity = logic.getRestaurante(usuario);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /restaurante/" + usuario + " no existe.", 404);
+            throw new WebApplicationException(MENSAJE + usuario + "usuario ingresado " +NOEXISTE, 404);
         }
         logic.removeRestaurante(usuario);
     }
@@ -121,7 +124,7 @@ public class RestauranteResource {
     public Class<RestauranteSucursalResource> getRestauranteSucursalResource(@PathParam("usuario") String usuario) {
         RestauranteEntity entity = logic.getRestaurante(usuario);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /restaurantes/" + usuario + "/Sucursal no existe.", 404);
+            throw new WebApplicationException(MENSAJE + usuario + "/Sucursal no existe.", 404);
         }
         return RestauranteSucursalResource.class;
     }
@@ -135,7 +138,7 @@ public class RestauranteResource {
     public Class<RestauranteProductoResource> getRestauranteProductoResource(@PathParam("usuario") String usuario) {
         RestauranteEntity entity = logic.getRestaurante(usuario);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /restaurantes/" + usuario + "/Producto no existe.", 404);
+            throw new WebApplicationException(MENSAJE + usuario + "/Producto no existe.", 404);
         }
         return RestauranteProductoResource.class;
     }
@@ -149,7 +152,7 @@ public class RestauranteResource {
     public Class<RestauranteEventoResource> getRestauranteEventoResource(@PathParam("usuario") String usuario) {
         RestauranteEntity entity = logic.getRestaurante(usuario);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /restaurantes/" + usuario + "/evento no existe.", 404);
+            throw new WebApplicationException(MENSAJE + usuario + "/evento no existe.", 404);
         }
         return RestauranteEventoResource.class;
     } 
@@ -170,23 +173,5 @@ public class RestauranteResource {
         }
         return list;
     } 
-    
-    /**
-     * Convierte una lista de RestauranteDetailDTO a una lista de RestauranteEntity.
-     *
-     * @param dtos Lista de SucursalDetailDTO a convertir.
-     * @return Lista de SucursalEntity convertida.    
-     */
-    private List<RestauranteEntity> restaurantesListDTO2Entity(List<RestauranteDetailDTO> dtos){
-        List<RestauranteEntity> list = new ArrayList<>();
-        for (RestauranteDetailDTO dto : dtos) {
-            list.add(dto.toEntity());
-        }
-        return list;
-    }
-    
-    
-    
-    
 }
     

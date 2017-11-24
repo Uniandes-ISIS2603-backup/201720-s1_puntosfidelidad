@@ -41,12 +41,15 @@ public class TarjetaPuntosPersistence {
     public TarjetaPuntosEntity findWithId(Long id) {
         TypedQuery<TarjetaPuntosEntity> q = em.createQuery("select p from TarjetaPuntosEntity p where (p.id = :queryId)", TarjetaPuntosEntity.class);
         q.setParameter("queryId", id);
+        TarjetaPuntosEntity tarjeta;
         try {
-            return q.getSingleResult();
+            tarjeta= q.getSingleResult();
         } catch (Exception e) {
+            LOGGER.log(Level.INFO, "{0}", e);
             //hay excepción cuando el signle result no encuentra nada
-            return null;
+            tarjeta= null;
         }
+        return tarjeta;
     }
 
     /**

@@ -30,6 +30,10 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 public class TarjetaDeCreditoResource {
 
+    public static final  String FRASE  = "El recurso /clientes/";
+    public static final  String TC_FRASE  = "/tarjetasDeCredito/";
+    public static final  String NOEXISTE  = " no existe.";
+
     @Inject
     TarjetaDeCreditoLogic tarjetaLogic;
 
@@ -56,7 +60,7 @@ public class TarjetaDeCreditoResource {
     public TarjetaDeCreditoDTO getTarjetaDeCredito(@PathParam("usuario") String usuario, @PathParam("id") Long id) throws BusinessLogicException {
         TarjetaDeCreditoEntity entity = tarjetaLogic.getTarjetaDeCredito(usuario, id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /clientes/" + usuario + "/tarjetasDeCredito/" + id + " no existe.", 404);
+            throw new WebApplicationException(FRASE + usuario + TC_FRASE + id + NOEXISTE, 404);
         }
         return new TarjetaDeCreditoDTO(entity);
     }
@@ -87,7 +91,7 @@ public class TarjetaDeCreditoResource {
         tarjeta.setId(id);
         TarjetaDeCreditoEntity entity = tarjetaLogic.getTarjetaDeCredito(usuario, id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /clientes/" + usuario + "/tarjetasDeCredito/" + id + " no existe.", 404);
+            throw new WebApplicationException(FRASE + usuario + TC_FRASE + id + NOEXISTE, 404);
         }
         return new TarjetaDeCreditoDTO(tarjetaLogic.updateTarjetaDeCredito(usuario, tarjeta.toEntity()));
 
@@ -104,7 +108,7 @@ public class TarjetaDeCreditoResource {
     public void deleteTarjetaDeCredito(@PathParam("usuario") String usuario, @PathParam("id") Long id) throws BusinessLogicException {
         TarjetaDeCreditoEntity entity = tarjetaLogic.getTarjetaDeCredito(usuario, id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /clientes/" + usuario + "/tarjetasDeCredito/" + id + " no existe.", 404);
+            throw new WebApplicationException(FRASE + usuario + TC_FRASE + id + NOEXISTE, 404);
         }
         tarjetaLogic.deleteTarjetaDeCredito(usuario, id);
     }

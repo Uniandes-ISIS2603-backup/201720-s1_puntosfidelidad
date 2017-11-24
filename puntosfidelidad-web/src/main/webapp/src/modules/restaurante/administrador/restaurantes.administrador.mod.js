@@ -6,11 +6,9 @@ var mod = ng.module("restauranteAdministradorModule", []);
             $urlRouterProvider.otherwise("");
 
             $stateProvider.state('restauranteAdministradorList', {
-                url: 'administradores/{administradorUsuario:string}/restaurantes',
+                url: '/restaurantes',
                 parent: 'administradorDetail',
-                param:{
-                    administradorUsuario:null
-                },
+               
                 views: {
                     'mainView': {
                         controller: 'administradoresDetailCtrl',
@@ -21,6 +19,27 @@ var mod = ng.module("restauranteAdministradorModule", []);
                        controller: 'restauranteAdministradorCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath+'restaurantes.administrador.list.html' 
+                                              
+                    }
+                }
+                
+                }).state('restaurantePruebaNew', {
+                url: '/crear',
+                parent: 'administradorDetail',
+                param:{
+                    administradorUsuario:null
+                },
+                views: {
+                    'mainView': {
+                        controller: 'restauranteAdministradorCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl:  basePath+'restaurantes.administrador.list.html'                        
+                    },
+                    'detailAdministradorView': {
+                       controller: 'restaurantesCreateCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath+'restaurantes.administrador.listPrueba.html' 
+                                              
                     }
                 }
                 

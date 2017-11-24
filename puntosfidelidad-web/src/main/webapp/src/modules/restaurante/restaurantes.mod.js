@@ -1,7 +1,7 @@
 (function (ng) {
     var mod = ng.module("restaurantesModule", []);
         mod.constant("restaurantesContext", "api/restaurantes");
-        mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider, $scope) {
+        mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
                 var basePath = 'src/modules/restaurante/';
                 $urlRouterProvider.otherwise("/restaurantes");
     
@@ -63,6 +63,20 @@
                         controllerAs: 'ctrl'
                     }
                 }
+                 }).state('restaurantesEventos', {
+                url: '/eventos',
+                parent: 'restaurantesDetail',
+                param: {
+                    restauranteNit: null
+                },
+                views: {
+                    'extrasView': {
+                        templateUrl: basePath + 'restaurantes.eventos.html',
+                        controller: 'restaurantesCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+                
             }).state('restaurantesPost', {
                 url: '/create',
                 parent: 'restaurantes',

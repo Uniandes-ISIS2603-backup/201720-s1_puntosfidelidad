@@ -31,6 +31,7 @@ public class ComentarioResource {
     /**
      *  Obtiene una lista de todos los comentarios
      *  en representación detailed
+     * @return  lista
      */
     @GET
     public List<ComentarioDetailDTO> getComentarios()
@@ -42,6 +43,9 @@ public class ComentarioResource {
      * Retorna el comentario con el id especificado 
      * Si el comentario con el id especificado no existe,
      * se le notifica al usuario
+     * @param id
+     * @return comentario
+     * @throws co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException 
      */
     
     @GET
@@ -54,13 +58,16 @@ public class ComentarioResource {
         }
         catch (Exception e)
         {
-            throw new WebApplicationException("El comentario con el id " + id + " no existe", 404);
+            throw new WebApplicationException("El comentario con el id " + id + " no existe" + e, 404);
         }       
     }
     
     /**
      * Actualiza un comentario a partir del DTO dado
      * por parámetro, retorna el nuevo estado del comentario
+     * @param id
+     * @param nuevo
+     * @return comentario
      */
     @PUT
     @Path("{id: \\d+}")
@@ -72,6 +79,7 @@ public class ComentarioResource {
         }
         catch (NullPointerException e)
         {
+            
             throw new WebApplicationException("El comentario con el id " + id + " no existe", 404);
         } 
         return new ComentarioDetailDTO(logic.updateComentario(nuevo.toEntity()));
@@ -87,14 +95,14 @@ public class ComentarioResource {
     
     private List<ComentarioDetailDTO> listEntityToDetailDTO(List<ComentarioEntity> entities)
     {
-        List<ComentarioDetailDTO> DTOList = new ArrayList<>();
+        List<ComentarioDetailDTO> dTOList = new ArrayList<>();
         
         for(ComentarioEntity entity: entities)
         {
             //Convierto el entity con el constructor del DTO
-            DTOList.add(new ComentarioDetailDTO(entity));
+            dTOList.add(new ComentarioDetailDTO(entity));
         }
         
-        return DTOList;
+        return dTOList;
     }
 }
