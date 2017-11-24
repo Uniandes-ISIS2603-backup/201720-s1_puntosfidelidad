@@ -78,7 +78,7 @@ public class UbicacionResource {
     @PUT
     @Path("{direccionSucursal}")
     public UbicacionDetailDTO putUbicacion(@PathParam("direccionSucursal") String direccion, UbicacionDetailDTO ubicacion) throws BusinessLogicException{
-        ubicacion.setDireccion(direccion);
+        ubicacion.setDTODireccion(direccion);
         UbicacionEntity entity = logic.getUbicacion(direccion);
         if (entity == null) {
             throw new WebApplicationException("El recurso /ubicacion/" + direccion + " no existe.", 404);

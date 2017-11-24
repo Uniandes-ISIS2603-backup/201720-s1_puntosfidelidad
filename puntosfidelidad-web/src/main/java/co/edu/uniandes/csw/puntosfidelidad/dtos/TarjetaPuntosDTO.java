@@ -55,35 +55,35 @@ public class TarjetaPuntosDTO implements Serializable{
         return entity;
     }
     
-    public Long getId() {
+    public Long getDTOId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setDTOId(Long id) {
         this.id = id;
     }
 
-    public Integer getMontoBasico() {
+    public Integer getDTOMontoBasico() {
         return montoBasico;
     }
 
-    public void setMontoBasico(Integer montoBasico) {
+    public void setDTOMontoBasico(Integer montoBasico) {
         this.montoBasico = montoBasico;
     }
 
-    public Integer getMontoActual() {
+    public Integer getDTOMontoActual() {
         return montoActual;
     }
 
-    public void setMontoActual(Integer montoActual) {
+    public void setDTOMontoActual(Integer montoActual) {
         this.montoActual = montoActual;
     }
 
-    public Integer getNumPuntos() {
+    public Integer getDTONumPuntos() {
         return numPuntos;
     }
 
-    public void setNumPuntos(Integer numPuntos) {
+    public void setDTONumPuntos(Integer numPuntos) {
         this.numPuntos = numPuntos;
     }
     

@@ -49,19 +49,19 @@ public class CompraDTO implements Serializable{
         return entity;
     }
 
-    public Long getId() {
+    public Long getDTOId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setDTOId(Long id) {
         this.id = id;
     }
 
-    public boolean isPagoConpuntos() {
+    public boolean isDTOPagoConpuntos() {
         return pagoConpuntos;
     }
 
-    public void setPagoConpuntos(boolean pagoConpuntos) {
+    public void setDTOPagoConpuntos(boolean pagoConpuntos) {
         this.pagoConpuntos = pagoConpuntos;
     }
     

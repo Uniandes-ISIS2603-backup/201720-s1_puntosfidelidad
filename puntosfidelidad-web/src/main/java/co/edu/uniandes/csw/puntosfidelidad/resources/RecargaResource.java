@@ -90,7 +90,7 @@ public class RecargaResource {
     @PUT
     @Path("{id: \\d+}")
     public RecargaDTO updateRecarga(@PathParam("usuario") String usuario, @PathParam("id") Long id, RecargaDTO recarga) throws BusinessLogicException {
-        recarga.setId(id);
+        recarga.setDTOId(id);
         RecargaEntity entity = recargaLogic.getRecarga(usuario, id);
         if (entity == null) {
             throw new WebApplicationException(FRASE + usuario + RECARGA_FRASE + id + NOEXISTE, 404);

@@ -89,7 +89,7 @@ public class ClienteResource {
     @PUT
     @Path("{usuario: [a-zA-Z0-9][a-zA-Z0-9]*}") 
     public ClienteDetailDTO updateCliente(@PathParam("usuario") String usuario, ClienteDetailDTO cliente) throws BusinessLogicException {
-        cliente.setUsuario(usuario);
+        cliente.setDTOUsuario(usuario);
         ClienteEntity entity = clienteLogic.getCliente(usuario);
         if (entity == null) {
             throw new WebApplicationException(RUTA_CLIENTE + usuario + NEX, 404);
