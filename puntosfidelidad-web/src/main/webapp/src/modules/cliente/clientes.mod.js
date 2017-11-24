@@ -3,6 +3,7 @@
     mod.constant("clientesContext", "api/clientes");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/cliente/';
+            var basePathCompras = 'src/modules/compra/';
             $urlRouterProvider.otherwise("");
 
             $stateProvider.state('clientesList', {
@@ -35,6 +36,78 @@
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'navBar.html'
 
+                    }
+                }
+            }).state('clienteComprasList', {
+                url: 'clientes/{clienteUsuario:string}/compras',
+                param: {
+                    clienteUsuario: null
+                },
+                views: {
+                    'bannerView': {
+                        controller: 'loginCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
+                    },
+                    'mainView': {
+                        controller: 'clientesComprasCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePathCompras + 'compras.list.html'
+                    },
+                    'navBar': {
+                        controller: 'clientesDetailCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'navBar.html'
+
+                    }
+                }
+            }).state('clienteProductosList', {
+                url: 'clientes/{clienteUsuario:string}/productos',
+                param: {
+                    clienteUsuario: null
+                },
+                views: {
+                    'bannerView': {
+                        controller: 'loginCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
+                    },
+                    'navBar': {
+                        controller: 'clientesDetailCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/cliente/navBar.html'
+
+                    },
+                    'mainView': {
+                        controller: 'productosCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'subrecursoProducto/productos.list.html'
+                    }
+                }
+            }).state('clienteProductosDetail', {
+                url: 'clientes/{clienteUsuario:string}/productos/{productoId:int}/detail',
+                param: {
+                    clienteUsuario: null,
+                    productoId: null
+                    
+                },
+                views: {
+                    'bannerView': {
+                        controller: 'loginCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
+                    },
+                    'navBar': {
+                        controller: 'clientesDetailCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/cliente/navBar.html'
+
+                    },
+                    'mainView': {                      
+                        controller: 'productosCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'subrecursoProducto/productos.detail.html'
+                       
                     }
                 }
             }).state('clienteCreate', {

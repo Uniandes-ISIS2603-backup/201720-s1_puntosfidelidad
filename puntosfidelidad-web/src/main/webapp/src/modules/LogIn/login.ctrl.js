@@ -55,6 +55,8 @@
                                  $scope.errortxt= " Parece que el administrador no existe";
                             });
                 }
+                
+                $scope.doTheBack = function() {window.history.back();};
 
             };
         }]);

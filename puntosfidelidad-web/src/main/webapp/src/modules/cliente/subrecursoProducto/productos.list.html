@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <br>
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label>Productos list</label></div>
+            <div class="panel-body">
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    
+                </div>
+                <div class="col-md-8">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>    
+                                <th>Restaurante</th>  
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="producto in productosRecords">
+                                <td id="{{$index}}-name"><a ui-sref="clienteProductosDetail({clienteUsuario: elementoCliente.usuario, productoId: producto.id })">{{producto.nombre}}</a></td>
+                                <td id="{{$index}}-restaurante">{{producto.restaurante.nombre}}</td>
+                           
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
