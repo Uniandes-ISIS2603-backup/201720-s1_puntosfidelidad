@@ -39,66 +39,66 @@ public class EventoDTO implements Serializable{
     
     public EventoEntity toEntity(){
         EventoEntity entity = new EventoEntity();
-        entity.setDescripcion(this.getDescripcion());
-        entity.setNombre(this.getNombre());
-        entity.setFechaInicio(this.getFechaInicio());
-        entity.setFechaFin(this.getFechaFin());
+        entity.setDescripcion(this.getDTODescripcion());
+        entity.setNombre(this.getDTONombre());
+        entity.setFechaInicio(this.getDTOFechaInicio());
+        entity.setFechaFin(this.getDTOFechaFin());
         return entity;
     }  
 
     /**
      * @return the nombre
      */
-    public String getNombre() {
+    public String getDTONombre() {
         return nombre;
     }
 
     /**
      * @param nombre the nombre to set
      */
-    public void setNombre(String nombre) {
+    public void setDTONombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
      * @return the fechaInicio
      */
-    public Date getFechaInicio() {
+    public Date getDTOFechaInicio() {
         return fechaInicio;
     }
 
     /**
      * @param fechaInicio the fechaInicio to set
      */
-    public void setFechaInicio(Date fechaInicio) {
+    public void setDTOFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
     /**
      * @return the fechaFin
      */
-    public Date getFechaFin() {
+    public Date getDTOFechaFin() {
         return fechaFin;
     }
 
     /**
      * @param fechaFin the fechaFin to set
      */
-    public void setFechaFin(Date fechaFin) {
+    public void setDTOFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
     }
 
     /**
      * @return the descripcion
      */
-    public String getDescripcion() {
+    public String getDTODescripcion() {
         return descripcion;
     }
 
     /**
      * @param descripcion the descripcion to set
      */
-    public void setDescripcion(String descripcion) {
+    public void setDTODescripcion(String descripcion) {
         this.descripcion = descripcion;
     }    
 }

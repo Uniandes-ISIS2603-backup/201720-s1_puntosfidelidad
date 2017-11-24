@@ -32,66 +32,66 @@ public class ClienteDTO implements Serializable{
     
     public ClienteEntity toEntity(){
         ClienteEntity entity = new ClienteEntity();
-        entity.setContrasena(this.getContrasena());
-        entity.setNombre(this.getNombre());
-        entity.setImagen(this.getImagen());
-        entity.setUsuario(this.getUsuario());
+        entity.setContrasena(this.getDTOContrasena());
+        entity.setNombre(this.getDTONombre());
+        entity.setImagen(this.getDTOImagen());
+        entity.setUsuario(this.getDTOUsuario());
         return entity;
     }  
 
     /**
      * @return the usuario
      */
-    public String getUsuario() {
+    public String getDTOUsuario() {
         return usuario;
     }
 
     /**
      * @param usuario the usuario to set
      */
-    public void setUsuario(String usuario) {
+    public void setDTOUsuario(String usuario) {
         this.usuario = usuario;
     }
 
     /**
      * @return the nombre
      */
-    public String getNombre() {
+    public String getDTONombre() {
         return nombre;
     }
 
     /**
      * @param nombre the nombre to set
      */
-    public void setNombre(String nombre) {
+    public void setDTONombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
      * @return the contrasena
      */
-    public String getContrasena() {
+    public String getDTOContrasena() {
         return contrasena;
     }
 
     /**
      * @return the imagen
      */
-    public String getImagen() {
+    public String getDTOImagen() {
         return imagen;
     }
 
     /**
      * @param imagen the imagen to set
      */
-    public void setImagen(String imagen) {
+    public void setDTOImagen(String imagen) {
         this.imagen = imagen;
     }    
 
     /**
      * @param contrasena the contrasena to set
      */
-    public void setContrasena(String contrasena) {
+    public void setDTOContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
     

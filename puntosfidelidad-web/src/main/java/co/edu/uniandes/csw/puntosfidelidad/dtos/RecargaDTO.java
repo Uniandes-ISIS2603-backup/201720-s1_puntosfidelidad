@@ -35,51 +35,51 @@ public class RecargaDTO implements Serializable{
     
     public RecargaEntity toEntity(){
         RecargaEntity entity = new RecargaEntity();
-        entity.setId(this.getId());
-        entity.setValor(this.getValor());
-        entity.setFecha(this.getFecha());
+        entity.setId(this.getDTOId());
+        entity.setValor(this.getDTOValor());
+        entity.setFecha(this.getDTOFecha());
         return entity;
     }  
 
     /**
      * @return the id
      */
-    public Long getId() {
+    public Long getDTOId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(Long id) {
+    public void setDTOId(Long id) {
         this.id = id;
     }
 
     /**
      * @return the fecha
      */
-    public Date getFecha() {
+    public Date getDTOFecha() {
         return fecha;
     }
 
     /**
      * @param fecha the fecha to set
      */
-    public void setFecha(Date fecha) {
+    public void setDTOFecha(Date fecha) {
         this.fecha = fecha;
     }
 
     /**
      * @return the valor
      */
-    public Double getValor() {
+    public Double getDTOValor() {
         return valor;
     }
 
     /**
      * @param valor the valor to set
      */
-    public void setValor(Double valor) {
+    public void setDTOValor(Double valor) {
         this.valor = valor;
     }
     

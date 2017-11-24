@@ -57,7 +57,7 @@ public class RestauranteDTO implements Serializable{
      * Obtiene el nit del restaurante
      * @return nit
      */
-    public String getNit() {
+    public String getDTONit() {
         return nit;
     }
 
@@ -65,7 +65,7 @@ public class RestauranteDTO implements Serializable{
      * modifica el nit del restaurante
      * @param nit
      */
-    public void setNit(String nit) {
+    public void setDTONit(String nit) {
         this.nit = nit;
     }
 
@@ -73,14 +73,14 @@ public class RestauranteDTO implements Serializable{
      * Obtiene el nombre del restaurante
      * @return nit
      */
-    public String getNombre() {
+    public String getDTONombre() {
         return nombre;
     }
 /**
      * modifica el nombre del restaurante
      * @param nombre
      */
-    public void setNombre(String nombre) {
+    public void setDTONombre(String nombre) {
         this.nombre = nombre;
     }
 
@@ -88,14 +88,14 @@ public class RestauranteDTO implements Serializable{
      * Obtiene el tipo de comida del restaurante
      * @return nit
      */
-    public String getTipoComida() {
+    public String getDTOTipoComida() {
         return tipoComida;
     }
 /**
      * modifica el ripo de comida del restaurante
      * @param tipoComida
      */
-    public void setTipoComida(String tipoComida) {
+    public void setDTOTipoComida(String tipoComida) {
         this.tipoComida = tipoComida;
     }
 }

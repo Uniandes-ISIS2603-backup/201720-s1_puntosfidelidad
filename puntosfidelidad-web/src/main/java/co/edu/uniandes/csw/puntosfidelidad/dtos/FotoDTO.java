@@ -44,14 +44,14 @@ public class FotoDTO implements Serializable{
     /**
      * @return the url
      */
-    public String getUrl() {
+    public String getDTOUrl() {
         return url;
     }
 
     /**
      * @param url the url to set
      */
-    public void setUrl(String url) {
+    public void setDTOUrl(String url) {
         this.url = url;
     }
     

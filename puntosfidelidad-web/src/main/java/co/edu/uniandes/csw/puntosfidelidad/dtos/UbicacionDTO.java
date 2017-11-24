@@ -34,51 +34,51 @@ public class UbicacionDTO implements Serializable{
     
     public UbicacionEntity toEntity(){
         UbicacionEntity entity = new UbicacionEntity();
-        entity.setDireccion(this.getDireccion());
-        entity.setLatitud(this.getLatitud());
-        entity.setLongitud(this.getLongitud());
+        entity.setDireccion(this.getDTODireccion());
+        entity.setLatitud(this.getDTOLatitud());
+        entity.setLongitud(this.getDTOLongitud());
         return entity;
     }
 
     /**
      * @return the direccion
      */
-    public String getDireccion() {
+    public String getDTODireccion() {
         return direccion;
     }
 
     /**
      * @param direccion the direccion to set
      */
-    public void setDireccion(String direccion) {
+    public void setDTODireccion(String direccion) {
         this.direccion = direccion;
     }
 
     /**
      * @return the latitud
      */
-    public Long getLatitud() {
+    public Long getDTOLatitud() {
         return latitud;
     }
 
     /**
      * @param latitud the latitud to set
      */
-    public void setLatitud(Long latitud) {
+    public void setDTOLatitud(Long latitud) {
         this.latitud = latitud;
     }
 
     /**
      * @return the longitud
      */
-    public Long getLongitud() {
+    public Long getDTOLongitud() {
         return longitud;
     }
 
     /**
      * @param longitud the longitud to set
      */
-    public void setLongitud(Long longitud) {
+    public void setDTOLongitud(Long longitud) {
         this.longitud = longitud;
     }
 
