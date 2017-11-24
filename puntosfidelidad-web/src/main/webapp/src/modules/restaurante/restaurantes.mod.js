@@ -63,6 +63,20 @@
                         controllerAs: 'ctrl'
                     }
                 }
+                 }).state('restaurantesEventos', {
+                url: '/eventos',
+                parent: 'restaurantesDetail',
+                param: {
+                    restauranteNit: null
+                },
+                views: {
+                    'extrasView': {
+                        templateUrl: basePath + 'restaurantes.eventos.html',
+                        controller: 'restaurantesCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+                
             }).state('restaurantesPost', {
                 url: '/create',
                 parent: 'restaurantes',

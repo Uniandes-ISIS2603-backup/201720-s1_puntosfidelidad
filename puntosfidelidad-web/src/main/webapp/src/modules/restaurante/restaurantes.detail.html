@@ -1,4 +1,5 @@
-<div class="container">
+
+<div class="container" >
 <br>
 <div class="panel panel-primary">
     <div class="panel-heading">Restaurante : {{actual.nombre}}</div>
@@ -8,7 +9,7 @@
                         <button class="btn btn-primary btnRestaurante" ui-sref='restaurantesDetail({restauranteNit:"{{actual.nit}}"})'>Información</button> <br>
                         <button class="btn btn-primary btnRestaurante" ui-sref='restaurantesProductos({restauranteNit:"{{actual.nit}}"})'>Productos</button> <br>               
                         <button class="btn btn-primary btnRestaurante" ui-sref='restaurantesSucursales({restauranteNit:"{{actual.nit}}"})'>Sucursales</button> <br> 
-                        <button class="btn btn-primary btnRestaurante" ui-sref="eventosList" >Eventos</button>
+                        <button class="btn btn-primary btnRestaurante" ui-sref='restaurantesEventos({restauranteNit:"{{actual.nit}}"})' >Eventos</button>
                         <br>
                         <div class="row">
                         <div style="padding-left: 30px">
@@ -21,7 +22,7 @@
                     <div ui-view="extrasView" id="columna1">
                         <b>NIT :</b> <p>{{actual.nit}}</p>
                         <b>TIPO DE COMIDA :</b> <p> {{actual.tipoComida}}</p>
-                        <img ng-src='http://lorempixel.com/200/200'>
+                        
                     </div>
                     </div>
             </div>
