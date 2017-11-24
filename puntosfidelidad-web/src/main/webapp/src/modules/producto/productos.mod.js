@@ -3,12 +3,27 @@ var mod = ng.module("productoModule", []);
     mod.constant("productosContext", "api/productos");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/producto/';
+             
             $urlRouterProvider.otherwise("");
 
             $stateProvider.state('productos', {
-                url: '/productos',
+                url: 'clientes/{clienteUsuario:string}/productos',
                 abstract: true,
+                param: {
+                    clienteUsuario: null
+                },
                 views: {
+                    'bannerView': {
+                        controller: 'loginCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
+                    },
+                    'navBar': {
+                        controller: 'clientesDetailCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/cliente/navBar.html'
+
+                    },
                     'mainView': {
                         templateUrl: basePath + 'productos.html',
                         controller: 'productosCtrl',
@@ -16,13 +31,27 @@ var mod = ng.module("productoModule", []);
                     }
                 }
             }).state('productosList', {
-                url: '/list',
+                url: '/listaProductos',
+                parent: 'productos',
                 views: {
-                    'mainView': {
+                    'bannerView': {
+                        controller: 'loginCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
+                    },
+                    'navBar': {
+                        controller: 'clientesDetailCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/cliente/navBar.html'
+
+                    },
+                    'listView': {
                         controller: 'productosCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'productos.list.html'
                     }
+                    
+                    
                 }
             }).state('productoDetail', {
                 url: '/{productoId:int}/detail',

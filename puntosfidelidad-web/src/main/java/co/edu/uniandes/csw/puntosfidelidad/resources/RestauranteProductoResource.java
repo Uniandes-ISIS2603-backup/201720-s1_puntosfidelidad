@@ -5,9 +5,12 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.resources;
 
+import co.edu.uniandes.csw.puntosfidelidad.dtos.ProductoDTO;
 import co.edu.uniandes.csw.puntosfidelidad.dtos.ProductoDetailDTO;
+import co.edu.uniandes.csw.puntosfidelidad.ejb.ProductoLogic;
 import co.edu.uniandes.csw.puntosfidelidad.ejb.RestauranteLogic;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import java.util.List;
 import javax.inject.Inject;
@@ -30,6 +33,9 @@ import java.util.ArrayList;
 public class RestauranteProductoResource {
     @Inject
     private RestauranteLogic restauranteLogic;
+    
+    @Inject
+    private ProductoLogic logic;
 
     /**
      * Convierte una lista de productosEntity a una lista de productosDetailDTO.
@@ -93,16 +99,21 @@ public class RestauranteProductoResource {
     /**
      * Asocia un Producto existente a un Admistrador
      *
-     * @param usuario Identificador de la instancia de Cliente
-     * @param productosId
+     * @param nit Identificador de la instancia de Cliente
      * @return Instancia de ProductoDetailDTO que fue asociada a Cliente
      * 
      */
-    @POST
-    @Path("{productosId: \\d+}")
-    public ProductoDetailDTO addProductos(@PathParam("usuario") String usuario, @PathParam("sucursalesId") Long productosId) {
-        return new ProductoDetailDTO(restauranteLogic.addProducto(usuario, productosId));
-    }
+     @POST    
+    public ProductoDTO createProducto(@PathParam("nit") String nit, ProductoDTO pro ) throws BusinessLogicException
+    {
+        RestauranteEntity rest= restauranteLogic.getRestaurante(nit);
+        ProductoEntity prod= pro.toEntity();
+        prod.setRestaurante(rest);        
+        List lista= rest.getProductos();
+        lista.add(prod);
+        rest.setProductos(lista);
+        return new ProductoDTO(logic.createProducto(prod));
+    } 
 
     
     /**
