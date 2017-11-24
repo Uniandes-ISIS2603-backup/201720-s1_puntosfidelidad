@@ -31,6 +31,12 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 public class RecargaResource {
 
+    public final static String FRASE  = "El recurso /clientes/";
+    public final static String RECARGA_FRASE  = "/recargas/";
+    public final static String NOEXISTE  = " no existe.";
+
+
+    
     @Inject
     RecargaLogic recargaLogic;
 
@@ -56,7 +62,7 @@ public class RecargaResource {
     public RecargaDTO getRecarga(@PathParam("usuario") String usuario, @PathParam("id") Long id) throws BusinessLogicException {
         RecargaEntity entity = recargaLogic.getRecarga(usuario, id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /clientes/" + usuario + "/recargas/" + id + " no existe.", 404);
+            throw new WebApplicationException(FRASE + usuario + RECARGA_FRASE + id + NOEXISTE, 404);
         }
         return new RecargaDTO(entity);
     }
@@ -87,7 +93,7 @@ public class RecargaResource {
         recarga.setId(id);
         RecargaEntity entity = recargaLogic.getRecarga(usuario, id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /clientes/" + usuario + "/recargas/" + id + " no existe.", 404);
+            throw new WebApplicationException(FRASE + usuario + RECARGA_FRASE + id + NOEXISTE, 404);
         }
         return new RecargaDTO(recargaLogic.updateRecarga(usuario, recarga.toEntity()));
 
@@ -104,7 +110,7 @@ public class RecargaResource {
     public void deleteRecarga(@PathParam("usuario") String usuario, @PathParam("id") Long id) throws BusinessLogicException {
         RecargaEntity entity = recargaLogic.getRecarga(usuario, id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /clientes/" + usuario + "/recargas/" + id + " no existe.", 404);
+            throw new WebApplicationException(FRASE + usuario + RECARGA_FRASE + id + NOEXISTE, 404);
         }
         recargaLogic.deleteRecarga(usuario, id);
     }

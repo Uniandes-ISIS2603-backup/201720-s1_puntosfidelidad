@@ -28,7 +28,7 @@ public class RestaurantePersistence {
       /**
      * Busca si hay algun Restaurante con el usuario que se envía de argumento
      *
-     * @param name: Nombre del restaurante que se está buscando
+     * @param nit: Nombre del restaurante que se está buscando
      * @return null si no existe ningun cliente con el nombre del argumento.
      * Si existe alguno devuelve la primera.
      */
@@ -40,7 +40,7 @@ public class RestaurantePersistence {
      /**
      * Busca si hay algun Restaurante con el nombre que se envía de argumento
      *
-     * @param name: Nombre del restaurante que se está buscando
+     * @param nombre: Nombre del restaurante que se está buscando
      * @return null si no existe ningun cliente con el nombre del argumento.
      * Si existe alguno devuelve la primera.
      */
@@ -49,13 +49,15 @@ public class RestaurantePersistence {
         TypedQuery<RestauranteEntity> q
                 = em.createQuery("select u from RestauranteEntity u where u.nombre = :nombre", RestauranteEntity.class);
         q = q.setParameter("nombre", nombre);
+        RestauranteEntity restaurante;
         try{
-        return q.getSingleResult();}
+        restaurante= q.getSingleResult();}
         catch(Exception e)
         {
             //no encontró restaurante
-            return null;
+            restaurante= null;
         }
+        return restaurante;
     }
     
     

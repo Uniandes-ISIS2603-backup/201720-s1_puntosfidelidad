@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.puntosfidelidad.resources;
 
 import co.edu.uniandes.csw.puntosfidelidad.dtos.CompraDetailDTO;
-import co.edu.uniandes.csw.puntosfidelidad.dtos.TarjetaPuntosDTO;
 import co.edu.uniandes.csw.puntosfidelidad.dtos.TarjetaPuntosDetailDTO;
 import co.edu.uniandes.csw.puntosfidelidad.ejb.ClienteLogic;
 import co.edu.uniandes.csw.puntosfidelidad.ejb.TarjetaPuntosLogic;
@@ -44,7 +43,7 @@ public class TarjetaPuntosResource {
     @GET
     public List<TarjetaPuntosDetailDTO> getTarjetas()
     {
-        return ListEntityToDetailDTO(logic.getTarjetasPuntos());
+        return listEntityToDetailDTO(logic.getTarjetasPuntos());
     }
     
     /**
@@ -94,17 +93,17 @@ public class TarjetaPuntosResource {
      * @param entities colección de entities a convertir a DetailDTO
      * @return colección de DetailDTOS generados
      */
-    private List<TarjetaPuntosDetailDTO> ListEntityToDetailDTO(List<TarjetaPuntosEntity> entities)
+    private List<TarjetaPuntosDetailDTO> listEntityToDetailDTO(List<TarjetaPuntosEntity> entities)
     {
-        List<TarjetaPuntosDetailDTO> DTOList = new ArrayList<>();
+        List<TarjetaPuntosDetailDTO> dTOList = new ArrayList<>();
         
         for(TarjetaPuntosEntity entity: entities)
         {
             //Convierto el entity con el constructor del DTO
-            DTOList.add(new TarjetaPuntosDetailDTO(entity));
+            dTOList.add(new TarjetaPuntosDetailDTO(entity));
         }
         
-        return DTOList;
+        return dTOList;
     }
     
     /**
@@ -114,14 +113,14 @@ public class TarjetaPuntosResource {
      */
     private List<CompraDetailDTO> compraListEntityToDetailDTO(List<CompraEntity> entities)
     {
-        List<CompraDetailDTO> DTOList = new ArrayList<>();
+        List<CompraDetailDTO> dTOList = new ArrayList<>();
         
         for(CompraEntity entity: entities)
         {
             //Convierto el entity con el constructor del DTO
-            DTOList.add(new CompraDetailDTO(entity));
+            dTOList.add(new CompraDetailDTO(entity));
         }
         
-        return DTOList;
+        return dTOList;
     }
 }

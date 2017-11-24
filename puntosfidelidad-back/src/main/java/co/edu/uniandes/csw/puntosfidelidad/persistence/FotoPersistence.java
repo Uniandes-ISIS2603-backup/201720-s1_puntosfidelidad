@@ -40,12 +40,12 @@ public class FotoPersistence {
         return em.merge(entity);
     }
     
-    public void delete(String URL)
+    public void delete(String url)
     {
-        LOGGER.log(Level.INFO, "Borrando comentario con url={0}", URL);
-        FotoEntity entity = em.find(FotoEntity.class, URL);
+        LOGGER.log(Level.INFO, "Borrando comentario con url={0}", url);
+        FotoEntity entity = em.find(FotoEntity.class, url);
         em.remove(entity);
-        LOGGER.log(Level.INFO, "Borrado comentario con url={0}", URL);
+        LOGGER.log(Level.INFO, "Borrado comentario con url={0}", url);
     }
     
     public List<FotoEntity> findAll()
