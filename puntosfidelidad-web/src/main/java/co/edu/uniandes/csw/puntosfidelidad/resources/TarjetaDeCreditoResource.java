@@ -30,9 +30,9 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 public class TarjetaDeCreditoResource {
 
-    public final static String FRASE  = "El recurso /clientes/";
-    public final static String TC_FRASE  = "/tarjetasDeCredito/";
-    public final static String NOEXISTE  = " no existe.";
+    public static final  String FRASE  = "El recurso /clientes/";
+    public static final  String TC_FRASE  = "/tarjetasDeCredito/";
+    public static final  String NOEXISTE  = " no existe.";
 
     @Inject
     TarjetaDeCreditoLogic tarjetaLogic;

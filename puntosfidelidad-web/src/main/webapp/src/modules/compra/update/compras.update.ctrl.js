@@ -2,8 +2,8 @@
         function (ng) {
             var mod = ng.module("comprasModule");
             mod.constant("comprasContext", "api/compras");
-            mod.controller('comprasUpdateCtrl', ['$scope', '$http', 'comprasContext', '$state', '$rootScope', '$filter',
-                function ($scope, $http, comprasContext, $state, $rootScope, $filter) {
+            mod.controller('comprasUpdateCtrl', ['$scope', '$http', 'comprasContext', '$state', '$rootScope',
+                function ($scope, $http, comprasContext, $state, $rootScope) {
                     $rootScope.edit = true;
 
                     var idCompra = $state.params.compraId;

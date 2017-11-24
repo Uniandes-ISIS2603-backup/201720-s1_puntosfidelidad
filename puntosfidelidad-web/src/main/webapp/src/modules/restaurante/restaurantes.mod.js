@@ -1,7 +1,7 @@
 (function (ng) {
     var mod = ng.module("restaurantesModule", []);
         mod.constant("restaurantesContext", "api/restaurantes");
-        mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider, $scope) {
+        mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
                 var basePath = 'src/modules/restaurante/';
                 $urlRouterProvider.otherwise("/restaurantes");
     

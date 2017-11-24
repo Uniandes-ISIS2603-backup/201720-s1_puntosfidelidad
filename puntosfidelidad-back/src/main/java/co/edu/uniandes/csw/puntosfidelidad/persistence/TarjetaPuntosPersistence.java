@@ -45,7 +45,7 @@ public class TarjetaPuntosPersistence {
         try {
             tarjeta= q.getSingleResult();
         } catch (Exception e) {
-            LOGGER.info(e.getMessage());
+            LOGGER.log(Level.INFO, "{0}", e);
             //hay excepción cuando el signle result no encuentra nada
             tarjeta= null;
         }

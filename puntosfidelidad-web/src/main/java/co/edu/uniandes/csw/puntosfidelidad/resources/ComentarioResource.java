@@ -79,6 +79,7 @@ public class ComentarioResource {
         }
         catch (NullPointerException e)
         {
+            
             throw new WebApplicationException("El comentario con el id " + id + " no existe", 404);
         } 
         return new ComentarioDetailDTO(logic.updateComentario(nuevo.toEntity()));
@@ -94,14 +95,14 @@ public class ComentarioResource {
     
     private List<ComentarioDetailDTO> listEntityToDetailDTO(List<ComentarioEntity> entities)
     {
-        List<ComentarioDetailDTO> DTOList = new ArrayList<>();
+        List<ComentarioDetailDTO> dTOList = new ArrayList<>();
         
         for(ComentarioEntity entity: entities)
         {
             //Convierto el entity con el constructor del DTO
-            DTOList.add(new ComentarioDetailDTO(entity));
+            dTOList.add(new ComentarioDetailDTO(entity));
         }
         
-        return DTOList;
+        return dTOList;
     }
 }

@@ -31,9 +31,9 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 public class RecargaResource {
 
-    public final static String FRASE  = "El recurso /clientes/";
-    public final static String RECARGA_FRASE  = "/recargas/";
-    public final static String NOEXISTE  = " no existe.";
+    public static final  String FRASE  = "El recurso /clientes/";
+    public static final  String RECARGA_FRASE  = "/recargas/";
+    public static final  String NOEXISTE  = " no existe.";
 
 
     
