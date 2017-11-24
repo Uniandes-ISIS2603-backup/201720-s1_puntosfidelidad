@@ -52,13 +52,39 @@
                     'mainView': {
                         controller: 'clientesComprasCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePathCompras + 'compras.list.html'
+                        templateUrl: basePath + 'subrecursoCompra/compras.list.html'
                     },
                     'navBar': {
                         controller: 'clientesDetailCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'navBar.html'
 
+                    }
+                }
+            }).state('clienteComprasDetail', {
+                url: 'clientes/{clienteUsuario:string}/compras/{compraId:int}/detail',
+                param: {
+                    clienteUsuario: null,
+                    compraId: null
+                    
+                },
+                views: {
+                    'bannerView': {
+                        controller: 'loginCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
+                    },
+                    'navBar': {
+                        controller: 'clientesDetailCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/cliente/navBar.html'
+
+                    },
+                    'mainView': {                      
+                        controller: 'clientesComprasCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'subrecursoCompra/compras.detail.html'
+                       
                     }
                 }
             }).state('clienteProductosList', {
