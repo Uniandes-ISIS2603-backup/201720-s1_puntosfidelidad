@@ -36,24 +36,34 @@ public class AdministradorLogic {
     private static final Logger LOGGER = Logger.getLogger(AdministradorLogic.class.getName());
     
     
-    @Inject
-     private AdministradorPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
-    
-    @Inject
+    private AdministradorPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
+     
      private RestaurantePersistence restauranteLogic;
     
-    @Inject
      private ProductoPersistence productoLogic;
     
-    @Inject
      private SucursalPersistence sucursalLogic;
     
-     @Inject
      private ComentarioPersistence comentarioLogic;
     
-     @Inject
      private EventoPersistence eventoLogic;
      
+
+    @Inject
+    public AdministradorLogic (AdministradorPersistence injectPersistence, RestaurantePersistence injectRestaurante,
+            ProductoPersistence injectProducto, SucursalPersistence injectSucursal, ComentarioPersistence injectComentario,
+            EventoPersistence injectEvento){
+        this.persistence = injectPersistence;
+        this.restauranteLogic = injectRestaurante;
+        this.productoLogic = injectProducto;
+        this.sucursalLogic = injectSucursal;
+        this.comentarioLogic = injectComentario;
+        this.eventoLogic = injectEvento;
+        
+        
+    }
+    
+    
     
     public AdministradorEntity createAdministrador(AdministradorEntity entity) throws BusinessLogicException {
          LOGGER.info("Inicia proceso de creación de administrador");
