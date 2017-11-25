@@ -27,24 +27,19 @@ public class ClienteLogic {
     
     private static final Logger LOGGER = Logger.getLogger(ClienteLogic.class.getName());
 
+    @Inject
     private ClientePersistence persistence;
-    
+    @Inject
     private RecargaPersistence recargaPersistence;
-    
+    @Inject
     private ComentarioPersistence comentarioPersistence;
-    
+    @Inject
     private TarjetaPuntosPersistence tarjetaPuntosPersistence;
-    
+    @Inject
     private CompraPersistence compraPersistence;
 
-    public ClienteLogic(ClientePersistence injectPersistence, RecargaPersistence injectRecarga, ComentarioPersistence injectComentario,
-            TarjetaPuntosPersistence injectTarjeta, CompraPersistence injectCompra){
-        
-        this.persistence = injectPersistence;
-        this.recargaPersistence = injectRecarga;
-        this.comentarioPersistence = injectComentario;
-        this.tarjetaPuntosPersistence = injectTarjeta;
-        this.compraPersistence = injectCompra;
+    
+    public ClienteLogic(){
         
     }
     
