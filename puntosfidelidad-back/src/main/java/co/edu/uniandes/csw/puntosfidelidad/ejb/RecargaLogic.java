@@ -23,6 +23,12 @@ public class RecargaLogic {
     @Inject
     private ClienteLogic clienteLogic;
 
+    @Inject
+    public RecargaLogic(RecargaPersistence injectPersistence, ClienteLogic injectCliente){
+        this.persistence = injectPersistence;
+        this.clienteLogic = injectCliente;
+    }
+    
     /**
      * Obtiene la lista de los registros de Recarga que pertenecen a un Cliente.
      *

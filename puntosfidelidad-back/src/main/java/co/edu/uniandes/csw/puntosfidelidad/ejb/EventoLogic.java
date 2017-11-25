@@ -26,9 +26,14 @@ public class EventoLogic {
       
     private static final Logger LOGGER = Logger.getLogger(EventoLogic.class.getName());
 
-    @Inject
     private EventoPersistence persistence;
 
+    @Inject
+    public EventoLogic(EventoPersistence injectPersistence){
+        this.persistence = injectPersistence;
+    }
+    
+    
     public List<EventoEntity> getEventos() {
         LOGGER.info("Inicia proceso de consultar todos los eventos");
         List<EventoEntity> eventos = persistence.findAll();

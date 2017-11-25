@@ -23,11 +23,16 @@ import javax.inject.Inject;
 public class CompraLogic {
     
     
-    @Inject
     private CompraPersistence persistence;
     
-    @Inject
     private ProductoLogic prodLogic;
+        
+    @Inject
+    public CompraLogic(CompraPersistence injectPersistence, ProductoLogic injectProducto){
+        
+        this.persistence = injectPersistence;
+        this.prodLogic = injectProducto;
+    }
     
     /*
      * CRUD

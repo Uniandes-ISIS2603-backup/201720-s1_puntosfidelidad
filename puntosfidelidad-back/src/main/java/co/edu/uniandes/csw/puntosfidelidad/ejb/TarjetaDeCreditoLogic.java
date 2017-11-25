@@ -20,11 +20,15 @@ public class TarjetaDeCreditoLogic {
     
    private static final Logger LOGGER = Logger.getLogger(TarjetaDeCreditoLogic.class.getName());
 
-    @Inject
     private TarjetaDeCreditoPersistence persistence;
 
-    @Inject
     private ClienteLogic clienteLogic;
+    
+    @Inject
+    public TarjetaDeCreditoLogic(TarjetaDeCreditoPersistence injectPersistence, ClienteLogic injectCliente){
+        this.persistence = injectPersistence;
+        this.clienteLogic = injectCliente;
+    }
 
     /**
      * Obtiene la lista de los registros de TarjetaDeCredito que pertenecen a un Cliente.

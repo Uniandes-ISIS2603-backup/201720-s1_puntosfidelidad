@@ -13,8 +13,12 @@ import javax.inject.Inject;
 @Stateless
 public class ComentarioLogic {
     
-    @Inject
     private ComentarioPersistence persistence;
+    
+    @Inject
+    public ComentarioLogic (ComentarioPersistence injectPersistence){
+        this.persistence = injectPersistence;        
+    }
     
     /*
      * CRUD

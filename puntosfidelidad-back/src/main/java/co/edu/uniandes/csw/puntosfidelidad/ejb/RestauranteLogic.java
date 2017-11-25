@@ -25,14 +25,17 @@ import javax.inject.Inject;
 @Stateless
 public class RestauranteLogic {
     
+    private RestaurantePersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
+    
+    @Inject
+    public RestauranteLogic(RestaurantePersistence injectPersistence){
+        this.persistence = injectPersistence;
+    }
     private static final String MENSAJE_INICIAR_LOGGER = "Inicia proceso de consultar una sucursal del restaurante con el NIT = {0}"; 
     private static final String MENSAJE_REEMPLAZAR_LOGGER = "Inicia proceso de reemplazar una sucursal del restaurante con nit = {0}";
     private static final String MENSAJE_BORRAR_LOGGER = "Inicia proceso de borrar un autor del cliente con id = {0}";
     private static final String MENSAJE= "Inicia proceso de asociar restaurante con NIT = {0}";
     private static final Logger LOGGER = Logger.getLogger(RestauranteLogic.class.getName());
-    
-    @Inject
-     private RestaurantePersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
     
     
     public RestauranteEntity createRestaurante(RestauranteEntity entity) throws BusinessLogicException {

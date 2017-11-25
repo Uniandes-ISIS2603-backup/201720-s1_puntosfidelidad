@@ -22,14 +22,20 @@ import javax.inject.Inject;
 @Stateless
 public class TarjetaPuntosLogic {
 
-    @Inject
     private TarjetaPuntosPersistence persistence;
 
-    @Inject
     private CompraLogic compraLogic;
 
-    @Inject
     private RecargaLogic recargaLogic;
+
+    @Inject    
+    public TarjetaPuntosLogic(TarjetaPuntosPersistence injectPersistence, CompraLogic injectCompra, RecargaLogic injectRecarga){
+        this.persistence = injectPersistence;
+        this.compraLogic = injectCompra;
+        this.recargaLogic = injectRecarga;
+    }
+    
+    
 
     private static final Logger LOGGER = Logger.getLogger(TarjetaDeCreditoLogic.class.getName());
 

@@ -25,8 +25,12 @@ public class SucursalLogic {
           
     private static final Logger LOGGER = Logger.getLogger(SucursalLogic.class.getName());
 
-    @Inject
     private SucursalPersistence persistence;
+    
+    @Inject
+    public SucursalLogic(SucursalPersistence injectPersistence){
+        this.persistence = injectPersistence;
+    }
 
     public List<SucursalEntity> getSucursals() {
         LOGGER.info("Inicia proceso de consultar todos los eventos");

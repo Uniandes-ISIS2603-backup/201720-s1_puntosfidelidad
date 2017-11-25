@@ -20,12 +20,17 @@ import javax.inject.Inject;
 @Stateless
 public class ProductoLogic {
     
-     @Inject
     private ProductoPersistence persistence;
      
-     @Inject
-     private RestaurantePersistence restaurane;
+    private RestaurantePersistence restaurane;
     
+     
+    @Inject
+    public ProductoLogic(ProductoPersistence injectPersistence, RestaurantePersistence injectRestaurante){
+        this.persistence = injectPersistence;
+        this.restaurane = injectRestaurante;
+    }
+     
     /*
      * CRUD
      */
