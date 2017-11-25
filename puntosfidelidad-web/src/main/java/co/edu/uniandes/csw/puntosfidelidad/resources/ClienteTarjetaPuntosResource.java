@@ -115,9 +115,9 @@ public class ClienteTarjetaPuntosResource {
             throw new WebApplicationException("El recurso /clientes/" + usuario + "/tarjetas/" + id + " no existe.", 404);
         }  
         clienteLogic.removeTarjetaPuntos(usuario, id);        
-        entity.setMontoActual(tarjeta.getDTOMontoActual());
-        entity.setMontoBasico(tarjeta.getDTOMontoBasico());
-        entity.setNumPuntos(tarjeta.getDTONumPuntos());    
+        entity.setMontoActual(tarjeta.getMontoActual());
+        entity.setMontoBasico(tarjeta.getMontoBasico());
+        entity.setNumPuntos(tarjeta.getNumPuntos());    
         logic.updateTarjetaPuntos(entity);        
         clienteLogic.addTarjetaPuntos(usuario, id);
 

@@ -58,7 +58,7 @@ public class AdministradorDTO implements Serializable{
      * Devuelve el atributo usuario
      * @return 
      */
-    public String getDTOUsuario() {
+    public String getUsuario() {
         return usuario;
     }
 
@@ -66,7 +66,7 @@ public class AdministradorDTO implements Serializable{
      * Modifica el atributo usuario
      * @param usuario
      */
-    public void setDTOUsuario(String usuario) {
+    public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
 
@@ -74,7 +74,7 @@ public class AdministradorDTO implements Serializable{
      * Devuelve el atributo contrasena
      * @return 
      */
-    public String getDTOContrasena() {
+    public String getContrasena() {
         return contrasena;
     }
 
@@ -83,7 +83,7 @@ public class AdministradorDTO implements Serializable{
      * Modifica el atributo contrasena
      * @param contrasena
      */
-    public void setDTOContrasena(String contrasena) {
+    public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
     

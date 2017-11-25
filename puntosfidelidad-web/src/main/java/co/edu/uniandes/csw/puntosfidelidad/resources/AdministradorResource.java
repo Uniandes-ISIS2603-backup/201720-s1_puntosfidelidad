@@ -95,7 +95,7 @@ public class AdministradorResource {
     @PUT
     @Path("{usuario: [a-zA-Z0-9][a-zA-Z0-9]*}") 
     public AdministradorDetailDTO updateAdministrador(@PathParam("usuario") String usuario, AdministradorDetailDTO admin) throws BusinessLogicException {
-        admin.setDTOUsuario(usuario);
+        admin.setUsuario(usuario);
         AdministradorEntity entity = logic.getAdministrador(usuario);
         if (entity == null) {
             throw new WebApplicationException("El recurso /administrador/" + usuario + " no existe", 404);

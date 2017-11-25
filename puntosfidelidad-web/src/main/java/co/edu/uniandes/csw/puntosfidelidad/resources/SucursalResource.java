@@ -76,7 +76,7 @@ public class SucursalResource {
     @PUT
     @Path("{id: \\d+}")
     public SucursalDetailDTO putSucursal(@PathParam("id") Long id, SucursalDetailDTO sucursal) throws BusinessLogicException{
-        sucursal.setDTOId(id);
+        sucursal.setId(id);
         SucursalEntity entity = logic.getSucursal(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /sucursal/" + id + " no existe.", 404);

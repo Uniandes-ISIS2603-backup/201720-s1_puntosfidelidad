@@ -44,51 +44,51 @@ public class ComentarioDTO implements Serializable{
      */
     public ComentarioEntity toEntity(){
         ComentarioEntity entity = new ComentarioEntity();
-        entity.setComentario(this.getDTOComentario());
-        entity.setId(this.getDTOId());
-        entity.setCalificacion(this.getDTOCalificacion());
+        entity.setComentario(this.getComentario());
+        entity.setId(this.getId());
+        entity.setCalificacion(this.getCalificacion());
         return entity;
     }  
 
     /**
      * @return the id
      */
-    public Long getDTOId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setDTOId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     /**
      * @return the comentario
      */
-    public String getDTOComentario() {
+    public String getComentario() {
         return comentario;
     }
 
     /**
      * @param comentario the comentario to set
      */
-    public void setDTOComentario(String comentario) {
+    public void setComentario(String comentario) {
         this.comentario = comentario;
     }
 
     /**
      * @return the calificacion
      */
-    public Integer getDTOCalificacion() {
+    public Integer getCalificacion() {
         return calificacion;
     }
 
     /**
      * @param calificacion the calificacion to set
      */
-    public void setDTOCalificacion(Integer calificacion) {
+    public void setCalificacion(Integer calificacion) {
         this.calificacion = calificacion;
     }
     

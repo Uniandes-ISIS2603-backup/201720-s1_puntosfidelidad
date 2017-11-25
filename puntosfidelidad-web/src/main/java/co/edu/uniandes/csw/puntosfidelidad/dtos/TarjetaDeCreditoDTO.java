@@ -34,51 +34,51 @@ public class TarjetaDeCreditoDTO implements Serializable{
     
     public TarjetaDeCreditoEntity toEntity(){
         TarjetaDeCreditoEntity entity = new TarjetaDeCreditoEntity();
-        entity.setBanco(this.getDTOBanco());
-        entity.setId(this.getDTOId());
-        entity.setNumero(this.getDTONumero());        
+        entity.setBanco(this.getBanco());
+        entity.setId(this.getId());
+        entity.setNumero(this.getNumero());        
         return entity;
     }
 
     /**
      * @return the id
      */
-    public Long getDTOId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setDTOId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     /**
      * @return the banco
      */
-    public String getDTOBanco() {
+    public String getBanco() {
         return banco;
     }
 
     /**
      * @param banco the banco to set
      */
-    public void setDTOBanco(String banco) {
+    public void setBanco(String banco) {
         this.banco = banco;
     }
 
     /**
      * @return the numero
      */
-    public Long getDTONumero() {
+    public Long getNumero() {
         return numero;
     }
 
     /**
      * @param numero the numero to set
      */
-    public void setDTONumero(Long numero) {
+    public void setNumero(Long numero) {
         this.numero = numero;
     }
     

@@ -90,7 +90,7 @@ public class RestauranteResource {
     @PUT
     @Path("{usuario: [a-zA-Z0-9][a-zA-Z0-9]*}") 
     public RestauranteDetailDTO updateRestaurante(@PathParam("usuario") String usuario, RestauranteDTO cliente) throws BusinessLogicException {
-        cliente.setDTONit(usuario);
+        cliente.setNit(usuario);
         RestauranteEntity entity = logic.getRestaurante(usuario);
         if (entity == null) {
             throw new WebApplicationException(MENSAJE + " usuario" + usuario + NOEXISTE, 404);

@@ -38,66 +38,66 @@ public class ProductoDTO implements Serializable{
     
     public ProductoEntity toEntity(){
         ProductoEntity entity = new ProductoEntity();
-        entity.setId(this.getDTOId());
-        entity.setNombre(this.getDTONombre());
-        entity.setValorDinero(this.getDTOValorDinero());
-        entity.setValorPuntos(this.getDTOValorPuntos());
+        entity.setId(this.getId());
+        entity.setNombre(this.getNombre());
+        entity.setValorDinero(this.getValorDinero());
+        entity.setValorPuntos(this.getValorPuntos());
         return entity;
     }  
 
     /**
      * @return the nombre
      */
-    public String getDTONombre() {
+    public String getNombre() {
         return nombre;
     }
 
     /**
      * @param nombre the nombre to set
      */
-    public void setDTONombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
      * @return the id
      */
-    public Long getDTOId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setDTOId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     /**
      * @return the valorDinero
      */
-    public Integer getDTOValorDinero() {
+    public Integer getValorDinero() {
         return valorDinero;
     }
 
     /**
      * @param valorDinero the valorDinero to set
      */
-    public void setDTOValorDinero(Integer valorDinero) {
+    public void setValorDinero(Integer valorDinero) {
         this.valorDinero = valorDinero;
     }
 
     /**
      * @return the valorPuntos
      */
-    public Integer getDTOValorPuntos() {
+    public Integer getValorPuntos() {
         return valorPuntos;
     }
 
     /**
      * @param valorPuntos the valorPuntos to set
      */
-    public void setDTOValorPuntos(Integer valorPuntos) {
+    public void setValorPuntos(Integer valorPuntos) {
         this.valorPuntos = valorPuntos;
     }
 

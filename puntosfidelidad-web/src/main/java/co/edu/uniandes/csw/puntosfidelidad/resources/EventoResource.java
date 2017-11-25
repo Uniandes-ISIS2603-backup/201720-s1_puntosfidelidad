@@ -78,7 +78,7 @@ public class EventoResource {
     @PUT
     @Path("{nombre}")
     public EventoDetailDTO putEvento(@PathParam("nombre") String nombre, EventoDetailDTO evento) throws BusinessLogicException{
-        evento.setDTONombre(nombre);
+        evento.setNombre(nombre);
         EventoEntity entity = logic.getEvento(nombre);
         if (entity == null) {
             throw new WebApplicationException("El recurso /evento/" + nombre + " no existe.", 404);

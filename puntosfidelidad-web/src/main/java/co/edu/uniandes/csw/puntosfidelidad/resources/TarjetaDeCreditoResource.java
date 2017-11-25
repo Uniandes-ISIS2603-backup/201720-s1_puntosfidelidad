@@ -88,7 +88,7 @@ public class TarjetaDeCreditoResource {
     @PUT
     @Path("{id: \\d+}")
     public TarjetaDeCreditoDTO updateTarjetaDeCredito(@PathParam("usuario") String usuario, @PathParam("id") Long id, TarjetaDeCreditoDTO tarjeta) throws BusinessLogicException {
-        tarjeta.setDTOId(id);
+        tarjeta.setId(id);
         TarjetaDeCreditoEntity entity = tarjetaLogic.getTarjetaDeCredito(usuario, id);
         if (entity == null) {
             throw new WebApplicationException(FRASE + usuario + TC_FRASE + id + NOEXISTE, 404);

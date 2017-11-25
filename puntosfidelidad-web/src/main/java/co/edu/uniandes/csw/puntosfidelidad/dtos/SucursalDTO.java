@@ -41,81 +41,81 @@ public class SucursalDTO implements Serializable{
     
     public SucursalEntity toEntity(){
         SucursalEntity entity = new SucursalEntity();
-        entity.setDescripcion(this.getDTODescripcion());
-        entity.setId(this.getDTOId());
-        entity.setNombre(this.getDTONombre());
-        entity.setHoraApertura(this.getDTOHoraApertura());
-        entity.setHoraCierre(this.getDTOHoraCierre());
+        entity.setDescripcion(this.getDescripcion());
+        entity.setId(this.getId());
+        entity.setNombre(this.getNombre());
+        entity.setHoraApertura(this.getHoraApertura());
+        entity.setHoraCierre(this.getHoraCierre());
         return entity;
     }
 
     /**
      * @return the id
      */
-    public Long getDTOId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setDTOId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     /**
      * @return the nombre
      */
-    public String getDTONombre() {
+    public String getNombre() {
         return nombre;
     }
 
     /**
      * @param nombre the nombre to set
      */
-    public void setDTONombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
      * @return the horaApertura
      */
-    public Date getDTOHoraApertura() {
+    public Date getHoraApertura() {
         return horaApertura;
     }
 
     /**
      * @param horaApertura the horaApertura to set
      */
-    public void setDTOHoraApertura(Date horaApertura) {
+    public void setHoraApertura(Date horaApertura) {
         this.horaApertura = horaApertura;
     }
 
     /**
      * @return the horaCierre
      */
-    public Date getDTOHoraCierre() {
+    public Date getHoraCierre() {
         return horaCierre;
     }
 
     /**
      * @param horaCierre the horaCierre to set
      */
-    public void setDTOHoraCierre(Date horaCierre) {
+    public void setHoraCierre(Date horaCierre) {
         this.horaCierre = horaCierre;
     }
 
     /**
      * @return the descripcion
      */
-    public String getDTODescripcion() {
+    public String getDescripcion() {
         return descripcion;
     }
 
     /**
      * @param descripcion the descripcion to set
      */
-    public void setDTODescripcion(String descripcion) {
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
     
