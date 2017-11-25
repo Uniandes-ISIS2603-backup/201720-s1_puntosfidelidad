@@ -26,27 +26,16 @@ import javax.inject.Inject;
 public class ClienteLogic {
     
     private static final Logger LOGGER = Logger.getLogger(ClienteLogic.class.getName());
-
+        @Inject
     private ClientePersistence persistence;
-    
+        @Inject
     private RecargaPersistence recargaPersistence;
-    
+        @Inject
     private ComentarioPersistence comentarioPersistence;
-    
-    private TarjetaPuntosPersistence tarjetaPuntosPersistence;
-    
+        @Inject
+    private TarjetaPuntosPersistence tarjetaPuntosPersistence;    
+        @Inject
     private CompraPersistence compraPersistence;
-
-    public ClienteLogic(ClientePersistence injectPersistence, RecargaPersistence injectRecarga, ComentarioPersistence injectComentario,
-            TarjetaPuntosPersistence injectTarjeta, CompraPersistence injectCompra){
-        
-        this.persistence = injectPersistence;
-        this.recargaPersistence = injectRecarga;
-        this.comentarioPersistence = injectComentario;
-        this.tarjetaPuntosPersistence = injectTarjeta;
-        this.compraPersistence = injectCompra;
-        
-    }
     
     private static final String CLIENTE_ANONIMO = "Anonimo";
     private static final String MENSAJE_INICIAR_LOGGER = "Inicia proceso de asociar un autor del cliente con id = {0}";

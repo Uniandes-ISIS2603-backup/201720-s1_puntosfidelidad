@@ -22,14 +22,9 @@ import javax.inject.Inject;
 public class UbicacionLogic {
           
     private static final Logger LOGGER = Logger.getLogger(UbicacionLogic.class.getName());
-
+@Inject
     private UbicacionPersistence persistence;
     
-    @Inject
-    public UbicacionLogic(UbicacionPersistence injectPersistence){
-        this.persistence = injectPersistence;
-    }
-
     public List<UbicacionEntity> getUbicacions() {
         LOGGER.info("Inicia proceso de consultar todos los Ubicacions");
         List<UbicacionEntity> ubicacions = persistence.findAll();
