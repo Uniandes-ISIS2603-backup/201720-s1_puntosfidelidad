@@ -78,17 +78,17 @@ public class SucursalDetailDTO extends SucursalDTO{
             entity.setUbicacion(getUbicacion().toEntity());
         }
         
-        if (getComentarios() != null) {
+        if (getSucursalComentarios() != null) {
             List<ComentarioEntity> comentariosEntity = new ArrayList<>();
-            for (ComentarioDTO dtoComentario : getComentarios()) {
+            for (ComentarioDTO dtoComentario : getSucursalComentarios()) {
                 comentariosEntity.add(dtoComentario.toEntity());
             }
             entity.setComentarios(comentariosEntity);
         }
         
-        if (getCompras() != null) {
+        if (getSucursalCompras() != null) {
             List<CompraEntity> comprasEntity = new ArrayList<>();
-            for (CompraDTO dtoCompra : getCompras()) {
+            for (CompraDTO dtoCompra : getSucursalCompras()) {
                 comprasEntity.add(dtoCompra.toEntity());
             }
             entity.setCompras(comprasEntity);
@@ -128,7 +128,7 @@ public class SucursalDetailDTO extends SucursalDTO{
     /**
      * @return the comentarios
      */
-    public List<ComentarioDTO> getComentarios() {
+    public List<ComentarioDTO> getSucursalComentarios() {
         return comentarios;
     }
 
@@ -142,7 +142,7 @@ public class SucursalDetailDTO extends SucursalDTO{
     /**
      * @return the compras
      */
-    public List<CompraDTO> getCompras() {
+    public List<CompraDTO> getSucursalCompras() {
         return compras;
     }
 

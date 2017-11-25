@@ -3,7 +3,6 @@
     mod.constant("clientesContext", "api/clientes");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/cliente/';
-            var basePathCompras = 'src/modules/compra/';
             $urlRouterProvider.otherwise("");
 
             $stateProvider.state('clientesList', {
