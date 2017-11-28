@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-animate.js"></script>
 
         <!-- Custom styles for this template -->
         <link href="css/simple-sidebar.css" rel="stylesheet">
@@ -123,10 +124,18 @@
 
     </head>
 
-    <body  > 
+    <body> 
 
         <div class="row">
-            <div ui-view="bannerView" class="row"></div>
+            <div ui-view="bannerView" class="row">
+                <div>
+                    <h1>
+                        <a id="tituloBanner">        
+                            FIEL
+                        </a>       
+                    </h1>            
+                </div>
+            </div>
             <div ui-view="navBar">
                 <header>        
                     <nav> 
@@ -141,14 +150,19 @@
             <hr>            
         </div>
             
-
-
-        <div ui-view="mainView" class="central">
-            <img ng-if="!isAuthenticated()" id= "imagenIndex" alt="Banner" src="./media/I1.jpg" class="bannerInicial"/>
-        </div>   
+        <div ui-view="mainView">
+       <div ng-if="!isAuthenticated()"  id='videoDiv'>
+            <div id='videoBlock'>
+                <video id='bgvid' preload='auto' autoplay loop src="./media/indexVideo.mp4" type='video/mp4'></video>
+                <div id='videoMessage' class="central">
+                    <h1>Fiel</h1><!-- <img ng-if="!isAuthenticated()" id= "imagenIndex" alt="Banner" src="./media/I1.jpg" class="bannerInicial"/> -->
+                </div>
+            </div>
+        </div>
+        </div>
         
         <div class="row barcolor">
-            <footer >                           
+            <footer>                       
                 <a ui-sref="inicio">
                     Universidad De Los Andes - Desarrollo De Software En Equipos 2017-02 
                 </a>               
