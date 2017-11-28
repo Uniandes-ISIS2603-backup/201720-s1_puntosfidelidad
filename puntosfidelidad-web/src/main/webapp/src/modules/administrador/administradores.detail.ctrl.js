@@ -4,6 +4,7 @@
         function ($scope, $http, $state, $rootScope) {  
             $rootScope.edit=false;
             
+            q
             $http.get("api/administradores/" + $state.params.administradorUsuario)
                     .then(function (response) {
                         $scope.elementoAdministrador = response.data;
