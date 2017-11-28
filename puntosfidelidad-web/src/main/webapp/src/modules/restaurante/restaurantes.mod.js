@@ -9,7 +9,7 @@
                 url: '/restaurantes',
                 abstract: true,
                 views: {
-                    'mainView': {
+                    'info': {
                         templateUrl: basePath + 'restaurantes.html',
                         controller: 'restaurantesCtrl',
                         controllerAs: 'ctrl'
@@ -18,7 +18,7 @@
             }).state('restaurantesList', {
                 url: 'restaurantes/list',
                 views: {
-                    'mainView': {
+                    'info': {
                         controller: 'restaurantesCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'restaurantes.list.html'
@@ -107,7 +107,7 @@
                     restauranteNit: null
                 },
                 views: {
-                    'mainView': {
+                    'info': {
                         templateUrl: basePath + 'delete/restaurantes.delete.html',
                         controller: 'restauranteDeleteCtrl'
                     }

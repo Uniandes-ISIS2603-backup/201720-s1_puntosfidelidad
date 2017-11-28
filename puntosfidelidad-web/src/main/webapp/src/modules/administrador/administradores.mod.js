@@ -111,6 +111,94 @@
 
                     }
                 }
+            }).state('administradorClientes', {
+                url: '/administradores/clientes',
+                param: {
+                    clienteUsuario: null
+                },
+                views: {
+                    'bannerView': {
+                        controller: 'loginCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
+                    },
+                    'mainView': {
+                        templateUrl: 'src/modules/cliente/clientes.list.html',
+                        controller: 'administradorDeleteCtrl'
+                    },
+                    'navBar': {
+                        controller: 'administradoresCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'navBar.html'
+
+                    }
+                }
+            }).state('administradorOtros', {
+                url: '/administradores/clientes',
+                param: {
+                    clienteUsuario: null
+                },
+                views: {
+                    'bannerView': {
+                        controller: 'loginCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
+                    },
+                    'mainView': {
+                        templateUrl: 'src/modules/cliente/clientes.list.html',
+                        controller: 'administradorDeleteCtrl'
+                    },
+                    'navBar': {
+                        controller: 'administradoresCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'navBar.html'
+
+                    }
+                }
+            }).state('administradorRestaurantes', {
+                url: '/administradores/clientes',
+                param: {
+                    clienteUsuario: null
+                },
+                views: {
+                    'bannerView': {
+                        controller: 'loginCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
+                    },
+                    'mainView': {
+                        templateUrl: 'src/modules/cliente/clientes.list.html',
+                        controller: 'administradorDeleteCtrl'
+                    },
+                    'navBar': {
+                        controller: 'administradoresCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'navBar.html'
+
+                    }
+                }
+            }).state('administradorEventos', {
+                url: '/administradores/clientes',
+                param: {
+                    clienteUsuario: null
+                },
+                views: {
+                    'bannerView': {
+                        controller: 'loginCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
+                    },
+                    'mainView': {
+                        templateUrl: 'src/modules/cliente/clientes.list.html',
+                        controller: 'administradorDeleteCtrl'
+                    },
+                    'navBar': {
+                        controller: 'administradoresCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'navBar.html'
+
+                    }
+                }
             });
             
         }]);

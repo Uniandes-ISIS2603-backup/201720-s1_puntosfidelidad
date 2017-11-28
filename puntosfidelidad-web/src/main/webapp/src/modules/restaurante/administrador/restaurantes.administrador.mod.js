@@ -2,63 +2,74 @@
 var mod = ng.module("restauranteAdministradorModule", []);
     mod.constant("restauranteAdministradorContext", "api/restaurantes");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/restaurante/administrador/';
+            var basePath = 'src/modules/restaurante/';
             $urlRouterProvider.otherwise("");
 
             $stateProvider.state('restauranteAdministradorList', {
                 url: '/restaurantes',
                 parent: 'administradorDetail',
                
-                views: {
-                    'mainView': {
-                        controller: 'administradoresDetailCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/administrador/administradores.detail.html'                        
-                    },
-                    'detailAdministradorView': {
+                views: {                    
+                    'info': {
                        controller: 'restauranteAdministradorCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath+'restaurantes.administrador.list.html' 
+                        templateUrl: basePath+'/administrador/restaurantes.administrador.list.html' 
                                               
                     }
                 }
                 
-                }).state('restaurantePruebaNew', {
+                }).state('restauranteAdministradorPost', {
                 url: '/crear',
                 parent: 'administradorDetail',
                 param:{
                     administradorUsuario:null
                 },
                 views: {
-                    'mainView': {
-                        controller: 'restauranteAdministradorCtrl',
+                    'info': {
+                       controller: 'restaurantesPostCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl:  basePath+'restaurantes.administrador.list.html'                        
-                    },
-                    'detailAdministradorView': {
-                       controller: 'restaurantesCreateCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath+'restaurantes.administrador.listPrueba.html' 
+                        templateUrl: basePath+'postrestaurantes.post.html' 
                                               
                     }
                 }
                 
-                }).state('restauranteAdminNew', {
+                }).state('restauranteAdministradorUpdate', {
                 url: '/restaurante/crear',
                 parent: 'administradorDetail',
                 param: {
-                    administradorUsuario: null
+                    restauranteNit: null
                 },
                 views: {
-                    'mainView': {
-                        controller: 'administradorDetailCtrl',
+                    'info': {
+                        controller: 'restaurantesUpdateCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/administrador/administradores.detail.html'
-                    },
-                    'detailClienteView': {
-                        controller: 'restauranteNewCtrl',
+                        templateUrl: basePath + 'update/restaurantes.update.html'
+                    }
+                }
+            }).state('restauranteAdministradorDelete', {
+                url: '/restaurante/borrar',
+                parent: 'administradorDetail',
+                param: {
+                    restauranteNit: null
+                },
+                views: {
+                    'info': {
+                        controller: 'restaurantesDeleteCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'restaurantes.newlist.html'
+                        templateUrl: basePath + 'delete/restaurantes.delete.html'
+                    }
+                }
+            }).state('restauranteAdministradorDetail', {
+                url: '/restaurante/detalle',
+                parent: 'administradorDetail',
+                param: {
+                    restauranteNit: null
+                },
+                views: {
+                    'info': {
+                        controller: 'restaurantesCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'restaurantes.detail.html'
                     }
                 }
             });

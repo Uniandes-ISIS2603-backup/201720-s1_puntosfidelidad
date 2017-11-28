@@ -5,7 +5,16 @@
             <div class="row">
                 <br>        
                           
-               <div class="col-md-3">
+                <div class="col-md-3">
+                    <div ng-if="!edit" class="vertical-menu">
+                        <a ui-sref="administradorDetail">Información</a>
+                        <a ui-sref="restauranteAdministradorList({administradorUsuario: elementoAdministrador.usuario})">Mis Restaurantes</a>
+                        <a href="#">Trajetas de Puntos</a>
+                        <a href="#">Link 3</a>
+                        <a href="#">Link 4</a>
+                    </div>
+                </div>
+                <div ui-view ="info" class="col-md-8">
                     <dl> 
                         <dt><h3> <b>Usuario Administrador: </b>{{elementoAdministrador.usuario}} </h3></dt>
 
@@ -31,18 +40,7 @@
                     <a ng-if="edit && !((elementoAdministrador.contrasena) !== elementoAdministrador.repetirContrasenaU) && administradorUpdate.$valid" class="btn btn-default" ng-click="updateAdministrador()"><p class="glyphicon glyphicon-floppy-saved"></p></a>
                 </div>
             </div>
-            <br>
-
-            <ul class="nav nav-tabs">
-                <li ng-if="!edit" role="presentation" class="active"> <a ui-sref="restauranteAdministradorList({administradorUsuario: elementoAdministrador.usuario})">Ver Restaurantes</a></li>
-             <li ng-if="!edit" role="presentation" class="active"> <a ui-sref="administradoresList">Otros admnistradores</a></li>
-            <li ng-if="!edit" role="presentation" class="active"> <a ui-sref="administradoresList">Editar Perfil</a></li>
-            </ul> 
-            
-            
-        </form>
-        
-        <div ui-view="detailAdministradorView"></div>
-        
+            <br>           
+        </form>        
     </div>
 </div>
