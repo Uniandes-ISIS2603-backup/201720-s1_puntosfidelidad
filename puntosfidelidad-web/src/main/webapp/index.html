@@ -146,17 +146,16 @@
                     </nav>
                     <nav ng-if="isAuthenticated() && esCliente()" > 
                         <ul>
-                            <li><a  ui-sref="clienteDetail({clienteUsuario: elementoCliente.usuario})">Perfíl</a></li>
-                            <li><a  ui-sref="">Comentarios</a></li>
-                            <li><a  ui-sref="clienteComprasList({clienteUsuario: elementoCliente.usuario})">Compras</a></li>
-                            <li><a  ui-sref="restaurantesList">Restaurantes</a></li>
-                            <li><a  ui-sref="clienteProductosList({clienteUsuario: elementoCliente.usuario})">Ver Productos</a></li>
+                            <button class='BotonesBanner' ng-click="perfil()">Mi perfíl</button>
+                            <button class='BotonesBanner' ng-click="compras()">Compras</button>
+                            <button class='BotonesBanner' ui-sref="restaurantesList">Restaurantes</button>
+                            <button class='BotonesBanner' ng-click="productos()">Productos</button>
                             <li class="cerarSesion"><a  ui-sref="inicio">Cerrar Sesión</a></li>
                         </ul>
                     </nav> 
                     <nav ng-if="isAuthenticated() && !esCliente()"> 
                         <ul>
-                            <li><a  ui-sref="administradorDetail">Perfíl</a></li>
+                            <button class='BotonesBanner' ng-click="perfil()">Mi perfíl</button>
                             <li><a  ui-sref="administradoresList">Administradores</a></li>
                             <li><a  ui-sref="clientesList">Clientes</a></li>
                             <li><a  ui-sref="restaurantesList">Restaurantes</a></li>
@@ -171,23 +170,17 @@
         </div>
 
         <div ui-view="mainView">
-<<<<<<< HEAD
+
             <div ng-if="!isAuthenticated()"  id='videoDiv'>
                 <div id='videoBlock'>
-                    <video style="width: 100%" id='bgvid' preload='auto' autoplay loop src="./media/indexVideo.mp4" type='video/mp4'></video>
+                    <video style="width: 100%" id='bgvid' preload muted autoplay loop src="./media/indexVideo.mp4" type='video/mp4'></video>
                     <div id='videoMessage' class="central">
                         <h1>Fiel</h1><!-- <img ng-if="!isAuthenticated()" id= "imagenIndex" alt="Banner" src="./media/I1.jpg" class="bannerInicial"/> -->
                     </div>
-=======
-       <div ng-if="!isAuthenticated()"  id='videoDiv'>
-            <div id='videoBlock'>
-                <video style="width: 100%" id='bgvid' preload muted autoplay loop src="./media/indexVideo.mp4" type='video/mp4'></video>
-                <div id='videoMessage' class="central">
-                    <h1>Fiel</h1><!-- <img ng-if="!isAuthenticated()" id= "imagenIndex" alt="Banner" src="./media/I1.jpg" class="bannerInicial"/> -->
->>>>>>> d46967103a7a036fdc60eab8f8f02fced89a8a8a
                 </div>
             </div>
         </div>
+
 
         <div class="row barcolor">
             <footer>                       
@@ -198,7 +191,7 @@
         </div>
 
         <script>
-            document.getElementById('bgvid').muted =true;
+            document.getElementById('bgvid').muted = true;
         </script>
 
     </body>

@@ -12,7 +12,7 @@
                     requireLogin: true
                 },
                 views: {
-                    'info': {
+                    'mainView': {
                         templateUrl: basePath + 'restaurantes.html',
                         controller: 'restaurantesCtrl',
                         controllerAs: 'ctrl'
@@ -24,7 +24,7 @@
                     requireLogin: true
                 },
                 views: {
-                    'info': {
+                    'mainView': {
                         controller: 'restaurantesCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'restaurantes.list.html'
@@ -134,7 +134,7 @@
                     restauranteNit: null
                 },
                 views: {
-                    'info': {
+                    'mainView': {
                         templateUrl: basePath + 'delete/restaurantes.delete.html',
                         controller: 'restauranteDeleteCtrl'
                     }

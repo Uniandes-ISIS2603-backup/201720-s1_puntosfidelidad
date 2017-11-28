@@ -69,6 +69,30 @@
                     event.preventDefault();
                     $state.go('login',$state.params, {reload: true});
                 }
+                               
+                
+                $rootScope.perfil= function () {  
+                    event.preventDefault();
+                    console.log($rootScope.esCliente());
+                    console.log($rootScope.currentUser);
+                    if($rootScope.esCliente()){
+                        $state.go('clienteDetail',{'clienteUsuario':$rootScope.currentUser}, {reload: true});
+                    }
+                    else{
+                        console.log("ENTRO")
+                        $state.go('administradorDetail',{'administradorUsuario':$rootScope.currentUser}, {reload: true});
+                    }
+                };
+                
+                $rootScope.compras = function(){
+                    event.preventDefault();
+                    $state.go('clienteComprasList',{'clienteUsuario':$rootScope.currentUser}, {reload: true});
+                };
+                
+                $rootScope.productos = function(){
+                    event.preventDefault();
+                    $state.go('clienteProductosList',{'clienteUsuario':$rootScope.currentUser}, {reload: true});
+                };
 
             });        
             console.log($rootScope);
