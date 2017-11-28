@@ -178,7 +178,7 @@
                     }
                 }
             }).state('administradorEventos', {
-                url: '/administradores/clientes',
+                url: '/administradores/eventos',
                 param: {
                     clienteUsuario: null
                 },
@@ -189,14 +189,24 @@
                         templateUrl: 'src/modules/LogIn/bannerLogin.html'
                     },
                     'mainView': {
-                        templateUrl: 'src/modules/cliente/clientes.list.html',
-                        controller: 'administradorDeleteCtrl'
+                        templateUrl:   'src/modules/evento/eventos.html',
+                        controller: 'eventosCtrl',
+                        controllerAs: 'ctrl'
                     },
                     'navBar': {
                         controller: 'administradoresCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'navBar.html'
 
+                    },
+                    'detailView': {
+                        templateUrl: 'src/modules/evento/eventosCarrusel.html',
+                        controller: 'eventosCtrl'
+                    },
+                    'listView': {
+                        controller: 'eventosCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/evento/eventos.list.html'
                     }
                 }
             });
