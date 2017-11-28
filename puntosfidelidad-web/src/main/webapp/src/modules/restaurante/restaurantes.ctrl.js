@@ -3,6 +3,7 @@
     mod.constant("restaurantesContext", "api/restaurantes");
     mod.controller("restaurantesCtrl", ['$scope', '$http', 'restaurantesContext', '$state', 
         function ($scope, $http, restaurantesContext, $state) {
+            console.log("HOLAAAA");
             $scope.elements = [];
             $http.get("http://localhost:8080/puntosfidelidad-web/api/restaurantes")
                     .then(function (response) {

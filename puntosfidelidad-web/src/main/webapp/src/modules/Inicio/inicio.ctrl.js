@@ -1,6 +1,10 @@
 (function (ng) {
     var mod = ng.module("inicioModule");
-    mod.controller("inicioCtrl", ['$scope', '$http', function () {
+    mod.controller("inicioCtrl", [function () {
+            
+            if (sessionStorage.getItem("usuario")) {
+                sessionStorage.clear();
+            };   
             /**
              * Array con las imagenes que se iran mostrando en la web
              */
@@ -28,11 +32,7 @@
 
                 // Indicamos que cada 5 segundos cambie la imagen
                 setInterval(rotarImagenes, 5000);
-            };
-            
-            if (sessionStorage.getItem("usuario")) {
-                sessionStorage.clear();
-            };           
+            };      
             
         }]);
 

@@ -1,4 +1,4 @@
-<div ng-if="isAuthenticated() && (darUsuario()===elementoCliente.usuario)" class="panel panel-default"> 
+<div ng-if="isAuthenticated() && ((darUsuario()===elementoCliente.usuario)|| esAdmin()) " class="panel panel-default"> 
     <div class="panel-body">
         <form name="clienteUpdate">
             <div class="row">

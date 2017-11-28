@@ -1,13 +1,16 @@
 (function (ng) {
     var mod = ng.module("restaurantesModule", []);
-        mod.constant("restaurantesContext", "api/restaurantes");
-        mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-                var basePath = 'src/modules/restaurante/';
-                $urlRouterProvider.otherwise("/restaurantes");
-    
+    mod.constant("restaurantesContext", "api/restaurantes");
+    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+            var basePath = 'src/modules/restaurante/';
+            $urlRouterProvider.otherwise("/restaurantes");
+
             $stateProvider.state('restaurantes', {
                 url: '/restaurantes',
                 abstract: true,
+                data: {
+                    requireLogin: true
+                },
                 views: {
                     'info': {
                         templateUrl: basePath + 'restaurantes.html',
@@ -17,6 +20,9 @@
                 }
             }).state('restaurantesList', {
                 url: 'restaurantes/list',
+                data: {
+                    requireLogin: true
+                },
                 views: {
                     'info': {
                         controller: 'restaurantesCtrl',
@@ -27,6 +33,9 @@
             }).state('restaurantesDetail', {
                 url: '/{restauranteNit:string}/detail',
                 parent: 'restaurantes',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     restauranteNit: null
                 },
@@ -40,6 +49,9 @@
             }).state('restaurantesProductos', {
                 url: '/productos',
                 parent: 'restaurantesDetail',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     restauranteNit: null
                 },
@@ -53,6 +65,9 @@
             }).state('restaurantesSucursales', {
                 url: '/sucursales',
                 parent: 'restaurantesDetail',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     restauranteNit: null
                 },
@@ -63,9 +78,12 @@
                         controllerAs: 'ctrl'
                     }
                 }
-                 }).state('restaurantesEventos', {
+            }).state('restaurantesEventos', {
                 url: '/eventos',
                 parent: 'restaurantesDetail',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     restauranteNit: null
                 },
@@ -76,10 +94,13 @@
                         controllerAs: 'ctrl'
                     }
                 }
-                
+
             }).state('restaurantesPost', {
                 url: '/create',
                 parent: 'restaurantes',
+                data: {
+                    requireLogin: true
+                },
                 views: {
                     'detailView': {
                         templateUrl: basePath + '/post/restaurantes.post.html',
@@ -90,6 +111,9 @@
             }).state('restaurantesUpdate', {
                 url: '/update/{restauranteNit:string}',
                 parent: 'restaurantes',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     restauranteNit: null
                 },
@@ -103,6 +127,9 @@
             }).state('restaurantesDelete', {
                 url: '/restaurantes/{restauranteNit:string}/delete',
                 parent: 'restaurantes',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     restauranteNit: null
                 },
@@ -113,7 +140,7 @@
                     }
                 }
             });
-            }]);
-    
-    })(window.angular);
+        }]);
+
+})(window.angular);
     

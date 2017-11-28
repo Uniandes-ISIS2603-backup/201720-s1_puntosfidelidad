@@ -1,5 +1,5 @@
 (function (ng) {
-var mod = ng.module("restauranteAdministradorModule", []);
+    var mod = ng.module("restauranteAdministradorModule", []);
     mod.constant("restauranteAdministradorContext", "api/restaurantes");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/restaurante/';
@@ -8,34 +8,40 @@ var mod = ng.module("restauranteAdministradorModule", []);
             $stateProvider.state('restauranteAdministradorList', {
                 url: '/restaurantes',
                 parent: 'administradorDetail',
-               
-                views: {                    
-                    'info': {
-                       controller: 'restauranteAdministradorCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath+'/administrador/restaurantes.administrador.list.html' 
-                                              
-                    }
-                }
-                
-                }).state('restauranteAdministradorPost', {
-                url: '/crear',
-                parent: 'administradorDetail',
-                param:{
-                    administradorUsuario:null
+                data: {
+                    requireLogin: true
                 },
                 views: {
                     'info': {
-                       controller: 'restaurantesPostCtrl',
+                        controller: 'restauranteAdministradorCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath+'postrestaurantes.post.html' 
-                                              
+                        templateUrl: basePath + '/administrador/restaurantes.administrador.list.html'
                     }
                 }
-                
-                }).state('restauranteAdministradorUpdate', {
+            }).state('restauranteAdministradorPost', {
+                url: '/crear',
+                parent: 'administradorDetail',
+                data: {
+                    requireLogin: true
+                },
+                param: {
+                    administradorUsuario: null
+                },
+                views: {
+                    'info': {
+                        controller: 'restaurantesPostCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'postrestaurantes.post.html'
+
+                    }
+                }
+
+            }).state('restauranteAdministradorUpdate', {
                 url: '/restaurante/crear',
                 parent: 'administradorDetail',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     restauranteNit: null
                 },
@@ -49,6 +55,9 @@ var mod = ng.module("restauranteAdministradorModule", []);
             }).state('restauranteAdministradorDelete', {
                 url: '/restaurante/borrar',
                 parent: 'administradorDetail',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     restauranteNit: null
                 },
@@ -62,6 +71,9 @@ var mod = ng.module("restauranteAdministradorModule", []);
             }).state('restauranteAdministradorDetail', {
                 url: '/restaurante/detalle',
                 parent: 'administradorDetail',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     restauranteNit: null
                 },
