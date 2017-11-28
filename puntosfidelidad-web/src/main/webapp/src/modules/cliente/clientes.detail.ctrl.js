@@ -8,6 +8,10 @@
                     .then(function (response) {
                         $scope.elementoCliente = response.data;
             });
+            
+      
+            $rootScope.doTheBack = function() {window.history.back();};
+
         }]);
 
 })(window.angular);

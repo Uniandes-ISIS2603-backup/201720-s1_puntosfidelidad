@@ -1,6 +1,5 @@
 (function (ng) {
 var mod = ng.module("loginModule", []);
-    mod.constant("loginContext", "api/login");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/LogIn/';
             $urlRouterProvider.otherwise("/login");

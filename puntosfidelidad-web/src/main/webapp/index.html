@@ -140,14 +140,14 @@
             </div>
             <hr>            
         </div>
-        
-        
+            
 
-        <div ui-view="mainView">
-            <img id= "imagenIndex" alt="Banner" src="./media/I1.jpg" class="bannerInicial"/>
+
+        <div ui-view="mainView" class="central">
+            <img ng-if="!isAuthenticated()" id= "imagenIndex" alt="Banner" src="./media/I1.jpg" class="bannerInicial"/>
         </div>   
         
-        <div class="row barcolor" >
+        <div class="row barcolor">
             <footer >                           
                 <a ui-sref="inicio">
                     Universidad De Los Andes - Desarrollo De Software En Equipos 2017-02 

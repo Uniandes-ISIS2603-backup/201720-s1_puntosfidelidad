@@ -1,6 +1,5 @@
-<div class="panel panel-default"> 
+<div ng-if="isAuthenticated()" class="panel panel-default"> 
     <div class="panel-body">
-
         <form name="clienteUpdate">
             <div class="row">
                 <br>
@@ -55,9 +54,17 @@
                 <li ng-if="!edit" role="presentation" class="active"> <a ui-sref="tarjetasDeCreditoList({clienteUsuario: elementoCliente.usuario})">Tarjetas de Crédito</a></li>
                 <li ng-if="!edit" role="presentation" class="active"> <a ui-sref="tarjetasPuntosClienteList({clienteUsuario: elementoCliente.usuario})">Tarjetas de Puntos</a></li>
             </ul> 
-        </form>
-        
-        <div ui-view="detailClienteView"></div>
-        
+        </form>        
+        <div ui-view="detailClienteView"></div>        
+    </div>
+</div>
+
+<div class="container" ng-if="!isAuthenticated()">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <h1 class="float-left display-3 mr-4">403 Forbidden</h1>
+            <h4 >You do not have permission for this action.</h4>
+            <p >Contact the administrator to obtain permission.</p>
+        </div>
     </div>
 </div>

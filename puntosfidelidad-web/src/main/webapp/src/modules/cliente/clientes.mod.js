@@ -3,8 +3,7 @@
     mod.constant("clientesContext", "api/clientes");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/cliente/';
-            $urlRouterProvider.otherwise("");
-
+            
             $stateProvider.state('clientesList', {
                 url: '/clientes',
                 views: {
@@ -18,6 +17,9 @@
                 url: 'clientes/{clienteUsuario:string}',
                 param: {
                     clienteUsuario: null
+                },
+                data: {
+                    requireLogin: true
                 },
                 views: {
                     'bannerView': {
@@ -65,7 +67,7 @@
                 param: {
                     clienteUsuario: null,
                     compraId: null
-                    
+
                 },
                 views: {
                     'bannerView': {
@@ -79,11 +81,11 @@
                         templateUrl: 'src/modules/cliente/navBar.html'
 
                     },
-                    'mainView': {                      
+                    'mainView': {
                         controller: 'clientesComprasCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'subrecursoCompra/compras.detail.html'
-                       
+
                     }
                 }
             }).state('clienteProductosList', {
@@ -114,7 +116,6 @@
                 param: {
                     clienteUsuario: null,
                     productoId: null
-                    
                 },
                 views: {
                     'bannerView': {
@@ -128,25 +129,27 @@
                         templateUrl: 'src/modules/cliente/navBar.html'
 
                     },
-                    'mainView': {                      
+                    'mainView': {
                         controller: 'productosCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'subrecursoProducto/productos.detail.html'
-                       
+
                     }
                 }
             }).state('clienteCreate', {
-                url: 'clientes/create',
+                url: '/nuevo',  
+                data: {
+                    requireLogin: false
+                },
                 views: {
-                    'bannerView': {
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
+                    'bannerView': {                       
                         templateUrl: 'src/modules/LogIn/bannerLogin.html'
                     },
                     'mainView': {
-                        templateUrl: basePath + 'new/clientes.new.html',
-                        controller: 'clientesNewCtrl'
-                    }                   
+                        controller: 'clientesNewCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'new/clientes.new.html'
+                    }
                 }
             }).state('clienteUpdate', {
                 url: '/clientes/{clienteUsuario:string}/update',
@@ -183,7 +186,6 @@
                     }
                 }
             });
-
         }]);
 })(window.angular);
 
