@@ -128,7 +128,7 @@
 
     <body> 
 
-        <div class="row">
+        <div class="row container-fluid">
             <div ui-view="bannerView" class="row">
                 <div>
                     <h1>
@@ -141,10 +141,8 @@
             <div ui-view="navBar">
                 <header>        
                     <nav> 
-                        <ul>
-                            <li><a  ui-sref="login">Iniciar Sesión  </a></li>
-                            <li><a  ui-sref="clienteCreate">Registrarse</a></li>
-                        </ul>
+                        <button class='BotonesBanner' ui-sref="login">Iniciar Sesión</button>
+                        <button class='BotonesBanner' ui-sref="clienteCreate">Registrarse</button>
                     </nav>
                     <br>
                 </header> 
@@ -155,7 +153,7 @@
         <div ui-view="mainView">
        <div ng-if="!isAuthenticated()"  id='videoDiv'>
             <div id='videoBlock'>
-                <video style="width: 100%" id='bgvid' preload='auto' autoplay loop src="./media/indexVideo.mp4" type='video/mp4'></video>
+                <video style="width: 100%" id='bgvid' preload muted autoplay loop src="./media/indexVideo.mp4" type='video/mp4'></video>
                 <div id='videoMessage' class="central">
                     <h1>Fiel</h1><!-- <img ng-if="!isAuthenticated()" id= "imagenIndex" alt="Banner" src="./media/I1.jpg" class="bannerInicial"/> -->
                 </div>
@@ -170,6 +168,11 @@
                 </a>               
             </footer> 
         </div>
+
+        <script>
+            document.getElementById('bgvid').muted =true;
+        </script>
+
     </body>
 
 </html>
