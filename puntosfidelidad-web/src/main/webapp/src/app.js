@@ -28,14 +28,17 @@
             $transitions.onSuccess({to: '*'}, function (trans) {
 
                 var $state = trans.router.stateService;
-                var requireLogin = $state.current.data.requireLogin
-                var roles = $state.current.data.roles
+                var requireLogin = $state.current.data.requireLogin;
+                var roles = $state.current.data.roles;
 
+                if (sessionStorage.getItem("usuario") != null) {
+                        $rootScope.currentUser = sessionStorage.getItem("usuario");
+                };
 
                 $rootScope.isAuthenticated = function () {
 
                     if (sessionStorage.getItem("usuario") != null) {
-                        $rootScope.currentUser = sessionStorage.getItem("nombre");
+                        $rootScope.currentUser = sessionStorage.getItem("usuario");
                         return true;
                     } else {
                         return false;
@@ -50,16 +53,25 @@
                     }
                 };
 
+                $rootScope.darUsuario = function () {
+                    return sessionStorage.getItem("usuario");
+                };
+                
+                $rootScope.esCliente= function () {
+                    return sessionStorage.getItem("rol")==='cliente';
+                };
+                
+                $rootScope.esAdmin= function () {
+                    return sessionStorage.getItem("rol")==='administrador';
+                };
 
                 if (requireLogin && (sessionStorage.getItem("usuario") === null)) {
                     event.preventDefault();
-                    $state.go('login', $state.params);
+                    $state.go('login',$state.params, {reload: true});
                 }
 
-            });
-            
-            $rootScope.doTheBack = function() {window.history.back();};
-
+            });        
+            console.log($rootScope);
 
         }]);
 })(window.angular);

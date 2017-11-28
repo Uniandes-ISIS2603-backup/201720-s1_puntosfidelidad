@@ -5,7 +5,7 @@
             $rootScope.agregarTC=false;
             $rootScope.updateTC=false;
             $rootScope.clienteActual=$state.params.clienteUsuario;
-            $http.get("http://localhost:8080/puntosfidelidad-web/api/clientes/"+$state.params.clienteUsuario+"/tarjetasDeCredito")
+            $http.get("http://localhost:8080/puntosfidelidad-web/api/clientes/"+$rootScope.currentUser+"/tarjetasDeCredito")
                     .then(function (response) {
                         $scope.elementosTC = response.data;
             });

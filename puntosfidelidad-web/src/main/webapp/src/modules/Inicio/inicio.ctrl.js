@@ -29,7 +29,10 @@
                 // Indicamos que cada 5 segundos cambie la imagen
                 setInterval(rotarImagenes, 5000);
             };
-                   
+            
+            if (sessionStorage.getItem("usuario")) {
+                sessionStorage.clear();
+            };           
             
         }]);
 

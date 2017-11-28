@@ -7,9 +7,12 @@ var mod = ng.module("recargasModule", []);
 
             $stateProvider.state('recargasList', {
                 url: '/recargas',
-                parent: 'clienteDetail',
-                param:{
-                    clienteUsuario:null
+                parent: 'clienteDetail',  
+                param: {
+                    clienteUsuario: null
+                },
+                data: {
+                    requireLogin: true
                 },
                 views: {
                     'mainView': {
@@ -28,6 +31,9 @@ var mod = ng.module("recargasModule", []);
                 parent: 'clienteDetail',
                 param: {
                     clienteUsuario: null
+                },
+                data: {
+                    requireLogin: true
                 },
                 views: {
                     'mainView': {

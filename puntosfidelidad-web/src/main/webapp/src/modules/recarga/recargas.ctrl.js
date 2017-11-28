@@ -1,6 +1,6 @@
 (function (ng) {
     var mod = ng.module("recargasModule");
-    mod.controller("recargasCtrl", ['$scope', '$http','$state','$rootScope' ,function ($scope, $http, $state,$rootScope) {
+    mod.controller("recargasCtrl", ['$scope', '$http','$state','$rootScope', '$state' ,function ($scope, $http, $rootScope, $state) {
             $rootScope.nuevaRecarga = false;
             $scope.elementosRecarga = [];
             $http.get("http://localhost:8080/puntosfidelidad-web/api/clientes/"+$state.params.clienteUsuario+"/recargas")

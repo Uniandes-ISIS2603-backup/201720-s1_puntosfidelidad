@@ -3,9 +3,13 @@
     mod.constant("clientesContext", "api/clientes");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/cliente/';
+            $urlRouterProvider.otherwise("/login");
             
             $stateProvider.state('clientesList', {
                 url: '/clientes',
+                data: {
+                    requireLogin: true
+                },
                 views: {
                     'mainView': {
                         controller: 'clientesCtrl',
@@ -14,7 +18,7 @@
                     }
                 }
             }).state('clienteDetail', {
-                url: 'clientes/{clienteUsuario:string}',
+                url: '/clienteDetail/{clienteUsuario:string}',
                 param: {
                     clienteUsuario: null
                 },
@@ -32,9 +36,7 @@
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'clientes.detail.html'
                     },
-                    'navBar': {
-                        controller: 'clientesDetailCtrl',
-                        controllerAs: 'ctrl',
+                    'navBar': {                        
                         templateUrl: basePath + 'navBar.html'
 
                     }
@@ -43,6 +45,9 @@
                 url: 'clientes/{clienteUsuario:string}/compras',
                 param: {
                     clienteUsuario: null
+                },
+                data: {
+                    requireLogin: true
                 },
                 views: {
                     'bannerView': {
@@ -69,6 +74,9 @@
                     compraId: null
 
                 },
+                data: {
+                    requireLogin: true
+                },
                 views: {
                     'bannerView': {
                         controller: 'loginCtrl',
@@ -93,6 +101,9 @@
                 param: {
                     clienteUsuario: null
                 },
+                data: {
+                    requireLogin: true
+                },
                 views: {
                     'bannerView': {
                         controller: 'loginCtrl',
@@ -116,6 +127,9 @@
                 param: {
                     clienteUsuario: null,
                     productoId: null
+                },
+                data: {
+                    requireLogin: true
                 },
                 views: {
                     'bannerView': {
@@ -156,6 +170,9 @@
                 param: {
                     clienteUsuario: null
                 },
+                data: {
+                    requireLogin: true
+                },
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'clientes.detail.html',
@@ -172,6 +189,9 @@
                 url: '/clientes/{clienteUsuario:string}/delete',
                 param: {
                     clienteUsuario: null
+                },
+                data: {
+                    requireLogin: true
                 },
                 views: {
                     'mainView': {

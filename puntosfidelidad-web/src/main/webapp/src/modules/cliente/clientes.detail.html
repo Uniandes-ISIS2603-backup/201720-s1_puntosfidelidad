@@ -1,4 +1,4 @@
-<div ng-if="isAuthenticated()" class="panel panel-default"> 
+<div ng-if="isAuthenticated() && (darUsuario()===elementoCliente.usuario)" class="panel panel-default"> 
     <div class="panel-body">
         <form name="clienteUpdate">
             <div class="row">
@@ -41,7 +41,7 @@
                     </div>                    
                     <a ng-if="!edit" class="btn btn-default" ui-sref="clienteUpdate({clienteUsuario: elementoCliente.usuario})"><p class="glyphicon glyphicon-pencil"></p></a>
                     <a ng-if="!edit" class="btn btn-default" ui-sref="clienteDelete({clienteUsuario: elementoCliente.usuario})"><p class="glyphicon glyphicon-trash"></p></a>
-                    <a ng-if="!edit" class="btn btn-default" ui-sref="clientesList"><p> Otros clientes</p></a>
+                    <a ng-if="!edit && esAdmin()" class="btn btn-default" ui-sref="clientesList"><p> Otros clientes</p></a>
 
                     <a ng-if="edit" class="btn btn-default" ui-sref="clienteDetail({clienteUsuario: elementoCliente.usuario})">Cancelar</a>
                     <a ng-if="edit && !((elementoCliente.contrasena) !== elementoCliente.repetirContrasenaU) && clienteUpdate.$valid" class="btn btn-default" ng-click="updateCliente()"><p class="glyphicon glyphicon-floppy-saved"></p></a>
@@ -59,7 +59,7 @@
     </div>
 </div>
 
-<div class="container" ng-if="!isAuthenticated()">
+<div class="container" ng-if="!isAuthenticated() || (darUsuario()!==elementoCliente.usuario)">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <h1 class="float-left display-3 mr-4">403 Forbidden</h1>

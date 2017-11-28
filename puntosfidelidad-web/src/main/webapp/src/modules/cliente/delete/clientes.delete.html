@@ -1,8 +1,11 @@
 <div class="center-block well text-center">
     <div >
-        <h3>¿Está seguro de querer eliminar este cliente?</h3>
+        <h3>¿Está seguro de querer eliminar esta cuenta?</h3>
         <br>
-        <button id="confirm-delete" ng-click="deleteCliente()" class="btn btn-danger">Eliminar</button>
-        <a id="cancel-delete" ui-sref="clientesList" class="btn btn-info">Cancelar</a>
+        <button ng-if="esAdmin()" id="confirm-delete" ng-click="deleteCliente()" class="btn btn-danger">Eliminar</button>
+        <button ng-if="esCliente()" id="confirm-delete" ng-click="deleteCuentaCliente()" class="btn btn-danger">Eliminar cuenta</button>
+
+        <a ng-if="esAdmin()" id="cancel-delete" ui-sref="clientesList" class="btn btn-info">Cancelar</a>
+        <a ng-if="esCliente()" id="cancel-delete" ng-click="cancelar()" class="btn btn-info">Cancelar</a>
     </div>   
 </div>
