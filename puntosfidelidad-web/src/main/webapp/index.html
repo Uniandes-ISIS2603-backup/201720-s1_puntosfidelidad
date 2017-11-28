@@ -121,7 +121,9 @@
 
         <!-- archivo CSS -->
         <link rel="stylesheet" type="text/css" href="css/styles.css" />
-
+        
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
 
     <body> 
@@ -153,7 +155,7 @@
         <div ui-view="mainView">
        <div ng-if="!isAuthenticated()"  id='videoDiv'>
             <div id='videoBlock'>
-                <video id='bgvid' preload='auto' autoplay loop src="./media/indexVideo.mp4" type='video/mp4'></video>
+                <video style="width: 100%" id='bgvid' preload='auto' autoplay loop src="./media/indexVideo.mp4" type='video/mp4'></video>
                 <div id='videoMessage' class="central">
                     <h1>Fiel</h1><!-- <img ng-if="!isAuthenticated()" id= "imagenIndex" alt="Banner" src="./media/I1.jpg" class="bannerInicial"/> -->
                 </div>

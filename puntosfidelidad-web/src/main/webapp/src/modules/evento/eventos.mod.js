@@ -16,9 +16,14 @@ var mod = ng.module("eventosModule", []);
                     }
                 }
             }).state('eventosList', {
-                url: 'eventos/list',
+                url: 'eventos/list',                
+                parent: 'eventos',
                 views: {
-                    'mainView': {
+                     'detailView': {
+                        templateUrl: basePath + 'eventosCarrusel.html',
+                        controller: 'eventosCtrl'
+                    },
+                    'listView': {
                         controller: 'eventosCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'eventos.list.html'
