@@ -10,17 +10,21 @@
                         .then(function (response) {
                             $scope.comprasRecords = response.data;
                         });               
-            }
-            
-            $http.get("api/clientes/" + $state.params.clienteUsuario)
+                        
+                        $http.get("api/clientes/" + $state.params.clienteUsuario)
                         .then(function (response) {
                             $scope.elementoCliente = response.data;
                         });
+            }
+            
+            
 
             if (($state.params.compraId !== undefined) && ($state.params.compraId !== null)) {
                 $http.get("api/compras" + '/' + $state.params.compraId).then(function (response) {
                     $scope.currentCompra = response.data;
                 });
+                
+                
             }
 
 

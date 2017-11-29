@@ -82,7 +82,7 @@
                     }
                 }
             }).state('clienteComprasProductos', {
-                url: '/{clienteUsuario:string}/compras/{compraId:int}/productos',
+                url: '/{clienteUsuario:string}/compras/{compraId:int}/detail',
                 param: {
                     clienteUsuario: null,
                     compraId: null
@@ -99,9 +99,9 @@
 
                     },
                     'mainView': {
-                        controller: 'comprasProductosCtrl',
+                        controller: 'clienteCompraProductosCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'subrecursoProducto/productos.list.html'
+                        templateUrl: basePath + 'subrecursoCompra/productos.list.html'
 
                     }
                 }
