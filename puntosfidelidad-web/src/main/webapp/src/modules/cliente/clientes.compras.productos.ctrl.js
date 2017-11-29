@@ -15,7 +15,7 @@
 
 
             if (($state.params.compraId !== undefined) && ($state.params.compraId !== null)) {
-                $http.get("api/compras" + '/' + $state.params.compraId).then(function (response) {
+                $http.get("api/compras" + '/' + $state.params.compraId+ '/productos').then(function (response) {
                     $scope.productoRecords = response.data;
                 });
             }

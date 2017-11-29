@@ -11,14 +11,14 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Nombre loca</th>    
+                                <th>Nombre</th>    
                                 <th>Restaurante Nit</th>  
                                 
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="currentproducto in productoRecords">
-                                <td id="{{$index}}-name"><a ui-sref="clienteProductosDetail({clienteUsuario: elementoCliente.usuario, productoId: producto.id })">{{producto.nombre}}</a></td>
+                                <td id="{{$index}}-name"><a ui-sref="clienteProductosDetail({clienteUsuario: elementoCliente.usuario, productoId: currentproducto.id })">{{currentproducto.nombre}}</a></td>
                                 <td id="{{$index}}-restaurante">{{currentproducto.restaurante}}</td>
                            
                             </tr>
