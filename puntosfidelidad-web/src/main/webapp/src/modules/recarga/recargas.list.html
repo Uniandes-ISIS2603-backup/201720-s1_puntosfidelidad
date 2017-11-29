@@ -14,8 +14,21 @@
     <br>
     <div class="col-md-8">     
         <br>
-        <div class="input-container alertError" ng-if='elementosRecarga.length === 0 && !nuevaRecarga'>            
-            <strong>!Ey!</strong> Actualmente no hay recargas registradas para este cliente.
+        <div class="input-container alertError col-md-8" ng-if='elementosRecarga.length === 0 && !nuevaRecarga'>  
+            <center>
+                <strong>!Ey!</strong> Actualmente no hay recargas registradas para este cliente.
+            </center>
+        </div>
+        <div class="input-container alertError col-md-8" ng-if='nuevaRecarga && elementosRtarjetaC.length === 0'>  
+            <center>
+                <strong>!Ey!</strong> No puedes hacer recargas porque no tienes tarjetas de crédito registradas.
+            </center>
+        </div>
+        <div class="input-container alertError col-md-8 " ng-if='nuevaRecarga && elementosRtarjetaP.length === 0'>            
+            <center>
+                <strong>!Ey!</strong> No puedes hacer recargas porque no tienes tarjetas de puntos registradas.
+                <strong><h4>¡Adquiere una en nuestros restaurantes!</h4></strong>
+            </center>
         </div>
         <form ng-submit="createRecarga()" name="nuevaRecargaForm">
             <table class="table table-hover" ng-if='elementosRecarga.length !== 0 || nuevaRecarga'>
@@ -31,7 +44,7 @@
                 </thead>    
 
                 <tbody>
-                    <tr ng-if='nuevaRecarga'>
+                    <tr ng-if='nuevaRecarga && elementosRtarjetaP.length !== 0 && elementosRtarjetaC.length !== 0'>
                         <td></td> 
                         <td></td> 
                         <td>
@@ -54,14 +67,14 @@
                         </td>                 
                     </tr> 
 
-                <tr ng-repeat="recarga in elementosRecarga" >
-                    <td id="{{$index}}-name"> {{recarga.id}}</td>
-                    <td id="{{$index}}-fecha">{{recarga.fecha}}</td>
-                    <td id="{{$index}}-valor">{{recarga.valor}}</td>
-                    <td id="{{$index}}-tc">{{recarga.tarjetaDeCredito.id}}</td>
-                    <td id="{{$index}}-tp">{{recarga.tarjetaPuntos.id}}</td>
-                    <td></td> 
-                </tr>
+                    <tr ng-repeat="recarga in elementosRecarga" >
+                        <td id="{{$index}}-name"> {{recarga.id}}</td>
+                        <td id="{{$index}}-fecha">{{recarga.fecha}}</td>
+                        <td id="{{$index}}-valor">{{recarga.valor}}</td>
+                        <td id="{{$index}}-tc">{{recarga.tarjetaDeCredito.id}}</td>
+                        <td id="{{$index}}-tp">{{recarga.tarjetaPuntos.id}}</td>
+                        <td></td> 
+                    </tr>
                 </tbody>
             </table>
         </form> 
