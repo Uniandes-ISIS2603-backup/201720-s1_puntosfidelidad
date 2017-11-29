@@ -30,6 +30,19 @@
                         templateUrl: basePath + 'restaurantes.list.html'
                     }
                 }
+                }).state('restaurantesBuscar', {
+                url: '/buscar',
+                data: {
+                    requireLogin: true
+                },
+                views: {
+                    'mainView': {
+                        controller: 'restaurantesCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'restaurantes.buscar.list.html'
+                    }
+                }
+                
             }).state('restaurantesDetail', {
                 url: '/{restauranteNit:string}/detail',
                 parent: 'restaurantes',
