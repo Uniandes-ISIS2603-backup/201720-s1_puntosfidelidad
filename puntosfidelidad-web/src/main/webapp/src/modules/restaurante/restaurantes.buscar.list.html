@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <br>
+    <div class="form-group col-md-6">
+                            <label for="restauranteName" class="col-sm-4">Nombre de Restaurante</label>
+                            <input id="restauranteName" required ng-model="resName" class="col-sm-6"/>
+                        </div>
+       <div class="form-group col-md-6">
+                            <label for="restauranteName" class="col-sm-4">Tipo de Comida</label>
+                            <input id="restauranteName" required ng-model="resTipo" class="col-sm-6"/>
+                        </div>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <ul class="list-group" ng-repeat="elem in elements" >
+        <li class="list-group-item" ng-if="elem.tipoComida==resTipo">
+            
+             <h4> {{elem.nombre}} </h4>            
+             <button class="btn btn-primary btnRestaurante" ui-sref='restaurantesDetail({restauranteNit:"{{elem.nit}}"})'>Más Detalles</button> <br>
+            
+        </li>
+    </ul>
+    
+    <ul class="list-group" ng-repeat="elem in elements" >
+        <li class="list-group-item" ng-if="elem.nombre==resName">
+            
+             <h4> {{elem.nombre}} </h4>            
+             <button class="btn btn-primary btnRestaurante" ui-sref='restaurantesDetail({restauranteNit:"{{elem.nit}}"})'>Más Detalles</button> <br>
+            
+        </li>
+    </ul>
+</div>
