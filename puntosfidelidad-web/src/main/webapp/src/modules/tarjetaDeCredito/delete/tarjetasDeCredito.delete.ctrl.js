@@ -1,7 +1,7 @@
 (function (ng) {
     var mod = ng.module("tarjetasDeCreditoModule");
-    mod.controller('tarjetaDeCreditoDeleteCtrl', ['$scope', '$http', '$state', '$rootScope',
-        function ($scope, $http, $state, $rootScope) {
+    mod.controller('tarjetaDeCreditoDeleteCtrl', ['$scope', '$http', '$state', 
+        function ($scope, $http, $state) {
 
             $scope.usuarioActual = sessionStorage.getItem("usuario");
 
