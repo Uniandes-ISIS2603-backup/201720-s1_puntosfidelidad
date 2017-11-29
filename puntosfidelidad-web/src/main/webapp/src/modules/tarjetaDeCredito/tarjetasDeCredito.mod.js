@@ -8,6 +8,9 @@
             $stateProvider.state('tarjetasDeCreditoList', {
                 url: '/tarjetasDeCredito',
                 parent: 'clienteDetail',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     clienteUsuario: null
                 },
@@ -26,6 +29,9 @@
             }).state('tarjetasDeCreditoNew', {
                 url: '/tarjetasDeCredito/crear',
                 parent: 'clienteDetail',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     clienteUsuario: null
                 },
@@ -44,6 +50,9 @@
             }).state('tarjetasDeCreditoDelete', {
                 url: '/tarjetasDeCredito/{tarjetaCreditoId:int}/eliminar',                 
                 parent: 'clienteDetail',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     tarjetaCreditoId:null
                 },
@@ -62,6 +71,9 @@
             }).state('tarjetasDeCreditoUpdate', {
                 url: '/tarjetasDeCredito/{tarjetaCreditoId:int}/update',                 
                 parent: 'clienteDetail',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     tarjetaCreditoId:null
                 },

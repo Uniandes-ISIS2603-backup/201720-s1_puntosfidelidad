@@ -118,7 +118,7 @@
                     restauranteNit: null
                 },
                 views: {
-                    'extrasView': {
+                    'detailView': {
                         templateUrl: basePath + '/update/restaurantes.update.html',
                         controller: 'restaurantesUpdateCtrl',
                         controllerAs: 'ctrl'

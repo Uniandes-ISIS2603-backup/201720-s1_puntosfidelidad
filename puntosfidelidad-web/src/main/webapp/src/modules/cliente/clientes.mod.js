@@ -42,7 +42,7 @@
                     }
                 }
             }).state('clienteComprasList', {
-                url: 'clientes/{clienteUsuario:string}/compras',
+                url: '/{clienteUsuario:string}/compras',
                 param: {
                     clienteUsuario: null
                 },
@@ -68,7 +68,7 @@
                     }
                 }
             }).state('clienteComprasDetail', {
-                url: 'clientes/{clienteUsuario:string}/compras/{compraId:int}/detail',
+                url: '/{clienteUsuario:string}/compras/{compraId:int}/detail',
                 param: {
                     clienteUsuario: null,
                     compraId: null
@@ -97,7 +97,7 @@
                     }
                 }
             }).state('clienteProductosList', {
-                url: 'clientes/{clienteUsuario:string}/productos',
+                url: '/{clienteUsuario:string}/productos',
                 param: {
                     clienteUsuario: null
                 },
@@ -123,7 +123,7 @@
                     }
                 }
             }).state('clienteProductosDetail', {
-                url: 'clientes/{clienteUsuario:string}/productos/{productoId:int}/detail',
+                url: '/{clienteUsuario:string}/productos/{productoId:int}/detail',
                 param: {
                     clienteUsuario: null,
                     productoId: null
@@ -166,7 +166,7 @@
                     }
                 }
             }).state('clienteUpdate', {
-                url: '/clientes/{clienteUsuario:string}/update',
+                url: '{clienteUsuario:string}/update',
                 param: {
                     clienteUsuario: null
                 },
@@ -186,7 +186,7 @@
                     }
                 }
             }).state('clienteDelete', {
-                url: '/clientes/{clienteUsuario:string}/delete',
+                url: '{clienteUsuario:string}/delete',
                 param: {
                     clienteUsuario: null
                 },

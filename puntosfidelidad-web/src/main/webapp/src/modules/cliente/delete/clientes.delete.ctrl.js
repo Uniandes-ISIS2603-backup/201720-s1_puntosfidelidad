@@ -10,7 +10,7 @@
             };
             
             $scope.deleteCuentaCliente = function () {
-                $http.delete("http://localhost:8080/puntosfidelidad-web/api/clientes/"+$state.params.clienteUsuario, {}).then(function () {
+                $http.delete("http://localhost:8080/puntosfidelidad-web/api/clientes"+$state.params.clienteUsuario, {}).then(function () {
                     $state.go('inicio', {reload: true});
                 });
             };

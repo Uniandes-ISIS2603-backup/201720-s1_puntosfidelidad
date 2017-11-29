@@ -1,6 +1,7 @@
 <div class="center-block well text-center">
     <div >
-        <h3>¿Está seguro de querer eliminar esta cuenta?</h3>
+        <h3>¿Estás seguro de querer eliminar esta cuenta?</h3>
+        <h2 ng-if="esCliente()">Te extrañaremos</h2>
         <br>
         <button ng-if="esAdmin()" id="confirm-delete" ng-click="deleteCliente()" class="btn btn-danger">Eliminar</button>
         <button ng-if="esCliente()" id="confirm-delete" ng-click="deleteCuentaCliente()" class="btn btn-danger">Eliminar cuenta</button>

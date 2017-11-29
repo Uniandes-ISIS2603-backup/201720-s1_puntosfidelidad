@@ -7,7 +7,7 @@ var mod = ng.module("eventosModule", []);
 
             $stateProvider.state('eventos', {
                 url: '/eventos',
-                abstract: true,
+                abstract: true,                
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'eventos.html',
