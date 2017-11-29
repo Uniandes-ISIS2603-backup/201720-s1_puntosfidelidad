@@ -22,8 +22,13 @@
 
                     <div class="col-md-3" ng-if="!edit"></div>
                     <div class="col-md-3" ng-if="!edit">
+                        <br>
                         <div class="imgPerfil">
                             <img onError="media/perfil/1.jpg" class="img-responsive" ng-src="{{elementoCliente.imagen}}"/>
+                            <br>
+                            <a ng-if="!edit" class="btn btn-default" ui-sref="clienteUpdate({clienteUsuario: elementoCliente.usuario})"><p class="glyphicon glyphicon-pencil"></p></a>
+                            <a ng-if="!edit" class="btn btn-default" ui-sref="clienteDelete({clienteUsuario: elementoCliente.usuario})"><p class="glyphicon glyphicon-trash"></p></a>
+                            <a ng-if="!edit && esAdmin()" class="btn btn-default" ui-sref="clientesList"><p> Otros clientes</p></a>
                         </div>
                     </div>
 
@@ -92,9 +97,6 @@
                         </dl>  
                         <br>                 
 
-                        <a ng-if="!edit" class="btn btn-default" ui-sref="clienteUpdate({clienteUsuario: elementoCliente.usuario})"><p class="glyphicon glyphicon-pencil"></p></a>
-                        <a ng-if="!edit" class="btn btn-default" ui-sref="clienteDelete({clienteUsuario: elementoCliente.usuario})"><p class="glyphicon glyphicon-trash"></p></a>
-                        <a ng-if="!edit && esAdmin()" class="btn btn-default" ui-sref="clientesList"><p> Otros clientes</p></a>
 
                         <button ng-if="edit" class='BotonesBanner' ui-sref="clienteDetail({clienteUsuario: elementoCliente.usuario})">Cancelar</button>  
                         <button class='BotonesBanner' ng-if="edit && !((elementoCliente.contrasena) !== elementoCliente.repetirContrasenaU) && clienteUpdate.$valid" ng-click="updateCliente()">Guardar</button>
@@ -108,7 +110,7 @@
 
 </div>
 
-<div class="container" ng-if="!isAuthenticated() || (darUsuario() !== elementoCliente.usuario)">
+<div class="container" ng-if="!isAuthenticated() || ((darUsuario() !== elementoCliente.usuario)&& !esAdmin())">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <CENTER>
