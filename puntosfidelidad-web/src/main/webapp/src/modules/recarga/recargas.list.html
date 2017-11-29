@@ -1,12 +1,10 @@
-<div class="container-fluid">
-
+<div class="panel panel-default panel-body">
     <div class="col-md-3">
         <div ng-if="!edit" class="vertical-menu">
-            <a ui-sref="administradorDetail">Información</a>
-            <a ui-sref="restauranteAdministradorList({administradorUsuario: elementoAdministrador.usuario})">Mis Restaurantes</a>
+            <a ng-click="perfil()">Información</a>
             <a ui-sref="recargasList">Recargas</a>
-            <a href="#">Trajetas de Puntos</a>
-            <a href="#">Link 4</a>
+            <a ui-sref="tarjetasDeCreditoList">Tarjetas Crédito</a>
+            <a ui-sref="tarjetasPuntosClienteList">Tajetas de Puntos</a>
         </div>
     </div>
     <br>
@@ -14,8 +12,7 @@
         <a class="btn btn-default" ui-sref="recargasNew">  <p class="glyphicon glyphicon-plus"></p>  Agregar Recarga  </a>
     </div>
     <br>
-    <div class="col-md-1"></div>    
-    <div class="col-md-9">     
+    <div class="col-md-8">     
         <br>
         <div class="alert alert-info" ng-if='elementosRecarga.length === 0 && !nuevaRecarga'>            
             <strong>!Ey!</strong> Actualmente no hay recargas registradas para este cliente.

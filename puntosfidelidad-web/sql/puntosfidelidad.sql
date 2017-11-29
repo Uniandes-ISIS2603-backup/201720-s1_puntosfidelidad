@@ -76,7 +76,7 @@ insert into FotoEntity (COMENTARIO_ID, url) values (1, 'media/restaurante.jpg');
 insert into FotoEntity (COMENTARIO_ID, url) values (1, 'media/restaurante1.jpg');
 insert into FotoEntity (COMENTARIO_ID, url) values (1, 'media/restaurante3.jpg');
 insert into FotoEntity (COMENTARIO_ID, url) values (2, 'media/restaurante2.jpg');
-insert into FotoEntity (COMENTARIO_ID, url) values (3, 'media/restaurante1.jpg');
+insert into FotoEntity (COMENTARIO_ID, url) values (3, 'media/restaurante.jpg');
 
 insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Taquitos gratis','4/7/1965' , '6/6/2010' , 'Se regalaran tacos gratis.' );
 insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Super Hamburguesas','4/7/1965' , '5/8/2010' , 'Se bajaran de precio las mejores hamburguesas de cada restaurante.' );

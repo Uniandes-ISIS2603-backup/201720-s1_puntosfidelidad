@@ -549,7 +549,7 @@ nav a:hover{
 footer {
     margin:40px;        
     text-align: center; 
-    font-weight:bold;
+    font-weight:bold;    
 }
 
 footer a:hover, footer a:link,footer a:visited {
@@ -560,6 +560,7 @@ footer a:hover, footer a:link,footer a:visited {
 .barcolor{
     background-color: #36ABA7;
 }
+
 
 .alertError{
     padding: 20px;

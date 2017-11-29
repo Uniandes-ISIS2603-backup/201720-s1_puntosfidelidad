@@ -6,18 +6,12 @@ var mod = ng.module("tarjetasPuntosClienteModule", []);
             $urlRouterProvider.otherwise("");
 
             $stateProvider.state('tarjetasPuntosClienteList', {
-                url: 'clientes/{clienteUsuario:string}/tarjetasPuntos',
-                parent: 'clienteDetail',
-                param:{
-                    clienteUsuario:null
+                url: '/tarjetasPuntosCliente',
+                data: {
+                    requireLogin: true
                 },
-                views: {
+                views: {                    
                     'mainView': {
-                        controller: 'clientesDetailCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/cliente/clientes.detail.html'                        
-                    },
-                    'detailClienteView': {
                        controller: 'tarjetasPuntosClienteCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath+'tarjetasPuntos.cliente.list.html' 
