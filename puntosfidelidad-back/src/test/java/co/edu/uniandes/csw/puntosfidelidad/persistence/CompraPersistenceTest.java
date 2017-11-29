@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.puntosfidelidad.persistence;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoCompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
@@ -66,7 +67,7 @@ public class CompraPersistenceTest {
     private CompraPersistence persistence;
     
     @Inject
-    private ProductoPersistence persistenceProd;
+    private ProductoCompraPersistence persistenceProd;
     
     @Inject
     private SucursalPersistence persistenceSucur;
@@ -148,10 +149,10 @@ public class CompraPersistenceTest {
             entity.setTarjetaPuntos(tarjeta);
             
             
-            List<ProductoEntity> prods = new ArrayList<>();
+            List<ProductoCompraEntity> prods = new ArrayList<>();
             for(int j = 0; j < 3; j++)
             {
-                ProductoEntity prod = factory.manufacturePojo(ProductoEntity.class);
+                ProductoCompraEntity prod = factory.manufacturePojo(ProductoCompraEntity.class);
                 persistenceProd.create(prod);
                 prods.add(prod);
             }

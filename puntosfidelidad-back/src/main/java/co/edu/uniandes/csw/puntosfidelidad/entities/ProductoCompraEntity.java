@@ -16,8 +16,8 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author aa.yepes
  */
 @Entity
-public class ProductoEntity implements Serializable {
-
+public class ProductoCompraEntity implements Serializable{
+    
     @Id
     private Long id;
     private String nombre;
@@ -25,21 +25,8 @@ public class ProductoEntity implements Serializable {
     private int valorDinero;
     private int valorPuntos;
     
-    @PodamExclude
-    @ManyToOne
-    private RestauranteEntity restaurante;
+    private String restaurante;
 
-    public ProductoCompraEntity toProductoCompraEntity()
-    {
-        ProductoCompraEntity prodCompra = new ProductoCompraEntity();
-        prodCompra.setId(this.id);
-        prodCompra.setImagen(this.imagen);
-        prodCompra.setNombre(this.nombre);
-        prodCompra.setRestaurante(restaurante.getNombre());
-        prodCompra.setValorDinero(this.valorDinero);
-        prodCompra.setValorPuntos(this.valorPuntos);
-        return prodCompra;
-    }
     
     public String getImagen() {
         return imagen;
@@ -51,11 +38,11 @@ public class ProductoEntity implements Serializable {
 
 
 
-    public RestauranteEntity getRestaurante() {
+    public String getRestaurante() {
         return restaurante;
     }
 
-    public void setRestaurante(RestauranteEntity restaurante) {
+    public void setRestaurante(String restaurante) {
         this.restaurante = restaurante;
     }
     

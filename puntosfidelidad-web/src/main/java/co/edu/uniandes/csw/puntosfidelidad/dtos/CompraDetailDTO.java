@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.puntosfidelidad.dtos;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoCompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class CompraDetailDTO extends CompraDTO{
     
     private TarjetaPuntosDTO tarjetaPuntos;
     
-    private List<ProductoDTO> productos;
+    private List<ProductoCompraDTO> productos;
     
     public CompraDetailDTO(){     
         super();
@@ -49,8 +50,8 @@ public class CompraDetailDTO extends CompraDTO{
             tarjetaPuntos = new TarjetaPuntosDTO(entity.getTarjetaPuntos());
             
             productos = new ArrayList<>();
-            for (ProductoEntity entityProducto : entity.getProductos()) {
-                productos.add(new ProductoDTO(entityProducto));
+            for (ProductoCompraEntity entityProducto : entity.getProductos()) {
+                productos.add(new ProductoCompraDTO(entityProducto));
             }
         }
     }
@@ -75,8 +76,8 @@ public class CompraDetailDTO extends CompraDTO{
         }
         
         if (getProductos() != null) {
-            List<ProductoEntity> productosEntity = new ArrayList<>();
-            for (ProductoDTO dtoProducto : getProductos()) {
+            List<ProductoCompraEntity> productosEntity = new ArrayList<>();
+            for (ProductoCompraDTO dtoProducto : getProductos()) {
                 productosEntity.add(dtoProducto.toEntity());
             }
             entity.setProductos(productosEntity);
@@ -130,14 +131,14 @@ public class CompraDetailDTO extends CompraDTO{
     /**
      * @return the productos
      */
-    public List<ProductoDTO> getProductos() {
+    public List<ProductoCompraDTO> getProductos() {
         return productos;
     }
 
     /**
      * @param productos the productos to set
      */
-    public void setProductos(List<ProductoDTO> productos) {
+    public void setProductos(List<ProductoCompraDTO> productos) {
         this.productos = productos;
     }
     
