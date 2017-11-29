@@ -19,6 +19,8 @@ public class ProductoDTO implements Serializable{
     
     private Long id;
     
+    private String imagen;
+    
     private Integer valorDinero;
     
     private Integer valorPuntos;
@@ -31,6 +33,7 @@ public class ProductoDTO implements Serializable{
         if(entity != null){
         this.id = entity.getId();
         this.nombre = entity.getNombre();
+        this.imagen = entity.getImagen();
         this.valorDinero = entity.getValorDinero();
         this.valorPuntos = entity.getValorPuntos();
         }
@@ -40,11 +43,21 @@ public class ProductoDTO implements Serializable{
         ProductoEntity entity = new ProductoEntity();
         entity.setId(this.getId());
         entity.setNombre(this.getNombre());
+        entity.setImagen(this.getImagen());
         entity.setValorDinero(this.getValorDinero());
         entity.setValorPuntos(this.getValorPuntos());
         return entity;
     }  
 
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    
     /**
      * @return the nombre
      */

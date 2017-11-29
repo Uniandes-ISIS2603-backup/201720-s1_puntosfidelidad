@@ -100,7 +100,7 @@
 
                     }
                 }
-            
+
             }).state('administradorDelete', {
                 url: '/administradores/{administradorUsuario:string}/delete',
                 data: {
@@ -202,7 +202,7 @@
                     }
                 }
             }).state('administradorEventos', {
-                url: '/administradores/clientes',
+                url: '/administradores/eventos',
                 data: {
                     requireLogin: true
                 },
@@ -216,18 +216,28 @@
                         templateUrl: 'src/modules/LogIn/bannerLogin.html'
                     },
                     'mainView': {
-                        templateUrl: 'src/modules/cliente/clientes.list.html',
-                        controller: 'administradorDeleteCtrl'
+                        templateUrl: 'src/modules/evento/eventos.html',
+                        controller: 'eventosCtrl',
+                        controllerAs: 'ctrl'
                     },
                     'navBar': {
                         controller: 'administradoresCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'navBar.html'
 
+                    },
+                    'detailView': {
+                        templateUrl: 'src/modules/evento/eventosCarrusel.html',
+                        controller: 'eventosCtrl'
+                    },
+                    'listView': {
+                        controller: 'eventosCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/evento/eventos.list.html'
                     }
                 }
             });
-            
+
         }]);
 })(window.angular);
 

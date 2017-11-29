@@ -61,10 +61,10 @@ insert into SucursalEntity (id, descripcion, horaApertura, horaCierre, nombre, r
 insert into SucursalEntity (id, descripcion, horaApertura, horaCierre, nombre, restaurante_nit, ubicacion_direccion) values (90, 'Sucursal de Archies', '9/4/1965', '9/5/1965', 'Archies','257687a', 'Archies_Ubicacion');
 insert into SucursalEntity (id, descripcion, horaApertura, horaCierre, nombre, restaurante_nit, ubicacion_direccion) values (91, 'Sucursal de Subway', '3/1/1965', '3/2/1965', 'Subway','357484u', 'Subway_Ubicacion');
 
-insert into ProductoEntity (id, nombre, valorDinero, valorpuntos, RESTAURANTE_NIT) values (1,'BigMac',16000,20, '187956f');
-insert into ProductoEntity (id, nombre, valorDinero, valorpuntos, RESTAURANTE_NIT) values (10,'Pizza',22000,50, '257687a');
-insert into ProductoEntity (id, nombre, valorDinero, valorpuntos, RESTAURANTE_NIT) values (20,'Baratisimo',5000,10, '357484u');
-insert into ProductoEntity (id, nombre, valorDinero, valorpuntos, RESTAURANTE_NIT) values (30,'Hamburguesa Res',5000,20, '597356c');
+insert into ProductoEntity (id, nombre,imagen, valorDinero, valorpuntos, RESTAURANTE_NIT) values (1,'BigMac','https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Big_Mac_hamburger.jpg/1200px-Big_Mac_hamburger.jpg',16000,20, '187956f');
+insert into ProductoEntity (id, nombre,imagen, valorDinero, valorpuntos, RESTAURANTE_NIT) values (10,'Pizza','https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Big_Mac_hamburger.jpg/1200px-Big_Mac_hamburger.jpg',22000,50, '257687a');
+insert into ProductoEntity (id, nombre,imagen, valorDinero, valorpuntos, RESTAURANTE_NIT) values (20,'Baratisimo','https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Big_Mac_hamburger.jpg/1200px-Big_Mac_hamburger.jpg',5000,10, '357484u');
+insert into ProductoEntity (id, nombre,imagen, valorDinero, valorpuntos, RESTAURANTE_NIT) values (30,'Hamburguesa Res','https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Big_Mac_hamburger.jpg/1200px-Big_Mac_hamburger.jpg',5000,20, '597356c');
 
 insert into ComentarioEntity (id, comentario, calificacion, sucursal_id, cliente_usuario) values (1, 'Que buen servicio +10', 10, 88, 'C1');
 insert into ComentarioEntity (id, comentario, calificacion, sucursal_id, cliente_usuario) values (2, 'Muy buen ambiente', 8, 89, 'C2');

@@ -19,7 +19,7 @@
                 var index = Math.floor((Math.random() * imagenes.length));
 
                 // cambiamos la imagen
-                document.getElementById("imagenIndex").src = imagenes[index];
+                document.getElementById("bgvid").muted = true;
             }
 
             /**

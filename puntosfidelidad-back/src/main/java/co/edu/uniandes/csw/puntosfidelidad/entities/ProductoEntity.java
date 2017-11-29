@@ -21,12 +21,21 @@ public class ProductoEntity implements Serializable {
     @Id
     private Long id;
     private String nombre;
+    private String imagen;
     private int valorDinero;
     private int valorPuntos;
     
     @PodamExclude
     @ManyToOne
     private RestauranteEntity restaurante;
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 
 
 
