@@ -129,12 +129,11 @@
     <body> 
 
         <div class="row container-fluid">
-            <div ui-view="bannerView" class="row">
+            <div class="row">
                 <div>
                     <h1>
-                        <a id="tituloBanner">        
-                            FIEL
-                        </a>       
+                        <a id="tituloBanner" ng-if="!isAuthenticated()" ui-sref="inicio">FIEL</a>   
+                        <a id="tituloBanner" ng-if="isAuthenticated()" ng-click="perfil()" href="">FIEL</a>    
                     </h1>            
                 </div>
             </div>
@@ -150,16 +149,18 @@
                             <button class='BotonesBanner' ng-click="compras()">Compras</button>
                             <button class='BotonesBanner' ui-sref="restaurantesList">Restaurantes</button>
                             <button class='BotonesBanner' ng-click="productos()">Productos</button>
+                            <button class='BotonesBanner' ui-sref="eventosList">Eventos</button>                            
+
                             <li class="cerarSesion"><a  ui-sref="inicio">Cerrar Sesión</a></li>
                         </ul>
                     </nav> 
                     <nav ng-if="isAuthenticated() && !esCliente()"> 
                         <ul>
                             <button class='BotonesBanner' ng-click="perfil()">Mi perfíl</button>
-                            <li><a  ui-sref="administradoresList">Administradores</a></li>
-                            <li><a  ui-sref="clientesList">Clientes</a></li>
-                            <li><a  ui-sref="restaurantesList">Restaurantes</a></li>
-                            <li><a  ui-sref="eventosList">Eventos</a></li>
+                            <button class='BotonesBanner' ui-sref="administradoresList">Administradores</button>
+                            <button class='BotonesBanner' ui-sref="clientesList">Clientes</button>
+                            <button class='BotonesBanner' ui-sref="restaurantesList">Restaurantes</button>
+                            <button class='BotonesBanner' ui-sref="eventosList">Eventos</button>                            
                             <li class="cerarSesion"><a  ui-sref="inicio">Cerrar Sesión</a></li>
                         </ul>
                     </nav> 

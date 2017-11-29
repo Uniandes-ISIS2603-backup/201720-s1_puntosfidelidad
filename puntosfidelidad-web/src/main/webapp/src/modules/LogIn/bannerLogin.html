@@ -1,7 +1,6 @@
 <div>
     <h1>
-        <a id="tituloBanner" ui-sref="inicio">        
-            FIEL
-        </a>       
+        <a id="tituloBanner" ng-if="!isAuthenticated()" ui-sref="inicio">FIEL</a>   
+        <a id="tituloBanner" ng-if="isAuthenticated()" ng-click="perfil()" href="">FIEL</a>    
     </h1>            
 </div>

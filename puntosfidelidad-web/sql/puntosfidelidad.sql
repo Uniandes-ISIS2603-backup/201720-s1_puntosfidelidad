@@ -12,8 +12,6 @@ delete from UbicacionEntity;
 delete from ClienteEntity;
 delete from RestauranteEntity;
 delete from AdministradorEntity;
--- delete from EventoEntity_RestauranteEntity;
--- delete from EventoEntity_UbicacionEntity;
 
 insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('Anonimo','Anónimo','','');
 insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C1','Cliente1','media/cliente2.jpg','*');

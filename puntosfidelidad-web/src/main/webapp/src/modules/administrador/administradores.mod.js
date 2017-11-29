@@ -10,12 +10,7 @@
                 data: {
                     requireLogin: true
                 },
-                views: {
-                    'bannerView': {
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
-                    },
+                views: {                   
                     'mainView': {
                         controller: 'administradoresCtrl',
                         controllerAs: 'ctrl',
@@ -35,12 +30,7 @@
                 data: {
                     requireLogin: true
                 },
-                views: {
-                    'bannerView': {
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
-                    },
+                views: {                    
                     'mainView': {
                         controller: 'administradoresDetailCtrl',
                         controllerAs: 'ctrl',
@@ -58,12 +48,7 @@
                 data: {
                     requireLogin: true
                 },
-                views: {
-                    'bannerView': {
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
-                    },
+                views: {                    
                     'mainView': {
                         templateUrl: basePath + 'new/administradores.new.html',
                         controller: 'administradoresNewCtrl'
@@ -83,12 +68,7 @@
                 param: {
                     administradorUsuario: null
                 },
-                views: {
-                    'bannerView': {
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
-                    },
+                views: {                    
                     'mainView': {
                         templateUrl: basePath + 'administradores.detail.html',
                         controller: 'administradoresUpdateCtrl'
@@ -109,12 +89,7 @@
                 param: {
                     clienteUsuario: null
                 },
-                views: {
-                    'bannerView': {
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
-                    },
+                views: {                    
                     'mainView': {
                         templateUrl: basePath + 'delete/administradores.delete.html',
                         controller: 'administradorDeleteCtrl'
@@ -134,12 +109,7 @@
                 param: {
                     clienteUsuario: null
                 },
-                views: {
-                    'bannerView': {
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
-                    },
+                views: {                   
                     'mainView': {
                         templateUrl: 'src/modules/cliente/clientes.list.html',
                         controller: 'administradorDeleteCtrl'
@@ -159,12 +129,7 @@
                 param: {
                     clienteUsuario: null
                 },
-                views: {
-                    'bannerView': {
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
-                    },
+                views: {                    
                     'mainView': {
                         templateUrl: 'src/modules/cliente/clientes.list.html',
                         controller: 'administradorDeleteCtrl'
@@ -184,12 +149,7 @@
                 param: {
                     clienteUsuario: null
                 },
-                views: {
-                    'bannerView': {
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
-                    },
+                views: {                    
                     'mainView': {
                         templateUrl: 'src/modules/cliente/clientes.list.html',
                         controller: 'administradorDeleteCtrl'
@@ -209,12 +169,7 @@
                 param: {
                     clienteUsuario: null
                 },
-                views: {
-                    'bannerView': {
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
-                    },
+                views: {                    
                     'mainView': {
                         templateUrl: 'src/modules/evento/eventos.html',
                         controller: 'eventosCtrl',

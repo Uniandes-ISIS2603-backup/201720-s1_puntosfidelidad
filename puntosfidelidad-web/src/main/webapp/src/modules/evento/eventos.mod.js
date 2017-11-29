@@ -7,7 +7,10 @@ var mod = ng.module("eventosModule", []);
 
             $stateProvider.state('eventos', {
                 url: '/eventos',
-                abstract: true,                
+                abstract: true, 
+                data: {
+                    requireLogin: true
+                },
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'eventos.html',
@@ -18,6 +21,9 @@ var mod = ng.module("eventosModule", []);
             }).state('eventosList', {
                 url: 'eventos/list',                
                 parent: 'eventos',
+                data: {
+                    requireLogin: true
+                },
                 views: {
                      'detailView': {
                         templateUrl: basePath + 'eventosCarrusel.html',
@@ -32,6 +38,9 @@ var mod = ng.module("eventosModule", []);
             }).state('eventosPost', {
                 url: '/create',
                 parent: 'eventos',
+                data: {
+                    requireLogin: true
+                },
                 views: {
                     'detailView': {
                         templateUrl: basePath + 'new/eventos.new.html',
@@ -41,6 +50,9 @@ var mod = ng.module("eventosModule", []);
             }).state('eventosUpdate', {
                 url: '/update/{eventoNombre:string}',
                 parent: 'eventos',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     eventosId: null
                 },
@@ -53,6 +65,9 @@ var mod = ng.module("eventosModule", []);
             }).state('eventosDelete', {
                 url: '/delete/{eventoNombre:string}',
                 parent: 'eventos',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     eventosId: null
                 },
