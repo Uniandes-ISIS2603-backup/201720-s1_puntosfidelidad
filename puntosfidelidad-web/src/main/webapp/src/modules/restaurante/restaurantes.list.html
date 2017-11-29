@@ -1,26 +1,18 @@
 <div class="container-fluid">
     
-    <button class="btn btn-primary btnRestaurante" ui-sref='restaurantesBuscar'>Filtrar</button> 
+    <button class="BotonesBanner" ui-sref='restaurantesBuscar'>Filtrar</button> 
     <br>
     <br>
-    <ul class="list-group" ng-repeat="elem in elements">
-        <li class="list-group-item">
-            
-             <h4> {{elem.nombre}} </h4>            
-             <button class="btn btn-primary btnRestaurante" ui-sref='restaurantesDetail({restauranteNit:"{{elem.nit}}"})'>Más Detalles</button> <br>
-            
-        </li>
-    </ul>
     
     <div class="col-md-2" ng-repeat="cliente in elements" >
             <div class="thumbnail" >      
                 <a ui-sref="clienteDetail({clienteUsuario: cliente.usuario})">
-                    <img class="img-responsive imagenCliente" ng-src='media/restaurante.jpg' alt="res1"/>                  
+                    <img class="img-responsive imagenCliente" ng-src='media/FielLogo.PNG' alt="res1"/>                  
                 </a>
                 <div class="caption text-center">
                     <p><i><H2></i><b>{{cliente.nombre}}</b></H2></p>
                     <p><i>Tipo de Comida: </i>{{cliente.tipoComida}}</p>
-                    <p><i>NIT:</i>{{cliente.nit}}</p>
+                    <p><i>NIT :</i>{{cliente.nit}}</p>
                     
                     <a class="btn btn-default" ui-sref='restaurantesDetail({restauranteNit:"{{elem.nit}}"})'><p class="glyphicon glyphicon-th-list"></p></a>
                    
