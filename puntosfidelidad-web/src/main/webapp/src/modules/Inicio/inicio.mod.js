@@ -2,10 +2,12 @@
     var mod = ng.module("inicioModule", []);
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/Inicio/';
-            $urlRouterProvider.otherwise("");
 
             $stateProvider.state('inicio', {   
-                url: '/inicio', 
+                url: '/inicio',
+                data: {
+                    requireLogin: false
+                },                 
                 views: {
                     'mainView': {
                         controller: 'inicioCtrl',

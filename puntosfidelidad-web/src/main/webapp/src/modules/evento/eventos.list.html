@@ -1,31 +1,41 @@
 <div class="container-fluid">
-    <br>
-    <ul class="list-group" ng-repeat="event in eventos">
-        <li class="list-group-item">
-            <h3> {{event.nombre}}</h3>
-            <hr>
-            <img ng-src='http://lorempixel.com/200/200'>
-            <hr>
-            <div ng-show='collapse'>
-                <br>
-                <b>Descripción:</b> {{event.descripcion}}
+    
+    <div class="container-fluid">
+        <ul class="list-group">
+            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="event in eventos">
+                <h3>{{event.nombre}}</h3>
                 <hr>
-                <b>Fecha De Inicio:</b> {{event.fechaInicio}}
+                <div class='eventoBox' ng-style="{'background': 'url(http://lorempixel.com/500/500)'}">
+                    <input id='{{event.nombre}}' type="checkbox" ng-model='collapse' style='display: none;'>
+
+                    <div class='eventoInner' for='{{event.nombre}}' ng-click="collapse=!collapse">
+                        <p style='position:relative; top:0; top:25%; ' ng-if="!collapse">Más Información</p>
+                        <p ng-if="collapse">Menos Información</p>
+                    </div>
+                    <div class='eventoColor'></div>
+                </div>
                 <hr>
-                <b>Fecha Finalización:</b> {{event.fechaFin}}
-                <hr>
-            </div>           
-            <div class="row">
-            <div style="padding-left: 30px">
-                
-                <input id='{{event.nombre}}' type="checkbox" ng-model='collapse' style='display: none;'>
-                <label for='{{event.nombre}}' class="btn btn-primary" onclick="">Descripción</label>            
-                
-                        <a class="btn btn-default" ui-sref='eventosPost()'><p class="glyphicon glyphicon-plus"></p></a>
-                        <a class="btn btn-default" ui-sref='eventosUpdate({eventoNombre:"{{event.nombre}}"})'><p class="glyphicon glyphicon-pencil"></p></a>
-                        <a class="btn btn-default" ui-sref='eventosDelete({eventoNombre:"{{event.nombre}}"})'><p class="glyphicon glyphicon-trash"></p></a>
-            </div>              
-            </div>
-        </li>
-    </ul>
+                <div ng-show='collapse'>
+                    <br>
+                    <b>Descripción:</b> {{event.descripcion}}
+                    <hr>
+                    <b>Fecha De Inicio:</b> {{event.fechaInicio}}
+                    <hr>
+                    <b>Fecha Finalización:</b> {{event.fechaFin}}
+                    <hr>
+                </div>           
+                <div class="row">
+                <div style="padding-left: 30px">
+                    
+                    <input id='{{event.nombre}}' type="checkbox" ng-model='collapse' style='display: none;'>
+                    <label for='{{event.nombre}}' class="btn btn-primary" onclick="">Descripción</label>            
+                    
+                            <a class="btn btn-default" ui-sref='eventosPost()'><p class="glyphicon glyphicon-plus"></p></a>
+                            <a class="btn btn-default" ui-sref='eventosUpdate({eventoNombre:"{{event.nombre}}"})'><p class="glyphicon glyphicon-pencil"></p></a>
+                            <a class="btn btn-default" ui-sref='eventosDelete({eventoNombre:"{{event.nombre}}"})'><p class="glyphicon glyphicon-trash"></p></a>
+                </div>              
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>

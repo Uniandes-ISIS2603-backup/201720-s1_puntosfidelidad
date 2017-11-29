@@ -1,12 +1,24 @@
 <div class="container-fluid">
+    
+    <button class="BotonesBanner" ui-sref='restaurantesBuscar'>Filtrar</button> 
+    <br>
     <br>
     
-    <ul class="list-group" ng-repeat="elem in elements">
-        <li class="list-group-item">
-            
-             <h4> {{elem.nombre}} </h4>            
-             <button class="btn btn-primary btnRestaurante" ui-sref='restaurantesDetail({restauranteNit:"{{elem.nit}}"})'>Más Detalles</button> <br>
-            
-        </li>
-    </ul>
+    <div class="col-md-2" ng-repeat="res in elements" >
+            <div class="thumbnail" >      
+                
+                    <img class="img-responsive imagenCliente" ng-src='media/FielLogo.PNG' alt="res1"/>                  
+                
+                <div class="caption text-center">
+                    <p><i><H2></i><b>{{res.nombre}}</b></H2></p>
+                    <p><i>Tipo de Comida: </i>{{res.tipoComida}}</p>
+                    <p><i>NIT :</i>{{res.nit}}</p>
+                    
+                    <a class="btn btn-default" ui-sref='restaurantesDetail({restauranteNit:"{{res.nit}}"})'><p class="glyphicon glyphicon-th-list"></p></a>
+                   
+                </div>
+                
+            </div>
+        </div>
+    
 </div>

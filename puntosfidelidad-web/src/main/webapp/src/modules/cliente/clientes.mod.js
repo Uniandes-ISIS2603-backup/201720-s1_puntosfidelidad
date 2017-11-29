@@ -3,10 +3,13 @@
     mod.constant("clientesContext", "api/clientes");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/cliente/';
-            $urlRouterProvider.otherwise("");
-
+            $urlRouterProvider.otherwise("/login");
+            
             $stateProvider.state('clientesList', {
                 url: '/clientes',
+                data: {
+                    requireLogin: true
+                },
                 views: {
                     'mainView': {
                         controller: 'clientesCtrl',
@@ -15,9 +18,12 @@
                     }
                 }
             }).state('clienteDetail', {
-                url: 'clientes/{clienteUsuario:string}',
+                url: '/clienteDetail/{clienteUsuario:string}',
                 param: {
                     clienteUsuario: null
+                },
+                data: {
+                    requireLogin: true
                 },
                 views: {
                     'bannerView': {
@@ -30,17 +36,18 @@
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'clientes.detail.html'
                     },
-                    'navBar': {
-                        controller: 'clientesDetailCtrl',
-                        controllerAs: 'ctrl',
+                    'navBar': {                        
                         templateUrl: basePath + 'navBar.html'
 
                     }
                 }
             }).state('clienteComprasList', {
-                url: 'clientes/{clienteUsuario:string}/compras',
+                url: '/{clienteUsuario:string}/compras',
                 param: {
                     clienteUsuario: null
+                },
+                data: {
+                    requireLogin: true
                 },
                 views: {
                     'bannerView': {
@@ -61,11 +68,14 @@
                     }
                 }
             }).state('clienteComprasDetail', {
-                url: 'clientes/{clienteUsuario:string}/compras/{compraId:int}/detail',
+                url: '/{clienteUsuario:string}/compras/{compraId:int}/detail',
                 param: {
                     clienteUsuario: null,
                     compraId: null
-                    
+
+                },
+                data: {
+                    requireLogin: true
                 },
                 views: {
                     'bannerView': {
@@ -79,17 +89,20 @@
                         templateUrl: 'src/modules/cliente/navBar.html'
 
                     },
-                    'mainView': {                      
+                    'mainView': {
                         controller: 'clientesComprasCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'subrecursoCompra/compras.detail.html'
-                       
+
                     }
                 }
             }).state('clienteProductosList', {
-                url: 'clientes/{clienteUsuario:string}/productos',
+                url: '/{clienteUsuario:string}/productos',
                 param: {
                     clienteUsuario: null
+                },
+                data: {
+                    requireLogin: true
                 },
                 views: {
                     'bannerView': {
@@ -110,11 +123,13 @@
                     }
                 }
             }).state('clienteProductosDetail', {
-                url: 'clientes/{clienteUsuario:string}/productos/{productoId:int}/detail',
+                url: '/{clienteUsuario:string}/productos/{productoId:int}/detail',
                 param: {
                     clienteUsuario: null,
                     productoId: null
-                    
+                },
+                data: {
+                    requireLogin: true
                 },
                 views: {
                     'bannerView': {
@@ -128,30 +143,35 @@
                         templateUrl: 'src/modules/cliente/navBar.html'
 
                     },
-                    'mainView': {                      
+                    'mainView': {
                         controller: 'productosCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'subrecursoProducto/productos.detail.html'
-                       
+
                     }
                 }
             }).state('clienteCreate', {
-                url: 'clientes/create',
+                url: '/nuevo',  
+                data: {
+                    requireLogin: false
+                },
                 views: {
-                    'bannerView': {
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
+                    'bannerView': {                       
                         templateUrl: 'src/modules/LogIn/bannerLogin.html'
                     },
                     'mainView': {
-                        templateUrl: basePath + 'new/clientes.new.html',
-                        controller: 'clientesNewCtrl'
-                    }                   
+                        controller: 'clientesNewCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'new/clientes.new.html'
+                    }
                 }
             }).state('clienteUpdate', {
-                url: '/clientes/{clienteUsuario:string}/update',
+                url: '{clienteUsuario:string}/update',
                 param: {
                     clienteUsuario: null
+                },
+                data: {
+                    requireLogin: true
                 },
                 views: {
                     'mainView': {
@@ -166,9 +186,12 @@
                     }
                 }
             }).state('clienteDelete', {
-                url: '/clientes/{clienteUsuario:string}/delete',
+                url: '{clienteUsuario:string}/delete',
                 param: {
                     clienteUsuario: null
+                },
+                data: {
+                    requireLogin: true
                 },
                 views: {
                     'mainView': {
@@ -183,7 +206,6 @@
                     }
                 }
             });
-
         }]);
 })(window.angular);
 

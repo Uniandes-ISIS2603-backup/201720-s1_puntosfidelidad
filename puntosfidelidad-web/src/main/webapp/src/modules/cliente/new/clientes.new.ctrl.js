@@ -19,9 +19,14 @@
                         sessionStorage.setItem("usuario", nuevoUsuario.usuario);
                         sessionStorage.setItem("nombre", nuevoUsuario.nombre);
                         sessionStorage.setItem("rol", "cliente");
+                        console.log(nuevoUsuario.usuario);
+                        console.log($rootScope.currentUser);
                         $rootScope.currentUser = nuevoUsuario.usuario;
+                        console.log($rootScope.currentUser);
+                        console.log($rootScope);
+                        
                         $scope.hayErrorCreando = false;
-                        $state.go('clienteDetail', {'clienteUsuario': nuevoUsuario.usuario}, {reload: true});
+                        $state.go('clienteDetail', {'clienteUsuario':$rootScope.currentUser}, {reload: true});
                     }, function () {
                         $scope.hayErrorCreando = true;
                         $scope.errortxt = " Parece que el cliente con ese usuario ya existe";
@@ -36,6 +41,7 @@
                     return "";
                 }
             };
+            
         }
     ]);
 }

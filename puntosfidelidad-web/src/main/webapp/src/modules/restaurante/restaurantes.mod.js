@@ -1,13 +1,16 @@
 (function (ng) {
     var mod = ng.module("restaurantesModule", []);
-        mod.constant("restaurantesContext", "api/restaurantes");
-        mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-                var basePath = 'src/modules/restaurante/';
-                $urlRouterProvider.otherwise("/restaurantes");
-    
+    mod.constant("restaurantesContext", "api/restaurantes");
+    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+            var basePath = 'src/modules/restaurante/';
+            $urlRouterProvider.otherwise("/restaurantes");
+
             $stateProvider.state('restaurantes', {
                 url: '/restaurantes',
                 abstract: true,
+                data: {
+                    requireLogin: true
+                },
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'restaurantes.html',
@@ -17,6 +20,9 @@
                 }
             }).state('restaurantesList', {
                 url: 'restaurantes/list',
+                data: {
+                    requireLogin: true
+                },
                 views: {
                     'mainView': {
                         controller: 'restaurantesCtrl',
@@ -24,9 +30,25 @@
                         templateUrl: basePath + 'restaurantes.list.html'
                     }
                 }
+                }).state('restaurantesBuscar', {
+                url: '/buscar',
+                data: {
+                    requireLogin: true
+                },
+                views: {
+                    'mainView': {
+                        controller: 'restaurantesCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'restaurantes.buscar.list.html'
+                    }
+                }
+                
             }).state('restaurantesDetail', {
                 url: '/{restauranteNit:string}/detail',
                 parent: 'restaurantes',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     restauranteNit: null
                 },
@@ -40,6 +62,9 @@
             }).state('restaurantesProductos', {
                 url: '/productos',
                 parent: 'restaurantesDetail',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     restauranteNit: null
                 },
@@ -53,6 +78,9 @@
             }).state('restaurantesSucursales', {
                 url: '/sucursales',
                 parent: 'restaurantesDetail',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     restauranteNit: null
                 },
@@ -63,9 +91,12 @@
                         controllerAs: 'ctrl'
                     }
                 }
-                 }).state('restaurantesEventos', {
+            }).state('restaurantesEventos', {
                 url: '/eventos',
                 parent: 'restaurantesDetail',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     restauranteNit: null
                 },
@@ -76,10 +107,13 @@
                         controllerAs: 'ctrl'
                     }
                 }
-                
+
             }).state('restaurantesPost', {
                 url: '/create',
                 parent: 'restaurantes',
+                data: {
+                    requireLogin: true
+                },
                 views: {
                     'detailView': {
                         templateUrl: basePath + '/post/restaurantes.post.html',
@@ -90,11 +124,14 @@
             }).state('restaurantesUpdate', {
                 url: '/update/{restauranteNit:string}',
                 parent: 'restaurantes',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     restauranteNit: null
                 },
                 views: {
-                    'extrasView': {
+                    'detailView': {
                         templateUrl: basePath + '/update/restaurantes.update.html',
                         controller: 'restaurantesUpdateCtrl',
                         controllerAs: 'ctrl'
@@ -103,6 +140,9 @@
             }).state('restaurantesDelete', {
                 url: '/restaurantes/{restauranteNit:string}/delete',
                 parent: 'restaurantes',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     restauranteNit: null
                 },
@@ -113,7 +153,7 @@
                     }
                 }
             });
-            }]);
-    
-    })(window.angular);
+        }]);
+
+})(window.angular);
     

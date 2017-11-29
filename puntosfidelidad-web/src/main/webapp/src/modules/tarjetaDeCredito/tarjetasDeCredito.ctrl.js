@@ -4,8 +4,8 @@
             $scope.elementosTC = [];
             $rootScope.agregarTC=false;
             $rootScope.updateTC=false;
-            $rootScope.clienteActual=$state.params.clienteUsuario;
-            $http.get("http://localhost:8080/puntosfidelidad-web/api/clientes/"+$state.params.clienteUsuario+"/tarjetasDeCredito")
+            $scope.usuarioActual= sessionStorage.getItem("usuario");
+            $http.get("http://localhost:8080/puntosfidelidad-web/api/clientes/"+$scope.usuarioActual+"/tarjetasDeCredito")
                     .then(function (response) {
                         $scope.elementosTC = response.data;
             });

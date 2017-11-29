@@ -7,17 +7,11 @@
 
             $stateProvider.state('tarjetasDeCreditoList', {
                 url: '/tarjetasDeCredito',
-                parent: 'clienteDetail',
-                param: {
-                    clienteUsuario: null
-                },
-                views: {
+                data: {
+                    requireLogin: true
+                },                
+                views: {                    
                     'mainView': {
-                        controller: 'clientesDetailCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/cliente/clientes.detail.html'
-                    },
-                    'detailClienteView': {
                         controller: 'tarjetasDeCreditoCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'tarjetasDeCredito.list.html'
@@ -26,6 +20,9 @@
             }).state('tarjetasDeCreditoNew', {
                 url: '/tarjetasDeCredito/crear',
                 parent: 'clienteDetail',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     clienteUsuario: null
                 },
@@ -44,6 +41,9 @@
             }).state('tarjetasDeCreditoDelete', {
                 url: '/tarjetasDeCredito/{tarjetaCreditoId:int}/eliminar',                 
                 parent: 'clienteDetail',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     tarjetaCreditoId:null
                 },
@@ -62,6 +62,9 @@
             }).state('tarjetasDeCreditoUpdate', {
                 url: '/tarjetasDeCredito/{tarjetaCreditoId:int}/update',                 
                 parent: 'clienteDetail',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     tarjetaCreditoId:null
                 },

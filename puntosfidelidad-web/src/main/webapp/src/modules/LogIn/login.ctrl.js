@@ -21,7 +21,8 @@
                                     sessionStorage.setItem("rol", "cliente");
                                     $rootScope.currentUser = usuarioLogin.usuario;
                                     $scope.hayError = false;
-                                    $state.go('clienteDetail', {'clienteUsuario': usuarioLogin.usuario}, {reload: true});
+                                    console.log(usuarioLogin.usuario)
+                                    $state.go('clienteDetail', {'clienteUsuario':usuarioLogin.usuario}, {reload: true});
                                 } else {
                                     $scope.hayError = true;
                                     $scope.errortxt= "  Contraseña incorrecta";

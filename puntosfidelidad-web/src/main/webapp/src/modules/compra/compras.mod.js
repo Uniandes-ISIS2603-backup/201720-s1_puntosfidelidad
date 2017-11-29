@@ -9,6 +9,9 @@
             $stateProvider.state('compras', {
                 url: '/compras',
                 abstract: true,
+                data: {
+                    requireLogin: true
+                },
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'compras.html',
@@ -18,6 +21,9 @@
                 }
             }).state('comprasList', {
                 url: '/listCompras',
+                data: {
+                    requireLogin: true
+                },
                 views: {
                     'mainView': {
                         controller: 'comprasCtrl',
@@ -28,9 +34,11 @@
             }).state('compraDetail', {
                 url: '/{compraId:int}/detail',
                 parent: 'compras',
+                data: {
+                    requireLogin: true
+                },
                 param: {
-                    compraId: null,
-                    
+                    compraId: null                    
                 },
                 views: {
                     'detailView': {
@@ -42,6 +50,9 @@
             }).state('comprasProductosList', {
                 url: '/{compraId:int}/productos',
                 parent: 'compras',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     compraId: null
                 },
@@ -66,6 +77,9 @@
             }).state('comprasCreate', {
                 url: '/create',
                 parent: 'compras',
+                data: {
+                    requireLogin: true
+                },
                 views: {
                     'detailView': {
                         templateUrl: basePath + '/new/compras.new.html',
@@ -75,6 +89,9 @@
             }).state('compraUpdate', {
                 url: '/update/{compraId:int}',
                 parent: 'compras',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     compraId: null
                 },
@@ -87,6 +104,9 @@
             }).state('compraDelete', {
                 url: '/delete/{compraId:int}',
                 parent: 'compras',
+                data: {
+                    requireLogin: true
+                },
                 param: {
                     compraId: null
                 },

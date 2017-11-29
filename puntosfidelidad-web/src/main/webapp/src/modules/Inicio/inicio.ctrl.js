@@ -1,6 +1,10 @@
 (function (ng) {
     var mod = ng.module("inicioModule");
-    mod.controller("inicioCtrl", ['$scope', '$http', function () {
+    mod.controller("inicioCtrl", [function () {
+            
+            if (sessionStorage.getItem("usuario")) {
+                sessionStorage.clear();
+            };   
             /**
              * Array con las imagenes que se iran mostrando en la web
              */
@@ -15,7 +19,7 @@
                 var index = Math.floor((Math.random() * imagenes.length));
 
                 // cambiamos la imagen
-                document.getElementById("imagenIndex").src = imagenes[index];
+                document.getElementById("bgvid").muted = true;
             }
 
             /**
@@ -28,8 +32,7 @@
 
                 // Indicamos que cada 5 segundos cambie la imagen
                 setInterval(rotarImagenes, 5000);
-            };
-                   
+            };      
             
         }]);
 

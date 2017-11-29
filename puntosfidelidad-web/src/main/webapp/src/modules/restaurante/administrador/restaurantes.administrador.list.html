@@ -27,10 +27,10 @@
                     <td id="{{$index}}-name"> {{restaurante.nit}}</td>
                     <td id="{{$index}}-nombre"> {{restaurante.nombre}}</td>
                     <td id="{{$index}}-mbasico">{{restaurante.tipoComida}}</td>
-                    
-                    <td <button class="btn btn-primary btnRestaurante" ui-sref='restaurantesDetail({restauranteNit:"{{restaurante.nit}}"})'>Ver Detalles</button> </td>
-                    <td <button class="glyphicon glyphicon-trash" ui-sref='restaurantesDelete({restauranteNit:"{{restaurante.nit}}"})'></button> </td>
-                    
+                                       
+                    <td><a class="btn btn-default" ui-sref='restauranteAdministradorUpdate({restauranteNit:"{{restaurante.nit}}"})'><p class="glyphicon glyphicon-pencil"></p></a>
+                    <a class="btn btn-default" ui-sref='restauranteAdministradorDelete({restauranteNit:"{{restaurante.nit}}"})'><p class="glyphicon glyphicon-trash"></p></a></td>
+                    <td><a class="btn btn-default" ui-sref='restauranteAdministradorDetail({restauranteNit:"{restaurante.nit}"})'>Detalles</a></td>
                 </tr>
             </tbody>
         </table>
