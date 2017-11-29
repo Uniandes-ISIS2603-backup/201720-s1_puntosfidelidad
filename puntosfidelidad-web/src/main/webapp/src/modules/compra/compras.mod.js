@@ -56,12 +56,7 @@
                 param: {
                     compraId: null
                 },
-                views: {
-                    'bannerView': {
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
-                    },
+                views: {                    
                     'navBar': {
                         controller: 'clientesDetailCtrl',
                         controllerAs: 'ctrl',

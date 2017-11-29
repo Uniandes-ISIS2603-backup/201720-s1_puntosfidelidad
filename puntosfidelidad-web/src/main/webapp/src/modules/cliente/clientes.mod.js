@@ -25,12 +25,7 @@
                 data: {
                     requireLogin: true
                 },
-                views: {
-                    'bannerView': {
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
-                    },
+                views: {                    
                     'mainView': {
                         controller: 'clientesDetailCtrl',
                         controllerAs: 'ctrl',
@@ -49,12 +44,7 @@
                 data: {
                     requireLogin: true
                 },
-                views: {
-                    'bannerView': {
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
-                    },
+                views: {                   
                     'mainView': {
                         controller: 'clientesComprasCtrl',
                         controllerAs: 'ctrl',
@@ -77,12 +67,7 @@
                 data: {
                     requireLogin: true
                 },
-                views: {
-                    'bannerView': {
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
-                    },
+                views: {                    
                     'navBar': {
                         controller: 'clientesDetailCtrl',
                         controllerAs: 'ctrl',
@@ -106,12 +91,7 @@
                 data: {
                     requireLogin: true
                 },
-                views: {
-                    'bannerView': {
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
-                    },
+                views: {                   
                     'navBar': {
                         controller: 'clientesDetailCtrl',
                         controllerAs: 'ctrl',
@@ -133,12 +113,7 @@
                 data: {
                     requireLogin: true
                 },
-                views: {
-                    'bannerView': {
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
-                    },
+                views: {                    
                     'navBar': {
                         controller: 'clientesDetailCtrl',
                         controllerAs: 'ctrl',
@@ -161,11 +136,6 @@
                     requireLogin: true
                 },
                 views: {
-                    'bannerView': {
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
-                    },
                     'navBar': {
                         controller: 'clientesDetailCtrl',
                         controllerAs: 'ctrl',
@@ -184,10 +154,7 @@
                 data: {
                     requireLogin: false
                 },
-                views: {
-                    'bannerView': {                       
-                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
-                    },
+                views: {                    
                     'mainView': {
                         controller: 'clientesNewCtrl',
                         controllerAs: 'ctrl',

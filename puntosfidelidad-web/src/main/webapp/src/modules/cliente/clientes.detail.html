@@ -5,7 +5,7 @@
             <div >
 
                 <div class="col-md-3">
-                    <div ng-if="!edit" class="vertical-menu">
+                    <div class="vertical-menu">
                         <a ng-click="perfil()">Información</a>
                         <a ui-sref="recargasList">Recargas</a>
                         <a ui-sref="tarjetasDeCreditoList">Tarjetas Crédito</a>
@@ -68,9 +68,12 @@
 <div class="container" ng-if="!isAuthenticated() || (darUsuario() !== elementoCliente.usuario)">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <h1 class="float-left display-3 mr-4">403 Forbidden</h1>
-            <h4 >You do not have permission for this action.</h4>
-            <p >Contact the administrator to obtain permission.</p>
+            <CENTER>
+            <h1 class="float-left display-3 mr-4">403 Acceso denegado</h1>
+            <h4 >No tienes permisos para ver este contenido.</h4>
+            <h4>Inicia sesión con otro usuario para ver este contenido</h4>
+            <button class='BotonesBanner' ui-sref="login">Inicia Sesión</button>
+            </CENTER>
         </div>
     </div>
 </div>

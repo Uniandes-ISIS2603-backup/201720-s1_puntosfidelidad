@@ -14,8 +14,21 @@
     <br>
     <div class="col-md-8">     
         <br>
-        <div class="alert alert-info" ng-if='elementosRecarga.length === 0 && !nuevaRecarga'>            
-            <strong>!Ey!</strong> Actualmente no hay recargas registradas para este cliente.
+        <div class="input-container alertError col-md-8" ng-if='elementosRecarga.length === 0 && !nuevaRecarga'>  
+            <center>
+                <strong>!Ey!</strong> Actualmente no hay recargas registradas para este cliente.
+            </center>
+        </div>
+        <div class="input-container alertError col-md-8" ng-if='nuevaRecarga && elementosRtarjetaC.length === 0'>  
+            <center>
+                <strong>!Ey!</strong> No puedes hacer recargas porque no tienes tarjetas de crédito registradas.
+            </center>
+        </div>
+        <div class="input-container alertError col-md-8 " ng-if='nuevaRecarga && elementosRtarjetaP.length === 0'>            
+            <center>
+                <strong>!Ey!</strong> No puedes hacer recargas porque no tienes tarjetas de puntos registradas.
+                <strong><h4>¡Adquiere una en nuestros restaurantes!</h4></strong>
+            </center>
         </div>
         <form ng-submit="createRecarga()" name="nuevaRecargaForm">
             <table class="table table-hover" ng-if='elementosRecarga.length !== 0 || nuevaRecarga'>
@@ -31,8 +44,7 @@
                 </thead>    
 
                 <tbody>
-
-                    <tr ng-show='nuevaRecarga' >
+                    <tr ng-if='nuevaRecarga && elementosRtarjetaP.length !== 0 && elementosRtarjetaC.length !== 0'>
                         <td></td> 
                         <td></td> 
                         <td>
@@ -53,7 +65,7 @@
                         <td>
                             <input id="recargaAgregar" type="submit" value="Agregar" class="btn btn-default"/> 
                         </td>                 
-                    </tr>           
+                    </tr> 
 
                     <tr ng-repeat="recarga in elementosRecarga" >
                         <td id="{{$index}}-name"> {{recarga.id}}</td>

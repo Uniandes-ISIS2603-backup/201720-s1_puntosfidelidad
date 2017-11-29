@@ -18,21 +18,12 @@
                     }
                 }
             }).state('recargasNew', {
-                url: '/recargas/crear',
-                parent: 'clienteDetail',
-                param: {
-                    clienteUsuario: null
-                },
+                url: '/recargasCrear',                
                 data: {
                     requireLogin: true
                 },
                 views: {
                     'mainView': {
-                        controller: 'clientesDetailCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/cliente/clientes.detail.html'
-                    },
-                    'detailClienteView': {
                         controller: 'recargasNewCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'recargas.list.html'

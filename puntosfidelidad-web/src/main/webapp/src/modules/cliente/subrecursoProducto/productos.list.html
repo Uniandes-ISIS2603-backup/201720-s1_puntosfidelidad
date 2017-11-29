@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div ng-if="isAuthenticated()" class="container-fluid">
     <br>
     <div class="panel-group">
         <div class="panel panel-primary">
@@ -28,6 +28,17 @@
             </div>
         </div>
     </div>
+</div>
 
-
+<div class="container" ng-if="!isAuthenticated()">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <CENTER>
+            <h1 class="float-left display-3 mr-4">403 Acceso denegado</h1>
+            <h4 >No tienes permisos para ver este contenido.</h4>
+            <h4>Inicia sesión con otro usuario para ver este contenido</h4>
+            <button class='BotonesBanner' ui-sref="login">Inicia Sesión</button>
+            </CENTER>
+        </div>
+    </div>
 </div>
