@@ -4,17 +4,17 @@
     <br>
     <br>
     
-    <div class="col-md-2" ng-repeat="cliente in elements" >
+    <div class="col-md-2" ng-repeat="res in elements" >
             <div class="thumbnail" >      
-                <a ui-sref="clienteDetail({clienteUsuario: cliente.usuario})">
+                
                     <img class="img-responsive imagenCliente" ng-src='media/FielLogo.PNG' alt="res1"/>                  
-                </a>
+                
                 <div class="caption text-center">
-                    <p><i><H2></i><b>{{cliente.nombre}}</b></H2></p>
-                    <p><i>Tipo de Comida: </i>{{cliente.tipoComida}}</p>
-                    <p><i>NIT :</i>{{cliente.nit}}</p>
+                    <p><i><H2></i><b>{{res.nombre}}</b></H2></p>
+                    <p><i>Tipo de Comida: </i>{{res.tipoComida}}</p>
+                    <p><i>NIT :</i>{{res.nit}}</p>
                     
-                    <a class="btn btn-default" ui-sref='restaurantesDetail({restauranteNit:"{{elem.nit}}"})'><p class="glyphicon glyphicon-th-list"></p></a>
+                    <a class="btn btn-default" ui-sref='restaurantesDetail({restauranteNit:"{{res.nit}}"})'><p class="glyphicon glyphicon-th-list"></p></a>
                    
                 </div>
                 
