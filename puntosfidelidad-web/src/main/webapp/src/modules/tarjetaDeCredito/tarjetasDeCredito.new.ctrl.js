@@ -6,17 +6,20 @@
                 numero:null,
                 banco:null
             };
-            $http.get("http://localhost:8080/puntosfidelidad-web/api/clientes/" + $state.params.clienteUsuario + "/tarjetasDeCredito")
+            
+            $scope.usuarioActual= sessionStorage.getItem("usuario");
+
+            $http.get("http://localhost:8080/puntosfidelidad-web/api/clientes/" + $scope.usuarioActual + "/tarjetasDeCredito")
                     .then(function (response) {
                         $scope.elementosTC = response.data;
                     });
 
             $scope.createTC = function () {
-                $http.post("http://localhost:8080/puntosfidelidad-web/api/clientes/" + $state.params.clienteUsuario + "/tarjetasDeCredito", {
+                $http.post("http://localhost:8080/puntosfidelidad-web/api/clientes/" + $scope.usuarioActual + "/tarjetasDeCredito", {
                     numero: $scope.tc.numero,
                     banco: $scope.tc.banco
                 }).then(function () {
-                    $state.go('tarjetasDeCreditoList', {clienteUsuario: $state.params.clienteUsuario}, {reload: true});
+                    $state.go('tarjetasDeCreditoList',{reload: true});
                 });
             };
         }]);

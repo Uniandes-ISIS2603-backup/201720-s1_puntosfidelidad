@@ -18,21 +18,13 @@
                     }
                 }
             }).state('tarjetasDeCreditoNew', {
-                url: '/tarjetasDeCredito/crear',
+                url: '/tarjetasDeCreditoCrear',
                 parent: 'clienteDetail',
                 data: {
                     requireLogin: true
-                },
-                param: {
-                    clienteUsuario: null
-                },
+                },                
                 views: {
                     'mainView': {
-                        controller: 'clientesDetailCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/cliente/clientes.detail.html'
-                    },
-                    'detailClienteView': {
                         controller: 'tarjetasDeCreditoNewCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'tarjetasDeCredito.list.html'

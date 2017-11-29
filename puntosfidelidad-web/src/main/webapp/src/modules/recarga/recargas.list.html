@@ -14,7 +14,7 @@
     <br>
     <div class="col-md-8">     
         <br>
-        <div class="alert alert-info" ng-if='elementosRecarga.length === 0 && !nuevaRecarga'>            
+        <div class="input-container alertError" ng-if='elementosRecarga.length === 0 && !nuevaRecarga'>            
             <strong>!Ey!</strong> Actualmente no hay recargas registradas para este cliente.
         </div>
         <form ng-submit="createRecarga()" name="nuevaRecargaForm">
@@ -31,8 +31,7 @@
                 </thead>    
 
                 <tbody>
-
-                    <tr ng-show='nuevaRecarga' >
+                    <tr ng-if='nuevaRecarga'>
                         <td></td> 
                         <td></td> 
                         <td>
@@ -53,16 +52,16 @@
                         <td>
                             <input id="recargaAgregar" type="submit" value="Agregar" class="btn btn-default"/> 
                         </td>                 
-                    </tr>           
+                    </tr> 
 
-                    <tr ng-repeat="recarga in elementosRecarga" >
-                        <td id="{{$index}}-name"> {{recarga.id}}</td>
-                        <td id="{{$index}}-fecha">{{recarga.fecha}}</td>
-                        <td id="{{$index}}-valor">{{recarga.valor}}</td>
-                        <td id="{{$index}}-tc">{{recarga.tarjetaDeCredito.id}}</td>
-                        <td id="{{$index}}-tp">{{recarga.tarjetaPuntos.id}}</td>
-                        <td></td> 
-                    </tr>
+                <tr ng-repeat="recarga in elementosRecarga" >
+                    <td id="{{$index}}-name"> {{recarga.id}}</td>
+                    <td id="{{$index}}-fecha">{{recarga.fecha}}</td>
+                    <td id="{{$index}}-valor">{{recarga.valor}}</td>
+                    <td id="{{$index}}-tc">{{recarga.tarjetaDeCredito.id}}</td>
+                    <td id="{{$index}}-tp">{{recarga.tarjetaPuntos.id}}</td>
+                    <td></td> 
+                </tr>
                 </tbody>
             </table>
         </form> 
