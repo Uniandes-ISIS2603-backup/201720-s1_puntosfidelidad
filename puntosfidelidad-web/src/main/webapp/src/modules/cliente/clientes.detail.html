@@ -4,7 +4,7 @@
         <form name="clienteUpdate">
             <div >
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="vertical-menu">
                         <a ng-click="perfil()">Información</a>
                         <a ui-sref="recargasList">Recargas</a>
@@ -13,48 +13,93 @@
                     </div>
                 </div>
 
-                <div ui-view="detailClienteView">
-                    <div class="col-md-3">
-                        <div class="thumb">
-                            <img onError="this.src ='http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png'" class="img-responsive" ng-src="{{elementoCliente.imagen}}"/>
+                <div class="col-md-9" ui-view="detailClienteView">
+
+                    <h1 ng-if="edit"> Usuario: {{elementoCliente.usuario}}</h1> 
+                    <button ng-if="edit" class='BotonesBanner' ui-sref="clienteDetail({clienteUsuario: elementoCliente.usuario})">Cancelar</button>  
+                    <button class='BotonesBanner' ng-if="edit && !((elementoCliente.contrasena) !== elementoCliente.repetirContrasenaU) && clienteUpdate.$valid" ng-click="updateCliente()">Guardar</button>
+                    <hr>  
+
+                    <div class="col-md-3" ng-if="!edit"></div>
+                    <div class="col-md-3" ng-if="!edit">
+                        <br>
+                        <div class="imgPerfil">
+                            <img onError="media/perfil/1.jpg" class="img-responsive" ng-src="{{elementoCliente.imagen}}"/>
+                            <br>
+                            <a ng-if="!edit" class="btn btn-default" ui-sref="clienteUpdate({clienteUsuario: elementoCliente.usuario})"><p class="glyphicon glyphicon-pencil"></p></a>
+                            <a ng-if="!edit" class="btn btn-default" ui-sref="clienteDelete({clienteUsuario: elementoCliente.usuario})"><p class="glyphicon glyphicon-trash"></p></a>
+                            <a ng-if="!edit && esAdmin()" class="btn btn-default" ui-sref="clientesList"><p> Otros clientes</p></a>
                         </div>
+                    </div>
 
-                        <div class="thumb" ng-if="edit" >
-                            <input id="clienteImagenU" ng-model="elementoCliente.imagen" class="col-sm-8" value="{{elementoCliente.imagen}}"/>
-                        </div>
-                    </div>            
-                    <div class="col-md-3">
-                        <dl> 
-                            <dt> Usuario</dt>
-                            <dd >{{elementoCliente.usuario}} <hr> </dd>                    
+                    <div  class="row divUpdate" ng-if="edit">
+                        <br>
+                        <center>
+                            <table>
+                                <tr>
+                                    <th class="col-sm-4"></th>
+                                    <th class="col-sm-4"></th>                            
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-4" ><h3>Nombre</h3></td>
+                                    <td class="col-sm-4" ><input value="" id="clienteNombreU" ng-model="elementoCliente.nombre" class="col-sm-8" max='16'/></td> 
+                                </tr>  
 
-                            <dt> Nombre </dt>
-                            <dd ng-if="!edit">{{elementoCliente.nombre}} <hr></dd>
-                            <dd ng-if="edit"><input value="" id="clienteNombreU" ng-model="elementoCliente.nombre" class="col-sm-8" /><br><hr> </dd>
+                                <tr>
+                                    <td class="col-sm-4" ><h3>Contraseña</h3></td>
+                                    <td class="col-sm-4" ><input type=password id="clienteContrasenaU" required ng-model="elementoCliente.contrasena" class="col-sm-8"  max='16'/></td> 
+                                </tr> 
+                                <tr>
+                                    <td class="col-sm-4" ><h3>Repetir contraseña</h3></td>
+                                    <td class="col-sm-4" ><input type=password id="clienteRepetirContrasenaU" required ng-model="elementoCliente.repetirContrasenaU" class="col-sm-8" max='16'/></td> 
+                                </tr>
+                            </table>
 
+                            <br>                            
+                        </center>
 
-                            <dt>Contraseña</dt>
-                            <dd ng-if="!edit">{{elementoCliente.contrasena}}</dd> 
-                            <dd ng-if="edit"><input type=password id="clienteContrasenaU" required ng-model="elementoCliente.contrasena" class="col-sm-8" /> <br><br></dd>
-
-                            <dt ng-if="edit">Repetir contraseña</dt>
-                            <dd ng-if="edit"><input type=password id="clienteRepetirContrasenaU" required ng-model="elementoCliente.repetirContrasenaU" class="col-sm-8"/></dd>  
-
-                        </dl>  
-                        <br>                   
-                        <div class="form-group row">
-                            <div class="form-group col-sm-14" ng-if="edit && (((elementoCliente.contrasena) !== elementoCliente.repetirContrasenaU) || !clienteUpdate.$valid)">
-                                <div class="alert alert-danger" >
+                        <div class="col-sm-3"></div>
+                        <div>
+                            <div class="col-sm-5" ng-if="edit && (((elementoCliente.contrasena) !== elementoCliente.repetirContrasenaU) || !clienteUpdate.$valid)">
+                                <div class="alertError" >
                                     <strong>!Cuidado!</strong><p>Las contraseñas no coinciden</p>
                                 </div> 
                             </div> 
-                        </div>                    
-                        <a ng-if="!edit" class="btn btn-default" ui-sref="clienteUpdate({clienteUsuario: elementoCliente.usuario})"><p class="glyphicon glyphicon-pencil"></p></a>
-                        <a ng-if="!edit" class="btn btn-default" ui-sref="clienteDelete({clienteUsuario: elementoCliente.usuario})"><p class="glyphicon glyphicon-trash"></p></a>
-                        <a ng-if="!edit && esAdmin()" class="btn btn-default" ui-sref="clientesList"><p> Otros clientes</p></a>
+                        </div> 
+                        <br>
+                    </div>    
+                    <br>
 
-                        <a ng-if="edit" class="btn btn-default" ui-sref="clienteDetail({clienteUsuario: elementoCliente.usuario})">Cancelar</a>
-                        <a ng-if="edit && !((elementoCliente.contrasena) !== elementoCliente.repetirContrasenaU) && clienteUpdate.$valid" class="btn btn-default" ng-click="updateCliente()"><p class="glyphicon glyphicon-floppy-saved"></p></a>
+                    <div  class="row divUpdate" ng-if="edit">                        
+                        <center><h2>Selecciona una imágen</h2></center>
+                        <hr>
+
+                        <div class="funkyradio col-md-4 col-sm-8 col-xs-8" ng-repeat="imagenC in rutaImagenes" >
+                            <div class="funkyradio-info">
+                                <input type="radio" name="radio" id="{{imagenC}}"  value="{{imagenC}}" ng-model="elementoCliente.imagen"/>
+                                <label for="{{imagenC}}"><img alt="{{imagenC}}" src="{{imagenC}}"/></label>
+                            </div>                                                               
+                        </div>                                             
+                    </div>   
+
+                    <div class="row">
+                        <dl ng-if="!edit"> 
+                            <dt > Usuario</dt>
+                            <dd >{{elementoCliente.usuario}} <hr> </dd>                    
+
+                            <dt> Nombre </dt>
+                            <dd >{{elementoCliente.nombre}} <hr></dd>
+
+
+                            <dt>Contraseña</dt>
+                            <dd >{{elementoCliente.contrasena}}</dd> 
+
+                        </dl>  
+                        <br>                 
+
+
+                        <button ng-if="edit" class='BotonesBanner' ui-sref="clienteDetail({clienteUsuario: elementoCliente.usuario})">Cancelar</button>  
+                        <button class='BotonesBanner' ng-if="edit && !((elementoCliente.contrasena) !== elementoCliente.repetirContrasenaU) && clienteUpdate.$valid" ng-click="updateCliente()">Guardar</button>
                     </div>
                 </div>
                 <br>
@@ -65,12 +110,17 @@
 
 </div>
 
-<div class="container" ng-if="!isAuthenticated() || (darUsuario() !== elementoCliente.usuario)">
+<div class="container" ng-if="!isAuthenticated() || ((darUsuario() !== elementoCliente.usuario)&& !esAdmin())">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <h1 class="float-left display-3 mr-4">403 Forbidden</h1>
-            <h4 >You do not have permission for this action.</h4>
-            <p >Contact the administrator to obtain permission.</p>
+            <CENTER>
+                <h1 class="float-left display-3 mr-4">403 Acceso denegado</h1>
+                <h4 >No tienes permisos para ver este contenido.</h4>
+                <h4>Inicia sesión con otro usuario para ver este contenido</h4>
+                <button class='BotonesBanner' ui-sref="login">Inicia Sesión</button>
+            </CENTER>
         </div>
     </div>
 </div>
+
+

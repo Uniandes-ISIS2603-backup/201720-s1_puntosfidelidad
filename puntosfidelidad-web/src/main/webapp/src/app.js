@@ -79,7 +79,6 @@
                         $state.go('clienteDetail',{'clienteUsuario':$rootScope.currentUser}, {reload: true});
                     }
                     else{
-                        console.log("ENTRO")
                         $state.go('administradorDetail',{'administradorUsuario':$rootScope.currentUser}, {reload: true});
                     }
                 };

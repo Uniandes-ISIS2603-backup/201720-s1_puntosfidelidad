@@ -37,13 +37,12 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
  */
 @RunWith(Arquillian.class)
 public class TarjetaDeCreditoPersistenceTest {
-    
+
     /**
      *
      * @return Devuelve el jar que Arquillian va a desplegar en el Glassfish
-     * embebido. El jar contiene las clases de XYZ, el descriptor de la
-     * base de datos y el archivo beans.xml para resolver la inyección de
-     * dependencias.
+     * embebido. El jar contiene las clases de XYZ, el descriptor de la base de
+     * datos y el archivo beans.xml para resolver la inyección de dependencias.
      */
     @Deployment
     public static JavaArchive createDeployment() {
@@ -53,14 +52,14 @@ public class TarjetaDeCreditoPersistenceTest {
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
-    
+
     /**
-     * Inyección de la dependencia a la clase TarjetaDeCredito cuyos métodos
-     * se van a probar.
+     * Inyección de la dependencia a la clase TarjetaDeCredito cuyos métodos se
+     * van a probar.
      */
     @Inject
     private TarjetaDeCreditoPersistence persistence;
-    
+
     @Inject
     private ClientePersistence clientePersistence;
     /**
@@ -78,12 +77,12 @@ public class TarjetaDeCreditoPersistenceTest {
     UserTransaction utx;
 
     ClienteEntity cliente;
-     /**
+    /**
      *
      */
     private List<TarjetaDeCreditoEntity> data = new ArrayList<TarjetaDeCreditoEntity>();
-    
-     @Before
+
+    @Before
     public void setUp() {
         try {
             utx.begin();
@@ -100,11 +99,10 @@ public class TarjetaDeCreditoPersistenceTest {
             }
         }
     }
-    
+
     private void clearData() {
         em.createQuery("delete from TarjetaDeCreditoEntity").executeUpdate();
     }
-
 
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
@@ -113,29 +111,29 @@ public class TarjetaDeCreditoPersistenceTest {
         for (int i = 0; i < 3; i++) {
             TarjetaDeCreditoEntity entity = factory.manufacturePojo(TarjetaDeCreditoEntity.class);
             entity.setCliente(cliente);
-            em.persist(entity);            
+            em.persist(entity);
             data.add(entity);
         }
     }
-    
+
     public TarjetaDeCreditoPersistenceTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
-       
+
     @After
     public void tearDown() {
     }
 
     /**
      * Test of create method, of class TarjetaDeCreditoPersistence.
+     *
      * @throws java.lang.Exception
      */
     @Test
@@ -153,6 +151,7 @@ public class TarjetaDeCreditoPersistenceTest {
 
     /**
      * Test of update method, of class TarjetaDeCreditoPersistence.
+     *
      * @throws java.lang.Exception
      */
     @Test
@@ -172,6 +171,7 @@ public class TarjetaDeCreditoPersistenceTest {
 
     /**
      * Test of delete method, of class TarjetaDeCreditoPersistence.
+     *
      * @throws java.lang.Exception
      */
     @Test
@@ -184,13 +184,18 @@ public class TarjetaDeCreditoPersistenceTest {
 
     /**
      * Test of find method, of class TarjetaDeCreditoPersistence.
+     *
      * @throws java.lang.Exception
      */
     @Test
     public void testFind() throws Exception {
         TarjetaDeCreditoEntity entity = data.get(0);
-        TarjetaDeCreditoEntity newEntity = persistence.find(entity.getCliente().getUsuario(),entity.getId());
+        TarjetaDeCreditoEntity newEntity = persistence.find(entity.getCliente().getUsuario(), entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
+
+        newEntity = persistence.find("usuarioNoExiste", entity.getId());
+        Assert.assertNull(newEntity);
+
     }
 }

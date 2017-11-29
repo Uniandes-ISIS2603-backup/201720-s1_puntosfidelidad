@@ -1,4 +1,4 @@
-<div class="center-block well text-center">
+<div ng-if="isAuthenticated()" class="center-block well text-center">
     <div >
         <h3>¿Estás seguro de querer eliminar esta cuenta?</h3>
         <h2 ng-if="esCliente()">Te extrañaremos</h2>
@@ -9,4 +9,17 @@
         <a ng-if="esAdmin()" id="cancel-delete" ui-sref="clientesList" class="btn btn-info">Cancelar</a>
         <a ng-if="esCliente()" id="cancel-delete" ng-click="cancelar()" class="btn btn-info">Cancelar</a>
     </div>   
+</div>
+
+<div class="container" ng-if="!isAuthenticated()">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <CENTER>
+            <h1 class="float-left display-3 mr-4">403 Acceso denegado</h1>
+            <h4 >No tienes permisos para ver este contenido.</h4>
+            <h4>Inicia sesión con otro usuario para ver este contenido</h4>
+            <button class='BotonesBanner' ui-sref="login">Inicia Sesión</button>
+            </CENTER>
+        </div>
+    </div>
 </div>

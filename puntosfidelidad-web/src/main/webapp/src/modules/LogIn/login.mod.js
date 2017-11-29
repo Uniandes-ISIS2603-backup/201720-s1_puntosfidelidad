@@ -9,12 +9,7 @@ var mod = ng.module("loginModule", []);
                 data: {
                     requireLogin: false
                 },
-                views: {
-                    'bannerView':{
-                        controller: 'loginCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'bannerLogin.html'
-                    },
+                views: {                    
                     'mainView': {
                         controller: 'loginCtrl',
                         controllerAs: 'ctrl',

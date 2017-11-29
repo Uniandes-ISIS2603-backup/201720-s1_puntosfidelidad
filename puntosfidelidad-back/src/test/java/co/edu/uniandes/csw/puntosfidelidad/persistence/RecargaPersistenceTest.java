@@ -188,5 +188,8 @@ public class RecargaPersistenceTest {
         RecargaEntity newEntity = persistence.find(entity.getCliente().getUsuario(),entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
+        
+        newEntity = persistence.find("UsuarioNoExiste",entity.getId());
+        Assert.assertNull(newEntity);
     }
 }
