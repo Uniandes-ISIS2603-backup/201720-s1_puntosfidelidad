@@ -19,7 +19,7 @@ var mod = ng.module("eventosModule", []);
                     }
                 }
             }).state('eventosList', {
-                url: 'eventos/list',                
+                url: '/list',                
                 parent: 'eventos',
                 data: {
                     requireLogin: true
