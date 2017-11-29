@@ -1,7 +1,13 @@
-<div class="container-fluid">
-    <br>  
-    <br>
-    <div class="col-md-4"></div>    
+<div class="panel panel-default panel-body">
+    <div class="col-md-3">
+        <div ng-if="!edit" class="vertical-menu">
+            <a ng-click="perfil()">Información</a>
+            <a ui-sref="recargasList">Recargas</a>
+            <a ui-sref="tarjetasDeCreditoList">Tarjetas Crédito</a>
+            <a ui-sref="tarjetasPuntosClienteList">Tajetas de Puntos</a>
+        </div>
+    </div>
+    <br>       
     <div class="col-md-4">        
         <div class="alert alert-info" ng-if='elementosTP.length === 0'>
             <strong>!Ey!</strong> Actualmente no hay tarjetas registradas para este cliente.

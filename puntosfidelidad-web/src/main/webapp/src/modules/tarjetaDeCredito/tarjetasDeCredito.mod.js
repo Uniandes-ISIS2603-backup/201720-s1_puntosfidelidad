@@ -7,20 +7,11 @@
 
             $stateProvider.state('tarjetasDeCreditoList', {
                 url: '/tarjetasDeCredito',
-                parent: 'clienteDetail',
                 data: {
                     requireLogin: true
-                },
-                param: {
-                    clienteUsuario: null
-                },
-                views: {
+                },                
+                views: {                    
                     'mainView': {
-                        controller: 'clientesDetailCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/cliente/clientes.detail.html'
-                    },
-                    'detailClienteView': {
                         controller: 'tarjetasDeCreditoCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'tarjetasDeCredito.list.html'
