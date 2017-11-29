@@ -1,18 +1,20 @@
-<div ng-if="isAuthenticated() && ((darUsuario()===elementoCliente.usuario)|| esAdmin()) " class="panel panel-default"> 
+<div ng-if="isAuthenticated() && ((darUsuario() === elementoCliente.usuario) || esAdmin())" class="panel panel-default"> 
     <div class="panel-body">
+
         <form name="clienteUpdate">
             <div class="row">
 
-                <br>
                 <div class="col-md-3">
                     <div ng-if="!edit" class="vertical-menu">
-                        <button class='BotonSideNav' ui-sref="administradorDetail">Información</button>
-                        <button class='BotonSideNav' ui-sref="restauranteAdministradorList({administraorUsuario: elementoAdministrador.usuario})">Mis Restaurantes</button>
-                        <button class='BotonSideNav' href="#">Mis Sucursales</button>
-                        <button class='BotonSideNav' href="#">Trajetas de Puntos</button>
-                        <button class='BotonSideNav' href="#">Link 4</button>
+                        <a ui-sref="administradorDetail">Información</a>
+                        <a ui-sref="restauranteAdministradorList({administradorUsuario: elementoAdministrador.usuario})">Mis Restaurantes</a>
+                        <a ui-sref="recargasList">Recargas</a>
+                        <a href="#">Trajetas de Puntos</a>
+                        <a href="#">Link 4</a>
                     </div>
-                </div>       
+                </div>
+                
+                <div ui-view="detailClienteView">
                 <div class="col-md-3">
                     <div class="thumb">
                         <img onError="this.src ='http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png'" class="img-responsive" ng-src="{{elementoCliente.imagen}}"/>
@@ -64,11 +66,12 @@
                 <li ng-if="!edit" role="presentation" class="active"> <a ui-sref="tarjetasPuntosClienteList({clienteUsuario: elementoCliente.usuario})">Tarjetas de Puntos</a></li>
             </ul> 
         </form>        
-        <div ui-view="detailClienteView"></div>        
+        </div>        
     </div>
+    
 </div>
 
-<div class="container" ng-if="!isAuthenticated() || (darUsuario()!==elementoCliente.usuario)">
+<div class="container" ng-if="!isAuthenticated() || (darUsuario() !== elementoCliente.usuario)">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <h1 class="float-left display-3 mr-4">403 Forbidden</h1>

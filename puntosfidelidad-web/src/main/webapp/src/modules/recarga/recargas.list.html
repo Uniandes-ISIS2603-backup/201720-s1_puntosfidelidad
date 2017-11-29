@@ -1,4 +1,14 @@
 <div class="container-fluid">
+
+    <div class="col-md-3">
+        <div ng-if="!edit" class="vertical-menu">
+            <a ui-sref="administradorDetail">Información</a>
+            <a ui-sref="restauranteAdministradorList({administradorUsuario: elementoAdministrador.usuario})">Mis Restaurantes</a>
+            <a ui-sref="recargasList">Recargas</a>
+            <a href="#">Trajetas de Puntos</a>
+            <a href="#">Link 4</a>
+        </div>
+    </div>
     <br>
     <div class="btn-group mr-2" role="group" aria-label="First group">
         <a class="btn btn-default" ui-sref="recargasNew">  <p class="glyphicon glyphicon-plus"></p>  Agregar Recarga  </a>
@@ -11,7 +21,7 @@
             <strong>!Ey!</strong> Actualmente no hay recargas registradas para este cliente.
         </div>
         <form ng-submit="createRecarga()" name="nuevaRecargaForm">
-            <table class="table table-hover" ng-if='elementosRecarga.length !== 0 || nuevaRecarga '>
+            <table class="table table-hover" ng-if='elementosRecarga.length !== 0 || nuevaRecarga'>
                 <thead>
                     <tr>
                         <th>Id</th>    

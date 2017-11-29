@@ -7,20 +7,11 @@ var mod = ng.module("recargasModule", []);
 
             $stateProvider.state('recargasList', {
                 url: '/recargas',
-                parent: 'clienteDetail',  
-                param: {
-                    clienteUsuario: null
-                },
                 data: {
                     requireLogin: true
                 },
                 views: {
                     'mainView': {
-                        controller: 'clientesDetailCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/cliente/clientes.detail.html'                        
-                    },
-                    'detailClienteView': {
                        controller: 'recargasCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath+'recargas.list.html' 
