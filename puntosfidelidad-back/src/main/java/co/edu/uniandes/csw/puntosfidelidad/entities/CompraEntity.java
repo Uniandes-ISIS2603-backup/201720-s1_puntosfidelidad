@@ -27,7 +27,7 @@ public class CompraEntity implements Serializable {
 
     @PodamExclude
     @OneToMany
-    private List<ProductoEntity> productos = new ArrayList<>();
+    private List<ProductoCompraEntity> productos = new ArrayList<>();
     
     @PodamExclude
     @ManyToOne
@@ -72,14 +72,14 @@ public class CompraEntity implements Serializable {
     /**
      * @return the employees
      */
-    public List<ProductoEntity> getProductos() {
+    public List<ProductoCompraEntity> getProductos() {
         return productos;
     }
 
     /**
      * @param employees the employees to set
      */
-    public void setProductos(List<ProductoEntity> employees) {
+    public void setProductos(List<ProductoCompraEntity> employees) {
         this.productos = employees;
     }
 

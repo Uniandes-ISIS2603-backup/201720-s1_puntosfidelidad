@@ -5,8 +5,10 @@
  */
 package co.edu.uniandes.csw.puntosfidelidad.resources;
 
+import co.edu.uniandes.csw.puntosfidelidad.dtos.ProductoCompraDTO;
 import co.edu.uniandes.csw.puntosfidelidad.dtos.ProductoDetailDTO;
 import co.edu.uniandes.csw.puntosfidelidad.ejb.CompraLogic;
+import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoCompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +39,10 @@ public class CompraProductosResource {
      * @return Lista de BookDetailDTO convertida.
      * 
      */
-    private List<ProductoDetailDTO> booksListEntity2DTO(List<ProductoEntity> entityList){
-        List<ProductoDetailDTO> list = new ArrayList<>();
-        for (ProductoEntity entity : entityList) {
-            list.add(new ProductoDetailDTO(entity));
+    private List<ProductoCompraDTO> booksListEntity2DTO(List<ProductoCompraEntity> entityList){
+        List<ProductoCompraDTO> list = new ArrayList<>();
+        for (ProductoCompraEntity entity : entityList) {
+            list.add(new ProductoCompraDTO(entity));
         }
         return list;
     }
@@ -54,7 +56,7 @@ public class CompraProductosResource {
      * 
      */
     @GET
-    public List<ProductoDetailDTO> listProductos(@PathParam("compraId") Long compraId) {
+    public List<ProductoCompraDTO> listProductos(@PathParam("compraId") Long compraId) {
         return booksListEntity2DTO(compraLogic.listProductos(compraId));
     }
 
@@ -67,8 +69,8 @@ public class CompraProductosResource {
      */
     @GET
     @Path("{productoId: \\d+}")
-    public ProductoDetailDTO getProducto(@PathParam("compraId") Long compraId, @PathParam("productoId") Long productoId) {
-        return new ProductoDetailDTO(compraLogic.getProducto(compraId, productoId));
+    public ProductoCompraDTO getProducto(@PathParam("compraId") Long compraId, @PathParam("productoId") Long productoId) {
+        return new ProductoCompraDTO(compraLogic.getProducto(compraId, productoId));
     }
 
     /**
@@ -95,7 +97,7 @@ public class CompraProductosResource {
      */
     @DELETE
     @Path("{productoId: \\d+}")
-    public void removeBooks(@PathParam("compraId") Long compraId, @PathParam("productoId") Long productoId) {
+    public void removeProducto(@PathParam("compraId") Long compraId, @PathParam("productoId") Long productoId) {
         compraLogic.removeProducto(compraId, productoId);
     }
 }

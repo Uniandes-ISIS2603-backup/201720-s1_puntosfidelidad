@@ -96,6 +96,35 @@
 
                     }
                 }
+            }).state('clienteComprasProductos', {
+                url: '/{clienteUsuario:string}/compras/{compraId:int}/productos',
+                param: {
+                    clienteUsuario: null,
+                    compraId: null
+
+                },
+                data: {
+                    requireLogin: true
+                },
+                views: {
+                    'bannerView': {
+                        controller: 'loginCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/LogIn/bannerLogin.html'
+                    },
+                    'navBar': {
+                        controller: 'clientesDetailCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/cliente/navBar.html'
+
+                    },
+                    'mainView': {
+                        controller: 'comprasProductosCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'subrecursoProducto/productos.list.html'
+
+                    }
+                }
             }).state('clienteProductosList', {
                 url: '/{clienteUsuario:string}/productos',
                 param: {

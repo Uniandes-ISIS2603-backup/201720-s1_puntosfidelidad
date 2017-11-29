@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoCompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
@@ -24,8 +25,12 @@ public class CompraLogic {
     
     @Inject
     private CompraPersistence persistence;
+    
     @Inject
     private ProductoLogic prodLogic;
+    
+    @Inject
+    private ProductoCompraLogic prodCompraLogic;
         
     
     /*
@@ -86,7 +91,7 @@ public class CompraLogic {
      * Compra
      * @generated
      */
-    public List<ProductoEntity> listProductos(Long compraId) {
+    public List<ProductoCompraEntity> listProductos(Long compraId) {
         
         return getCompra(compraId).getProductos();
     }
@@ -99,11 +104,11 @@ public class CompraLogic {
      * @return
      * @generated
      */
-    public ProductoEntity getProducto(Long compraId, Long productoId) {
-        List<ProductoEntity> list = getCompra(compraId).getProductos();
+    public ProductoCompraEntity getProducto(Long compraId, Long productoId) {
+        List<ProductoCompraEntity> list = getCompra(compraId).getProductos();
         ProductoEntity productoEntity = new ProductoEntity();
         productoEntity.setId(productoId);
-        for(ProductoEntity producto : list)
+        for(ProductoCompraEntity producto : list)
         {
             if (producto.getId() == productoEntity.getId())
             {
@@ -126,7 +131,15 @@ public class CompraLogic {
         
         if (prod != null)
         {
-            getCompra(compraId).getProductos().add(prod);
+            ProductoCompraEntity prodCompra = new ProductoCompraEntity();
+            prodCompra = prodCompraLogic.getProducto(productoId);
+            if(prodCompra == null)
+            {
+                prodCompra = prod.toProductoCompraEntity();
+                prodCompraLogic.createProducto(prodCompra);
+            }
+            
+            getCompra(compraId).getProductos().add(prodCompra);
         }
         
         return prod;

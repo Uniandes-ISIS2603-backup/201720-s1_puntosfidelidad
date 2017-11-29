@@ -100,7 +100,7 @@ public class CompraPersistence {
         return query.getResultList();
     }
 
-    public List<ProductoEntity> gerProductos(Long id)
+    public List<ProductoCompraEntity> gerProductos(Long id)
     {
         CompraEntity compra = em.find(CompraEntity.class, id);
         return compra.getProductos();
