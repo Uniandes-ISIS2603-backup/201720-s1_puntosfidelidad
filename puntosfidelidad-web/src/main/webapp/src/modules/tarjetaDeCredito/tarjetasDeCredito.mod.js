@@ -19,7 +19,6 @@
                 }
             }).state('tarjetasDeCreditoNew', {
                 url: '/tarjetasDeCreditoCrear',
-                parent: 'clienteDetail',
                 data: {
                     requireLogin: true
                 },                
@@ -32,7 +31,6 @@
                 }
             }).state('tarjetasDeCreditoDelete', {
                 url: '/tarjetasDeCredito/{tarjetaCreditoId:int}/eliminar',                 
-                parent: 'clienteDetail',
                 data: {
                     requireLogin: true
                 },
@@ -41,11 +39,6 @@
                 },
                 views: {
                     'mainView': {
-                        controller: 'clientesDetailCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/cliente/clientes.detail.html'
-                    },
-                    'detailClienteView': {
                         controller: 'tarjetaDeCreditoDeleteCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath+'delete/tarjetasDeCredito.delete.html'
@@ -53,7 +46,6 @@
                 }
             }).state('tarjetasDeCreditoUpdate', {
                 url: '/tarjetasDeCredito/{tarjetaCreditoId:int}/update',                 
-                parent: 'clienteDetail',
                 data: {
                     requireLogin: true
                 },
@@ -62,11 +54,6 @@
                 },
                 views: {
                     'mainView': {
-                        controller: 'clientesDetailCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/cliente/clientes.detail.html'
-                    },
-                    'detailClienteView': {
                         controller: 'tarjetasDeCreditoUpdateCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath+'update/tarjetasDeCredito.update.html'
