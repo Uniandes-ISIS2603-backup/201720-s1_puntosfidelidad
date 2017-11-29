@@ -12,29 +12,31 @@
                 tarjetaDeCredito: null,
                 tarjetaPuntos: null
             };
-            $http.get("http://localhost:8080/puntosfidelidad-web/api/clientes/" + $state.params.clienteUsuario + "/recargas")
+            
+            $scope.usuarioActual= sessionStorage.getItem("usuario");
+
+            $http.get("http://localhost:8080/puntosfidelidad-web/api/clientes/" + $scope.usuarioActual + "/recargas")
                     .then(function (response) {
                         $scope.elementosRecarga = response.data;
                     });
-            $http.get("http://localhost:8080/puntosfidelidad-web/api/clientes/" + $state.params.clienteUsuario + "/tarjetasDeCredito")
+            $http.get("http://localhost:8080/puntosfidelidad-web/api/clientes/" + $scope.usuarioActual + "/tarjetasDeCredito")
                     .then(function (response) {
                         $scope.elementosRtarjetaC = response.data;
                     });
-            $http.get("http://localhost:8080/puntosfidelidad-web/api/clientes/" + $state.params.clienteUsuario + "/tarjetasPuntos")
+            $http.get("http://localhost:8080/puntosfidelidad-web/api/clientes/" + $scope.usuarioActual + "/tarjetasPuntos")
                     .then(function (response) {
                         $scope.elementosRtarjetaP = response.data;
                     });
 
             $scope.createRecarga = function () {
-                $http.get("http://localhost:8080/puntosfidelidad-web/api/clientes/" + $state.params.clienteUsuario + "/tarjetasDeCredito/" + $scope.recargaNueva.tarjetaDeCredito)
+                $http.get("http://localhost:8080/puntosfidelidad-web/api/clientes/" + $scope.usuarioActual + "/tarjetasDeCredito/" + $scope.recargaNueva.tarjetaDeCredito)
                         .then(function (response) {
                             $scope.tcred = response.data;
                             $http.get("http://localhost:8080/puntosfidelidad-web/api/tarjetasPuntos/" + $scope.recargaNueva.tarjetaPuntos)
                                     .then(function (response) {
                                         $scope.tpun = response.data;
-                                        //console.log($scope.tpun); comentado para reducir deuda técnica
-                                        //console.log($scope.tcred); comentado para reducir deuda técnica
-                                        $http.post("http://localhost:8080/puntosfidelidad-web/api/clientes/" + $state.params.clienteUsuario + "/recargas", {
+                                        
+                                        $http.post("http://localhost:8080/puntosfidelidad-web/api/clientes/" + $scope.usuarioActual + "/recargas", {
                                             valor: $scope.recargaNueva.valor,
                                             fecha: (new Date()),
                                             tarjetaDeCredito: $scope.tcred,
@@ -42,6 +44,8 @@
                                         }).then(function () {
                                             $state.go('recargasList',{reload: true});
                                         });
+                                        
+                                        $rootScope.nuevaRecarga = false;
                                     });
                         });
             };

@@ -2,7 +2,7 @@ delete from RecargaEntity;
 delete from TarjetaDeCreditoEntity;
 delete from FotoEntity;
 delete from ComentarioEntity;
-delete from CompraEntity_ProductoEntity;
+delete from ProductoCompraEntity;
 delete from ProductoEntity;
 delete from CompraEntity;
 delete from EventoEntity;
@@ -67,6 +67,11 @@ insert into ProductoEntity (id, nombre,imagen, valorDinero, valorpuntos, RESTAUR
 insert into ProductoEntity (id, nombre,imagen, valorDinero, valorpuntos, RESTAURANTE_NIT) values (20,'Baratisimo','media/baratisimo.jpg',5000,10, '357484u');
 insert into ProductoEntity (id, nombre,imagen, valorDinero, valorpuntos, RESTAURANTE_NIT) values (30,'Hamburguesa Res','media/BigMac.jpg',5000,20, '597356c');
 
+insert into ProductoCompraEntity (id, nombre,imagen, valorDinero, valorpuntos, RESTAURANTE) values (1,'BigMac','media/BigMac.jpg',16000,20, '187956f');
+insert into ProductoCompraEntity (id, nombre,imagen, valorDinero, valorpuntos, RESTAURANTE) values (10,'Pizza','media/pizza.jpeg',22000,50, '257687a');
+insert into ProductoCompraEntity (id, nombre,imagen, valorDinero, valorpuntos, RESTAURANTE) values (20,'Baratisimo','media/baratisimo.jpg',5000,10, '357484u');
+insert into ProductoCompraEntity (id, nombre,imagen, valorDinero, valorpuntos, RESTAURANTE) values (30,'Hamburguesa Res','media/BigMac.jpg',5000,20, '597356c');
+
 insert into ComentarioEntity (id, comentario, calificacion, sucursal_id, cliente_usuario) values (1, 'Que buen servicio +10', 10, 88, 'C1');
 insert into ComentarioEntity (id, comentario, calificacion, sucursal_id, cliente_usuario) values (2, 'Muy buen ambiente', 8, 89, 'C2');
 insert into ComentarioEntity (id, comentario, calificacion, sucursal_id, cliente_usuario) values (3, 'Comida fria, mal servicio', 2, 91, 'C3');
@@ -96,6 +101,6 @@ insert into CompraEntity (ID, PAGOCONPUNTOS, CLIENTE_USUARIO, SUCURSAL_ID, TARJE
 -- insert into EventoEntity_UbicacionEntity (EventoEntity_Nombre, Ubicaciones_Direccion) values ('Festival Super Picante', 'Subway_Ubicacion');
 -- insert into EventoEntity_UbicacionEntity (EventoEntity_Nombre, Ubicaciones_Direccion) values ('La Cocina Italiana', 'Archies_Ubicacion');
 
-insert into CompraEntity_ProductoEntity (COMPRAENTITY_ID, PRODUCTOS_ID) values (20,1);
-insert into CompraEntity_ProductoEntity (COMPRAENTITY_ID, PRODUCTOS_ID) values (20,10);
-insert into CompraEntity_ProductoEntity (COMPRAENTITY_ID, PRODUCTOS_ID) values (20,20);
+insert into CompraEntity_ProductoCompraEntity (COMPRAENTITY_ID, PRODUCTOS_ID) values (20,1);
+insert into CompraEntity_ProductoCompraEntity (COMPRAENTITY_ID, PRODUCTOS_ID) values (20,10);
+insert into CompraEntity_ProductoCompraEntity (COMPRAENTITY_ID, PRODUCTOS_ID) values (20,20);

@@ -1,27 +1,34 @@
-<div class="container-fluid">
-    <div class="col-md-3"></div>  
-        <div class="col-md-6">           
-            <table class="table table-hover">
-                <thead>
-                    <tr>                           
-                        <th>Numero</th>  
-                        <th>Banco</th> 
-                        <th>Opciones</th> 
-                    </tr>
-                </thead>    
-
-                <tbody>
-
-                    <tr>                    
-                        <td><input type='number' min='0' id="tcNumeroUpdate" required ng-model="elementoTC.numero" class="col-sm-8" /></td>
-                        <td><input  id="tcBancoUpdate" required ng-model="elementoTC.banco" class="col-sm-8" /></td> 
-                        <td>
-                            <a class="btn btn-default btn-sm" ng-click="updateTC()" ><p class="glyphicon glyphicon-ok"></p></a>                      
-                            <a class="btn btn-default btn-sm" ui-sref="tarjetasDeCreditoList" ><p class="glyphicon glyphicon-remove"></p></a>                      
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+<div class="panel panel-default panel-body">
+    <div class="col-md-3">
+        <div ng-if="!edit" class="vertical-menu">
+            <a ng-click="perfil()">Información</a>
+            <a ui-sref="recargasList">Recargas</a>
+            <a ui-sref="tarjetasDeCreditoList">Tarjetas Crédito</a>
+            <a ui-sref="tarjetasPuntosClienteList">Tajetas de Puntos</a>
         </div>
+    </div>    
+    <div class="col-md-6">           
+        <table class="table table-hover">
+            <thead>
+                <tr>                           
+                    <th>Numero</th>  
+                    <th>Banco</th> 
+                    <th>Opciones</th> 
+                </tr>
+            </thead>    
+
+            <tbody>
+
+                <tr>                    
+                    <td><input type='number' min='0' id="tcNumeroUpdate" required ng-model="elementoTC.numero" class="col-sm-8" /></td>
+                    <td><input  id="tcBancoUpdate" required ng-model="elementoTC.banco" class="col-sm-8" /></td> 
+                    <td>
+                        <a class="btn btn-default btn-sm" ng-click="updateTC()" ><p class="glyphicon glyphicon-ok"></p></a>                      
+                        <a class="btn btn-default btn-sm" ui-sref="tarjetasDeCreditoList" ><p class="glyphicon glyphicon-remove"></p></a>                      
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
