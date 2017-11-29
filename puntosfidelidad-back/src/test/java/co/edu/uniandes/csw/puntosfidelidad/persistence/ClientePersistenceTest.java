@@ -199,7 +199,18 @@ public class ClientePersistenceTest {
         ClienteEntity newEntity = persistence.find(entity.getUsuario());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getUsuario(), newEntity.getUsuario());
-    }        
+    }    
+
+     /**
+     * Test of find method, of class RecargaPersistance.
+     * Cliente no existente
+     * @throws java.lang.Exception
+     */
+    @Test
+    public void testFindByNameNull() throws Exception {
+        ClienteEntity newEntity = persistence.find("clienteNoExistente");
+        Assert.assertNull(newEntity);
+    }     
     /**
      * Test of findAll method, of class ClientePersistence.
      * @throws java.lang.Exception
