@@ -82,7 +82,7 @@ public class ClienteLogic {
         }
         if("".equals(entity.getImagen())|| entity.getImagen()==null)
         {
-            entity.setImagen("http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png");
+            entity.setImagen("media/perfil/1.jpg");
         }
         persistence.create(entity);
         LOGGER.info("Termina proceso de creación de cliente");
@@ -101,7 +101,7 @@ public class ClienteLogic {
             entity.setNombre(entity.getUsuario());
         }
         if(entity.getImagen()==null || entity.getImagen().isEmpty()|| entity.getImagen().startsWith("http://")|| entity.getImagen().startsWith("https://") ){
-            entity.setImagen("http://estaticos.elmundo.es/social/static/img/avatars/xlarge_default.png");
+            entity.setImagen("media/perfil/1.jpg");
         }
         return persistence.update(entity);
     }
