@@ -15,6 +15,8 @@ public class RestauranteDTO implements Serializable{
     private String nit;
      //Atributo que modela el nombre del restaurante
     private String nombre;
+    // imagen
+    private String imagen;
      //Atributo que modela el tipo de comida del restaurante
     private String tipoComida;
     
@@ -34,6 +36,7 @@ public class RestauranteDTO implements Serializable{
         this.nit = entity.getNit();
         this.nombre = entity.getNombre();
         this.tipoComida = entity.getTipoComida();
+        this.imagen = entity.getImagen();
         }
     }
     
@@ -49,6 +52,7 @@ public class RestauranteDTO implements Serializable{
         entity.setNit(nit);
         entity.setNombre(nombre);
         entity.setTipoComida(tipoComida);
+        entity.setImagen(imagen);
         
         return entity;
     }
@@ -98,4 +102,14 @@ public class RestauranteDTO implements Serializable{
     public void setTipoComida(String tipoComida) {
         this.tipoComida = tipoComida;
     }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    
+    
 }

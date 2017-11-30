@@ -35,6 +35,24 @@ var mod = ng.module("eventosModule", []);
                         templateUrl: basePath + 'eventos.list.html'
                     }
                 }
+                
+                }).state('eventosListAdmin', {
+                url: '/list',                
+                parent: 'eventos',
+                data: {
+                    requireLogin: true
+                },
+                views: {
+                     'detailView': {
+                        templateUrl: basePath + 'eventos.listAdmin.html',
+                        controller: 'eventosCtrl'
+                    },
+                    'listView': {
+                        controller: 'eventosCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'eventos.listAdmin.html'
+                    }
+                }
             }).state('eventosPost', {
                 url: '/create',
                 parent: 'eventos',

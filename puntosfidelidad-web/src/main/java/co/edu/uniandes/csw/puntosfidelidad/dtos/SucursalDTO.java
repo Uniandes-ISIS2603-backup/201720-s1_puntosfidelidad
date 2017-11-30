@@ -19,6 +19,9 @@ public class SucursalDTO implements Serializable{
     
     private String nombre;
     
+    // imagen
+    private String imagen;
+    
     private Date horaApertura;
     
     private Date horaCierre;
@@ -36,6 +39,7 @@ public class SucursalDTO implements Serializable{
         this.nombre = entity.getNombre();
         this.horaApertura = entity.getHoraApertura();
         this.horaCierre = entity.getHoraCierre();
+        this.imagen = entity.getImagen();
         }
     }
     
@@ -46,6 +50,7 @@ public class SucursalDTO implements Serializable{
         entity.setNombre(this.getNombre());
         entity.setHoraApertura(this.getHoraApertura());
         entity.setHoraCierre(this.getHoraCierre());
+        entity.setImagen(this.imagen);
         return entity;
     }
 
