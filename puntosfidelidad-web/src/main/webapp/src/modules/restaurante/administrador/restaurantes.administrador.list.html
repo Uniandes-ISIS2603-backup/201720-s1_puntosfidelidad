@@ -29,8 +29,8 @@
                     <td id="{{$index}}-mbasico">{{restaurante.tipoComida}}</td>
                                        
                     <td><a class="btn btn-default" ui-sref='restauranteAdministradorUpdate({restauranteNit:"{{restaurante.nit}}"})'><p class="glyphicon glyphicon-pencil"></p></a>
-                    <a class="btn btn-default" ui-sref='restauranteAdministradorDelete({restauranteNit:"{{restaurante.nit}}"})'><p class="glyphicon glyphicon-trash"></p></a></td>
-                    <td><a class="btn btn-default" ui-sref='restauranteAdministradorDetail({restauranteNit2:"{{restaurante.nit}}"})'>Detalles</a></td>
+                    <a class="btn btn-danger" ui-sref='restauranteAdministradorDelete({restauranteNit:"{{restaurante.nit}}"})'><p class="glyphicon glyphicon-trash"></p></a></td>
+                    <td><a class="btn btn-default" ui-sref='restauranteAdministradorDetail({restauranteNit:"{{restaurante.nit}}"})'>Detalles</a></td>
                 </tr>
             </tbody>
         </table>

@@ -61,7 +61,7 @@
                 }
             }).state('restaurantesProductos', {
                 url: '/productos',
-                parent: 'restaurantesDetail',
+                parent: 'restauranteAdministradorDetail',
                 data: {
                     requireLogin: true
                 },
@@ -69,7 +69,7 @@
                     restauranteNit: null
                 },
                 views: {
-                    'detailView': {
+                    'infoRes': {
                         templateUrl: basePath + 'restaurantes.productos.html',
                         controller: 'restaurantesCtrl',
                         controllerAs: 'ctrl'
