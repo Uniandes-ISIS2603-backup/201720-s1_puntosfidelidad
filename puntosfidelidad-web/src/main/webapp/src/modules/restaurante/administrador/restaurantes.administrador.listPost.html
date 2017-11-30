@@ -1,0 +1,20 @@
+
+<div class="container-fluid">
+    <br>  
+    <br>
+    
+    <label for="restauranteNit" class="col-sm-4">Nit:</label>
+    <input id="restauranteNit" pattern="[a-zA-Z0-9-]+" title="Espacios no admitidos" required ng-model="res.nit" class="col-sm-6"/>
+    <br>
+    <br>  
+    <label for="restauranteNombre" class="col-sm-4">Nombre:</label>
+   
+    <input id="restauranteNombre" pattern="[a-zA-Z0-9-]+" title="Espacios no admiti<dos" required ng-model="res.nombre" class="col-sm-6"/>
+     <br>
+     <br>  
+    <label for="restauranteNombre" class="col-sm-4">Tipo de Comida:</label>
+    <input id="restauranteTipoComida" pattern="[a-zA-Z0-9-]+" title="Espacios no admiti<dos" required ng-model="res.tipoComida" class="col-sm-6"/>
+     <br>
+     <br> 
+    <label for="crearNuevaTarjetaPuntos" class="btn btn-primary" ng-click="createRestaurante()" >Crear Restaurante</label>
+</div>

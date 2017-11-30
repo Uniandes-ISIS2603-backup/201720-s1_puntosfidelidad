@@ -29,9 +29,9 @@
                 },
                 views: {
                     'info': {
-                        controller: 'restaurantesPostCtrl',
+                        controller: 'restaurantesCreateCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'postrestaurantes.post.html'
+                        templateUrl: basePath + 'administrador/restaurantes.administrador.listPost.html'
 
                     }
                 }
