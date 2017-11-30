@@ -90,7 +90,7 @@
                     requireLogin: true
                 },
                 views: {
-                    'detailView': {
+                    'info': {
                         templateUrl: basePath + '/new/compras.new.html',
                         controller: 'comprasNewCtrl'
                     }
@@ -105,7 +105,7 @@
                     compraId: null
                 },
                 views: {
-                    'detailView': {
+                    'info': {
                         templateUrl: basePath + '/new/compras.new.html',
                         controller: 'comprasUpdateCtrl'
                     }
@@ -120,7 +120,7 @@
                     compraId: null
                 },
                 views: {
-                    'detailView': {
+                    'info': {
                         templateUrl: basePath + '/delete/compras.delete.html',
                         controller: 'comprasDeleteCtrl'
                     }
