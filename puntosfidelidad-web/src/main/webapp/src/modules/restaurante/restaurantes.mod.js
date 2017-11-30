@@ -74,6 +74,22 @@
                         controllerAs: 'ctrl'
                     }
                 }
+                
+                }).state('restaurantesDetailP', {
+                url: '/{restauranteNit:string}/detail',
+                data: {
+                    requireLogin: true
+                },
+                param: {
+                    restauranteNit: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'restaurantes.detailP.html',
+                        controller: 'restaurantesCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
             }).state('restaurantesProductos', {
                 url: '/productos',
                 parent: 'restauranteAdministradorDetail',

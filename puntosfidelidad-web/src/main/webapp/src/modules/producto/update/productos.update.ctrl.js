@@ -44,7 +44,7 @@
                         }).then(function (response) {
                 
                             //Author created successfully
-                            $state.go('productosList', {productoId: response.data.id}, {reload: true});
+                            $state.go('restauranteAdministradorDetail', {restauranteNit: response.data.restaurante.nit}, {reload: true});
                         });
                     };
 

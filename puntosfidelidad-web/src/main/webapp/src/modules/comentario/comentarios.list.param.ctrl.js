@@ -2,6 +2,8 @@
     var mod = ng.module("comentariosNuevosModule");
     mod.controller("comentariosNuevosCtrl", ['$scope', '$http', '$state', function ($scope, $http, $state) {
         
+            $scope.objetoRestaurante = {};
+
             $scope.restauranteActual = function(restAct)
             {
                 if(restAct != '')
@@ -9,6 +11,11 @@
                     $http.get("http://localhost:8080/puntosfidelidad-web/api/comentarios/restaurantes/" + restAct)
                     .then(function (response) {
                         $scope.comentarios = response.data;
+                    });
+
+                    $http.get("http://localhost:8080/puntosfidelidad-web/api/restaurantes/" + restAct)
+                    .then(function (response) {
+                        $scope.objetoRestaurante = response.data;
                     });
                 }
             } 

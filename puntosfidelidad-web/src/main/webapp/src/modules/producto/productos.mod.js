@@ -55,7 +55,7 @@ var mod = ng.module("productoModule", []);
                 }
             }).state('productoDetail', {
                 url: '/{productoId:int}/detail',
-                parent: 'productos',
+                parent: 'productosList',
                 param: {
                     productoId: null
                 },
@@ -82,8 +82,7 @@ var mod = ng.module("productoModule", []);
                 
             }).state('productosCreate', {
                 url: '/create',
-                parent: 'productos',
-                views: {
+                   views: {
                     'detailView': {
                         templateUrl: basePath + '/new/productos.new.html',
                         controller: 'productosNewCtrl'

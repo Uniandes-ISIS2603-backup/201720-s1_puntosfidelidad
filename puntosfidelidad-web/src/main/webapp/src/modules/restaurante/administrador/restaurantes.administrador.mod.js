@@ -116,6 +116,38 @@
                         templateUrl: basePath + 'restaurantes.productos.html'
                     }
                 }
+            }).state('restauranteAdministradorProductoDetail', {
+                url: '/producto/{productoId:int}',
+                parent: 'restauranteAdministradorDetail',
+                data: {
+                    requireLogin: true
+                },
+                param: {
+                    produtoId: null
+                },
+                views: {
+                    'infoRes': {
+                        controller: 'productosCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/producto/'+ 'productos.detail.html'
+                    }
+                }
+            }).state('restauranteAdministradorProductoUpdate', {
+                url: '/producto/{productoId:int}/update',
+                parent: 'restauranteAdministradorDetail',
+                data: {
+                    requireLogin: true
+                },
+                param: {
+                    produtoId: null
+                },
+                views: {
+                    'infoRes': {
+                        controller: 'productosUpdateCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/producto/new/productos.new.html'
+                    }
+                }
             }).state('restauranteAdministradorComentario', {
                 url: 'comentario/{restauranteNit}',
                 parent: 'restauranteAdministradorDetail',
