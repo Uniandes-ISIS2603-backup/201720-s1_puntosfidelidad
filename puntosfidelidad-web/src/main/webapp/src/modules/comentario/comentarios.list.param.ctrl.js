@@ -10,17 +10,6 @@
                         $scope.restaurantes = response.data;
             });           
             
-           
-            if($scope.restauranteActualStr != '')
-            {
-                $http.get("http://localhost:8080/puntosfidelidad-web/api/comentarios/restaurantes/" + $scope.restauranteActualStr)
-                .then(function (response) {
-                    $scope.comentarios = response.data;
-                });
-
-                console.log($scope.comentarios);
-            }
-            
             $scope.restauranteActual = function(restAct)
             {
                 if(restAct != '')
@@ -28,8 +17,7 @@
                     $http.get("http://localhost:8080/puntosfidelidad-web/api/comentarios/restaurantes/" + restAct)
                     .then(function (response) {
                         $scope.comentarios = response.data;
-                    });    
-                    console.log($scope.comentarios);
+                    });
                 }
             }
 
