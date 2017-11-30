@@ -55,8 +55,6 @@ public class TarjetaDeCreditoLogicTest {
      * Inyección de la dependencia a la clase TarjetaDeCredito cuyos métodos se
      * van a probar.
      */
-    @Inject
-    private TarjetaDeCreditoPersistence persistence;
 
     @Inject
     private ClientePersistence clientePersistence;
