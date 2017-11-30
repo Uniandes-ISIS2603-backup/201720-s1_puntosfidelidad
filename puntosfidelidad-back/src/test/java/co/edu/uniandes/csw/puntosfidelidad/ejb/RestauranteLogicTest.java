@@ -6,11 +6,14 @@
 package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
 import co.edu.uniandes.csw.puntosfidelidad.persistence.*;
-import co.edu.uniandes.csw.puntosfidelidad.entities.AdministradorEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.EventoEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.SucursalEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaDeCreditoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
@@ -40,7 +43,7 @@ import static org.junit.Assert.fail;
  * @author s.cespedes10
  */
 @RunWith(Arquillian.class)
-public class AdministradorLogicTest {
+public class RestauranteLogicTest {
     
     /**
      *
@@ -52,9 +55,9 @@ public class AdministradorLogicTest {
      @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(AdministradorEntity.class.getPackage())
-                .addPackage(AdministradorPersistence.class.getPackage()) 
-                .addPackage(AdministradorLogic.class.getPackage())  
+                .addPackage(RestauranteEntity.class.getPackage())
+                .addPackage(RestaurantePersistence.class.getPackage()) 
+                .addPackage(RestauranteLogic.class.getPackage())  
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -65,10 +68,12 @@ public class AdministradorLogicTest {
      */  
     
     @Inject
-    private AdministradorLogic logic;
+    private RestauranteLogic logic;
     
     
-    List<RestauranteEntity> restaurantes = new ArrayList<>();
+    List<ProductoEntity> productos = new ArrayList<>();
+     List<SucursalEntity> sucursales = new ArrayList<>();
+      List<EventoEntity> eventos = new ArrayList<>();
    
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
@@ -87,7 +92,7 @@ public class AdministradorLogicTest {
      /**
      *
      */
-    private List<AdministradorEntity> data = new ArrayList<>();
+    private List<RestauranteEntity> data = new ArrayList<>();
     
     @Before
     public void setUp() {
@@ -108,7 +113,7 @@ public class AdministradorLogicTest {
     }
     
     private void clearData() {  
-        em.createQuery("delete from AdministradorEntity").executeUpdate();
+        em.createQuery("delete from RestauranteEntity").executeUpdate();
     }
 
 
@@ -116,17 +121,17 @@ public class AdministradorLogicTest {
         
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 8; i++) {
-            AdministradorEntity entity = factory.manufacturePojo(AdministradorEntity.class);
+            RestauranteEntity entity = factory.manufacturePojo(RestauranteEntity.class);
             
-            entity.setRestaurantes(restaurantes);
-           
-                        
+            entity.setEventos(eventos);
+            entity.setProductos(productos);
+            entity.setSucursales(sucursales);            
             em.persist(entity);
             data.add(entity);
         } 
     }
     
-    public AdministradorLogicTest() {
+    public RestauranteLogicTest() {
     }
     
     @BeforeClass
@@ -147,39 +152,21 @@ public class AdministradorLogicTest {
      */
     @Test
     public void testCreate() throws Exception {
-        try{
-            AdministradorEntity newEntity = new AdministradorEntity();
-            newEntity.setUsuario(null);
-            newEntity.setContrasena("*");
-            logic.createAdministrador(newEntity);
-            fail("Debio fallar");
-        }catch(BusinessLogicException e){Assert.assertTrue(!e.getMessage().isEmpty());}
         
-        try{
-            AdministradorEntity newEntity = new AdministradorEntity();
-            newEntity.setUsuario(data.get(0).getUsuario());
-            newEntity.setContrasena("*");
-            logic.createAdministrador(newEntity);
-            fail("Debio fallar");
-        }catch(BusinessLogicException e){Assert.assertTrue(!e.getMessage().isEmpty());}
         
-        try{
-            AdministradorEntity newEntity = new AdministradorEntity();
-            newEntity.setUsuario(data.get(0).getUsuario());
-            newEntity.setContrasena(". ");
-            logic.createAdministrador(newEntity);
-            fail("Debio fallar");
-        }catch(BusinessLogicException e){Assert.assertTrue(!e.getMessage().isEmpty());}
+        
+
         
         PodamFactory factory = new PodamFactoryImpl();
-        AdministradorEntity newEntity = factory.manufacturePojo(AdministradorEntity.class);
-        newEntity.setContrasena("*");
-        AdministradorEntity result = logic.createAdministrador(newEntity);
+        RestauranteEntity newEntity = factory.manufacturePojo(RestauranteEntity.class);
+        newEntity.setNombre("*");
+            newEntity.setTipoComida("Pasta");
+        RestauranteEntity result = logic.createRestaurante(newEntity);
 
         Assert.assertNotNull(result);
-        AdministradorEntity entity = em.find(AdministradorEntity.class, result.getUsuario());
+        RestauranteEntity entity = em.find(RestauranteEntity.class, result.getNit());
         Assert.assertNotNull(entity);
-        Assert.assertEquals(newEntity.getUsuario(), entity.getUsuario());     
+        Assert.assertEquals(newEntity.getNit(), entity.getNit());     
     }
 
      /**
@@ -188,11 +175,11 @@ public class AdministradorLogicTest {
      * @throws java.lang.Exception
      */
     @Test
-    public void testGetAdministrador() throws Exception {
-        AdministradorEntity dato = data.get(0);
-        AdministradorEntity entity = logic.getAdministrador(dato.getUsuario());
+    public void testGetRestaurante() throws Exception {
+        RestauranteEntity dato = data.get(0);
+        RestauranteEntity entity = logic.getRestaurante(dato.getNit());
         Assert.assertNotNull(entity);
-        Assert.assertEquals(entity.getUsuario(), dato.getUsuario());
+        Assert.assertEquals(entity.getNit(), dato.getNit());
     }
 
     /**
@@ -201,8 +188,8 @@ public class AdministradorLogicTest {
      * @throws java.lang.Exception
      */
     @Test
-    public void testGetAdministradors() throws Exception {
-        List<AdministradorEntity> lista = logic.getAdministradores();
+    public void testGetRestaurantes() throws Exception {
+        List<RestauranteEntity> lista = logic.getRestaurantes();
         Assert.assertNotNull(lista);
         Assert.assertEquals(lista.size(), data.size());
     }
@@ -212,27 +199,28 @@ public class AdministradorLogicTest {
      * @throws java.lang.Exception
      */
     @Test
-    public void testUpdateAdministrador() throws Exception {
+    public void testUpdateRestaurante() throws Exception {
         try{
-            AdministradorEntity newEntity = new AdministradorEntity();
-            newEntity.setUsuario("NoExistente");
-            logic.actualizarAdministrador(data.get(0).getUsuario(), newEntity);
+            RestauranteEntity newEntity = new RestauranteEntity();
+            newEntity.setNit("NoExistente");
+            logic.actualizarRestaurante(data.get(0).getNit(), newEntity);
             fail("Debio fallar");
         }catch(BusinessLogicException e){Assert.assertTrue(!e.getMessage().isEmpty());}
         
          
-        AdministradorEntity entity = data.get(0);
+        RestauranteEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        AdministradorEntity newEntity = factory.manufacturePojo(AdministradorEntity.class);
+        RestauranteEntity newEntity = factory.manufacturePojo(RestauranteEntity.class);
 
-        newEntity.setUsuario(entity.getUsuario());
-        newEntity.setContrasena("abc");
+        newEntity.setNit(entity.getNit());
+         newEntity.setNombre("*");
+           newEntity.setTipoComida("Pasta");
 
-        logic.actualizarAdministrador(entity.getUsuario(), newEntity);
+        logic.actualizarRestaurante(entity.getNit(), newEntity);
 
-        AdministradorEntity resp = em.find(AdministradorEntity.class, entity.getUsuario());
+        RestauranteEntity resp = em.find(RestauranteEntity.class, entity.getNit());
 
-        Assert.assertEquals(newEntity.getUsuario(), resp.getUsuario());
+        Assert.assertEquals(newEntity.getNit(), resp.getNit());
     }
 
     /**
@@ -242,9 +230,9 @@ public class AdministradorLogicTest {
     @Test
     public void testDelete() throws Exception {
         
-        AdministradorEntity entity = data.get(0);
-        logic.removeAdministrador(entity.getUsuario());
-        AdministradorEntity deleted = em.find(AdministradorEntity.class, entity.getUsuario());
+        RestauranteEntity entity = data.get(0);
+        logic.removeRestaurante(entity.getNit());
+        RestauranteEntity deleted = em.find(RestauranteEntity.class, entity.getNit());
         Assert.assertNull(deleted);
     }
 }
