@@ -20,7 +20,7 @@
             /**
              * Función que se ejecuta una vez cargada la página
              */
-            onload = function ()
+             var onload = function ()
             {
                 muteVideo();
             };      

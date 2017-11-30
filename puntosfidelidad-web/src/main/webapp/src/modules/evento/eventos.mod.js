@@ -38,12 +38,12 @@ var mod = ng.module("eventosModule", []);
                 
                 }).state('eventosListAdmin', {
                 url: '/list',                
-                parent: 'eventos',
+                parent: 'administradorDetail',
                 data: {
                     requireLogin: true
                 },
                 views: {
-                     'detailView': {
+                     'info': {
                         templateUrl: basePath + 'eventos.listAdmin.html',
                         controller: 'eventosCtrl'
                     },
