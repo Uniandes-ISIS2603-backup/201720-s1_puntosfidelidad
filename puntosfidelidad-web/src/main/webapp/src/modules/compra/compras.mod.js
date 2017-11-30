@@ -84,9 +84,10 @@
                     requireLogin: true
                 },
                 views: {
-                    'info': {
+                    'detailView': {
                         templateUrl: basePath + '/new/compras.new.html',
-                        controller: 'comprasNewCtrl'
+                        controller: 'comprasNewCtrl',
+                         controllerAs: 'ctrl'
                     }
                 }
             }).state('compraUpdate', {
@@ -99,14 +100,14 @@
                     compraId: null
                 },
                 views: {
-                    'info': {
+                    'detailView': {
                         templateUrl: basePath + '/new/compras.new.html',
                         controller: 'comprasUpdateCtrl'
                     }
                 }
             }).state('compraDelete', {
                 url: '/delete/{compraId:int}',
-                parent: 'compras',
+                parent: 'administradorDetail',
                 data: {
                     requireLogin: true
                 },
