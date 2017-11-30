@@ -12,7 +12,10 @@
                     $http.get(comprasContext + '/' + idCompra).then(function (response) {
                         var compra = response.data;
                         $scope.compraId = compra.id;
-                        $scope.compraPagoConpuntos = compra.valorPuntos;
+                        $scope.compraPagoConpuntos = compra.pagoConpuntos;
+                        $scope.compraSucursal = compra.sucursal.id;
+                        $scope.compraTarjetaPuntos = compra.tarjetaPuntos.id;
+                        $scope.compraUsuario = compra.cliente.usuario;
                                   
                     });
 

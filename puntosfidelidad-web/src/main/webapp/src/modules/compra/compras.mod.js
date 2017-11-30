@@ -70,13 +70,7 @@
                 param: {
                     compraId: null
                 },
-                views: {                    
-                    'navBar': {
-                        controller: 'clientesDetailCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/cliente/navBar.html'
-
-                    },
+                views: {                                       
                     'detailView': {
                         templateUrl: basePath + 'compras.productos.list.html',
                         controller: 'comprasProductosCtrl',
