@@ -82,6 +82,7 @@ var mod = ng.module("productoModule", []);
                 
             }).state('productosCreate', {
                 url: '/create',
+                parent: 'productos',
                    views: {
                     'detailView': {
                         templateUrl: basePath + '/new/productos.new.html',
@@ -90,7 +91,7 @@ var mod = ng.module("productoModule", []);
                 }
             }).state('productoUpdate', {
                 url: '/update/{productoId:int}',
-                parent: 'productos',
+                parent: 'restauranteAdministradorDetail',
                 param: {
                     productoId: null
                 },
@@ -102,12 +103,12 @@ var mod = ng.module("productoModule", []);
                 }
             }).state('productoDelete', {
                 url: '/delete/{productoId:int}',
-                parent: 'productos',
+                parent: 'restauranteAdministradorDetail',
                 param: {
                     productoId: null
                 },
                 views: {
-                    'detailView': {
+                    'infoRes': {
                         templateUrl: basePath + '/delete/producto.delete.html',
                         controller: 'productosDeleteCtrl'
                     }

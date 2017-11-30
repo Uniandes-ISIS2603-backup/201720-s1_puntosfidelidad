@@ -132,7 +132,7 @@
                         templateUrl: 'src/modules/producto/'+ 'productos.detail.html'
                     }
                 }
-            }).state('restauranteAdministradorProductoUpdate', {
+            }).state('restauranteProductoUpdate', {
                 url: '/producto/{productoId:int}/update',
                 parent: 'restauranteAdministradorDetail',
                 data: {
