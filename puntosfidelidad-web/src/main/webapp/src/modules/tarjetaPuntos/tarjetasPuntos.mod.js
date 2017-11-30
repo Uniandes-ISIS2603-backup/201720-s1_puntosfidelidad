@@ -17,6 +17,24 @@
                         templateUrl: basePath + 'tarjetasPuntos.list.html'
                     }
                 }
+                
+                }).state('tarjetasPuntosListAdmin', {
+                url: '/tarjetasPuntoslist',                
+                parent: 'administradorDetail',
+                data: {
+                    requireLogin: true
+                },
+                views: {
+                     'info': {
+                        templateUrl: basePath + 'tarjetasPuntos.listAdmin.html',
+                        controller: 'tarjetasPuntosCtrl'
+                    },
+                    'listView': {
+                        controller: 'tarjetasPuntosCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'tarjetasPuntos.listAdmin.html'
+                    }
+                }
             });
         }]);
 

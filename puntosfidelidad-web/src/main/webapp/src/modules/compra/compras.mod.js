@@ -38,7 +38,7 @@
                     requireLogin: true
                 },
                 views: {
-                    'mainView': {
+                    'info': {
                         controller: 'comprasCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'compras.listAdmin.html'
