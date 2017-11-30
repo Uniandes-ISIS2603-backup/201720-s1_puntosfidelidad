@@ -11,6 +11,12 @@
                             $scope.elementoCliente = response.data;
                         });
             }
+            
+            if (($state.params.compraId !== undefined) && ($state.params.compraId !== null)) {
+                $http.get(comprasContext + '/' + $state.params.compraId ).then(function (response) {
+                    $scope.compra = response.data;
+                });
+            }
 
             if (($state.params.compraId !== undefined) && ($state.params.compraId !== null)) {
                 $http.get(comprasContext + '/' + $state.params.compraId + '/productos').then(function (response) {
