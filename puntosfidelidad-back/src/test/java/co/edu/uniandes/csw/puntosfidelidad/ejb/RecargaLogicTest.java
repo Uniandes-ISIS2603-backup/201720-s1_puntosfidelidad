@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.csw.puntosfidelidad.persistence;
+package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
+import co.edu.uniandes.csw.puntosfidelidad.persistence.*;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaDeCreditoEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -32,7 +34,7 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
  * @author lv.vanegas10
  */
 @RunWith(Arquillian.class)
-public class TarjetaDeCreditoPersistenceTest {
+public class RecargaLogicTest {
 
     /**
      *
@@ -43,8 +45,10 @@ public class TarjetaDeCreditoPersistenceTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(TarjetaDeCreditoEntity.class.getPackage())
-                .addPackage(TarjetaDeCreditoPersistence.class.getPackage())
+                .addPackage(RecargaEntity.class.getPackage())
+                .addPackage(RecargaPersistence.class.getPackage())
+                .addPackage(RecargaLogic.class.getPackage())
+                .addPackage(TarjetaPuntosPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -54,10 +58,13 @@ public class TarjetaDeCreditoPersistenceTest {
      * van a probar.
      */
     @Inject
-    private TarjetaDeCreditoPersistence persistence;
+    private RecargaLogic logic;
 
     @Inject
     private ClientePersistence clientePersistence;
+    
+    @Inject
+    private TarjetaPuntosPersistence tarjetaPersistence;
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
      * datos por fuera de los métodos que se están probando.
@@ -76,7 +83,7 @@ public class TarjetaDeCreditoPersistenceTest {
     /**
      *
      */
-    private List<TarjetaDeCreditoEntity> data = new ArrayList<TarjetaDeCreditoEntity>();
+    private List<RecargaEntity> data = new ArrayList<RecargaEntity>();
 
     @Before
     public void setUp() {
@@ -97,7 +104,7 @@ public class TarjetaDeCreditoPersistenceTest {
     }
 
     private void clearData() {
-        em.createQuery("delete from TarjetaDeCreditoEntity").executeUpdate();
+        em.createQuery("delete from RecargaEntity").executeUpdate();
     }
 
     private void insertData() {
@@ -105,14 +112,14 @@ public class TarjetaDeCreditoPersistenceTest {
         cliente = factory.manufacturePojo(ClienteEntity.class);
         clientePersistence.create(cliente);
         for (int i = 0; i < 3; i++) {
-            TarjetaDeCreditoEntity entity = factory.manufacturePojo(TarjetaDeCreditoEntity.class);
+            RecargaEntity entity = factory.manufacturePojo(RecargaEntity.class);
             entity.setCliente(cliente);
             em.persist(entity);
             data.add(entity);
         }
     }
 
-    public TarjetaDeCreditoPersistenceTest() {
+    public RecargaLogicTest() {
     }
 
     @BeforeClass
@@ -128,70 +135,83 @@ public class TarjetaDeCreditoPersistenceTest {
     }
 
     /**
-     * Test of create method, of class TarjetaDeCreditoPersistence.
+     * Test of create method, of class RecargaPersistence.
      *
      * @throws java.lang.Exception
      */
     @Test
     public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
-        TarjetaDeCreditoEntity newEntity = factory.manufacturePojo(TarjetaDeCreditoEntity.class);
+        RecargaEntity newEntity = factory.manufacturePojo(RecargaEntity.class);
+        TarjetaPuntosEntity newTarjeta = factory.manufacturePojo(TarjetaPuntosEntity.class);
+        newTarjeta.setCliente(cliente);
+        tarjetaPersistence.create(newTarjeta);
         newEntity.setCliente(cliente);
-        TarjetaDeCreditoEntity result = persistence.create(newEntity);
+        newEntity.setTarjetaPuntos(newTarjeta);
+             
+        RecargaEntity result = logic.createRecarga(cliente.getUsuario(), newEntity);
 
         Assert.assertNotNull(result);
-        TarjetaDeCreditoEntity entity = em.find(TarjetaDeCreditoEntity.class, result.getId());
+        RecargaEntity entity = em.find(RecargaEntity.class, result.getId());
         Assert.assertNotNull(entity);
         Assert.assertEquals(newEntity.getId(), entity.getId());
     }
 
     /**
-     * Test of update method, of class TarjetaDeCreditoPersistence.
+     * Test of update method, of class RecargaPersistence.
      *
      * @throws java.lang.Exception
      */
     @Test
-    public void testUpdate() throws Exception {
-        TarjetaDeCreditoEntity entity = data.get(2);
+    public void testUpdateRecarga() throws Exception {
+        RecargaEntity entity = data.get(2);
         PodamFactory factory = new PodamFactoryImpl();
-        TarjetaDeCreditoEntity newEntity = factory.manufacturePojo(TarjetaDeCreditoEntity.class);
+        RecargaEntity newEntity = factory.manufacturePojo(RecargaEntity.class);
 
         newEntity.setId(entity.getId());
 
-        persistence.update(newEntity);
+        logic.updateRecarga(cliente.getUsuario(), newEntity);
 
-        TarjetaDeCreditoEntity resp = em.find(TarjetaDeCreditoEntity.class, entity.getId());
+        RecargaEntity resp = em.find(RecargaEntity.class, entity.getId());
 
         Assert.assertEquals(newEntity.getId(), resp.getId());
     }
 
     /**
-     * Test of delete method, of class TarjetaDeCreditoPersistence.
+     * Test of delete method, of class RecargaPersistence.
      *
      * @throws java.lang.Exception
      */
     @Test
-    public void testDelete() throws Exception {
-        TarjetaDeCreditoEntity entity = data.get(0);
-        persistence.delete(entity.getId());
-        TarjetaDeCreditoEntity deleted = em.find(TarjetaDeCreditoEntity.class, entity.getId());
+    public void testDeleteRecarga() throws Exception {
+        RecargaEntity entity = data.get(0);
+        logic.deleteRecarga(cliente.getUsuario(), entity.getId());
+        RecargaEntity deleted = em.find(RecargaEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
 
     /**
-     * Test of find method, of class TarjetaDeCreditoPersistence.
+     * Test of find method, of class RecargaPersistence.
      *
      * @throws java.lang.Exception
      */
     @Test
-    public void testFind() throws Exception {
-        TarjetaDeCreditoEntity entity = data.get(0);
-        TarjetaDeCreditoEntity newEntity = persistence.find(entity.getCliente().getUsuario(), entity.getId());
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getId(), newEntity.getId());
+    public void testGetRecarga() throws Exception {
+        RecargaEntity dato = data.get(0);
+        RecargaEntity entity = logic.getRecarga(cliente.getUsuario(), dato.getId());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(entity.getId(), dato.getId());
+    }
 
-        newEntity = persistence.find("usuarioNoExiste", entity.getId());
-        Assert.assertNull(newEntity);
-
+    /**
+     * Test of find method, of class RecargaPersistence.
+     *
+     * @throws java.lang.Exception
+     */
+    @Test
+    public void testGetRecargas() throws Exception {
+        List<RecargaEntity> lista = logic.getRecargas(cliente.getUsuario());
+        Assert.assertNotNull(lista);
+        Assert.assertEquals(lista.size(), data.size());
     }
 }

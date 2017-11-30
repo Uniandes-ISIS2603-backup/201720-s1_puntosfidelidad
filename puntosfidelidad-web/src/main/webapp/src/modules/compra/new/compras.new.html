@@ -28,10 +28,15 @@
                             </div> 
                         </div> 
                     </div> 
+                    
+                     <button class="btn btn-info" onclick="window.history.back()"> Cancel</button>
+                    
                     <div class="form-group row">
                         <div class="form-group col-sm-12">
+                             
                             <input ng-show="compra.$valid" type="submit" value="Save" class="btn btn-success"/>
                             <a class="btn btn-info" ng-click="history.back()">Cancel</a>
+
                         </div>
                     </div>
                 </form>
