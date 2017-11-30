@@ -11,7 +11,7 @@
     </thead>
     <tbody>
         <tr ng-repeat="producto in actual.productos">
-            <td id="{{$index}}-name"><a ui-sref="productoDetail({productoId: producto.id})">{{producto.nombre}}</a></td>
+            <td id="{{$index}}-name"><a ui-sref="productoDetailP({productoId: producto.id})">{{producto.nombre}}</a></td>
             <td id="{{$index}}-dinero">{{producto.valorDinero}}</td>
             <td id="{{$index}}-puntos">{{producto.valorPuntos}}</td>
             <td><a class="btn btn-default btn-sm" ui-sref="productoUpdate({productoId: producto.id})" ><p class="glyphicon glyphicon-pencil"></p></a>
