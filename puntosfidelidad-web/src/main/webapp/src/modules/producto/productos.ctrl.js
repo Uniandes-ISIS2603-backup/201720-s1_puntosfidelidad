@@ -11,7 +11,7 @@
                 window.history.back();
             };
 
-            if (($state.params.productoId !== undefined) && ($state.params.productoId !== null)) {
+            if (($state.params.clienteUsuario !== undefined) && ($state.params.clienteUsuario !== null)) {
                 $http.get("api/clientes/" + $state.params.clienteUsuario)
                         .then(function (response) {
                             $scope.elementoCliente = response.data;
