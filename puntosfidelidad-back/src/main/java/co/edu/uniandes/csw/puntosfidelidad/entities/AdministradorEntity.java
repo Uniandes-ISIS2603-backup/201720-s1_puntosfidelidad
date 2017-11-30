@@ -27,7 +27,7 @@ public class AdministradorEntity implements Serializable {
     private String contrasena; 
     
     @PodamExclude
-    @OneToMany(mappedBy = "administrador",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "administrador")
     private List<RestauranteEntity> restaurantes = new ArrayList<>();
 
    
