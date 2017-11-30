@@ -946,15 +946,15 @@ footer a:hover, footer a:link,footer a:visited {
 
 .unComentario-0{
     display: block;
-    border-left: 5px solid rgb(28, 177, 177);
-    background-color: #6dd1ff;
+    border-left: 5px solid #36A8A7;
+    background-color: #F2EDD0;
     width: 70%;
 }
 
 .unComentario-1{
     display: block;
-    border-left: 5px solid rgb(28, 177, 177);
-    background-color: #64c0e7;
+    border-left: 5px solid #36A8A7;
+    background-color: #B2D63C;
     width: 70%;
 }
 .eventoDiv{
@@ -998,3 +998,8 @@ body {
     background-color: #36A8A7!important;
     border-color:  #36A8A7;
 }
+
+      #map {
+        height: 400px;
+        width: 100%;
+       }
