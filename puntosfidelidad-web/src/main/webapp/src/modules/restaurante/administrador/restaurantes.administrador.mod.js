@@ -116,22 +116,6 @@
                         templateUrl: basePath + 'restaurantes.productos.html'
                     }
                 }
-            }).state('restauranteAdministradorComentario', {
-                url: '/comentario',
-                parent: 'restauranteAdministradorDetail',
-                data: {
-                    requireLogin: true
-                },
-                param: {
-                    restauranteNit: null
-                },
-                views: {
-                    'infoRes': {
-                        controller: 'comentariosNuevosCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/comentario/comentarios.list.param.html'
-                    }
-                }
             });
         }]);
 
