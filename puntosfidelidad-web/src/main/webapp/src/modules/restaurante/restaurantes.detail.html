@@ -21,6 +21,6 @@
                         <dt><h3> <b>Tipo de Comida: </b>{{actual.tipoComida}} </h3></dt>
                
                     <a ng-if="!edit" class="btn btn-default" ui-sref="restaurantesUpdate({nitRestaurante:actual.nit})"><p class="glyphicon glyphicon-pencil"></p></a>
-                    <a ng-if="!edit" class="btn btn-default" ui-sref="restaurantesDelete({nitRestaurante:actual.nit})"><p class="glyphicon glyphicon-trash"></p></a>                   
+                    <a ng-if="!edit" class="btn btn-danger" ui-sref="restaurantesDelete({nitRestaurante:actual.nit})"><p class="glyphicon glyphicon-trash"></p></a>                   
                 </div>
         </div>

@@ -988,3 +988,7 @@ body {
 .panel-heading {
     background-color: #36A8A7!important
 }
+.btn-danger, .btn-info, .btn-primary{
+    background-color: #36A8A7!important;
+    border-color:  #36A8A7;
+}
