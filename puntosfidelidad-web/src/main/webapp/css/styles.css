@@ -567,11 +567,20 @@ footer a:hover, footer a:link,footer a:visited {
 }
 
 
-.alertError{
-    padding: 20px;
-    background-color: #B2D63C; /* Red */
-    color: #585858;
-    margin-bottom: 15px;
+.alertError, .alert-info, .alert-danger{
+    padding: 20px!important;
+    background-color: #B2D63C!important; 
+    border-color: #B2D63C;
+    color: #585858!important;
+    margin-bottom: 15px!important;
+}
+
+.alert-warning{
+    padding: 20px!important;
+    background-color: #36A8A7!important; 
+    border-color: #36A8A7;
+    color: whitesmoke!important;
+    margin-bottom: 15px!important;
 }
 
 #logo{
