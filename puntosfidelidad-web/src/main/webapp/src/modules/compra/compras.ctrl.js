@@ -7,6 +7,7 @@
                 $scope.comprasRecords = response.data;
             });
             
+                        
             $scope.doTheBack = function() {window.history.back();};
 
             if (($state.params.compraId !== undefined) && ($state.params.compraId !== null)) {

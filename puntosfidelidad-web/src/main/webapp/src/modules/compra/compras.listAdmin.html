@@ -42,3 +42,30 @@
     </div>
 </div>
 
+<div  class="container-fluid">
+    <br>
+    <input id='crearTarjetaPuntos' type='checkbox' ng-model='crear' style='display:none'>
+
+    <!--vista para el POST-->
+
+    <div class='panel-group'>
+        <div class = 'panel panel-primary' ng-if='crear'>
+            <div class='panel-heading'>
+                Agregar una nueva Compra
+            </div>
+            <div id='formComentario' class='panel-body'>
+                <form class='form-group' ng-submit="createCompra()">                    
+                    Id: <input style="margin-top: 5px; margin-bottom: 5px;" ng-model='compraId'> <br>
+                    Pago con Puntos: <input style="margin-top: 5px; margin-bottom: 5px;" ng-model='compraPagoConpuntos'><br>
+                    
+                    <input type='submit' id='crearCompra' style="display: none;">
+                    <input type="submit" value="Save" class="btn btn-success"/>
+                    <label for='crearCompra' class='btn btn-primary' class='btn btn-info'> Cancelar</label>
+                </form>
+            </div>
+        </div>        
+        <label for='crearTarjetaPuntos' class='btn btn-primary' ng-show='!crear' class='btn btn-info'> <p class="glyphicon glyphicon-plus"></p>Nueva compra</label><br>
+    </div>
+
+    
+           

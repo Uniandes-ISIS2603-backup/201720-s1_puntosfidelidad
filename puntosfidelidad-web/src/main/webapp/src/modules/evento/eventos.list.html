@@ -4,7 +4,7 @@
         <ul class="list-group">
             <div style='height:fit-content;' class="eventoDiv col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="event in eventos">
                 <h3>{{event.nombre}}</h3>
-                <hr>                              <!-- Para poner una foto solo es cambiar esta url de abajo! ( {{evento.foto}} ) -->
+                <hr>                            <!-- Para poner una foto solo es cambiar esta url de abajo! ( {{evento.foto}} ) -->
                 <div class='eventoBox eventoDiv' ng-style="{'background': 'url(http://lorempixel.com/500/500)'}">
                     <input id='{{event.nombre}}' type="checkbox" ng-model='collapse' style='display: none;'>
 
