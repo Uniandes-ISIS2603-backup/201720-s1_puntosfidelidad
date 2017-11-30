@@ -2,8 +2,10 @@ package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.puntosfidelidad.persistence.RecargaPersistence;
+import co.edu.uniandes.csw.puntosfidelidad.persistence.TarjetaPuntosPersistence;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -22,6 +24,9 @@ public class RecargaLogic {
 
     @Inject
     private ClienteLogic clienteLogic;
+    
+    @Inject
+    private TarjetaPuntosPersistence tarjetaPersistence;    
     
     /**
      * Obtiene la lista de los registros de Recarga que pertenecen a un Cliente.
@@ -63,7 +68,16 @@ public class RecargaLogic {
     public RecargaEntity createRecarga(String usuario, RecargaEntity entity) {
         LOGGER.info("Inicia proceso de crear recarga");
         ClienteEntity cliente = clienteLogic.getCliente(usuario);
+        TarjetaPuntosEntity actual= tarjetaPersistence.findWithId(entity.getTarjetaPuntos().getId());
         entity.setCliente(cliente);
+        TarjetaPuntosEntity nueva= new TarjetaPuntosEntity();
+        nueva.setCliente(cliente);
+        nueva.setId(actual.getId());
+        nueva.setMontoBasico(actual.getMontoBasico());
+        nueva.setNumPuntos(actual.getNumPuntos());
+        nueva.setCompras(actual.getCompras());
+        nueva.setMontoActual(actual.getMontoActual() + ((int) entity.getValor()));
+        tarjetaPersistence.update(nueva);
         return persistence.create(entity);
     }
 
