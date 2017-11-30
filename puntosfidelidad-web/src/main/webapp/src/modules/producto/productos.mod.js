@@ -1,4 +1,4 @@
-(function (ng) {
+ (function (ng) {
 var mod = ng.module("productoModule", []);
     mod.constant("productosContext", "api/productos");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {

@@ -975,13 +975,6 @@ body {
     text-align: center;
 }
 
-.contenido{
-    position: relative;
-    margin: 0;
-    padding-bottom: 6rem;
-    min-height: 100%;
-}
-
 .panel-primary{
     border-color:  #36A8A7;
 }
