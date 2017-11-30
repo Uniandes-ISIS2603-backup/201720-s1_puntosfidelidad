@@ -69,19 +69,19 @@
                     }
                 }
             }).state('restauranteAdministradorDetail'            , {
-                url: '/restaurante/{restauranteNit2:string}/detalle',
+                url: '/restaurante/{restauranteNit:string}/detalle',
                 parent: 'administradorDetail',
                 data: {
                     requireLogin: true                    
                 },
                 param: {
-                    restauranteNit2: null
+                    restauranteNit: null
                 },
                 views: {
                     'info': {
                         controller: 'restaurantesCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'administrador/restaurantes.administrador.detail.html'
+                        templateUrl: basePath + 'restaurantes.detail.html'
                     }
                 }
             }).state('restauranteAdministradorSucursal', {
@@ -107,7 +107,7 @@
                     requireLogin: true
                 },
                 param: {
-                    restauranteNit2: null
+                    restauranteNit: null
                 },
                 views: {
                     'infoRes': {
