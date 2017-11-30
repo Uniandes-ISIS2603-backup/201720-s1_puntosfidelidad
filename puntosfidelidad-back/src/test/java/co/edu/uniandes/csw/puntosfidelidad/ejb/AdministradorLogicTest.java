@@ -40,7 +40,7 @@ import static org.junit.Assert.fail;
  * @author s.cespedes10
  */
 @RunWith(Arquillian.class)
-public class AdministrdorLogicTest {
+public class AdministradorLogicTest {
     
     /**
      *
@@ -49,7 +49,7 @@ public class AdministrdorLogicTest {
      * base de datos y el archivo beans.xml para resolver la inyección de
      * dependencias.
      */
-    @Deployment
+     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(AdministradorEntity.class.getPackage())
@@ -69,7 +69,7 @@ public class AdministrdorLogicTest {
     
     
     List<RestauranteEntity> restaurantes = new ArrayList<>();
-    
+   
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
      * datos por fuera de los métodos que se están probando.
@@ -108,7 +108,7 @@ public class AdministrdorLogicTest {
     }
     
     private void clearData() {  
-        em.createQuery("delete from administradorEntity").executeUpdate();
+        em.createQuery("delete from AdministradorEntity").executeUpdate();
     }
 
 
@@ -119,13 +119,14 @@ public class AdministrdorLogicTest {
             AdministradorEntity entity = factory.manufacturePojo(AdministradorEntity.class);
             
             entity.setRestaurantes(restaurantes);
-                                   
+           
+                        
             em.persist(entity);
             data.add(entity);
         } 
     }
     
-    public AdministrdorLogicTest() {
+    public AdministradorLogicTest() {
     }
     
     @BeforeClass
@@ -146,9 +147,30 @@ public class AdministrdorLogicTest {
      */
     @Test
     public void testCreate() throws Exception {
-       
-       
-       
+        try{
+            AdministradorEntity newEntity = new AdministradorEntity();
+            newEntity.setUsuario(null);
+            newEntity.setContrasena("*");
+            logic.createAdministrador(newEntity);
+            fail("Debio fallar");
+        }catch(BusinessLogicException e){Assert.assertTrue(!e.getMessage().isEmpty());}
+        
+        try{
+            AdministradorEntity newEntity = new AdministradorEntity();
+            newEntity.setUsuario(data.get(0).getUsuario());
+            newEntity.setContrasena("*");
+            logic.createAdministrador(newEntity);
+            fail("Debio fallar");
+        }catch(BusinessLogicException e){Assert.assertTrue(!e.getMessage().isEmpty());}
+        
+        try{
+            AdministradorEntity newEntity = new AdministradorEntity();
+            newEntity.setUsuario(data.get(0).getUsuario());
+            newEntity.setContrasena(". ");
+            logic.createAdministrador(newEntity);
+            fail("Debio fallar");
+        }catch(BusinessLogicException e){Assert.assertTrue(!e.getMessage().isEmpty());}
+        
         PodamFactory factory = new PodamFactoryImpl();
         AdministradorEntity newEntity = factory.manufacturePojo(AdministradorEntity.class);
         newEntity.setContrasena("*");
@@ -179,7 +201,7 @@ public class AdministrdorLogicTest {
      * @throws java.lang.Exception
      */
     @Test
-    public void testGetAdministradores() throws Exception {
+    public void testGetAdministradors() throws Exception {
         List<AdministradorEntity> lista = logic.getAdministradores();
         Assert.assertNotNull(lista);
         Assert.assertEquals(lista.size(), data.size());
@@ -219,7 +241,7 @@ public class AdministrdorLogicTest {
      */
     @Test
     public void testDelete() throws Exception {
-       
+        
         AdministradorEntity entity = data.get(0);
         logic.removeAdministrador(entity.getUsuario());
         AdministradorEntity deleted = em.find(AdministradorEntity.class, entity.getUsuario());

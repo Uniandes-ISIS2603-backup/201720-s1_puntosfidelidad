@@ -567,11 +567,22 @@ footer a:hover, footer a:link,footer a:visited {
 }
 
 
-.alertError{
-    padding: 20px;
-    background-color: #B2D63C; /* Red */
-    color: #585858;
-    margin-bottom: 15px;
+.alertError, .alert-info, .alert-danger{
+    padding: 20px!important;
+    background-color: #B2D63C!important; 
+    border-color: #B2D63C;
+    color: #585858!important;
+    margin-bottom: 15px!important;
+    text-align: center;
+}
+
+.alert-warning{
+    padding: 20px!important;
+    background-color: #36A8A7!important; 
+    border-color: #36A8A7;
+    color: whitesmoke!important;
+    margin-bottom: 15px!important;
+    text-align: center;
 }
 
 #logo{
@@ -779,7 +790,7 @@ footer a:hover, footer a:link,footer a:visited {
 
 .funkyradio div {
     clear: both;
-    overflow: auto;
+    overflow: hidden;
 }
 .funkyradio label {
     /*min-width: 400px;*/
@@ -849,11 +860,11 @@ footer a:hover, footer a:link,footer a:visited {
     border-radius: 5px 5px 5px 5px;
 }
 
-  .eventoDiv{
-      text-align: center;
-  }
+.eventoDiv{
+    text-align: center;
+}
 
-  /*imágenes estrellas*/
+/*imágenes estrellas*/
 
 .estrellasComentario0{
     background: url('../media/puntuaciones/0.png') no-repeat;
@@ -954,30 +965,41 @@ footer a:hover, footer a:link,footer a:visited {
 }
 
 html {
-  height: 100%;
-  box-sizing: border-box;
+    height: 100%;
+    box-sizing: border-box;
 }
 body {
-  position: relative;
-  margin: 0;
-  padding-bottom: 6rem;
-  min-height: 100%;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 .footerPag {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  background-color: #88A61F;
-  text-align: center;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #88A61F;
+    text-align: center;
 }
 
 .contenido{
-  position: relative;
-  margin: 0;
-  padding-bottom: 6rem;
-  min-height: 100%;
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+}
+
+.panel-primary{
+    border-color:  #36A8A7;
+}
+.panel-heading {
+    background-color: #36A8A7!important
+}
+.btn-danger, .btn-info, .btn-primary{
+    background-color: #36A8A7!important;
+    border-color:  #36A8A7;
 }
