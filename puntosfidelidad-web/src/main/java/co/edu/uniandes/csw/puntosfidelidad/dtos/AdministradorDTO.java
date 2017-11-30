@@ -21,6 +21,8 @@ public class AdministradorDTO implements Serializable{
     //Atributo de usuario 
     private String usuario;
     
+    private String imagen;
+    
     //Atributo de la contrsaeña del administrador
     private String contrasena;
 
@@ -38,6 +40,7 @@ public class AdministradorDTO implements Serializable{
         if(administrador != null){
         this.usuario = administrador.getUsuario();
         this.contrasena = administrador.getContrasena();
+        this.imagen = administrador.getImagen();
         }
     }
     
@@ -50,6 +53,7 @@ public class AdministradorDTO implements Serializable{
         AdministradorEntity entity = new AdministradorEntity();
         entity.setUsuario(this.usuario);
         entity.setContrasena(this.contrasena);
+        entity.setImagen(this.imagen);
         return entity;
     }
     
