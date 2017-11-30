@@ -72,7 +72,7 @@
                 url: '/restaurante/{restauranteNit:string}/detalle',
                 parent: 'administradorDetail',
                 data: {
-                    requireLogin: true
+                    requireLogin: true                    
                 },
                 param: {
                     restauranteNit: null
