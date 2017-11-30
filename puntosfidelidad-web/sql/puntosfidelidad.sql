@@ -81,10 +81,10 @@ insert into FotoEntity (COMENTARIO_ID, url) values (1, 'media/restaurante3.jpg')
 insert into FotoEntity (COMENTARIO_ID, url) values (2, 'media/restaurante2.jpg');
 insert into FotoEntity (COMENTARIO_ID, url) values (3, 'media/restaurante.jpg');
 
-insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Taquitos gratis','4/7/1965' , '6/6/2010' , 'Se regalaran tacos gratis.' );
-insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Super Hamburguesas','4/7/1965' , '5/8/2010' , 'Se bajaran de precio las mejores hamburguesas de cada restaurante.' );
-insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('Festival Super Picante','2/16/1965' , '3/6/2010' , 'Se realizara un festival con los platos mas picantes de cada restaurante.' );
-insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion) values ('La Cocina Italiana','8/10/1965' , '9/6/2010' , 'Un festival con promociones en platos y restaurantes italianos.' );
+insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion, imagen) values ('Taquitos gratis','4/7/1965' , '6/6/2010' , 'Se regalaran tacos gratis.', 'media/taquitos.jpg' );
+insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion, imagen) values ('Super Hamburguesas','4/7/1965' , '5/8/2010' , 'Se bajaran de precio las mejores hamburguesas de cada restaurante.', 'media/hamburguesas.png' );
+insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion, imagen) values ('Festival Super Picante','2/16/1965' , '3/6/2010' , 'Se realizara un festival con los platos mas picantes de cada restaurante.', 'media/picante.jpg' );
+insert into EventoEntity(nombre, fechaInicio, fechaFin, descripcion, imagen) values ('La Cocina Italiana','8/10/1965' , '9/6/2010' , 'Un festival con promociones en platos y restaurantes italianos.', 'media/comidaItaliana.jpg' );
 
 insert into CompraEntity (ID, PAGOCONPUNTOS, CLIENTE_USUARIO, SUCURSAL_ID, TARJETAPUNTOS_ID) values (20, 1, 'C1', 91, (SELECT MAX(ID) FROM TarjetaPuntosEntity WHERE cliente_usuario='C2'));
 insert into CompraEntity (ID, PAGOCONPUNTOS, CLIENTE_USUARIO, SUCURSAL_ID, TARJETAPUNTOS_ID) values (30, 0, 'C2', 89, (SELECT MAX(ID) FROM TarjetaPuntosEntity WHERE cliente_usuario='C1'));

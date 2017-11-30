@@ -16,7 +16,7 @@
     
     
     <div class="col-md-2" ng-repeat="res in elements" >
-            <div class="thumbnail" ng-if="res.tipoComida==resTipo" >      
+            <div class="thumbnail" ng-if="res.tipoComida.includes(resTipo)" >      
                 <a ui-sref="clienteDetail({clienteUsuario: res.usuario})">
                     <img class="img-responsive imagenCliente" ng-src='media/FielLogo.PNG' alt="res1"/>                  
                 </a>
@@ -34,7 +34,7 @@
     
     
     <div class="col-md-2" ng-repeat="res in elements" >
-            <div class="thumbnail" ng-if="res.nombre==resName" >      
+            <div class="thumbnail" ng-if="res.nombre.includes(resName)" >      
                 <a ui-sref="clienteDetail({clienteUsuario: res.usuario})">
                     <img class="img-responsive imagenCliente" ng-src='media/FielLogo.PNG' alt="res1"/>                  
                 </a>

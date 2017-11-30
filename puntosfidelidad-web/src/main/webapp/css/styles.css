@@ -56,7 +56,7 @@
 .btnIniciar{
     margin:5px;
     width: 200px; 
-    color:#d7df01;
+    color:#B2D63C;
 
 }
 
@@ -144,7 +144,7 @@ body {
 #portfolio {
     bottom: 96px;
     right: 36px;
-    background: #d7df01;
+    background: #B2D63C;
     width: 44px;
     height: 44px;
     -webkit-animation: buttonFadeInUp 1s ease;
@@ -228,7 +228,7 @@ body {
 /* Card */
 .card {
     position: relative;
-    background: #ffffff;
+    background: #F2EDD0;
     border-radius: 5px;
     padding: 60px 0 40px 0;
     box-sizing: border-box;
@@ -242,7 +242,7 @@ body {
     /* Alt Card */
 }
 .card:first-child {
-    background: #fafafa;
+    background: #F2EDD0;
     height: 10px;
     border-radius: 5px 5px 0 0;
     margin: 0 10px;
@@ -251,10 +251,10 @@ body {
 .card .title {
     position: relative;
     z-index: 1;
-    border-left: 5px solid #d7df01;
+    border-left: 5px solid #B2D63C;
     margin: 0 0 35px;
     padding: 10px 0 10px 50px;
-    color: #d7df01;
+    color: #B2D63C;
     font-size: 32px;
     font-weight: 600;
     text-transform: uppercase;
@@ -322,7 +322,7 @@ body {
 .card .input-container .bar:before, .card .input-container .bar:after {
     content: '';
     position: absolute;
-    background: #d7df01;
+    background: #B2D63C;
     width: 0;
     height: 2px;
     -webkit-transition: .2s ease;
@@ -345,7 +345,7 @@ body {
     display: inline-block;
     background: 0;
     width: 240px;
-    border: 2px solid #e3e3e3;
+    border: 2px solid #B2D63C;
     padding: 20px 0;
     font-size: 24px;
     font-weight: 600;
@@ -358,7 +358,7 @@ body {
 .card .button-container button span {
     position: relative;
     z-index: 1;
-    color: #ddd;
+    color: #B2D63C;
     -webkit-transition: .3s ease;
     transition: .3s ease;
 }
@@ -368,7 +368,7 @@ body {
     top: 50%;
     left: 50%;
     display: block;
-    background: #d7df01;
+    background: #36A8A7;
     width: 30px;
     height: 30px;
     border-radius: 100%;
@@ -378,10 +378,10 @@ body {
     transition: .3s ease;
 }
 .card .button-container button:hover, .card .button-container button:active, .card .button-container button:focus {
-    border-color: #d7df01;
+    border-color: #36A8A7;
 }
 .card .button-container button:hover span, .card .button-container button:active span, .card .button-container button:focus span {
-    color: #d7df01;
+    color: #36A8A7;
 }
 .card .button-container button:active span, .card .button-container button:focus span {
     color: #ffffff;
@@ -393,7 +393,7 @@ body {
 }
 .card .footer {
     margin: 40px 0 0;
-    color: #d3d3d3;
+    color: #B2D63C;
     font-size: 24px;
     font-weight: 300;
     text-align: center;
@@ -427,7 +427,7 @@ body {
 }
 .card.alt .toggle {
     position: relative;
-    background: #d7df01;
+    background: #B2D63C;
     width: 140px;
     height: 140px;
     border-radius: 100%;
@@ -498,7 +498,7 @@ body {
     border-color: #ffffff;
 }
 .card.alt .button-container button span {
-    color: #d7df01;
+    color: #B2D63C;
 }
 .card.alt .button-container button:hover {
     background: rgba(255, 255, 255, 0.9);
@@ -540,7 +540,7 @@ nav a:link, nav a:visited{
     text-decoration:none;
 }
 nav a:hover{
-    background-color:#d7df01;
+    background-color:#B2D63C;
     font-weight:bold;
     text-decoration:none;
 }
@@ -550,6 +550,8 @@ nav a:hover{
 }
 
 footer {
+    position:relative;
+    bottom:0;
     margin:40px;        
     text-align: center; 
     font-weight:bold;    
@@ -567,7 +569,7 @@ footer a:hover, footer a:link,footer a:visited {
 
 .alertError{
     padding: 20px;
-    background-color: #d7df01; /* Red */
+    background-color: #B2D63C; /* Red */
     color: #585858;
     margin-bottom: 15px;
 }
@@ -643,38 +645,37 @@ footer a:hover, footer a:link,footer a:visited {
 
 /* Carousel base class */
 .carousel {
-width: auto; height: auto; position: relative; display: flex; justify-content: center;align-items: center;
+    width: auto; height: auto; position: relative; display: flex; justify-content: center;align-items: center;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
-  z-index: 10;
+    z-index: 10;
 }
 
 /* Declare heights because of positioning of img element */
 .carousel .item {
-  width: 100%;  
-  height: 500px;
-  background-color: #777;
+    width: 100%;  
+    height: 500px;
+    background-color: #777;
 }
 .carousel-inner {
- display: flex; justify-content: center;align-items: center;
+    display: flex; justify-content: center;align-items: center;
 }
 .carousel-inner > .item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;  
-  height: 500px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;  
+    height: 500px;
 }
-  .carousel-inner > .item > a > img {
-      width: 70%;
-  }
+.carousel-inner > .item > a > img {
+    width: 70%;
+}
 
 
 /* CSS para los botones*/
 
 .BotonesBanner{
-    margin: 5px;
     font-size: 2.0rem;
     padding: 1rem;
     display: inline-block;
@@ -688,11 +689,13 @@ width: auto; height: auto; position: relative; display: flex; justify-content: c
     -moz-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
-  
+
 .BotonesBanner:hover {
     background-color: #ffffff;
-    color: #006d8f;
+
+    color: #525155;
     border-color: #d7df01;
+
 }
 
 .BotonSideNav {
@@ -713,7 +716,7 @@ width: auto; height: auto; position: relative; display: flex; justify-content: c
 
 .BotonSideNav:hover {
     background-color: #eee;
-    color: #d7df01;
+    color: #B2D63C;
     border-color: #006d8f;
 }
 
@@ -734,7 +737,7 @@ width: auto; height: auto; position: relative; display: flex; justify-content: c
 
 .eventoBox:hover{
 }
- 
+
 .eventoInner{
     border:2px solid rgb(194, 194, 194);
     position:relative;
@@ -749,13 +752,13 @@ width: auto; height: auto; position: relative; display: flex; justify-content: c
     -webkit-transition: all 0.4s;
     -moz-transition: all 0.4s;
     z-index:10;
-  }
-  .eventoBox:hover > .eventoInner{
+}
+.eventoBox:hover > .eventoInner{
     opacity: 1;
     display:inline-block;
     border: 10px solid rgb(51, 51, 51);
-  }
-  .eventoColor{
+}
+.eventoColor{
     position:absolute;
     top:0px;
     left:0px;
@@ -763,16 +766,18 @@ width: auto; height: auto; position: relative; display: flex; justify-content: c
     height:100%;
     opacity:0;
     transition: opacity 0.4s;
-  }
-  .eventoBox:hover > .eventoColor{
+}
+.eventoBox:hover > .eventoColor{
     background-color:black;
     opacity:0.5;
     display:inline-block;
-  }
-  
-@import('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.0/css/bootstrap.min.css') 
+}
 
- .funkyradio div {
+
+/* @import('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.0/css/bootstrap.min.css')*/
+
+
+.funkyradio div {
     clear: both;
     overflow: auto;
 }
@@ -843,7 +848,6 @@ width: auto; height: auto; position: relative; display: flex; justify-content: c
     border: 4px solid #36ABA7;
     border-radius: 5px 5px 5px 5px;
 }
-
 
   .eventoDiv{
       text-align: center;
@@ -939,4 +943,41 @@ width: auto; height: auto; position: relative; display: flex; justify-content: c
     display: block;
     border-left: 5px solid rgb(28, 177, 177);
     background-color: #64c0e7;
+}
+.eventoDiv{
+    text-align: center;
+}
+
+.tamanoBanner{
+    width: 100%;
+    height: 100%;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.footerPag {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #88A61F;
+  text-align: center;
+}
+
+.contenido{
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
 }

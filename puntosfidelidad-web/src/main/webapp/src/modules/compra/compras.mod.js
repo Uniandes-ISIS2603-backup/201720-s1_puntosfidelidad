@@ -45,6 +45,24 @@
                     }
                 }
                 
+                }).state('compraAdministradorPost', {
+                url: '/crear',
+                parent: 'administradorDetail',
+                data: {
+                    requireLogin: true
+                },
+                param: {
+                    administradorUsuario: null
+                },
+                views: {
+                    'info': {
+                        controller: 'compraCreateCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'compras.administrador.listPost.html'
+
+                    }
+                }
+                
             }).state('compraDetail', {
                 url: '/{compraId:int}/detail',
                 parent: 'compras',
@@ -84,9 +102,10 @@
                     requireLogin: true
                 },
                 views: {
-                    'info': {
+                    'detailView': {
                         templateUrl: basePath + '/new/compras.new.html',
-                        controller: 'comprasNewCtrl'
+                        controller: 'comprasNewCtrl',
+                         controllerAs: 'ctrl'
                     }
                 }
             }).state('compraUpdate', {
@@ -99,14 +118,14 @@
                     compraId: null
                 },
                 views: {
-                    'info': {
+                    'detailView': {
                         templateUrl: basePath + '/new/compras.new.html',
                         controller: 'comprasUpdateCtrl'
                     }
                 }
             }).state('compraDelete', {
                 url: '/delete/{compraId:int}',
-                parent: 'compras',
+                parent: 'administradorDetail',
                 data: {
                     requireLogin: true
                 },

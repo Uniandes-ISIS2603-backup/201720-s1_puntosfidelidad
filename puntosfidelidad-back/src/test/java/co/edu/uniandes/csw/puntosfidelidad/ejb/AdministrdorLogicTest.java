@@ -6,10 +6,11 @@
 package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
 import co.edu.uniandes.csw.puntosfidelidad.persistence.*;
-import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.AdministradorEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ComentarioEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.RecargaEntity;
+import co.edu.uniandes.csw.puntosfidelidad.entities.RestauranteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaDeCreditoEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.puntosfidelidad.exceptions.BusinessLogicException;
@@ -36,10 +37,10 @@ import static org.junit.Assert.fail;
 
 /**
  *
- * @author lv.vanegas10
+ * @author s.cespedes10
  */
 @RunWith(Arquillian.class)
-public class ClienteLogicTest {
+public class AdministrdorLogicTest {
     
     /**
      *
@@ -51,9 +52,9 @@ public class ClienteLogicTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(ClienteEntity.class.getPackage())
-                .addPackage(ClientePersistence.class.getPackage()) 
-                .addPackage(ClienteLogic.class.getPackage())  
+                .addPackage(AdministradorEntity.class.getPackage())
+                .addPackage(AdministradorPersistence.class.getPackage()) 
+                .addPackage(AdministradorLogic.class.getPackage())  
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -64,14 +65,11 @@ public class ClienteLogicTest {
      */  
     
     @Inject
-    private ClienteLogic logic;
+    private AdministradorLogic logic;
     
     
-    List<TarjetaDeCreditoEntity> tarjetasDeCredito = new ArrayList<>();
-    List<TarjetaPuntosEntity> tarjetasPuntos = new ArrayList<>();
-    List<RecargaEntity> recargas = new ArrayList<>();
-    List<CompraEntity> compras = new ArrayList<>();
-    List<ComentarioEntity> comentarios = new ArrayList<>();
+    List<RestauranteEntity> restaurantes = new ArrayList<>();
+    
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
      * datos por fuera de los métodos que se están probando.
@@ -89,7 +87,7 @@ public class ClienteLogicTest {
      /**
      *
      */
-    private List<ClienteEntity> data = new ArrayList<>();
+    private List<AdministradorEntity> data = new ArrayList<>();
     
     @Before
     public void setUp() {
@@ -110,7 +108,7 @@ public class ClienteLogicTest {
     }
     
     private void clearData() {  
-        em.createQuery("delete from ClienteEntity").executeUpdate();
+        em.createQuery("delete from administradorEntity").executeUpdate();
     }
 
 
@@ -118,20 +116,16 @@ public class ClienteLogicTest {
         
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 8; i++) {
-            ClienteEntity entity = factory.manufacturePojo(ClienteEntity.class);
+            AdministradorEntity entity = factory.manufacturePojo(AdministradorEntity.class);
             
-            entity.setCompras(compras);
-            entity.setTarjetasDeCredito(tarjetasDeCredito);
-            entity.setTarjetasPuntos(tarjetasPuntos);
-            entity.setRecargas(recargas);
-            entity.setComentarios(comentarios);  
-                        
+            entity.setRestaurantes(restaurantes);
+                                   
             em.persist(entity);
             data.add(entity);
         } 
     }
     
-    public ClienteLogicTest() {
+    public AdministrdorLogicTest() {
     }
     
     @BeforeClass
@@ -152,37 +146,16 @@ public class ClienteLogicTest {
      */
     @Test
     public void testCreate() throws Exception {
-        try{
-            ClienteEntity newEntity = new ClienteEntity();
-            newEntity.setUsuario(null);
-            newEntity.setContrasena("*");
-            logic.createcliente(newEntity);
-            fail("Debio fallar");
-        }catch(BusinessLogicException e){Assert.assertTrue(!e.getMessage().isEmpty());}
-        
-        try{
-            ClienteEntity newEntity = new ClienteEntity();
-            newEntity.setUsuario(data.get(0).getUsuario());
-            newEntity.setContrasena("*");
-            logic.createcliente(newEntity);
-            fail("Debio fallar");
-        }catch(BusinessLogicException e){Assert.assertTrue(!e.getMessage().isEmpty());}
-        
-        try{
-            ClienteEntity newEntity = new ClienteEntity();
-            newEntity.setUsuario(data.get(0).getUsuario());
-            newEntity.setContrasena(". ");
-            logic.createcliente(newEntity);
-            fail("Debio fallar");
-        }catch(BusinessLogicException e){Assert.assertTrue(!e.getMessage().isEmpty());}
-        
+       
+       
+       
         PodamFactory factory = new PodamFactoryImpl();
-        ClienteEntity newEntity = factory.manufacturePojo(ClienteEntity.class);
+        AdministradorEntity newEntity = factory.manufacturePojo(AdministradorEntity.class);
         newEntity.setContrasena("*");
-        ClienteEntity result = logic.createcliente(newEntity);
+        AdministradorEntity result = logic.createAdministrador(newEntity);
 
         Assert.assertNotNull(result);
-        ClienteEntity entity = em.find(ClienteEntity.class, result.getUsuario());
+        AdministradorEntity entity = em.find(AdministradorEntity.class, result.getUsuario());
         Assert.assertNotNull(entity);
         Assert.assertEquals(newEntity.getUsuario(), entity.getUsuario());     
     }
@@ -193,9 +166,9 @@ public class ClienteLogicTest {
      * @throws java.lang.Exception
      */
     @Test
-    public void testGetCliente() throws Exception {
-        ClienteEntity dato = data.get(0);
-        ClienteEntity entity = logic.getCliente(dato.getUsuario());
+    public void testGetAdministrador() throws Exception {
+        AdministradorEntity dato = data.get(0);
+        AdministradorEntity entity = logic.getAdministrador(dato.getUsuario());
         Assert.assertNotNull(entity);
         Assert.assertEquals(entity.getUsuario(), dato.getUsuario());
     }
@@ -206,8 +179,8 @@ public class ClienteLogicTest {
      * @throws java.lang.Exception
      */
     @Test
-    public void testGetClientes() throws Exception {
-        List<ClienteEntity> lista = logic.getClientes();
+    public void testGetAdministradores() throws Exception {
+        List<AdministradorEntity> lista = logic.getAdministradores();
         Assert.assertNotNull(lista);
         Assert.assertEquals(lista.size(), data.size());
     }
@@ -217,25 +190,25 @@ public class ClienteLogicTest {
      * @throws java.lang.Exception
      */
     @Test
-    public void testUpdateCliente() throws Exception {
+    public void testUpdateAdministrador() throws Exception {
         try{
-            ClienteEntity newEntity = new ClienteEntity();
+            AdministradorEntity newEntity = new AdministradorEntity();
             newEntity.setUsuario("NoExistente");
-            logic.updateCliente(data.get(0).getUsuario(), newEntity);
+            logic.actualizarAdministrador(data.get(0).getUsuario(), newEntity);
             fail("Debio fallar");
         }catch(BusinessLogicException e){Assert.assertTrue(!e.getMessage().isEmpty());}
         
          
-        ClienteEntity entity = data.get(0);
+        AdministradorEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        ClienteEntity newEntity = factory.manufacturePojo(ClienteEntity.class);
+        AdministradorEntity newEntity = factory.manufacturePojo(AdministradorEntity.class);
 
         newEntity.setUsuario(entity.getUsuario());
         newEntity.setContrasena("abc");
 
-        logic.updateCliente(entity.getUsuario(), newEntity);
+        logic.actualizarAdministrador(entity.getUsuario(), newEntity);
 
-        ClienteEntity resp = em.find(ClienteEntity.class, entity.getUsuario());
+        AdministradorEntity resp = em.find(AdministradorEntity.class, entity.getUsuario());
 
         Assert.assertEquals(newEntity.getUsuario(), resp.getUsuario());
     }
@@ -246,16 +219,10 @@ public class ClienteLogicTest {
      */
     @Test
     public void testDelete() throws Exception {
-        try{
-            ClienteEntity newEntity = new ClienteEntity();
-            newEntity.setUsuario("NoExistente");
-            logic.deleteCliente("NoExistente");
-            fail("Debio fallar");
-        }catch(BusinessLogicException e){Assert.assertTrue(!e.getMessage().isEmpty());}
-        
-        ClienteEntity entity = data.get(0);
-        logic.deleteCliente(entity.getUsuario());
-        ClienteEntity deleted = em.find(ClienteEntity.class, entity.getUsuario());
+       
+        AdministradorEntity entity = data.get(0);
+        logic.removeAdministrador(entity.getUsuario());
+        AdministradorEntity deleted = em.find(AdministradorEntity.class, entity.getUsuario());
         Assert.assertNull(deleted);
     }
 }

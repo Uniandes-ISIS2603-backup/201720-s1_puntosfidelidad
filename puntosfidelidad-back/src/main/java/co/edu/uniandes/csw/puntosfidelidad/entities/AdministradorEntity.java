@@ -20,41 +20,37 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class AdministradorEntity implements Serializable {
-    
-    @Id
-    private String usuario; 
-    
-    private String contrasena; 
-    
-    @PodamExclude
-    @OneToMany(mappedBy = "administrador",cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<RestauranteEntity> restaurantes = new ArrayList<>();
 
-   
+    @Id
+    private String usuario;
+
+    private String imagen;
+
+    private String contrasena;
+
+    @PodamExclude
+    @OneToMany(mappedBy = "administrador")
+    private List<RestauranteEntity> restaurantes = new ArrayList<>();
 
     public List<RestauranteEntity> getRestaurantes() {
         return restaurantes;
     }
 
-     public RestauranteEntity getRestaurante(String nit) {
-         
-       for(int i=0;i<restaurantes.size();i++){
-           RestauranteEntity res=restaurantes.get(i);
-         if(res.getNit()==nit)
-           return res;
-       }
+    public RestauranteEntity getRestaurante(String nit) {
+
+        for (int i = 0; i < restaurantes.size(); i++) {
+            RestauranteEntity res = restaurantes.get(i);
+            if (res.getNit() == nit) {
+                return res;
+            }
+        }
         return null;
     }
-    
-    
+
     public void setRestaurantes(List<RestauranteEntity> restaurantes) {
         this.restaurantes = restaurantes;
     }
 
-    
-
-    
-    
     /**
      * @return the usuario
      */
@@ -69,6 +65,14 @@ public class AdministradorEntity implements Serializable {
         this.usuario = usuario;
     }
 
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
     /**
      * @return the contrasena
      */
@@ -81,7 +85,6 @@ public class AdministradorEntity implements Serializable {
      */
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
-    }   
+    }
 
-   
 }
