@@ -9,9 +9,9 @@
                     <div ng-if="!edit" class="vertical-menu">
                         <a ui-sref="administradorDetail">Información</a>
                         <a ui-sref="restauranteAdministradorList({administradorUsuario: elementoAdministrador.usuario})">Mis Restaurantes</a>
-                        <a href="#">Mis Sucursales</a>
-                        <a href="#">Trajetas de Puntos</a>
-                        <a href="#">Link 4</a>
+                        <a ui-sref="eventosListAdmin">Eventos</a>
+                        <a ui-sref="comprasListAdmin">Compras</a>
+                        <a ui-sref="tarjetapuntosList">Tarjetas Puntos</a>
                     </div>
                 </div>
                 <div ui-view ="info" class="col-md-8">

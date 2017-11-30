@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    
+    <div class="container-fluid">
+        <ul class="list-group">
+            <div style='height:fit-content;' class="eventoDiv col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="event in eventos">
+                <h3>{{event.nombre}}</h3>
+                <hr>                              <!-- Para poner una foto solo es cambiar esta url de abajo! ( {{evento.foto}} ) -->
+                <div class='eventoBox eventoDiv'>
+                    <input id='{{event.nombre}}' type="checkbox" ng-model='collapse' style='display: none;'>
+
+                    <div class='eventoInner' for='{{event.nombre}}' ng-click="collapse=!collapse">
+                        <p style='position:relative; top:25%;' ng-if="!collapse">Más Información</p>
+                        <p style='position:relative; top:25%;' ng-if="collapse">Menos Información</p>
+                    </div>
+                    <div class='eventoColor'></div>
+                </div>
+                <div class='eventoDiv' ng-show='collapse'>
+                    <hr>
+                    <b>Descripción:</b> {{event.descripcion}}
+                    <hr>
+                    <b>Fecha De Inicio:</b> {{event.fechaInicio}}
+                    <hr>
+                    <b>Fecha Finalización:</b> {{event.fechaFin}}
+                </div>           
+                <div style='margin-top: 5px;' class="eventoDiv" style="width: 100%; position: relative;">                    
+                    <a class="btn btn-default" ui-sref='eventosUpdate({eventoNombre:"{{event.nombre}}"})'><p class="glyphicon glyphicon-pencil"></p></a>
+                    <a class="btn btn-default" ui-sref='eventosDelete({eventoNombre:"{{event.nombre}}"})'><p class="glyphicon glyphicon-trash"></p></a>           
+                </div>
+            </div>
+
+
+            <!-- Agregar nuevo -->
+            <div class="eventoDiv col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <h3>Agregar un evento</h3>
+                <hr>
+                <div class='eventoBox eventoDiv'>
+                    <input id='{{event.nombre}}' type="checkbox" ng-model='collapse' style='display: none;'>
+
+                    <div class='eventoInner' for='{{event.nombre}}' ui-sref='eventosPost()'>
+                        <p style='position:relative; top:25%; font-size: 3em;' class='glyphicon glyphicon-plus'></p>
+                    </div>
+                    <div class='eventoColor'></div>
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>
