@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.csw.puntosfidelidad.persistence;
+package co.edu.uniandes.csw.puntosfidelidad.ejb;
 
+import co.edu.uniandes.csw.puntosfidelidad.persistence.*;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ClienteEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.TarjetaDeCreditoEntity;
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
  * @author lv.vanegas10
  */
 @RunWith(Arquillian.class)
-public class TarjetaDeCreditoPersistenceTest {
+public class TarjetaDeCreditoLogicTest {
 
     /**
      *
@@ -45,6 +46,7 @@ public class TarjetaDeCreditoPersistenceTest {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(TarjetaDeCreditoEntity.class.getPackage())
                 .addPackage(TarjetaDeCreditoPersistence.class.getPackage())
+                .addPackage(TarjetaDeCreditoLogic.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -53,11 +55,12 @@ public class TarjetaDeCreditoPersistenceTest {
      * Inyección de la dependencia a la clase TarjetaDeCredito cuyos métodos se
      * van a probar.
      */
-    @Inject
-    private TarjetaDeCreditoPersistence persistence;
 
     @Inject
     private ClientePersistence clientePersistence;
+    
+    @Inject
+    private TarjetaDeCreditoLogic logic;
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
      * datos por fuera de los métodos que se están probando.
@@ -112,7 +115,7 @@ public class TarjetaDeCreditoPersistenceTest {
         }
     }
 
-    public TarjetaDeCreditoPersistenceTest() {
+    public TarjetaDeCreditoLogicTest() {
     }
 
     @BeforeClass
@@ -128,16 +131,41 @@ public class TarjetaDeCreditoPersistenceTest {
     }
 
     /**
-     * Test of create method, of class TarjetaDeCreditoPersistence.
+     * Test of getTarjetasDeCredito method, of class TarjetaDeCreditoLogic.
      *
      * @throws java.lang.Exception
      */
     @Test
-    public void testCreate() throws Exception {
+    public void testGetTarjetasDeCredito() throws Exception {
+        List<TarjetaDeCreditoEntity> lista = logic.getTarjetasDeCredito(cliente.getUsuario());
+        Assert.assertTrue(!lista.isEmpty());
+        Assert.assertTrue(lista.size() == data.size());
+    }
+    
+    /**
+     * Test of getTarjetaDeCredito method, of class TarjetaDeCreditoLogic.
+     *
+     * @throws java.lang.Exception
+     */
+    @Test
+    public void testGetTarjetaDeCredito() throws Exception {
+        TarjetaDeCreditoEntity entity = data.get(0);
+        TarjetaDeCreditoEntity newEntity = logic.getTarjetaDeCredito(cliente.getUsuario(), entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getId(), newEntity.getId());
+    }
+
+    /**
+     * Test of createTarjetaDeCredito method, of class TarjetaDeCreditoLogic.
+     *
+     * @throws java.lang.Exception
+     */
+    @Test
+    public void testCreateTarjetaDeCredito() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
         TarjetaDeCreditoEntity newEntity = factory.manufacturePojo(TarjetaDeCreditoEntity.class);
         newEntity.setCliente(cliente);
-        TarjetaDeCreditoEntity result = persistence.create(newEntity);
+        TarjetaDeCreditoEntity result = logic.createTarjetaDeCredito(cliente.getUsuario(), newEntity);
 
         Assert.assertNotNull(result);
         TarjetaDeCreditoEntity entity = em.find(TarjetaDeCreditoEntity.class, result.getId());
@@ -146,19 +174,19 @@ public class TarjetaDeCreditoPersistenceTest {
     }
 
     /**
-     * Test of update method, of class TarjetaDeCreditoPersistence.
+     * Test of updateTarjetaDeCredito method, of class TarjetaDeCreditoLogic.
      *
      * @throws java.lang.Exception
      */
     @Test
-    public void testUpdate() throws Exception {
+    public void testUpdateTarjetaDeCredito() throws Exception {
         TarjetaDeCreditoEntity entity = data.get(2);
         PodamFactory factory = new PodamFactoryImpl();
         TarjetaDeCreditoEntity newEntity = factory.manufacturePojo(TarjetaDeCreditoEntity.class);
 
         newEntity.setId(entity.getId());
 
-        persistence.update(newEntity);
+        logic.updateTarjetaDeCredito(cliente.getUsuario(), newEntity);
 
         TarjetaDeCreditoEntity resp = em.find(TarjetaDeCreditoEntity.class, entity.getId());
 
@@ -166,32 +194,15 @@ public class TarjetaDeCreditoPersistenceTest {
     }
 
     /**
-     * Test of delete method, of class TarjetaDeCreditoPersistence.
+     * Test of deleteTarjetaDeCredito method, of class TarjetaDeCreditoLogic.
      *
      * @throws java.lang.Exception
      */
     @Test
-    public void testDelete() throws Exception {
+    public void testDeleteTarjetaDeCredito() throws Exception {
         TarjetaDeCreditoEntity entity = data.get(0);
-        persistence.delete(entity.getId());
+        logic.deleteTarjetaDeCredito(cliente.getUsuario(), entity.getId());
         TarjetaDeCreditoEntity deleted = em.find(TarjetaDeCreditoEntity.class, entity.getId());
         Assert.assertNull(deleted);
-    }
-
-    /**
-     * Test of find method, of class TarjetaDeCreditoPersistence.
-     *
-     * @throws java.lang.Exception
-     */
-    @Test
-    public void testFind() throws Exception {
-        TarjetaDeCreditoEntity entity = data.get(0);
-        TarjetaDeCreditoEntity newEntity = persistence.find(entity.getCliente().getUsuario(), entity.getId());
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getId(), newEntity.getId());
-
-        newEntity = persistence.find("usuarioNoExiste", entity.getId());
-        Assert.assertNull(newEntity);
-
     }
 }
