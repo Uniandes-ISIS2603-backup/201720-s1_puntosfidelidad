@@ -12,7 +12,7 @@
           <br>
     <br>
         <div class="col-md-2" ng-repeat="administrador in administradoresLista" >
-            <div class="thumbnail" ng-if="administrador.usuario==adminName" >      
+            <div class="thumbnail" ng-if="administrador.usuario.includes(adminName)" >      
                 <a ui-sref="administradorDetail({administradorUsuario: administrador.usuario})">
                                       
                 </a>
