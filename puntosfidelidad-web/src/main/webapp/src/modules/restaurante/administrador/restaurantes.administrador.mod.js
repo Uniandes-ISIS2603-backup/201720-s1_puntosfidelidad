@@ -69,7 +69,7 @@
                     }
                 }
             }).state('restauranteAdministradorDetail', {
-                url: '/restaurante/detalle',
+                url: '/restaurante/{restauranteNit:string}/detalle',
                 parent: 'administradorDetail',
                 data: {
                     requireLogin: true
