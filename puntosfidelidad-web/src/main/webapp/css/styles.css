@@ -946,14 +946,14 @@ footer a:hover, footer a:link,footer a:visited {
 
 .unComentario-0{
     display: block;
-    border-left: 5px solid rgb(28, 177, 177);
-    background-color: #6dd1ff;
+    border-left: 5px solid #36A8A7;
+    background-color: #B2D63C;
 }
 
 .unComentario-1{
     display: block;
-    border-left: 5px solid rgb(28, 177, 177);
-    background-color: #64c0e7;
+    border-left: 5px solid #36A8A7;
+    background-color: #f2edd0;
 }
 .eventoDiv{
     text-align: center;
