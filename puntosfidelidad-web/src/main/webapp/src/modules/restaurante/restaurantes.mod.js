@@ -43,21 +43,6 @@
                     }
                 }
                 
-            }).state('restaurantesDetailCliente', {
-                url: '/{restauranteNit:string}/detail',
-                data: {
-                    requireLogin: true
-                },
-                param: {
-                    restauranteNit: null
-                },
-                views: {
-                    'mainView': {
-                        templateUrl: basePath + 'restaurantes.detail.Cliente.html',
-                        controller: 'restaurantesCtrl',
-                        controllerAs: 'ctrl'
-                    }
-                }
             }).state('restaurantesDetail', {
                 url: '/{restauranteNit:string}/detail',
                 parent: 'restaurantes',

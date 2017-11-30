@@ -5,16 +5,11 @@
             <div class="panel-heading">
                 <label id="editSucursal">Editar Sucursal</label></div>
             <div class="panel-body">
-                <div class="row">
                 <form ng-submit="updateSucursal()" name="sucursal">
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for="sucursalId" readonly="readonly" class="col-sm-2">Id:</label>
+                            <label for="sucursalId" class="col-sm-2">Id:</label>
                             <input id="sucursalId" required ng-model="sucursalId" class="col-sm-6"/>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <b style='font-size: 30px' >Ubicación</b>
-                            
                         </div>
                     </div>
                     <div class="form-group row">
@@ -22,29 +17,17 @@
                             <label for="sucursalName" class="col-sm-2">Nombre:</label>
                             <input id="sucursalName" required ng-model="sucursalName" class="col-sm-6"/>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="sucursalId" class="col-sm-2">Direccion:</label>
-                            <input id="sucursalId" readonly="readonly" required ng-model="ubicacionDireccion" class="col-sm-6"/>
-                        </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="sucursaldescripcion" class="col-sm-2">Descripción:</label>
                             <textarea id="sucursaldescripcion" required ng-model="sucursalDescripcion" class="col-sm-6"></textarea>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="sucursalName" class="col-sm-2">Latitud:</label>
-                            <input id="sucursalName" required ng-model="ubicacionLatitud" class="col-sm-6"/>
-                        </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="sucursalCierre" class="col-sm-2">Hora Apertura:</label>
                             <input type="text" id="sucursalCierre" required ng-model="sucursalApertura" class="col-sm-6"/>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="sucursaldescripcion" class="col-sm-2">Longitud:</label>
-                            <textarea id="sucursaldescripcion" required ng-model="ubicacionLongitud" class="col-sm-6"></textarea>
                         </div>
                     </div>
                      <div class="form-group row">
@@ -66,11 +49,11 @@
                     <div class="form-group row">
                         <div class="form-group col-sm-12">                            
                             <input ng-show="sucursal.$valid" type="submit" value="Save" class="btn btn-success">
-                            <a class="btn btn-info" ng-click="perfil()">Cancel</a>
+                            <a class="btn btn-info" ui-sref="sucursalList">Cancel</a>
                         </div>
                     </div>
-                   
-      
+                </form>
+
             </div>
         </div>
     </div>

@@ -15,16 +15,8 @@
                         $scope.sucursalDescripcion = sucursal.descripcion;
                         $scope.sucursalApertura = sucursal.horaApertura; 
                         $scope.sucursalCierre = sucursal.horaCierre;
-                        
-                       $http.get("api/ubicaciones" + '/' + sucursal.ubicacion.direccion).then(function (response) {
-                        var ubicacion = response.data;
-                        $scope.ubicacionDireccion = ubicacion.direccion;
-                        $scope.ubicacionLatitud = ubicacion.latitud;
-                        $scope.ubicacionLongitud = ubicacion.longitud;  
-                        });
                     });
-
-                    
+              
                     //funciones para el drag and drop de HTML5 nativo
                     $scope.allowDrop = function (ev) {
                         ev.preventDefault();
@@ -33,19 +25,8 @@
                     $scope.drag = function (ev) {
                         ev.dataTransfer.setData("text", ev.target.id);
                     };
-                    
-                    
 
                     $scope.updateSucursal = function () {
-                        
-                        $http.put("api/ubicaciones" + "/" + $scope.ubicacionDireccion, {
-                            id: $scope.sucursalId,
-                            nombre: $scope.sucursalName,
-                            descripcion: $scope.sucursalDescripcion,
-                            horaApertura: $scope.sucursalApertura,
-                            horaCierre: $scope.sucursalCierre                            
-                        });
-                        
                         $http.put("api/sucursales" + "/" + idsucursal, {
                             id: $scope.sucursalId,
                             nombre: $scope.sucursalName,

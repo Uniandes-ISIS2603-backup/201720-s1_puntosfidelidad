@@ -41,7 +41,7 @@
                     <a ng-if="!edit" class="btn btn-default" ui-sref="productosCreate"><p class="glyphicon glyphicon-trash"></p></a>
                     <a ng-if="!edit" class="btn btn-default" ui-sref="clientesList"><p> Otros clientes</p></a>
 
-                    <a ng-if="edit" class="btn btn-default"  ng-click="perfil()""><p class="glyphicon glyphicon-remove"></p></a>
+                    <a ng-if="edit" class="btn btn-default" ui-sref="clienteDetail({clienteUsuario: elementoCliente.usuario})"><p class="glyphicon glyphicon-remove"></p></a>
                     <a ng-if="edit && !((elementoCliente.contrasena) !== elementoCliente.repetirContrasenaU) && clienteUpdate.$valid" class="btn btn-default" ng-click="updateCliente()"><p class="glyphicon glyphicon-floppy-saved"></p></a>
                 </div>
             </div>
