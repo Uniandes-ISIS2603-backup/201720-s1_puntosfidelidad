@@ -27,7 +27,6 @@ public class ClienteLogic {
     
     private static final Logger LOGGER = Logger.getLogger(ClienteLogic.class.getName());
 
-
     @Inject
     private ClientePersistence persistence;
     @Inject

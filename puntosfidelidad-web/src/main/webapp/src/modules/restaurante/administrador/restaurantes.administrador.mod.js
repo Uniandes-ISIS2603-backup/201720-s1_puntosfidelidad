@@ -29,9 +29,9 @@
                 },
                 views: {
                     'info': {
-                        controller: 'restaurantesPostCtrl',
+                        controller: 'restaurantesCreateCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'postrestaurantes.post.html'
+                        templateUrl: basePath + 'administrador/restaurantes.administrador.listPost.html'
 
                     }
                 }
@@ -72,7 +72,7 @@
                 url: '/restaurante/{restauranteNit:string}/detalle',
                 parent: 'administradorDetail',
                 data: {
-                    requireLogin: true
+                    requireLogin: true                    
                 },
                 param: {
                     restauranteNit: null
