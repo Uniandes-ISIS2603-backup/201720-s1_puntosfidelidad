@@ -107,6 +107,8 @@ img{
 .divInicial{
     height: 100%
 }
+
+
 body {
     background-color: whitesmoke;
     color: #666666;
@@ -154,10 +156,11 @@ body {
 
 /* Container */
 .container {
+    padding-top: 20px;
+    padding-bottom: 20px;
     position: relative;
     max-width: 460px;
     width: 100%;
-    margin: 0 auto 100px;
 }
 .container.active .card:first-child {
     background: #f2f2f2;
@@ -268,7 +271,7 @@ body {
 .selectLog{
     width: 210px;
 }
-.card .input-container {
+.card .input-container {   
     position: relative;
     margin: 0 60px 50px;
 }
@@ -558,7 +561,7 @@ footer a:hover, footer a:link,footer a:visited {
 }
 
 .barcolor{
-    background-color: #36ABA7;
+    background-color: #88A61F;
 }
 
 
@@ -577,9 +580,8 @@ footer a:hover, footer a:link,footer a:visited {
 }
 
 #tituloBanner{
-    position: relative;
     right: -60px;
-    color: #36ABA7;
+    color: #FFFFFF;
     text-decoration:none;
     font-weight:bold;
 }
@@ -676,10 +678,10 @@ width: auto; height: auto; position: relative; display: flex; justify-content: c
     font-size: 2.0rem;
     padding: 1rem;
     display: inline-block;
-    background-color: #d7df01;
-    border: 1px solid transparent;
-    color: #ffffff;
-    font-weight: 300;
+    background-color: #F2EDD0;
+    border: 2px solid #525155;    
+    color: #525155;
+    font-weight: bold;
     -webkit-border-radius: 3px;
     border-radius: 3px;
     -webkit-transition: all 0.3s ease-in-out;
