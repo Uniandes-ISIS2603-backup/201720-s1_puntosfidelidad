@@ -201,6 +201,25 @@
 
                     }
                 }
+            }).state('comentariosNuevos', {
+                url: 'comentarios/',
+                param: {
+                    clienteUsuario: null
+                },
+                data: {
+                    requireLogin: true
+                },
+                views: {                    
+                    'mainView': {
+                        controller: 'comentariosNuevosCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/comentario/comentarios.list.param.html'
+                    },
+                    'navBar': {                        
+                        templateUrl: basePath + 'navBar.html'
+
+                    }
+                }
             });
         }]);
 })(window.angular);

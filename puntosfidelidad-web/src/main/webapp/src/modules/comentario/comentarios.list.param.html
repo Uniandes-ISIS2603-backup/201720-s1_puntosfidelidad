@@ -1,0 +1,17 @@
+<div class='container-fluid'>
+    <div>
+        <h2>Mostrar comentarios para el restaurante: </h2>
+        <select>
+            <option ng-repeat="rest in restaurantes">{{rest.nombre}}</option>            
+        </select>
+
+        <img class='restauranteComentarioImg' ng-src='rest.imagen'>
+    </div>
+    <div class='contenedorComentario'>
+        <div class='unComentario' ng-repeat="comentario in comentarios" id='{{comentario.id}}'>
+            <div ng-class='asignarEstrellasCSS(comentario.calificacion)'></div>
+            <div ng-style="{'background' : 'url({{comentario.cliente.imagen}})'}"></div>
+            <div class='comentarioDelComentario'>{{comentario.comentario}}</div>
+        </div>
+    </div>
+</div>

@@ -21,29 +21,31 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author cass_
  */
 @Entity
-public class EventoEntity implements Serializable{
-    
+public class EventoEntity implements Serializable {
+
     @Id
     private String nombre;
-    
+
     @Temporal(TemporalType.DATE)
     private Date fechaInicio;
-    
+
     @Temporal(TemporalType.DATE)
     private Date fechaFin;
-    
+
+    private String imagen;
+
     private String descripcion;
-    
+
     @PodamExclude
     @ManyToMany //[Ja.manrique] Cambio de ManyToOne a ManyToMany para dejar acorde al UML
-                //Tristemente los test's se putean por esto, hay que corregirlos
+    //Tristemente los test's se putean por esto, hay que corregirlos
     private List<RestauranteEntity> restaurante;
-    
+
     @PodamExclude
     @ManyToMany //[Ja.manrique] Cambio de ManyToOne a ManyToMany para dejar acorde al UML
-                //Tristemente los test's se putean por esto, hay que corregirlos
-    private List<UbicacionEntity> ubicaciones;    
-    
+    //Tristemente los test's se putean por esto, hay que corregirlos
+    private List<UbicacionEntity> ubicaciones;
+
     /**
      * @return the nombre
      */
@@ -56,6 +58,22 @@ public class EventoEntity implements Serializable{
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public List<RestauranteEntity> getRestaurante() {
+        return restaurante;
+    }
+
+    public void setRestaurante(List<RestauranteEntity> restaurante) {
+        this.restaurante = restaurante;
     }
 
     /**

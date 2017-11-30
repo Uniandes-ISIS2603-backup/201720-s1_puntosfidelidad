@@ -22,6 +22,9 @@ public class EventoDTO implements Serializable{
     
     private Date fechaFin;
     
+    // imagen
+    private String imagen;
+    
     private String descripcion;
     
     public EventoDTO(){
@@ -34,6 +37,7 @@ public class EventoDTO implements Serializable{
         this.nombre = entity.getNombre();
         this.fechaInicio = entity.getFechaInicio();
         this.fechaFin = entity.getFechaFin();
+        this.imagen = entity.getImagen();
         }
     }
     
@@ -43,6 +47,7 @@ public class EventoDTO implements Serializable{
         entity.setNombre(this.getNombre());
         entity.setFechaInicio(this.getFechaInicio());
         entity.setFechaFin(this.getFechaFin());
+        entity.setImagen(this.imagen);
         return entity;
     }  
 
@@ -100,5 +105,14 @@ public class EventoDTO implements Serializable{
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }    
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    
 }
