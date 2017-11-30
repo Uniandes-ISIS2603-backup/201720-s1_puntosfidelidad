@@ -14,17 +14,17 @@
     <br>
     <div class="col-md-8">     
         <br>
-        <div class="input-container alertError col-md-8" ng-if='elementosRecarga.length === 0 && !nuevaRecarga'>  
+        <div class="input-container alertError col-md-8" ng-if='elementosRecarga.length === 0 && !nuevaRecarga'>
             <center>
                 <strong>!Ey!</strong> Actualmente no hay recargas registradas para este cliente.
             </center>
         </div>
-        <div class="input-container alertError col-md-8" ng-if='nuevaRecarga && elementosRtarjetaC.length === 0'>  
+        <div class="input-container alertError col-md-8" ng-if='nuevaRecarga && elementosRtarjetaC.length === 0'> 
             <center>
                 <strong>!Ey!</strong> No puedes hacer recargas porque no tienes tarjetas de crédito registradas.
             </center>
         </div>
-        <div class="input-container alertError col-md-8 " ng-if='nuevaRecarga && elementosRtarjetaP.length === 0'>            
+        <div class="input-container alertError col-md-8" ng-if='nuevaRecarga && elementosRtarjetaP.length === 0'>  
             <center>
                 <strong>!Ey!</strong> No puedes hacer recargas porque no tienes tarjetas de puntos registradas.
                 <strong><h4>¡Adquiere una en nuestros restaurantes!</h4></strong>
