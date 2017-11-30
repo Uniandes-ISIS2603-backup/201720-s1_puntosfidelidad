@@ -12,7 +12,7 @@
                     requireLogin: true
                 },
                 views: {
-                    'mainView': {
+                    'info': {
                         templateUrl: basePath + 'restaurantes.html',
                         controller: 'restaurantesCtrl',
                         controllerAs: 'ctrl'
@@ -69,7 +69,7 @@
                     restauranteNit: null
                 },
                 views: {
-                    'extrasView': {
+                    'detailView': {
                         templateUrl: basePath + 'restaurantes.productos.html',
                         controller: 'restaurantesCtrl',
                         controllerAs: 'ctrl'
@@ -85,7 +85,7 @@
                     restauranteNit: null
                 },
                 views: {
-                    'extrasView': {
+                    'detailView': {
                         templateUrl: basePath + 'restaurantes.sucursales.html',
                         controller: 'restaurantesCtrl',
                         controllerAs: 'ctrl'
@@ -101,7 +101,7 @@
                     restauranteNit: null
                 },
                 views: {
-                    'extrasView': {
+                    'detailView': {
                         templateUrl: basePath + 'restaurantes.eventos.html',
                         controller: 'restaurantesCtrl',
                         controllerAs: 'ctrl'
