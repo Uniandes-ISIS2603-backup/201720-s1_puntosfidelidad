@@ -25,6 +25,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class RestauranteEntity implements Serializable{
     @Id
     private String nit;
+    private String imagen;
     private String nombre;
     private String tipoComida;
     
@@ -48,6 +49,16 @@ public class RestauranteEntity implements Serializable{
     @ManyToOne
     private AdministradorEntity administrador;
 
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    
+    
     public AdministradorEntity getAdministrador() {
         return administrador;
     }

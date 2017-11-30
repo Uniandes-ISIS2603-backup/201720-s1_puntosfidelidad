@@ -31,6 +31,8 @@ public class SucursalEntity implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    private String imagen;
+    
     private String nombre;
     
     @Temporal(TemporalType.DATE)
@@ -165,4 +167,14 @@ public class SucursalEntity implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    
+    
 }
