@@ -37,7 +37,7 @@
                 }
 
             }).state('restauranteAdministradorUpdate', {
-                url: '/restaurante/crear',
+                url: '/restaurante/editar/{restauranteNit:string}',
                 parent: 'administradorDetail',
                 data: {
                     requireLogin: true
@@ -53,7 +53,7 @@
                     }
                 }
             }).state('restauranteAdministradorDelete', {
-                url: '/restaurante/borrar',
+                url: '/restaurante/borrar/{restauranteNit:string}',
                 parent: 'administradorDetail',
                 data: {
                     requireLogin: true
