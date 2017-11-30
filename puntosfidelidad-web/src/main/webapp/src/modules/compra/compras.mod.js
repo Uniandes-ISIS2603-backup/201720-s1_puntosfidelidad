@@ -70,13 +70,7 @@
                 param: {
                     compraId: null
                 },
-                views: {                    
-                    'navBar': {
-                        controller: 'clientesDetailCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/cliente/navBar.html'
-
-                    },
+                views: {                                       
                     'detailView': {
                         templateUrl: basePath + 'compras.productos.list.html',
                         controller: 'comprasProductosCtrl',
@@ -90,7 +84,7 @@
                     requireLogin: true
                 },
                 views: {
-                    'detailView': {
+                    'info': {
                         templateUrl: basePath + '/new/compras.new.html',
                         controller: 'comprasNewCtrl'
                     }
@@ -105,7 +99,7 @@
                     compraId: null
                 },
                 views: {
-                    'detailView': {
+                    'info': {
                         templateUrl: basePath + '/new/compras.new.html',
                         controller: 'comprasUpdateCtrl'
                     }
@@ -120,7 +114,7 @@
                     compraId: null
                 },
                 views: {
-                    'detailView': {
+                    'info': {
                         templateUrl: basePath + '/delete/compras.delete.html',
                         controller: 'comprasDeleteCtrl'
                     }

@@ -113,6 +113,5 @@ public class EventoDTO implements Serializable{
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
-    }
-    
+    }    
 }

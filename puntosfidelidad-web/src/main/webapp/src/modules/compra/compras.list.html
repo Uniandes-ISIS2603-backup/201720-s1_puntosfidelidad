@@ -23,8 +23,7 @@
                             <tr ng-repeat="compra in comprasRecords">
                                 <td id="{{$index}}-name"><a ui-sref="compraDetail({compraId: compra.id})">{{compra.id}}</a></td>
                                 <td id="{{$index}}-restaurante">{{compra.sucursal.nombre}}</td>
-                                <td id="{{$index}}-actions"> 
-                                    <a class="btn btn-default btn-sm" ui-sref="compraUpdate({compraId: compra.id})"><p class="glyphicon glyphicon-pencil"></p></a>
+                                <td id="{{$index}}-actions">                                    
                                     <a class="btn btn-danger btn-sm" ui-sref="compraDelete({compraId: compra.id})"><p class="glyphicon glyphicon-trash"></p></a>
                                 </td>
                             </tr>
