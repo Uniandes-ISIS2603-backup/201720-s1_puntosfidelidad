@@ -13,12 +13,8 @@
             /**
              * Funcion para cambiar la imagen
              */
-            function rotarImagenes()
+            function muteVideo()
             {
-                // obtenemos un numero aleatorio entre 0 y la cantidad de imagenes que hay
-                var index = Math.floor((Math.random() * imagenes.length));
-
-                // cambiamos la imagen
                 document.getElementById("bgvid").muted = true;
             }
 
