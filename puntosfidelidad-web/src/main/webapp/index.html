@@ -128,6 +128,8 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+     
     </head>
 
     <body> 
@@ -135,7 +137,7 @@
         <div class="row container-fluid barcolor">            
             <div>
                 <header>        
-                    <nav ng-if="!isAuthenticated()" > 
+                    <nav ng-show="!isAuthenticated()" > 
                         <div class="col-md-2">
                             <h1>
                                 <a style='font-family: "Comic Sans MS", cursive, sans-serif;font-size: 50px' id="tituloBanner" ng-if="!isAuthenticated()" ui-sref="inicio">FIEL</a>      
@@ -159,7 +161,7 @@
                                 <button class='BotonesBanner' ui-sref="restaurantesList">Restaurantes</button>
                                 <button class='BotonesBanner' ng-click="productos()">Productos</button>
                                 <button class='BotonesBanner' ui-sref="eventosList">Eventos</button>                            
-                                <button class='BotonesBanner' ui-sref="comentariosNuevos">Comentarios</button>
+                                <button class='BotonesBanner' ui-sref="comentariosNuevos(undefined)">Comentarios</button>
 
                                 <li class="cerarSesion"><a  ui-sref="inicio">Cerrar Sesión</a></li>
                             </ul>
@@ -188,7 +190,6 @@
                 </header> 
             </div>  
         </div>
-        <br>
 
         <div ui-view="mainView" class="contenido">
             <center>

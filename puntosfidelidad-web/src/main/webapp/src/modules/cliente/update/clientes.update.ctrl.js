@@ -6,18 +6,18 @@
             $rootScope.edit = true;
 
             $scope.rutaImagenes = [
-                "media/perfil/1.jpg",
-                "media/perfil/2.jpg",
-                "media/perfil/3.jpg",
-                "media/perfil/4.jpg",
-                "media/perfil/5.jpg",
-                "media/perfil/6.jpg",
-                "media/perfil/7.jpg",
-                "media/perfil/8.jpg",
-                "media/perfil/9.jpg",
-                "media/perfil/10.jpg",
-                "media/perfil/11.jpg",
-                "media/perfil/12.jpg"
+                "media/perfil/1.png",
+                "media/perfil/2.png",
+                "media/perfil/3.png",
+                "media/perfil/4.png",
+                "media/perfil/5.png",
+                "media/perfil/6.png",
+                "media/perfil/7.png",
+                "media/perfil/8.png",
+                "media/perfil/9.png",
+                "media/perfil/10.png",
+                "media/perfil/11.png",
+                "media/perfil/12.png"
             ];
             
             $http.get("api/clientes" + $state.params.clienteUsuario)

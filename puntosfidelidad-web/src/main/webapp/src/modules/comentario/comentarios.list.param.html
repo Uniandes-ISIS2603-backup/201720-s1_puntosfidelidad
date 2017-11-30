@@ -1,5 +1,5 @@
 <div class='container-fluid'>
-    <div>
+    <div ng-if='!isParametrized'>
         <h2>Mostrar comentarios para el restaurante: </h2>
         <select ng-model='restauranteActualStr' ng-change="restauranteActual(restauranteActualStr)">
             <option ng-repeat="rest in restaurantes" value='{{rest.nit}}'>{{rest.nombre}}</option>            
