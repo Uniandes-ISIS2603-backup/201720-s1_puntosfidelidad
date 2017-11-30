@@ -31,6 +31,20 @@
                         templateUrl: basePath + 'compras.list.html'
                     }
                 }
+                 }).state('comprasListAdmin', {
+                url: '/listComprasAdmin',
+                parent: 'administradorDetail',
+                data: {
+                    requireLogin: true
+                },
+                views: {
+                    'info': {
+                        controller: 'comprasCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'compras.listAdmin.html'
+                    }
+                }
+                
             }).state('compraDetail', {
                 url: '/{compraId:int}/detail',
                 parent: 'compras',

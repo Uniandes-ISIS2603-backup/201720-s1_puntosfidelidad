@@ -15,7 +15,7 @@
                     'info': {
                         controller: 'restauranteAdministradorCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + '/administrador/restaurantes.administrador.list.html'
+                        templateUrl: basePath + 'administrador/restaurantes.administrador.list.html'
                     }
                 }
             }).state('restauranteAdministradorPost', {
@@ -69,7 +69,7 @@
                     }
                 }
             }).state('restauranteAdministradorDetail', {
-                url: '/restaurante/detalle',
+                url: '/restaurante/{restauranteNit:string}/detalle',
                 parent: 'administradorDetail',
                 data: {
                     requireLogin: true
@@ -81,7 +81,39 @@
                     'info': {
                         controller: 'restaurantesCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'restaurantes.detail.html'
+                        templateUrl: basePath + 'administrador/restaurantes.administrador.detail.html'
+                    }
+                }
+            }).state('restauranteAdministradorSucursal', {
+                url: '/sucursal',
+                parent: 'restauranteAdministradorDetail',
+                data: {
+                    requireLogin: true
+                },
+                param: {
+                    restauranteNit: null
+                },
+                views: {
+                    'infoRes': {
+                        controller: 'restaurantesCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'restaurantes.sucursales.html'
+                    }
+                }
+            }).state('restauranteAdministradorProducto', {
+                url: '/producto',
+                parent: 'restauranteAdministradorDetail',
+                data: {
+                    requireLogin: true
+                },
+                param: {
+                    restauranteNit: null
+                },
+                views: {
+                    'infoRes': {
+                        controller: 'restaurantesCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'restaurantes.productos.html'
                     }
                 }
             });

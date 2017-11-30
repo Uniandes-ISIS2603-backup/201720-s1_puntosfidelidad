@@ -129,22 +129,27 @@
 
     <body> 
 
-        <div class="row container-fluid">
-            <div class="row">
-                <div>
-                    <h1>
-                        <a id="tituloBanner" ng-if="!isAuthenticated()" ui-sref="inicio">FIEL</a>   
-                        <a id="tituloBanner" ng-if="isAuthenticated()" ng-click="perfil()" href="">FIEL</a>    
-                    </h1>            
-                </div>
-            </div>
+        <div class="row container-fluid barcolor">            
             <div>
                 <header>        
                     <nav ng-if="!isAuthenticated()" > 
+                        <div class="col-md-2">
+                            <h1>
+                                <a id="tituloBanner" ng-if="!isAuthenticated()" ui-sref="inicio">FIEL</a>      
+                            </h1>            
+                        </div>
+                        <div class="col-md-10" style="padding-top: 12px">
                         <button class='BotonesBanner' ui-sref="login">Iniciar Sesión</button>
                         <button class='BotonesBanner' ui-sref="clienteCreate">Registrarse</button>
+                        </div>
                     </nav>
                     <nav ng-if="isAuthenticated() && esCliente()" > 
+                        <div class="col-md-2">
+                            <h1>                                
+                                <a id="tituloBanner" ng-if="isAuthenticated()" ng-click="perfil()" href="">FIEL</a>    
+                            </h1>            
+                        </div>
+                        <div class="col-md-10" style="padding-top: 12px">
                         <ul>
                             <button class='BotonesBanner' ng-click="perfil()">Mi perfíl</button>
                             <button class='BotonesBanner' ng-click="compras()">Compras</button>
@@ -154,8 +159,16 @@
 
                             <li class="cerarSesion"><a  ui-sref="inicio">Cerrar Sesión</a></li>
                         </ul>
+                        </div>
                     </nav> 
                     <nav ng-if="isAuthenticated() && !esCliente()"> 
+                        <div class="col-md-2">
+                            <h1>                                
+                                <a id="tituloBanner" ng-if="isAuthenticated()" ng-click="perfil()" href="">FIEL</a>    
+                            </h1>            
+                        </div>
+                        <div class="col-md-10" style="padding-top: 12px">
+                        
                         <ul>
                             <button class='BotonesBanner' ng-click="perfil()">Mi perfíl</button>
                             <button class='BotonesBanner' ui-sref="administradoresList">Administradores</button>
@@ -164,11 +177,11 @@
                             <button class='BotonesBanner' ui-sref="eventosList">Eventos</button>                            
                             <li class="cerarSesion"><a  ui-sref="inicio">Cerrar Sesión</a></li>
                         </ul>
+                        </div>
                     </nav> 
                     <br>
                 </header> 
-            </div>
-            <hr>            
+            </div>  
         </div>
 
         <div ui-view="mainView">

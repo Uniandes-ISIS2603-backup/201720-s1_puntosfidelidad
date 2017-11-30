@@ -1,0 +1,71 @@
+<div class="container-fluid">
+    <br>  
+    
+
+     
+    <div class="col-md-8">        
+        <div class="alert alert-info" ng-if='comprasRecords.length === 0'>
+            <strong>!Atención!</strong> Actualmente no hay restaurantes registrados para este administrador.
+        </div>
+        <table class="table table-hover" ng-if='comprasRecords.length !== 0'>
+            <thead>
+                <tr>
+                   <th>ID</th> 
+                    <th>Cliente</th> 
+                    <th>Monto Basico</th>
+                    <th>Monto Actual</th>
+                </tr>
+            </thead>    
+
+            <tbody>
+                 <tr ng-repeat="elem in elements">
+                    <td id="{{$index}}-name"> {{elem.id}}</td>
+                    <td id="{{$index}}-nombre"> {{elem.cliente.usuario}}</td>
+                    <td id="{{$index}}-mbasico">{{elem.montoBasico}}</td>
+                    <td id="{{$index}}-mbasico">{{elem.montoActual}}</td>
+                    
+                    <td id="{{$index}}-actions"> 
+                                    <a class="btn btn-default btn-sm" ui-sref="compraUpdate({compraId: compra.id})"><p class="glyphicon glyphicon-pencil"></p></a>
+                                    <a class="btn btn-danger btn-sm" ui-sref="compraDelete({compraId: compra.id})"><p class="glyphicon glyphicon-trash"></p></a>
+                                </td>
+                     
+                </tr>
+            </tbody>
+        </table>
+        <br>
+    
+                  
+    </div>
+</div>
+
+
+
+
+<div  class="container-fluid">
+    <br>
+    <input id='crearTarjetaPuntos' type='checkbox' ng-model='crear' style='display:none'>
+
+    <!--vista para el POST-->
+
+    <div class='panel-group'>
+        <div class = 'panel panel-primary' ng-if='crear'>
+            <div class='panel-heading'>
+                Agregar una nueva tarjeta puntos
+            </div>
+            <div id='formComentario' class='panel-body'>
+                <form class='form-group'>                    
+                    Id de la tarjeta: <input style="margin-top: 5px; margin-bottom: 5px;" ng-model='nuevaTarjeta.id'> <br>
+                    montoBasico: <input style="margin-top: 5px; margin-bottom: 5px;" ng-model='nuevaTarjeta.montoBasico' type="number" min='10000'><br>
+                    montoActual: <input style="margin-top: 5px; margin-bottom: 5px;" type='number' ng-model='nuevaTarjeta.montoActual' min='10000'><br>
+                    Usuario asociado: <input style="margin-top: 5px; margin-bottom: 5px;" ng-model='nuevaTarjeta.usuarioCliente'><br>
+                    <input type='submit' id='crearNuevaTarjetaPuntos' style="display: none;">
+                    <label for="crearNuevaTarjetaPuntos" class="btn btn-primary" ng-click="postTarjetaPuntos(nuevaTarjeta)" ng-show="revisarTP(nuevaTarjeta)">Crear nueva tarjeta</label>
+                    <label for='crearTarjetaPuntos' class='btn btn-primary' class='btn btn-info'> Cancelar</label>
+                </form>
+            </div>
+        </div>        
+        <label for='crearTarjetaPuntos' class='btn btn-primary' ng-show='!crear' class='btn btn-info'> <p class="glyphicon glyphicon-plus"></p>Nueva tarjeta puntos</label><br>
+    </div>
+
+    
+           

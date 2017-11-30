@@ -1,0 +1,44 @@
+
+<div class="container-fluid">
+    <br>  
+    
+
+     
+    <div class="col-md-8">        
+        <div class="alert alert-info" ng-if='comprasRecords.length === 0'>
+            <strong>!Atención!</strong> Actualmente no hay restaurantes registrados para este administrador.
+        </div>
+        <table class="table table-hover" ng-if='comprasRecords.length !== 0'>
+            <thead>
+                <tr>
+                   <th>ID</th> 
+                    <th>Sucursal</th> 
+                    <th>Actions</th>
+                </tr>
+            </thead>    
+
+            <tbody>
+                 <tr ng-repeat="compra in comprasRecords">
+                    <td id="{{$index}}-name"> <a ui-sref="compraDetail({compraId: compra.id})">{{compra.id}}</a></td>
+                    <td id="{{$index}}-nombre"> {{compra.nombre}}</td>
+                    <td id="{{$index}}-mbasico">{{compra.sucursal.nombre}}</td>
+                    
+                    <td id="{{$index}}-actions"> 
+                                    <a class="btn btn-default btn-sm" ui-sref="compraUpdate({compraId: compra.id})"><p class="glyphicon glyphicon-pencil"></p></a>
+                                    <a class="btn btn-danger btn-sm" ui-sref="compraDelete({compraId: compra.id})"><p class="glyphicon glyphicon-trash"></p></a>
+                                </td>
+                     
+                </tr>
+            </tbody>
+        </table>
+        <br>
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <a class="btn btn-info" ui-sref="comprasCreate"><p class="glyphicon glyphicon-plus"></p> Nueva Compra</a>
+                    </div>
+
+                </div>
+                  
+    </div>
+</div>
+

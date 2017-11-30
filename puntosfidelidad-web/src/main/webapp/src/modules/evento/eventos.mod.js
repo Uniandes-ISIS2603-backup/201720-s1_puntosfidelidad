@@ -19,7 +19,7 @@ var mod = ng.module("eventosModule", []);
                     }
                 }
             }).state('eventosList', {
-                url: 'eventos/list',                
+                url: '/list',                
                 parent: 'eventos',
                 data: {
                     requireLogin: true
@@ -33,6 +33,24 @@ var mod = ng.module("eventosModule", []);
                         controller: 'eventosCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'eventos.list.html'
+                    }
+                }
+                
+                }).state('eventosListAdmin', {
+                url: '/list',                
+                parent: 'administradorDetail',
+                data: {
+                    requireLogin: true
+                },
+                views: {
+                     'info': {
+                        templateUrl: basePath + 'eventos.listAdmin.html',
+                        controller: 'eventosCtrl'
+                    },
+                    'listView': {
+                        controller: 'eventosCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'eventos.listAdmin.html'
                     }
                 }
             }).state('eventosPost', {

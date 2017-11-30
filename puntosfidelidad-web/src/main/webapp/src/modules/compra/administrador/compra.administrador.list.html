@@ -1,0 +1,35 @@
+<div class="panel panel-default panel-body">
+    <div class="col-md-3">
+        <div ng-if="!edit" class="vertical-menu">
+            <a ng-click="perfil()">Información</a>
+            <a ui-sref="recargasList">Recargas</a>
+            <a ui-sref="tarjetasDeCreditoList">Tarjetas Crédito</a>
+            <a ui-sref="tarjetasPuntosClienteList">Tajetas de Puntos</a>
+        </div>
+    </div>
+    <br>       
+    <div class="col-md-4">        
+        <div class="input-container alertError" ng-if='elementosTP.length === 0'>
+            <strong>!Ey!</strong> Actualmente no hay tarjetas registradas para este cliente.
+        </div>
+        <table class="table table-hover" ng-if='elementosTP.length !== 0'>
+            <thead>
+                <tr>
+                    <th>Id</th>    
+                    <th>Monto mínimo</th>  
+                    <th>Monto Actual</th> 
+                    <th>Puntos Acumulados</th> 
+                </tr>
+            </thead>    
+
+            <tbody>
+                <tr ng-repeat="tarjeta in elementosTP">
+                    <td id="{{$index}}-name"> {{tarjeta.id}}</td>
+                    <td id="{{$index}}-mbasico">{{tarjeta.montoBasico}}</td>
+                    <td id="{{$index}}-mactual">{{tarjeta.montoActual}}</td>
+                    <td id="{{$index}}-numPuntos">{{tarjeta.numPuntos}}</td>  
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

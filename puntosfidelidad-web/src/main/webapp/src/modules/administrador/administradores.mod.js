@@ -1,5 +1,5 @@
 (function (ng) {
-    var mod = ng.module("administradoresModule", ['restauranteAdministradorModule']);
+    var mod = ng.module("administradoresModule", ['restauranteAdministradorModule','comprasModule' ]);
     mod.constant("administradoresContext", "api/administradores");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/administrador/';
@@ -15,11 +15,6 @@
                         controller: 'administradoresCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'administradores.list.html'
-                    },
-                    'navBar': {
-                        controller: 'administradoresCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'navBar.html'
                     }
                 }
             }).state('administradorDetail', {
@@ -35,12 +30,6 @@
                         controller: 'administradoresDetailCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'administradores.detail.html'
-                    },
-                    'navBar': {
-                        controller: 'administradoresCtrl',
-                        controllerAs: 'administradoresDetailCtrl',
-                        templateUrl: basePath + 'navBar.html'
-
                     }
                 }
             }).state('administradorCreate', {
@@ -52,12 +41,6 @@
                     'mainView': {
                         templateUrl: basePath + 'new/administradores.new.html',
                         controller: 'administradoresNewCtrl'
-                    },
-                    'navBar': {
-                        controller: 'administradoresCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'navBar.html'
-
                     }
                 }
             }).state('administradorUpdate', {
@@ -72,12 +55,6 @@
                     'mainView': {
                         templateUrl: basePath + 'administradores.detail.html',
                         controller: 'administradoresUpdateCtrl'
-                    },
-                    'navBar': {
-                        controller: 'administradoresCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'navBar.html'
-
                     }
                 }
 
@@ -93,12 +70,6 @@
                     'mainView': {
                         templateUrl: basePath + 'delete/administradores.delete.html',
                         controller: 'administradorDeleteCtrl'
-                    },
-                    'navBar': {
-                        controller: 'administradoresCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'navBar.html'
-
                     }
                 }
             }).state('administradorClientes', {
@@ -113,12 +84,6 @@
                     'mainView': {
                         templateUrl: 'src/modules/cliente/clientes.list.html',
                         controller: 'administradorDeleteCtrl'
-                    },
-                    'navBar': {
-                        controller: 'administradoresCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'navBar.html'
-
                     }
                 }
             }).state('administradorOtros', {
@@ -133,12 +98,6 @@
                     'mainView': {
                         templateUrl: 'src/modules/cliente/clientes.list.html',
                         controller: 'administradorDeleteCtrl'
-                    },
-                    'navBar': {
-                        controller: 'administradoresCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'navBar.html'
-
                     }
                 }
             }).state('administradorRestaurantes', {
@@ -154,12 +113,6 @@
                         templateUrl: 'src/modules/cliente/clientes.list.html',
                         controller: 'administradorDeleteCtrl'
                     },
-                    'navBar': {
-                        controller: 'administradoresCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'navBar.html'
-
-                    }
                 }
             }).state('administradorEventos', {
                 url: '/administradores/eventos',
@@ -174,12 +127,6 @@
                         templateUrl: 'src/modules/evento/eventos.html',
                         controller: 'eventosCtrl',
                         controllerAs: 'ctrl'
-                    },
-                    'navBar': {
-                        controller: 'administradoresCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'navBar.html'
-
                     },
                     'detailView': {
                         templateUrl: 'src/modules/evento/eventosCarrusel.html',
