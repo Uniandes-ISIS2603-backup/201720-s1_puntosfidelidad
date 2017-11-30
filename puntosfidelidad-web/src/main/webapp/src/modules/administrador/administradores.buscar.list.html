@@ -1,14 +1,18 @@
 <div class="container-fluid" >    
     <br>
-    <button class="BotonesBanner" ui-sref='administradoresBuscar'>Filtrar</button> 
+    
+    <div class="form-group col-md-6">
+        <label for="administradorName" class="col-sm-4"><h4>Nombre de Administrador</h4></label>
+                            <input id="restauranteName" required ng-model="adminName" class="col-sm-6"/>
+                        </div>
+   
     <br>
     <br>
     <div class="row">
-        <h3> <b> &nbsp;&nbsp; Administradores Registrados:</b> </h3>
           <br>
     <br>
         <div class="col-md-2" ng-repeat="administrador in administradoresLista" >
-            <div class="thumbnail" >      
+            <div class="thumbnail" ng-if="administrador.usuario==adminName" >      
                 <a ui-sref="administradorDetail({administradorUsuario: administrador.usuario})">
                                       
                 </a>
@@ -23,7 +27,5 @@
             </div>
         </div>
     </div>
-    <div class="btn-group mr-2" role="group" aria-label="First group">
-        <a class="btn btn-info" ui-sref="administradorCreate">  <p class="glyphicon glyphicon-plus"></p> Agregar Administrador   </a>
-    </div>
+    
 </div>

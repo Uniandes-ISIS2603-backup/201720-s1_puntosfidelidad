@@ -32,6 +32,19 @@
                         templateUrl: basePath + 'administradores.detail.html'
                     }
                 }
+                }).state('administradoresBuscar', {
+                url: '/buscar',
+                data: {
+                    requireLogin: true
+                },
+                views: {
+                    'mainView': {
+                        controller: 'administradoresCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'administradores.buscar.list.html'
+                    }
+                }
+                
             }).state('administradorCreate', {
                 url: 'administradores/create',
                 data: {
