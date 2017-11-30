@@ -550,6 +550,8 @@ nav a:hover{
 }
 
 footer {
+    position:relative;
+    bottom:0;
     margin:40px;        
     text-align: center; 
     font-weight:bold;    
@@ -643,38 +645,37 @@ footer a:hover, footer a:link,footer a:visited {
 
 /* Carousel base class */
 .carousel {
-width: auto; height: auto; position: relative; display: flex; justify-content: center;align-items: center;
+    width: auto; height: auto; position: relative; display: flex; justify-content: center;align-items: center;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
-  z-index: 10;
+    z-index: 10;
 }
 
 /* Declare heights because of positioning of img element */
 .carousel .item {
-  width: 100%;  
-  height: 500px;
-  background-color: #777;
+    width: 100%;  
+    height: 500px;
+    background-color: #777;
 }
 .carousel-inner {
- display: flex; justify-content: center;align-items: center;
+    display: flex; justify-content: center;align-items: center;
 }
 .carousel-inner > .item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;  
-  height: 500px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;  
+    height: 500px;
 }
-  .carousel-inner > .item > a > img {
-      width: 70%;
-  }
+.carousel-inner > .item > a > img {
+    width: 70%;
+}
 
 
 /* CSS para los botones*/
 
 .BotonesBanner{
-    margin: 5px;
     font-size: 2.0rem;
     padding: 1rem;
     display: inline-block;
@@ -688,11 +689,13 @@ width: auto; height: auto; position: relative; display: flex; justify-content: c
     -moz-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
-  
+
 .BotonesBanner:hover {
     background-color: #ffffff;
-    color: #006d8f;
-    border-color: #B2D63C;
+
+    color: #525155;
+    border-color: #d7df01;
+
 }
 
 .BotonSideNav {
@@ -734,7 +737,7 @@ width: auto; height: auto; position: relative; display: flex; justify-content: c
 
 .eventoBox:hover{
 }
- 
+
 .eventoInner{
     border:2px solid rgb(194, 194, 194);
     position:relative;
@@ -749,13 +752,13 @@ width: auto; height: auto; position: relative; display: flex; justify-content: c
     -webkit-transition: all 0.4s;
     -moz-transition: all 0.4s;
     z-index:10;
-  }
-  .eventoBox:hover > .eventoInner{
+}
+.eventoBox:hover > .eventoInner{
     opacity: 1;
     display:inline-block;
     border: 10px solid rgb(51, 51, 51);
-  }
-  .eventoColor{
+}
+.eventoColor{
     position:absolute;
     top:0px;
     left:0px;
@@ -763,16 +766,18 @@ width: auto; height: auto; position: relative; display: flex; justify-content: c
     height:100%;
     opacity:0;
     transition: opacity 0.4s;
-  }
-  .eventoBox:hover > .eventoColor{
+}
+.eventoBox:hover > .eventoColor{
     background-color:black;
     opacity:0.5;
     display:inline-block;
-  }
-  
-@import('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.0/css/bootstrap.min.css') 
+}
 
- .funkyradio div {
+
+/* @import('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.0/css/bootstrap.min.css')*/
+
+
+.funkyradio div {
     clear: both;
     overflow: auto;
 }
@@ -845,6 +850,40 @@ width: auto; height: auto; position: relative; display: flex; justify-content: c
 }
 
 
-  .eventoDiv{
-      text-align: center;
-  }
+.eventoDiv{
+    text-align: center;
+}
+
+.tamanoBanner{
+    width: 100%;
+    height: 100%;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.footerPag {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #88A61F;
+  text-align: center;
+}
+
+.contenido{
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+}

@@ -142,8 +142,8 @@
                             </h1>            
                         </div>
                         <div class="col-md-10" style="padding-top: 12px">
-                        <button class='BotonesBanner' ui-sref="login">Iniciar Sesión</button>
-                        <button class='BotonesBanner' ui-sref="clienteCreate">Registrarse</button>
+                            <button class='BotonesBanner' ui-sref="login">Iniciar Sesión</button>
+                            <button class='BotonesBanner' ui-sref="clienteCreate">Registrarse</button>
                         </div>
                     </nav>
                     <nav ng-if="isAuthenticated() && esCliente()" > 
@@ -153,55 +153,59 @@
                             </h1>            
                         </div>
                         <div class="col-md-10" style="padding-top: 12px">
-                        <ul>
-                            <button class='BotonesBanner' ng-click="perfil()">Mi perfíl</button>
-                            <button class='BotonesBanner' ng-click="compras()">Compras</button>
-                            <button class='BotonesBanner' ui-sref="restaurantesList">Restaurantes</button>
-                            <button class='BotonesBanner' ng-click="productos()">Productos</button>
-                            <button class='BotonesBanner' ui-sref="eventosList">Eventos</button>                            
-                            <button class='BotonesBanner' ui-sref="comentariosNuevos">Comentarios</button>
+                            <ul>
+                                <button class='BotonesBanner' ng-click="perfil()">Mi perfíl</button>
+                                <button class='BotonesBanner' ng-click="compras()">Compras</button>
+                                <button class='BotonesBanner' ui-sref="restaurantesList">Restaurantes</button>
+                                <button class='BotonesBanner' ng-click="productos()">Productos</button>
+                                <button class='BotonesBanner' ui-sref="eventosList">Eventos</button>                            
+                                <button class='BotonesBanner' ui-sref="comentariosNuevos">Comentarios</button>
 
-                            <li class="cerarSesion"><a  ui-sref="inicio">Cerrar Sesión</a></li>
-                        </ul>
+                                <li class="cerarSesion"><a  ui-sref="inicio">Cerrar Sesión</a></li>
+                            </ul>
                         </div>
                     </nav> 
                     <nav ng-if="isAuthenticated() && !esCliente()"> 
                         <div class="col-md-2">
                             <h1>                                
-                                <a id="tituloBanner" ng-if="isAuthenticated()" ng-click="perfil()" href="">FIEL</a>    
+                                <a style='font-family: "Comic Sans MS", cursive, sans-serif;font-size: 50px'  id="tituloBanner" ng-if="isAuthenticated()" ng-click="perfil()" href="">FIEL</a>    
                             </h1>            
                         </div>
                         <div class="col-md-10" style="padding-top: 12px">
-                        
-                        <ul>
-                            <button class='BotonesBanner' ng-click="perfil()">Mi perfíl</button>
-                            <button class='BotonesBanner' ui-sref="administradoresList">Administradores</button>
-                            <button class='BotonesBanner' ui-sref="clientesList">Clientes</button>
-                            <button class='BotonesBanner' ui-sref="restaurantesList">Restaurantes</button>
-                            <button class='BotonesBanner' ui-sref="eventosList">Eventos</button>                            
-                            <li class="cerarSesion"><a  ui-sref="inicio">Cerrar Sesión</a></li>
-                        </ul>
+
+                            <ul>
+                                <button class='BotonesBanner' ng-click="perfil()">Mi perfíl</button>
+                                <button class='BotonesBanner' ui-sref="administradoresList">Administradores</button>
+                                <button class='BotonesBanner' ui-sref="clientesList">Clientes</button>
+                                <button class='BotonesBanner' ui-sref="restaurantesList">Restaurantes</button>
+                                <button class='BotonesBanner' ui-sref="eventosList">Eventos</button>                            
+                                <li class="cerarSesion"><a  ui-sref="inicio">Cerrar Sesión</a></li>
+                            </ul>
+
                         </div>
                     </nav> 
                     <br>
                 </header> 
             </div>  
         </div>
+        <br>
 
-        <div ui-view="mainView">
-
-            <div ng-if="!isAuthenticated()"  id='videoDiv'>
-                <div id='videoBlock'>
-                    <video style="width: 100%" id='bgvid' preload muted autoplay loop src="./media/indexVideo.mp4" type='video/mp4'></video>
-                    <div id='videoMessage' class="central">
-                        <h1>Fiel</h1>
+        <div ui-view="mainView" class="contenido">
+            <center>
+                <br>
+                <div ng-if="!isAuthenticated()"  id='videoDiv'>
+                    <div id='videoBlock'>
+                        <video style="width: 100%" id='bgvid' preload muted autoplay loop src="./media/indexVideo.mp4" type='video/mp4'></video>
+                        <div id='videoMessage' class="central">
+                            <h1>Fiel</h1>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </center>
         </div>
 
-
-        <div class="row barcolor">
+        <br><br><br>
+        <div class="footerPag">
             <footer>                       
                 <a ui-sref="inicio">
                     Universidad De Los Andes - Desarrollo De Software En Equipos 2017-02 
