@@ -567,22 +567,11 @@ footer a:hover, footer a:link,footer a:visited {
 }
 
 
-.alertError, .alert-info, .alert-danger{
-    padding: 20px!important;
-    background-color: #B2D63C!important; 
-    border-color: #B2D63C;
-    color: #585858!important;
-    margin-bottom: 15px!important;
-    text-align: center;
-}
-
-.alert-warning{
-    padding: 20px!important;
-    background-color: #36A8A7!important; 
-    border-color: #36A8A7;
-    color: whitesmoke!important;
-    margin-bottom: 15px!important;
-    text-align: center;
+.alertError{
+    padding: 20px;
+    background-color: #B2D63C; /* Red */
+    color: #585858;
+    margin-bottom: 15px;
 }
 
 #logo{
@@ -868,66 +857,67 @@ footer a:hover, footer a:link,footer a:visited {
 
 .estrellasComentario0{
     background: url('../media/puntuaciones/0.png') no-repeat;
-    background-size: contain;
+    background-size: 10% 100%;
     height: 20px;
 }
 
 .estrellasComentario1{
     background: url('../media/puntuaciones/1.png') no-repeat;
-    background-size: contain;
+    background-size: 10% 100%;
     height: 20px;
 }
 
 .estrellasComentario2{
     background: url('../media/puntuaciones/2.png') no-repeat;
-    background-size: contain;
+    background-size: 10% 100%;
     height: 20px;
 }
 
 .estrellasComentario3{
     background: url('../media/puntuaciones/3.png') no-repeat;
-    background-size: contain;
+    background-size: 10% 100%;
     height: 20px;
 }
 
 .estrellasComentario4{
     background: url('../media/puntuaciones/4.png') no-repeat;
-    background-size: contain;
+    background-size: 10% 100%;
     height: 20px;
 }
 
 .estrellasComentario5{
     background: url('../media/puntuaciones/5.png') no-repeat;
-    background-size: contain;
+    background-size: 10% 100%;
     height: 20px;
 }
 
 .estrellasComentario6{
     background: url('../media/puntuaciones/6.png') no-repeat;
-    background-size: contain;
+    background-size: 10% 100%;
     height: 20px;
 }
 
 .estrellasComentario7{
     background: url('../media/puntuaciones/7.png') no-repeat;
-    background-size: contain;
+    background-size: 10% 100%;
     height: 20px;
 }
 
 .estrellasComentario8{
     background: url('../media/puntuaciones/8.png') no-repeat;
-    background-size: contain;
+    background-size: 10% 100%;
     height: 20px;
 }
 
 .estrellasComentario9{
     background: url('../media/puntuaciones/9.png') no-repeat;
+    background-size: 10% 100%;
     height: 20px;
 }
 
 .estrellasComentario10{
     background: url('../media/puntuaciones/10.png') no-repeat;
-    background-size: contain;
+    background-size: 10% 100%;
     height: 20px;
 }
 
@@ -936,7 +926,6 @@ footer a:hover, footer a:link,footer a:visited {
     left: 65px;
     top: -40px;
     border-left: 2px solid #132c38;
-    width: 60%;
 }
 
 .fotoPerfilCliente > b{
@@ -948,14 +937,12 @@ footer a:hover, footer a:link,footer a:visited {
     display: block;
     border-left: 5px solid rgb(28, 177, 177);
     background-color: #6dd1ff;
-    width: 70%;
 }
 
 .unComentario-1{
     display: block;
     border-left: 5px solid rgb(28, 177, 177);
     background-color: #64c0e7;
-    width: 70%;
 }
 .eventoDiv{
     text-align: center;

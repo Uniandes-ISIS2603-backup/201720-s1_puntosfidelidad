@@ -74,7 +74,8 @@
                 
                 $rootScope.perfil= function () {  
                     event.preventDefault();
-                   
+                    console.log($rootScope.esCliente());
+                    console.log($rootScope.currentUser);
                     if($rootScope.esCliente()){
                         $state.go('clienteDetail',{'clienteUsuario':$rootScope.currentUser}, {reload: true});
                     }

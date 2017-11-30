@@ -65,7 +65,7 @@
                 
             }).state('compraDetail', {
                 url: '/{compraId:int}/detail',
-                parent: 'administradorDetail',
+                parent: 'compras',
                 data: {
                     requireLogin: true
                 },
@@ -73,7 +73,7 @@
                     compraId: null                    
                 },
                 views: {
-                    'info': {
+                    'detailView': {
                         templateUrl: basePath + 'compras.detail.html',
                         controller: 'comprasCtrl',
                         controllerAs: 'ctrl'
@@ -92,23 +92,6 @@
                     'detailView': {
                         templateUrl: basePath + 'compras.productos.list.html',
                         controller: 'comprasProductosCtrl',
-                        controllerAs: 'ctrl'
-                    }
-                }
-            }).state('comprasProductosDetail', {
-                url: '/{compraId:int}/productos/{productoId:int}',
-                parent: 'compras',
-                data: {
-                    requireLogin: true
-                },
-                param: {
-                    productoId: null,
-                    compraId: null
-                },
-                views: {                                       
-                    'detailView': {
-                        templateUrl: basePath + 'compras.productos.detail.html',
-                        controller: 'productosCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
