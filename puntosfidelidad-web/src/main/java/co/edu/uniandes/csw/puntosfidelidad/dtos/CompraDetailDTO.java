@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.puntosfidelidad.dtos;
 
 import co.edu.uniandes.csw.puntosfidelidad.entities.CompraEntity;
 import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoCompraEntity;
-import co.edu.uniandes.csw.puntosfidelidad.entities.ProductoEntity;
 import java.util.ArrayList;
 import java.util.List;
 
