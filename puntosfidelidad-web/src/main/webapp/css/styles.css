@@ -573,6 +573,7 @@ footer a:hover, footer a:link,footer a:visited {
     border-color: #B2D63C;
     color: #585858!important;
     margin-bottom: 15px!important;
+    text-align: center;
 }
 
 .alert-warning{
@@ -581,6 +582,7 @@ footer a:hover, footer a:link,footer a:visited {
     border-color: #36A8A7;
     color: whitesmoke!important;
     margin-bottom: 15px!important;
+    text-align: center;
 }
 
 #logo{
