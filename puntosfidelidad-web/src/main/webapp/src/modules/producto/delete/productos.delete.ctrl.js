@@ -6,7 +6,7 @@
             var idProducto = $state.params.productoId;
             $scope.deleteProd= function () {
                 $http.delete(productosContext + '/' + idProducto, {}).then(function (response) {
-                    $state.go('productosList', {productoId: response.data.id}, {reload: true});
+                    $state.go(perfil(), {reload: true});
                 });
             };
         }

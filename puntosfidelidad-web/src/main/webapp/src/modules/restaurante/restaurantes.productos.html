@@ -14,7 +14,7 @@
             <td id="{{$index}}-name"><a ui-sref="restauranteAdministradorProductoDetail({productoId: producto.id})">{{producto.nombre}}</a></td>
             <td id="{{$index}}-dinero">{{producto.valorDinero}}</td>
             <td id="{{$index}}-puntos">{{producto.valorPuntos}}</td>
-            <td><a class="btn btn-default btn-sm" ui-sref="restauranteAdministradorProductoUpdate({productoId: producto.id})" ><p class="glyphicon glyphicon-pencil"></p></a>
+            <td><a class="btn btn-default btn-sm" ui-sref="restauranteProductoUpdate({productoId: producto.id})" ><p class="glyphicon glyphicon-pencil"></p></a>
                 <a class="btn btn-danger btn-sm" ui-sref="productoDelete({productoId: producto.id})"><p class="glyphicon glyphicon-trash"></p></a>
             </td>
             
