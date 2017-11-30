@@ -20,7 +20,7 @@
                         <tbody>
                             <tr ng-repeat="producto in productosRecords">
                                 <td id="{{$index}}-name"><a ui-sref="productoDetail({productoId: producto.id})">{{producto.nombre}}</a></td>
-                                <td id="{{$index}}-restaurante">{{producto.restaurante.nombre}}</td>
+                                <td id="{{$index}}-restaurante">{{producto.restaurante}}</td>
                                 
                             </tr>
                         </tbody>

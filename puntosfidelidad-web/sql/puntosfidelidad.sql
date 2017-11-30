@@ -14,11 +14,11 @@ delete from RestauranteEntity;
 delete from AdministradorEntity;
 
 insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('Anonimo','Anónimo','','');
-insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C1','Cliente1','media/cliente2.jpg','*');
-insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C2','Cliente2','media/cliente3.jpg','**');
-insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C3','Cliente3','media/cliente4.jpg','***');
-insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C4','Cliente4','media/cliente2.jpg','****');
-insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C5','Cliente5','media/cliente1.jpg','*****');
+insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C1','Cliente1','media/perfil/1.jpg','*');
+insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C2','Cliente2','media/perfil/2.jpg','**');
+insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C3','Cliente3','media/perfil/3.jpg','***');
+insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C4','Cliente4','media/perfil/4.jpg','****');
+insert into ClienteEntity (usuario, nombre, imagen, contrasena) values ('C5','Cliente5','media/perfil/5.jpg','*****');
 
 insert into TarjetaDeCreditoEntity (id,banco, numero, cliente_usuario) values (10000,'Bancolombia', 4562182, 'C1' );
 insert into TarjetaDeCreditoEntity (id,banco, numero, cliente_usuario) values (10010,'Bancopichincha', 4578236, 'C1' );
