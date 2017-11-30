@@ -10,7 +10,7 @@
             });            
             if (($state.params.restauranteNit !== undefined) && ($state.params.restauranteNit !== null)) {
                 $http.get(restaurantesContext + '/' + $state.params.restauranteNit).then(function (response) {
-                $scope.actual = response.data;
+                $scope.actual2 = response.data;
                 });
             }
         }
