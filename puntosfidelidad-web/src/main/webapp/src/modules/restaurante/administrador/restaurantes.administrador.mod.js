@@ -37,7 +37,7 @@
                 }
 
             }).state('restauranteAdministradorUpdate', {
-                url: '/restaurante/crear',
+                url: '/restaurante/editar/{restauranteNit:string}',
                 parent: 'administradorDetail',
                 data: {
                     requireLogin: true
@@ -53,7 +53,7 @@
                     }
                 }
             }).state('restauranteAdministradorDelete', {
-                url: '/restaurante/borrar',
+                url: '/restaurante/borrar/{restauranteNit:string}',
                 parent: 'administradorDetail',
                 data: {
                     requireLogin: true
@@ -114,6 +114,22 @@
                         controller: 'restaurantesCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'restaurantes.productos.html'
+                    }
+                }
+            }).state('restauranteAdministradorComentario', {
+                url: 'comentario/{restauranteNit}',
+                parent: 'restauranteAdministradorDetail',
+                data: {
+                    requireLogin: true
+                },
+                param: {
+                    restauranteNit: null
+                },
+                views: {
+                    'infoRes': {
+                        controller: 'comentariosNuevosCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: 'src/modules/comentario/comentarios.list.param.html'
                     }
                 }
             });

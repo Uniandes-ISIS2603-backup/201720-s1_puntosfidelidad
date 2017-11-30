@@ -1,52 +1,19 @@
-<div class="panel panel-default"> 
-    <div class="panel-body">
-
-        <form name="restaurantesUpdate">
-            <div class="row">
-                <br>
-                <div class="col-md-3"></div>           
-                <div class="col-md-3">
-                    <div class="thumb">
-                        <img value="" class="img-responsive" ng-src="{{actual.imagen}}"/>
-                    </div>
-
-                    <div class="thumb" ng-if="edit" >
-                        <input id="clienteImagenU" ng-model="elementoCliente.imagen" class="col-sm-8" value="{{elementoCliente.imagen}}"/>
-                    </div>
-                </div>            
-                <div class="col-md-3">
-                    <dl> 
-                        <dt> Nit</dt>
-                        <dd >{{actual.nit}} <hr> </dd>                    
-
-                        <dt> Nombre </dt>                        
-                        <dd><input value="" id="clienteNombreU" ng-model="actual.nombre" class="col-sm-8" /><br><hr> </dd>
-
-                        <dt>Contraseña</dt>                        
-                        <dd ng-if="edit"><input type=password id="clienteContrasenaU" required ng-model="elementoCliente.contrasena" class="col-sm-8" /> <br><br></dd>
-
-                        <dt ng-if="edit">Repetir contraseña</dt>
-                        <dd ng-if="edit"><input type=password id="clienteRepetirContrasenaU" required ng-model="elementoCliente.repetirContrasenaU" class="col-sm-8"/></dd>  
-
-                    </dl>  
-                    <br>                   
-                    <div class="form-group row">
-                        <div class="form-group col-sm-14" ng-if="edit && (((elementoCliente.contrasena) !== elementoCliente.repetirContrasenaU) || !clienteUpdate.$valid)">
-                            <div class="alert alert-danger" >
-                                <strong>!Cuidado!</strong><p>Las contraseñas no coinciden</p>
-                            </div> 
-                        </div> 
-                    </div>                    
-                    <a ng-if="!edit" class="btn btn-default" ui-sref="clienteUpdate({clienteUsuario: elementoCliente.usuario})"><p class="glyphicon glyphicon-pencil"></p></a>
-                    <a ng-if="!edit" class="btn btn-default" ui-sref="productosCreate"><p class="glyphicon glyphicon-trash"></p></a>
-                    <a ng-if="!edit" class="btn btn-default" ui-sref="clientesList"><p> Otros clientes</p></a>
-
-                    <a ng-if="edit" class="btn btn-default" ui-sref="clienteDetail({clienteUsuario: elementoCliente.usuario})"><p class="glyphicon glyphicon-remove"></p></a>
-                    <a ng-if="edit && !((elementoCliente.contrasena) !== elementoCliente.repetirContrasenaU) && clienteUpdate.$valid" class="btn btn-default" ng-click="updateCliente()"><p class="glyphicon glyphicon-floppy-saved"></p></a>
-                </div>
-            </div>
-            <br>
-        </form>
-
-    </div>
+<div class="container-fluid">
+    <br>  
+    <br>
+    
+    <label for="restauranteNit" class="col-sm-4">Nit:</label>
+    <input id="restauranteNit" pattern="[a-zA-Z0-9-]+" title="Espacios no admitidos" required ng-model="res.nit" class="col-sm-6"/>
+    <br>
+    <br>  
+    <label for="restauranteNombre" class="col-sm-4">Nombre:</label>
+   
+    <input id="restauranteNombre" pattern="[a-zA-Z0-9-]+" title="Espacios no admiti<dos" required ng-model="res.nombre" class="col-sm-6"/>
+     <br>
+     <br>  
+    <label for="restauranteNombre" class="col-sm-4">Tipo de Comida:</label>
+    <input id="restauranteTipoComida" pattern="[a-zA-Z0-9-]+" title="Espacios no admiti<dos" required ng-model="res.tipoComida" class="col-sm-6"/>
+     <br>
+     <br> 
+    <label for="crearNuevaTarjetaPuntos" class="btn btn-primary" ng-click="updateRestaurante()" >Modificar Restaurante</label>
 </div>
