@@ -6,15 +6,20 @@
             <th>Nombre</th>    
             <th>Descripción</th>  
             <th>Apertura</th>            
-            <th>Cierre</th>  
+            <th>Cierre</th> 
+            <th>Imagen</th> 
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="sucursal in actual.sucursales">
+            
             <td id="{{$index}}-nombre">{{sucursal.nombre}}</td>
             <td id="{{$index}}-descripcion">{{sucursal.descripcion}}</td>
             <td id="{{$index}}-puntos">{{sucursal.horaApertura}}</td>
             <td id="{{$index}}-puntos">{{sucursal.horaCierre}}</td>
+           <td id="{{$index}}-puntos"> <img class="img-responsive imagenCliente" ng-src="{{sucursal.imagen}}" alt="res1"/></td>
+            
+            
             <td>
                 <a class="btn btn-default btn-sm" ui-sref="sucursalUpdate({sucursalId: sucursal.id})" ><p class="glyphicon glyphicon-pencil"></p></a>
                 <a class="btn btn-danger btn-sm" ui-sref="sucursalDelete({sucursalId: sucursal.id})"><p class="glyphicon glyphicon-trash"></p></a>
