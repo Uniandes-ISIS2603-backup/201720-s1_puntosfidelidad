@@ -36,6 +36,19 @@
 
                     }
                 }
+                
+                }).state('clientesBuscar', {
+                url: '/buscar',
+                data: {
+                    requireLogin: true
+                },
+                views: {
+                    'mainView': {
+                        controller: 'clientesCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'clientes.buscar.list.html'
+                    }
+                }
             }).state('clienteComprasList', {
                 url: '/{clienteUsuario:string}/compras',
                 param: {

@@ -45,6 +45,24 @@
                     }
                 }
                 
+                }).state('compraAdministradorPost', {
+                url: '/crear',
+                parent: 'administradorDetail',
+                data: {
+                    requireLogin: true
+                },
+                param: {
+                    administradorUsuario: null
+                },
+                views: {
+                    'info': {
+                        controller: 'compraCreateCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'compras.administrador.listPost.html'
+
+                    }
+                }
+                
             }).state('compraDetail', {
                 url: '/{compraId:int}/detail',
                 parent: 'compras',
@@ -70,13 +88,7 @@
                 param: {
                     compraId: null
                 },
-                views: {                    
-                    'navBar': {
-                        controller: 'clientesDetailCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: 'src/modules/cliente/navBar.html'
-
-                    },
+                views: {                                       
                     'detailView': {
                         templateUrl: basePath + 'compras.productos.list.html',
                         controller: 'comprasProductosCtrl',
@@ -92,7 +104,8 @@
                 views: {
                     'detailView': {
                         templateUrl: basePath + '/new/compras.new.html',
-                        controller: 'comprasNewCtrl'
+                        controller: 'comprasNewCtrl',
+                         controllerAs: 'ctrl'
                     }
                 }
             }).state('compraUpdate', {
@@ -112,7 +125,7 @@
                 }
             }).state('compraDelete', {
                 url: '/delete/{compraId:int}',
-                parent: 'compras',
+                parent: 'administradorDetail',
                 data: {
                     requireLogin: true
                 },
@@ -120,7 +133,7 @@
                     compraId: null
                 },
                 views: {
-                    'detailView': {
+                    'info': {
                         templateUrl: basePath + '/delete/compras.delete.html',
                         controller: 'comprasDeleteCtrl'
                     }

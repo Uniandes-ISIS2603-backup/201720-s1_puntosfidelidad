@@ -6,7 +6,7 @@
             <div class="panel-body">
                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group mr-2" role="group" aria-label="First group">
-                        <a class="btn btn-info" ui-sref="comprasCreate"><p class="glyphicon glyphicon-plus"></p> Nueva Compra</a>
+                        <a class="btn btn-info" ui-sref="comprasCreate"><p class="glyphicon glyphicon-plus"></p> Nueva Compraa</a>
                     </div>
 
                 </div>
@@ -23,8 +23,7 @@
                             <tr ng-repeat="compra in comprasRecords">
                                 <td id="{{$index}}-name"><a ui-sref="compraDetail({compraId: compra.id})">{{compra.id}}</a></td>
                                 <td id="{{$index}}-restaurante">{{compra.sucursal.nombre}}</td>
-                                <td id="{{$index}}-actions"> 
-                                    <a class="btn btn-default btn-sm" ui-sref="compraUpdate({compraId: compra.id})"><p class="glyphicon glyphicon-pencil"></p></a>
+                                <td id="{{$index}}-actions">                                    
                                     <a class="btn btn-danger btn-sm" ui-sref="compraDelete({compraId: compra.id})"><p class="glyphicon glyphicon-trash"></p></a>
                                 </td>
                             </tr>

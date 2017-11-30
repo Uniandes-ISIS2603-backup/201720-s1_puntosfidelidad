@@ -6,7 +6,7 @@
             var idCompra = $state.params.compraId;
             $scope.deleteCompra= function () {
                 $http.delete(comprasContext + '/' + idCompra, {}).then(function (response) {
-                    $state.go('comprasList', {idCompra: response.data.id}, {reload: true});
+                    $state.go('comprasListAdmin', {idCompra: response.data.id}, {reload: true});
                 });
             };
         }

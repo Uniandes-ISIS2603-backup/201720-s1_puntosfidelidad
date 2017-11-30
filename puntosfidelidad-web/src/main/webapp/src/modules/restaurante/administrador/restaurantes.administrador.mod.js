@@ -29,9 +29,9 @@
                 },
                 views: {
                     'info': {
-                        controller: 'restaurantesPostCtrl',
+                        controller: 'restaurantesCreateCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'postrestaurantes.post.html'
+                        templateUrl: basePath + 'administrador/restaurantes.administrador.listPost.html'
 
                     }
                 }
@@ -63,19 +63,19 @@
                 },
                 views: {
                     'info': {
-                        controller: 'restaurantesDeleteCtrl',
+                        controller: 'restauranteDeleteCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'delete/restaurantes.delete.html'
                     }
                 }
-            }).state('restauranteAdministradorDetail', {
-                url: '/restaurante/{restauranteNit:string}/detalle',
+            }).state('restauranteAdministradorDetail'            , {
+                url: '/restaurante/{restauranteNit2:string}/detalle',
                 parent: 'administradorDetail',
                 data: {
-                    requireLogin: true
+                    requireLogin: true                    
                 },
                 param: {
-                    restauranteNit: null
+                    restauranteNit2: null
                 },
                 views: {
                     'info': {
@@ -91,7 +91,7 @@
                     requireLogin: true
                 },
                 param: {
-                    restauranteNit: null
+                    restauranteNit2: null
                 },
                 views: {
                     'infoRes': {
@@ -107,7 +107,7 @@
                     requireLogin: true
                 },
                 param: {
-                    restauranteNit: null
+                    restauranteNit2: null
                 },
                 views: {
                     'infoRes': {
