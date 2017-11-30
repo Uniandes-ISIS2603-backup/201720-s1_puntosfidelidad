@@ -11,10 +11,14 @@
                 window.history.back();
             };
 
-            $http.get("api/clientes/" + $state.params.clienteUsuario)
-                    .then(function (response) {
-                        $scope.elementoCliente = response.data;
-                    });
+            if (($state.params.productoId !== undefined) && ($state.params.productoId !== null)) {
+                $http.get("api/clientes/" + $state.params.clienteUsuario)
+                        .then(function (response) {
+                            $scope.elementoCliente = response.data;
+                        });
+            }
+
+
 
             if (($state.params.productoId !== undefined) && ($state.params.productoId !== null)) {
                 $http.get(productosContext + '/' + $state.params.productoId).then(function (response) {
